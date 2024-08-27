@@ -2,6 +2,18 @@
 #include <iostream>
 #include <array>
 
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#include <glm.hpp>
+
+namespace VRE {
+    //push constant data.
+    struct SimplePCData {
+        glm::vec2 offset;
+        alignas(16) glm::vec3 color;
+    };
+}
+
 VRE::VRE_App::VRE_App()
 {
     LoadModels();
@@ -35,12 +47,16 @@ void VRE::VRE_App::LoadModels()
 
 void VRE::VRE_App::CreatePipelineLayout()
 {
+    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                                           0,
+                                           sizeof(SimplePCData) };
+
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     pipelineLayoutInfo.setLayoutCount = 0;
     pipelineLayoutInfo.pSetLayouts = nullptr;
-    pipelineLayoutInfo.pushConstantRangeCount = 0;
-    pipelineLayoutInfo.pPushConstantRanges = nullptr;
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
     if (vkCreatePipelineLayout(mDevice.device(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         std::cout << "Failed to create pipeline layout!" << std::endl;
@@ -152,7 +168,7 @@ void VRE::VRE_App::RecordCommandBuffer(int imageIndex)
     renderPassInfo.renderArea.extent = mSwapChain->getSwapChainExtent();
 
     std::array<VkClearValue, 2> clearValues{};
-    clearValues[0].color = { 0.1f, 0.1f, 0.1f, 1.0f };
+    clearValues[0].color = { 0.01f, 0.01f, 0.01f, 1.0f };
     clearValues[1].depthStencil = { 1.0f, 0 };
     renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
     renderPassInfo.pClearValues = clearValues.data();
@@ -172,7 +188,21 @@ void VRE::VRE_App::RecordCommandBuffer(int imageIndex)
 
     mPipeline->Bind(mCommandBuffers[imageIndex]);
     mModel->Bind(mCommandBuffers[imageIndex]);
-    mModel->Draw(mCommandBuffers[imageIndex]);
+
+    for (int i = 0; i < 4; i++) {
+        SimplePCData data{};
+        data.offset = { 0.0f, -0.4f + i * 0.25f };
+        data.color = { 0.0f, 0.0f, 0.2f + 0.2f * i };
+
+        vkCmdPushConstants(mCommandBuffers[imageIndex],
+                           mPipelineLayout,
+                           VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                           0,
+                           sizeof(SimplePCData),
+                           &data);
+
+        mModel->Draw(mCommandBuffers[imageIndex]);
+    }
 
     vkCmdEndRenderPass(mCommandBuffers[imageIndex]);
     if (vkEndCommandBuffer(mCommandBuffers[imageIndex]) != VK_SUCCESS)
