@@ -4,7 +4,7 @@
 #include "VRE_Pipeline.h"
 #include "VRE_Device.h"
 #include "VRE_SwapChain.h"
-#include "VRE_Model.h"
+#include "VRE_GameObject.h"
 
 #include <memory>
 #include <vector>
@@ -26,7 +26,7 @@ namespace VRE {
         void Run();
 
     private:
-        void LoadModels();
+        void LoadGameObjects();
         void CreatePipelineLayout();
         void CreatePipeline();
         void CreateCommandBuffers();
@@ -34,6 +34,7 @@ namespace VRE {
         void RecreateSwapChain();
         void RecordCommandBuffer(int imageIndex);
         void FreeCommandBuffers();
+        void RenderGameObjects(VkCommandBuffer commandBuffer);
 
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };
@@ -41,7 +42,7 @@ namespace VRE {
         std::unique_ptr<VRE_Pipeline> mPipeline;
         VkPipelineLayout mPipelineLayout;
         std::vector<VkCommandBuffer> mCommandBuffers;
-        std::unique_ptr<VRE_Model> mModel;
+        std::vector<VRE_GameObject> mGameObjects;
     };
 }
 

@@ -5,10 +5,13 @@
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm.hpp>
+#include <gtc/constants.hpp>
 
+//will be refactored and moved.
 namespace VRE {
     //push constant data.
     struct SimplePCData {
+        glm::mat2 transform{1.f};
         glm::vec2 offset;
         alignas(16) glm::vec3 color;
     };
@@ -16,7 +19,7 @@ namespace VRE {
 
 VRE::VRE_App::VRE_App()
 {
-    LoadModels();
+    LoadGameObjects();
     CreatePipelineLayout();
     RecreateSwapChain();
     CreateCommandBuffers();
@@ -36,13 +39,23 @@ void VRE::VRE_App::Run()
     vkDeviceWaitIdle(mDevice.device());
 }
 
-void VRE::VRE_App::LoadModels()
+void VRE::VRE_App::LoadGameObjects()
 {
     std::vector<VRE_Model::Vertex> vertices{
-     {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-     {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-     {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}} };
-    mModel = std::make_unique<VRE_Model>(mDevice, vertices);
+        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}} };
+
+    auto model = std::make_shared<VRE_Model>(mDevice, vertices);
+
+    auto triangle = VRE::VRE_GameObject::CreateGameObject();
+    triangle.mModel = model;
+    triangle.mColor = { .1f, .8f, .1f };
+    triangle.mTransform.position.x = .2f;
+    triangle.mTransform.scale = { 2.f, .5f };
+    triangle.mTransform.rotation = 0.25f * glm::two_pi<float>();
+
+    mGameObjects.push_back(std::move(triangle));
 }
 
 void VRE::VRE_App::CreatePipelineLayout()
@@ -151,6 +164,26 @@ void VRE::VRE_App::FreeCommandBuffers() {
     mCommandBuffers.clear();
 }
 
+void VRE::VRE_App::RenderGameObjects(VkCommandBuffer commandBuffer)
+{
+    mPipeline->Bind(commandBuffer);
+    for (auto& obj : mGameObjects) {
+        SimplePCData data{};
+        data.offset = obj.mTransform.position;
+        data.color = obj.mColor;
+        data.transform = obj.mTransform.mat2();
+
+        vkCmdPushConstants(commandBuffer,
+                           mPipelineLayout,
+                  VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                     0,
+                           sizeof(SimplePCData),
+                    &data);
+        obj.mModel->Bind(commandBuffer);
+        obj.mModel->Draw(commandBuffer);
+    }
+}
+
 void VRE::VRE_App::RecordCommandBuffer(int imageIndex)
 {
     VkCommandBufferBeginInfo beginInfo{};
@@ -186,23 +219,7 @@ void VRE::VRE_App::RecordCommandBuffer(int imageIndex)
     vkCmdSetViewport(mCommandBuffers[imageIndex], 0, 1, &viewport);
     vkCmdSetScissor(mCommandBuffers[imageIndex], 0, 1, &scissor);
 
-    mPipeline->Bind(mCommandBuffers[imageIndex]);
-    mModel->Bind(mCommandBuffers[imageIndex]);
-
-    for (int i = 0; i < 4; i++) {
-        SimplePCData data{};
-        data.offset = { 0.0f, -0.4f + i * 0.25f };
-        data.color = { 0.0f, 0.0f, 0.2f + 0.2f * i };
-
-        vkCmdPushConstants(mCommandBuffers[imageIndex],
-                           mPipelineLayout,
-                           VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-                           0,
-                           sizeof(SimplePCData),
-                           &data);
-
-        mModel->Draw(mCommandBuffers[imageIndex]);
-    }
+    RenderGameObjects(mCommandBuffers[imageIndex]);
 
     vkCmdEndRenderPass(mCommandBuffers[imageIndex]);
     if (vkEndCommandBuffer(mCommandBuffers[imageIndex]) != VK_SUCCESS)

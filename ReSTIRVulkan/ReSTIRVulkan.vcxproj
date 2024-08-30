@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="VRE_GameObject.cpp" />
     <ClCompile Include="VRE_App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VRE_Device.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="VRE_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="VRE_GameObject.h" />
     <ClInclude Include="VRE_App.h" />
     <ClInclude Include="VRE_Device.h" />
     <ClInclude Include="VRE_Model.h" />
