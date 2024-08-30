@@ -1,9 +1,8 @@
 #pragma once
 #include <string>
 #include "VRE_Window.h"
-#include "VRE_Pipeline.h"
 #include "VRE_Device.h"
-#include "VRE_SwapChain.h"
+#include "VRE_Renderer.h"
 #include "VRE_GameObject.h"
 
 #include <memory>
@@ -27,21 +26,10 @@ namespace VRE {
 
     private:
         void LoadGameObjects();
-        void CreatePipelineLayout();
-        void CreatePipeline();
-        void CreateCommandBuffers();
-        void DrawFrame();
-        void RecreateSwapChain();
-        void RecordCommandBuffer(int imageIndex);
-        void FreeCommandBuffers();
-        void RenderGameObjects(VkCommandBuffer commandBuffer);
 
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };
-        std::unique_ptr<VRE_SwapChain> mSwapChain;
-        std::unique_ptr<VRE_Pipeline> mPipeline;
-        VkPipelineLayout mPipelineLayout;
-        std::vector<VkCommandBuffer> mCommandBuffers;
+        VRE_Renderer mRenderer;
         std::vector<VRE_GameObject> mGameObjects;
     };
 }

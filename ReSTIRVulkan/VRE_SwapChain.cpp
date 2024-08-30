@@ -300,6 +300,7 @@ void VRE_SwapChain::createFramebuffers() {
 
 void VRE_SwapChain::createDepthResources() {
   VkFormat depthFormat = findDepthFormat();
+  swapChainDepthFormat = depthFormat;
   VkExtent2D swapChainExtent = getSwapChainExtent();
 
   depthImages.resize(imageCount());
