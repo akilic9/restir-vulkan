@@ -134,7 +134,7 @@ void VRE::VRE_Renderer::RecreateSwapChain()
         mSwapChain = std::make_unique<VRE_SwapChain>(mDevice, extent);
     else {
         std::shared_ptr<VRE_SwapChain> oldChain = std::move(mSwapChain);
-        mSwapChain = std::make_unique<VRE_SwapChain>(mDevice, extent, std::move(oldChain));
+        mSwapChain = std::make_unique<VRE_SwapChain>(mDevice, extent, oldChain);
 
         if (!oldChain->CompareSwapFormats(*mSwapChain.get())) {
             throw std::runtime_error("Swap chain image(or depth) format has changed!");
