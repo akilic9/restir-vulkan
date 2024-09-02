@@ -5,8 +5,7 @@
 namespace VRE {
     //push constant data.
     struct SimplePCData {
-        glm::mat2 transform{ 1.f };
-        glm::vec2 offset;
+        glm::mat4 transform{ 1.f };
         alignas(16) glm::vec3 color;
     };
 }
@@ -27,10 +26,12 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std
 {
     mPipeline->Bind(commandBuffer);
     for (auto& obj : gameObjects) {
+        obj.mTransform.rotation.y = glm::mod(obj.mTransform.rotation.y + 0.01f, glm::two_pi<float>());
+        obj.mTransform.rotation.x = glm::mod(obj.mTransform.rotation.x + 0.005f, glm::two_pi<float>());
+
         SimplePCData data{};
-        data.offset = obj.mTransform.position;
         data.color = obj.mColor;
-        data.transform = obj.mTransform.mat2();
+        data.transform = obj.mTransform.mat4();
 
         vkCmdPushConstants(commandBuffer,
             mPipelineLayout,

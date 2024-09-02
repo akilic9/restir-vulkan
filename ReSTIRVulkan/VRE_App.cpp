@@ -32,21 +32,74 @@ void VRE::VRE_App::Run()
     vkDeviceWaitIdle(mDevice.device());
 }
 
-void VRE::VRE_App::LoadGameObjects()
+std::unique_ptr<VRE::VRE_Model> VRE::VRE_App::CreateCubeModel(VRE_Device& device, glm::vec3 offset)
 {
     std::vector<VRE_Model::Vertex> vertices{
-        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}} };
 
-    auto model = std::make_shared<VRE_Model>(mDevice, vertices);
+        // left face (white)
+        {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+        {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
+        {{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
+        {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
+        {{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
+        {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
 
-    auto triangle = VRE::VRE_GameObject::CreateGameObject();
-    triangle.mModel = model;
-    triangle.mColor = { .1f, .8f, .1f };
-    triangle.mTransform.position.x = .2f;
-    triangle.mTransform.scale = { 2.f, .5f };
-    triangle.mTransform.rotation = 0.25f * glm::two_pi<float>();
+        // right face (yellow)
+        {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+        {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
+        {{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
+        {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
+        {{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
+        {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
 
-    mGameObjects.push_back(std::move(triangle));
+        // top face (orange, remember y axis points down)
+        {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+        {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+        {{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+        {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+        {{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
+        {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
+
+        // bottom face (red)
+        {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+        {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+        {{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
+        {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+        {{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
+        {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
+
+        // nose face (blue)
+        {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+        {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+        {{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+        {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+        {{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
+        {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
+
+        // tail face (green)
+        {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+        {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+        {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+        {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+        {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
+        {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
+
+    };
+    for (auto& v : vertices) {
+        v.position += offset;
+    }
+    return std::make_unique<VRE_Model>(device, vertices);
+}
+
+void VRE::VRE_App::LoadGameObjects()
+{
+    std::shared_ptr<VRE_Model> model = CreateCubeModel(mDevice, glm::vec3{ 0.f });
+
+    auto cube = VRE::VRE_GameObject::CreateGameObject();
+    cube.mModel = model;
+    cube.mColor = { .1f, .8f, .1f };
+    cube.mTransform.translation = {0.f, 0.f, 0.5f};
+    cube.mTransform.scale = { 0.5f, 0.5f, 0.5f };
+
+    mGameObjects.push_back(std::move(cube));
 }

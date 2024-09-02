@@ -2,6 +2,7 @@
 #include <string>
 #include "VRE_Window.h"
 #include "VRE_Device.h"
+#include "VRE_Model.h"
 #include "VRE_Renderer.h"
 #include "VRE_GameObject.h"
 
@@ -25,6 +26,7 @@ namespace VRE {
         void Run();
 
     private:
+        std::unique_ptr<VRE_Model> CreateCubeModel(VRE_Device& device, glm::vec3 offset);
         void LoadGameObjects();
 
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
