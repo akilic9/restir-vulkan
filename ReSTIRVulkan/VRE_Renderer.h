@@ -26,6 +26,8 @@ namespace VRE {
 
         VkRenderPass GetSwapChainRenderPass() const { return mSwapChain->getRenderPass(); }
 
+        float GetAspectRatio() const { return mSwapChain->extentAspectRatio(); };
+
         VkCommandBuffer GetCurrentCommandBuffer() const {
             assert(mDrawStarted && "Cannot get command buffer when frame not in progress.");
             return mCommandBuffers[mCurrentFrameIndex];

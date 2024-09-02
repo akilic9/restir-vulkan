@@ -2,6 +2,7 @@
 #include "VRE_Device.h"
 #include "VRE_GameObject.h"
 #include "VRE_Pipeline.h"
+#include "VRE_Camera.h"
 #include <memory>
 
 namespace VRE {
@@ -14,7 +15,7 @@ namespace VRE {
         VRE_RenderSystem(const VRE_RenderSystem&) = delete;
         VRE_RenderSystem& operator=(const VRE_RenderSystem&) = delete;
 
-        void RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<VRE_GameObject>& gameObjects);
+        void RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<VRE_GameObject>& gameObjects, const VRE_Camera &camera);
 
     private:
         void CreatePipelineLayout();
