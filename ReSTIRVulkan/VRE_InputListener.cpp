@@ -13,8 +13,8 @@ void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& came
     double mouseX, mouseY;
     glfwGetCursorPos(window, &mouseX, &mouseY);
 
-    double rotX = camera.GetRotation().x + (mouseX - middleX) * 0.1f;
-    double rotY = camera.GetRotation().y + (middleY - mouseY) * 0.1f;
+    double rotX = camera.GetRotation().x + (mouseX - middleX) * mMouseSensitivity;
+    double rotY = camera.GetRotation().y + (middleY - mouseY) * mMouseSensitivity;
 
     glm::vec3 rotation{ glm::radians(rotY), glm::radians(rotX), camera.GetRotation().z};
 
