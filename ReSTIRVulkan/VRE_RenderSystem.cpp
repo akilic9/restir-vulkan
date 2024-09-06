@@ -29,9 +29,6 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std
     auto projectionView = camera.GetProjection() * camera.GetViewMat();
 
     for (auto& obj : gameObjects) {
-        obj.mTransform.rotation.y = glm::mod(obj.mTransform.rotation.y + 0.01f, glm::two_pi<float>());
-        obj.mTransform.rotation.x = glm::mod(obj.mTransform.rotation.x + 0.005f, glm::two_pi<float>());
-
         SimplePCData data{};
         data.color = obj.mColor;
         data.transform = projectionView * obj.mTransform.mat4(); //TODO: move to GPU!!!

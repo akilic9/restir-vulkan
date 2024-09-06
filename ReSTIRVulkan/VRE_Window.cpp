@@ -1,4 +1,4 @@
-#include "vre_window.h"
+#include "VRE_Window.h"
 #include <iostream>
 
 VRE::VRE_Window::VRE_Window(int width, int height, std::string name)

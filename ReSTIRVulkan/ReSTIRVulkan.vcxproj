@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="VRE_Camera.cpp" />
+    <ClCompile Include="VRE_InputListener.cpp" />
     <ClCompile Include="VRE_RenderSystem.cpp" />
     <ClCompile Include="VRE_GameObject.cpp" />
     <ClCompile Include="VRE_App.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VRE_Camera.h" />
+    <ClInclude Include="VRE_InputListener.h" />
     <ClInclude Include="VRE_RenderSystem.h" />
     <ClInclude Include="VRE_GameObject.h" />
     <ClInclude Include="VRE_App.h" />

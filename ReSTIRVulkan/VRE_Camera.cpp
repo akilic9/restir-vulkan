@@ -27,6 +27,7 @@ void VRE::VRE_Camera::SetPerspectiveProjection(float fovY, float aspectRatio, fl
 
 void VRE::VRE_Camera::SetViewDirection(glm::vec3 position, glm::vec3 direction, glm::vec3 up)
 {
+    mPosition = position;
     const glm::vec3 w{ glm::normalize(direction) };
     const glm::vec3 u{ glm::normalize(glm::cross(w, up)) };
     const glm::vec3 v{ glm::cross(w, u) };
@@ -53,6 +54,8 @@ void VRE::VRE_Camera::SetViewTarget(glm::vec3 position, glm::vec3 target, glm::v
 
 void VRE::VRE_Camera::SetViewXYZ(glm::vec3 position, glm::vec3 rotation)
 {
+    mPosition = position;
+    mRotation = rotation;
     const float c3 = glm::cos(rotation.z);
     const float s3 = glm::sin(rotation.z);
     const float c2 = glm::cos(rotation.x);

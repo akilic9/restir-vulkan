@@ -22,6 +22,7 @@ namespace VRE {
         inline VkExtent2D GetExtent() { return { static_cast<uint32_t>(mWidth), static_cast<uint32_t>(mHeight) }; }
         inline bool HasWindowResized() { return mFrameBufferResized; }
         inline void ResetWindowResizedFlag() { mFrameBufferResized = false; }
+        GLFWwindow* GetGLFWwindow() const { return mWindow; }
 
     private:
         void Init();
