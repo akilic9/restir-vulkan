@@ -21,7 +21,7 @@ void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& came
     rotation.x = glm::clamp(rotation.x, -1.5f, 1.5f);
     //rotation.y = glm::mod(rotation.y, glm::two_pi<float>());
 
-    float yaw = camera.GetRotation().x;
+    float yaw = camera.GetRotation().y;
     const glm::vec3 forwardDir{ sin(yaw), 0.f, cos(yaw) };
     const glm::vec3 rightDir{ forwardDir.z, 0.f, -forwardDir.x };
     const glm::vec3 upDir{ 0.f, -1.f, 0.f };

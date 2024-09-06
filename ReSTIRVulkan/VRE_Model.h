@@ -18,7 +18,12 @@ namespace VRE {
             static std::vector<VkVertexInputAttributeDescription> GetAttributeDesc();
         };
 
-        VRE_Model(VRE_Device& mDevice, const std::vector<Vertex>& vertices);
+        struct ModelData {
+            std::vector<Vertex> mVertices{};
+            std::vector<uint32_t> mIndices{};
+        };
+
+        VRE_Model(VRE_Device& device, const ModelData &data);
         ~VRE_Model();
 
         VRE_Model(const VRE_Model&) = delete;
@@ -29,11 +34,18 @@ namespace VRE {
 
     private:
         void CreateVertexBuffers(const std::vector<Vertex>& vertices);
+        void CreateIndexBuffer(const std::vector<uint32_t>& indices);
 
         VRE_Device &mDevice;
+
         VkBuffer mVertexBuffer;
         VkDeviceMemory mVertexBufferMemory;
         uint32_t mVertexCount;
+
+        bool mHasIndexBuffer;
+        VkBuffer mIndexBuffer;
+        VkDeviceMemory mIndexBufferMemory;
+        uint32_t mIndexCount;
     };
 }
 
