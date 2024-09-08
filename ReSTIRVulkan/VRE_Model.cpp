@@ -1,6 +1,25 @@
 #include "VRE_Model.h"
+#include "VRE_Utilities.h"
 #include <cassert>
 #include <cstring>
+#include <unordered_map>
+
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <tiny_obj_loader.h>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <gtx/hash.hpp>
+
+namespace std {
+    template <>
+    struct hash<VRE::VRE_Model::Vertex> {
+        size_t operator()(VRE::VRE_Model::Vertex const& vertex) const {
+            size_t seed = 0;
+            VRE::hashCombine(seed, vertex.position, vertex.color, vertex.normal, vertex.uv);
+            return seed;
+        }
+    };
+}  // namespace std
 
 VRE::VRE_Model::VRE_Model(VRE_Device& device, const ModelData& data)
     : mDevice(device)
@@ -19,6 +38,15 @@ VRE::VRE_Model::~VRE_Model()
         vkDestroyBuffer(mDevice.device(), mIndexBuffer, nullptr);
         vkFreeMemory(mDevice.device(), mIndexBufferMemory, nullptr);
     }
+}
+
+std::unique_ptr<VRE::VRE_Model> VRE::VRE_Model::CreateModel(VRE_Device& device, const std::string& filePath)
+{
+    ModelData data{};
+
+    data.LoadModel(filePath);
+
+    return std::make_unique<VRE_Model>(device, data);
 }
 
 void VRE::VRE_Model::Bind(VkCommandBuffer commandBuffer)
@@ -130,4 +158,67 @@ std::vector<VkVertexInputAttributeDescription> VRE::VRE_Model::Vertex::GetAttrib
     attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
     attributeDescriptions[1].offset = offsetof(Vertex, color);
     return attributeDescriptions; 
+}
+
+void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
+{
+    tinyobj::attrib_t attribute;
+    std::vector<tinyobj::shape_t> shapes;
+    std::vector<tinyobj::material_t> materials;
+    std::string warning, error;
+
+    if (!tinyobj::LoadObj(&attribute, &shapes, &materials, &warning, &error, filePath.c_str())) {
+        throw std::runtime_error(warning + error);
+    }
+
+    mVertices.clear();
+    mIndices.clear();
+
+    std::unordered_map<Vertex, uint32_t> uniqueVertices{};
+    for (const auto& shape : shapes) {
+        for (const auto& index : shape.mesh.indices) {
+            Vertex vertex{};
+
+            if (index.vertex_index >= 0) {
+                vertex.position = {
+                    attribute.vertices[3 * index.vertex_index + 0],
+                    attribute.vertices[3 * index.vertex_index + 1],
+                    attribute.vertices[3 * index.vertex_index + 2],
+                };
+
+                auto colorIndex = 3 * index.vertex_index + 2;
+                if (colorIndex < attribute.colors.size()) {
+                    vertex.color = {
+                        attribute.colors[colorIndex - 2],
+                        attribute.colors[colorIndex - 1],
+                        attribute.colors[colorIndex - 0],
+                    };
+                }
+                else {
+                    vertex.color = { 1.f, 1.f, 1.f };  // set default color
+                }
+            }
+
+            if (index.normal_index >= 0) {
+                vertex.normal = {
+                    attribute.normals[3 * index.normal_index + 0],
+                    attribute.normals[3 * index.normal_index + 1],
+                    attribute.normals[3 * index.normal_index + 2],
+                };
+            }
+
+            if (index.texcoord_index >= 0) {
+                vertex.uv = {
+                    attribute.texcoords[2 * index.texcoord_index + 0],
+                    attribute.texcoords[2 * index.texcoord_index + 1],
+                };
+            }
+
+            if (uniqueVertices.count(vertex) == 0) {
+                uniqueVertices[vertex] = static_cast<uint32_t>(mVertices.size());
+                mVertices.push_back(vertex);
+            }
+            mIndices.push_back(uniqueVertices[vertex]);
+        }
+    }
 }

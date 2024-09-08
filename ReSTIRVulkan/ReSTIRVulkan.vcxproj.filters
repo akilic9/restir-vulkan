@@ -86,6 +86,9 @@
     <ClInclude Include="VRE_InputListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VRE_Utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\test_shader.vert" />
