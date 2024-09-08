@@ -12,17 +12,17 @@ namespace VRE {
     {
     public:
         struct Vertex {
-            glm::vec3 position;
-            glm::vec3 color;
-            glm::vec3 normal;
-            glm::vec2 uv;
+            glm::vec3 mPosition;
+            glm::vec3 mColor;
+            glm::vec3 mNormal;
+            glm::vec2 mUV;
 
             static std::vector<VkVertexInputBindingDescription> GetBindingDesc();
             static std::vector<VkVertexInputAttributeDescription> GetAttributeDesc();
 
             bool operator==(const Vertex& other) const {
-                return position == other.position && color == other.color &&
-                       normal == other.normal && uv == other.uv;
+                return mPosition == other.mPosition && mColor == other.mColor &&
+                       mNormal == other.mNormal && mUV == other.mUV;
             }
         };
 

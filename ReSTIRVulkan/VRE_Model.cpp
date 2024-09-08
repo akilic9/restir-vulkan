@@ -15,7 +15,7 @@ namespace std {
     struct hash<VRE::VRE_Model::Vertex> {
         size_t operator()(VRE::VRE_Model::Vertex const& vertex) const {
             size_t seed = 0;
-            VRE::hashCombine(seed, vertex.position, vertex.color, vertex.normal, vertex.uv);
+            VRE::hashCombine(seed, vertex.mPosition, vertex.mColor, vertex.mNormal, vertex.mUV);
             return seed;
         }
     };
@@ -147,16 +147,13 @@ std::vector<VkVertexInputBindingDescription> VRE::VRE_Model::Vertex::GetBindingD
 
 std::vector<VkVertexInputAttributeDescription> VRE::VRE_Model::Vertex::GetAttributeDesc()
 {
-    std::vector<VkVertexInputAttributeDescription> attributeDescriptions(2);
-    attributeDescriptions[0].binding = 0;
-    attributeDescriptions[0].location = 0;
-    attributeDescriptions[0].format = VK_FORMAT_R32G32B32_SFLOAT;
-    attributeDescriptions[0].offset = offsetof(Vertex, position);
+    std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
 
-    attributeDescriptions[1].binding = 0;
-    attributeDescriptions[1].location = 1;
-    attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
-    attributeDescriptions[1].offset = offsetof(Vertex, color);
+    attributeDescriptions.push_back({0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mPosition)});
+    attributeDescriptions.push_back({1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mColor)});
+    attributeDescriptions.push_back({2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mNormal)});
+    attributeDescriptions.push_back({3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mUV)});
+
     return attributeDescriptions; 
 }
 
@@ -180,27 +177,21 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
             Vertex vertex{};
 
             if (index.vertex_index >= 0) {
-                vertex.position = {
+                vertex.mPosition = {
                     attribute.vertices[3 * index.vertex_index + 0],
                     attribute.vertices[3 * index.vertex_index + 1],
                     attribute.vertices[3 * index.vertex_index + 2],
                 };
 
-                auto colorIndex = 3 * index.vertex_index + 2;
-                if (colorIndex < attribute.colors.size()) {
-                    vertex.color = {
-                        attribute.colors[colorIndex - 2],
-                        attribute.colors[colorIndex - 1],
-                        attribute.colors[colorIndex - 0],
-                    };
-                }
-                else {
-                    vertex.color = { 1.f, 1.f, 1.f };  // set default color
-                }
+                vertex.mColor = {
+                    attribute.colors[3 * index.vertex_index + 0],
+                    attribute.colors[3 * index.vertex_index + 1],
+                    attribute.colors[3 * index.vertex_index + 2],
+                };
             }
 
             if (index.normal_index >= 0) {
-                vertex.normal = {
+                vertex.mNormal = {
                     attribute.normals[3 * index.normal_index + 0],
                     attribute.normals[3 * index.normal_index + 1],
                     attribute.normals[3 * index.normal_index + 2],
@@ -208,7 +199,7 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
             }
 
             if (index.texcoord_index >= 0) {
-                vertex.uv = {
+                vertex.mUV = {
                     attribute.texcoords[2 * index.texcoord_index + 0],
                     attribute.texcoords[2 * index.texcoord_index + 1],
                 };

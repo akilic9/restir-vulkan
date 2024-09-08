@@ -5,8 +5,8 @@
 namespace VRE {
     //push constant data.
     struct SimplePCData {
-        glm::mat4 transform{ 1.f };
-        alignas(16) glm::vec3 color;
+        glm::mat4 mTransform{ 1.f };
+        glm::mat4 mNormalMatrix{ 1.f };
     };
 }
 
@@ -30,8 +30,8 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std
 
     for (auto& obj : gameObjects) {
         SimplePCData data{};
-        data.color = obj.mColor;
-        data.transform = projectionView * obj.mTransform.mat4(); //TODO: move to GPU!!!
+        data.mTransform = projectionView * obj.mTransform.Mat4(); //TODO: move to GPU!!!
+        data.mNormalMatrix = obj.mTransform.NormalMatrix();
 
         vkCmdPushConstants(commandBuffer,
             mPipelineLayout,

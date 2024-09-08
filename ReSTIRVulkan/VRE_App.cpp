@@ -61,8 +61,8 @@ void VRE::VRE_App::LoadGameObjects()
     auto obj = VRE::VRE_GameObject::CreateGameObject();
     obj.mModel = model;
     obj.mColor = { .1f, .8f, .1f };
-    obj.mTransform.translation = { 0.f, 0.f, 2.5f };
-    obj.mTransform.scale = { 0.5f, 0.5f, 0.5f };
+    obj.mTransform.mTranslation = { 0.f, 0.f, 2.5f };
+    obj.mTransform.mScale = { 0.5f, 3.5f, 0.5f };
 
     mGameObjects.push_back(std::move(obj));
 }
