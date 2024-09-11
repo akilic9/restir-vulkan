@@ -81,7 +81,7 @@ void VRE::VRE_App::Run()
         float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
         currentTime = newTime;
 
-        // TODO: can probably optimize this using glfw callback function,
+        // TODO: can probably optimize this using glfw callback function.
         inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
 
         float aspRatio = mRenderer.GetAspectRatio();
