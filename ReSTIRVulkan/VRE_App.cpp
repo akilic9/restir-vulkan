@@ -15,8 +15,10 @@
 namespace VRE {
     struct UBO
     {
-        alignas(16) glm::mat4 mProjectionView = 1.f;
-        alignas(16) glm::vec3 mLightDir = glm::normalize(glm::vec3(1.f, -3.f, -1.f));
+        glm::mat4 mProjectionView = 1.f;
+        glm::vec4 mAmbientLightColor{1.f, 1.f, 1.f, 0.02f}; // r, g, b, intensity
+        glm::vec3 mLightPosition{-1.f};
+        alignas(16) glm::vec4 mLightColor{1.f}; // r, g, b, intensity
     };
 }
 
@@ -84,7 +86,7 @@ void VRE::VRE_App::Run()
 
         float aspRatio = mRenderer.GetAspectRatio();
         //camera.SetOrthographicProjection(-1.f, 1.f, -aspRatio, aspRatio, -1.f, 1.f);
-        camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 10.f);
+        camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             int frameIndex = mRenderer.GetFrameIndex();

@@ -9,7 +9,9 @@ layout(location = 0) out vec3 fragColor;
 
 layout(set = 0, binding = 0) uniform UBO {
     mat4 projectionViewMat;
-    vec3 directionToLight;
+    vec4 ambientLightColor; // r, g, b, intensity
+    vec3 lightPosition;
+    vec4 lightColor; // r, g, b, intensity
 } ubo;
 
 layout(push_constant) uniform Push {
@@ -17,14 +19,20 @@ layout(push_constant) uniform Push {
     mat4 normalMatrix;
 } push;
 
-const float AMBIENT = 0.02;
-
 void main() {
-    gl_Position = ubo.projectionViewMat * push.modelMatrix * vec4(position, 1.0);
+    vec4 positionInWorld = push.modelMatrix * vec4(position, 1.0);
+    gl_Position = ubo.projectionViewMat * positionInWorld;
 
     vec3 normalWorldSpace = normalize(mat3(push.normalMatrix) * normal);
 
-    float lightIntensity = AMBIENT + max(dot(normalWorldSpace, ubo.directionToLight), 0);
+    vec3 vecToLight = ubo.lightPosition - positionInWorld.xyz;
 
-    fragColor = color * lightIntensity;
+    float attenuation = 1.0 / dot(vecToLight, vecToLight); //inverse distance to light squared
+
+    vec3 lightColor = ubo.lightColor.xyz * ubo.lightColor.w * attenuation; //apply the intensity scale to the color.
+    vec3 ambient = ubo.ambientLightColor.xyz * ubo.ambientLightColor.w; //apply the intensity scale to the color.
+
+    vec3 diffuseLight = lightColor * max(dot(normalWorldSpace, normalize(vecToLight)), 0);
+
+    fragColor = (diffuseLight + ambient) * color;
 }
