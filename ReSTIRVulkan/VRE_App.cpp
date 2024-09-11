@@ -2,6 +2,7 @@
 #include "VRE_RenderSystem.h"
 #include "VRE_Camera.h"
 #include "VRE_InputListener.h"
+#include "VRE_Buffer.h"
 #include <iostream>
 #include <array>
 #include <chrono>
@@ -11,9 +12,22 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
+namespace VRE {
+    struct UBO
+    {
+        alignas(16) glm::mat4 mProjectionView = 1.f;
+        alignas(16) glm::vec3 mLightDir = glm::normalize(glm::vec3(1.f, -3.f, -1.f));
+    };
+}
+
 VRE::VRE_App::VRE_App()
     : mRenderer{mWindow, mDevice}
 {
+    mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
+                      .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                      .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                      .Build();
+
     LoadGameObjects();
 }
 
@@ -21,7 +35,35 @@ VRE::VRE_App::~VRE_App() {}
 
 void VRE::VRE_App::Run()
 {
-    VRE_RenderSystem renderSys(mDevice, mRenderer.GetSwapChainRenderPass());
+    std::vector<std::unique_ptr<VRE_Buffer>> uboBuffers(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
+    for (int i = 0; i < uboBuffers.size(); i++) {
+        uboBuffers[i] = std::make_unique<VRE_Buffer>(
+            mDevice,
+            sizeof(UBO),
+            1,
+            VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
+        uboBuffers[i]->Map();
+    }
+
+    VRE_Buffer UBOBuffer(mDevice, sizeof(UBO), VRE_SwapChain::MAX_FRAMES_IN_FLIGHT, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, mDevice.properties.limits.minUniformBufferOffsetAlignment);
+
+    UBOBuffer.Map();
+
+    auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
+                         .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+                         .Build();
+
+    std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
+    for (int i = 0; i < descriptorSets.size(); i++) {
+        auto bufferInfo = uboBuffers[i]->DescriptorInfo();
+        VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
+            .WriteBuffer(0, &bufferInfo)
+            .Build(descriptorSets[i]);
+    }
+
+    VRE_RenderSystem renderSys(mDevice, mRenderer.GetSwapChainRenderPass(), descSetLayout->GetDescriptorSetLayout());
     VRE_Camera camera{};
     VRE_InputListener inputListener{};
 
@@ -45,8 +87,18 @@ void VRE::VRE_App::Run()
         camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 10.f);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
+            int frameIndex = mRenderer.GetFrameIndex();
+            VRE_FrameInfo frameInfo{ frameIndex, deltaTime, commandBuffer, camera, descriptorSets[frameIndex]};
+
+            //update
+            UBO ubo;
+            ubo.mProjectionView = camera.GetProjection() * camera.GetViewMat();
+            uboBuffers[frameIndex]->WriteToBuffer(&ubo);
+            uboBuffers[frameIndex]->Flush();
+
+            //render
             mRenderer.BeginSwapChainRenderPass(commandBuffer);
-            renderSys.RenderGameObjects(commandBuffer, mGameObjects, camera);
+            renderSys.RenderGameObjects(frameInfo, mGameObjects);
             mRenderer.EndSwapChainRenderPass(commandBuffer);
             mRenderer.EndDraw();
         }
@@ -62,7 +114,7 @@ void VRE::VRE_App::LoadGameObjects()
     obj.mModel = model;
     obj.mColor = { .1f, .8f, .1f };
     obj.mTransform.mTranslation = { 0.f, 0.f, 2.5f };
-    obj.mTransform.mScale = { 0.5f, 3.5f, 0.5f };
+    obj.mTransform.mScale = glm::vec3{ 1.f };
 
     mGameObjects.push_back(std::move(obj));
 }

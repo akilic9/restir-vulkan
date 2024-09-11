@@ -5,6 +5,7 @@
 #include "VRE_Model.h"
 #include "VRE_Renderer.h"
 #include "VRE_GameObject.h"
+#include "VRE_Descriptor.h"
 
 #include <memory>
 #include <vector>
@@ -31,6 +32,7 @@ namespace VRE {
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
+        std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
         std::vector<VRE_GameObject> mGameObjects;
     };
 }

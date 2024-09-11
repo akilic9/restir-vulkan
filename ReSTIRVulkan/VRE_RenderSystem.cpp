@@ -5,15 +5,15 @@
 namespace VRE {
     //push constant data.
     struct SimplePCData {
-        glm::mat4 mTransform{ 1.f };
+        glm::mat4 mModelMatrix{ 1.f };
         glm::mat4 mNormalMatrix{ 1.f };
     };
 }
 
-VRE::VRE_RenderSystem::VRE_RenderSystem(VRE_Device& device, VkRenderPass renderPass)
+VRE::VRE_RenderSystem::VRE_RenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
     : mDevice(device)
 {
-    CreatePipelineLayout();
+    CreatePipelineLayout(descSetLayout);
     CreatePipeline(renderPass);
 }
 
@@ -22,38 +22,41 @@ VRE::VRE_RenderSystem::~VRE_RenderSystem()
     vkDestroyPipelineLayout(mDevice.device(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_RenderSystem::RenderGameObjects(VkCommandBuffer commandBuffer, std::vector<VRE_GameObject>& gameObjects, const VRE_Camera& camera)
+void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo, std::vector<VRE_GameObject>& gameObjects)
 {
-    mPipeline->Bind(commandBuffer);
+    mPipeline->Bind(frameInfo.mCommandBuffer);
 
-    auto projectionView = camera.GetProjection() * camera.GetViewMat();
+    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
 
     for (auto& obj : gameObjects) {
         SimplePCData data{};
-        data.mTransform = projectionView * obj.mTransform.Mat4(); //TODO: move to GPU!!!
+        data.mModelMatrix = obj.mTransform.Mat4();
         data.mNormalMatrix = obj.mTransform.NormalMatrix();
 
-        vkCmdPushConstants(commandBuffer,
+        vkCmdPushConstants(frameInfo.mCommandBuffer,
             mPipelineLayout,
             VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
             0,
             sizeof(SimplePCData),
             &data);
-        obj.mModel->Bind(commandBuffer);
-        obj.mModel->Draw(commandBuffer);
+
+        obj.mModel->Bind(frameInfo.mCommandBuffer);
+        obj.mModel->Draw(frameInfo.mCommandBuffer);
     }
 }
 
-void VRE::VRE_RenderSystem::CreatePipelineLayout()
+void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
     VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                                0,
                                sizeof(SimplePCData) };
 
+    std::vector<VkDescriptorSetLayout> descSetLayouts{descSetLayout};
+
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    pipelineLayoutInfo.setLayoutCount = 0;
-    pipelineLayoutInfo.pSetLayouts = nullptr;
+    pipelineLayoutInfo.setLayoutCount = static_cast<uint32_t>(descSetLayouts.size());
+    pipelineLayoutInfo.pSetLayouts = descSetLayouts.data();
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 

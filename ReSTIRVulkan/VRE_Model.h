@@ -1,5 +1,6 @@
 #pragma once
 #include "VRE_Device.h"
+#include "VRE_Buffer.h"
 #include <vector>
 #include <memory>
 
@@ -50,14 +51,11 @@ namespace VRE {
 
         VRE_Device &mDevice;
 
-        VkBuffer mVertexBuffer;
-        VkDeviceMemory mVertexBufferMemory;
+        std::unique_ptr<VRE_Buffer> mVertexBuffer;
         uint32_t mVertexCount;
 
         bool mHasIndexBuffer;
-        VkBuffer mIndexBuffer;
-        VkDeviceMemory mIndexBufferMemory;
+        std::unique_ptr<VRE_Buffer> mIndexBuffer;
         uint32_t mIndexCount;
     };
 }
-
