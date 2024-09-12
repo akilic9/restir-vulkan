@@ -1,4 +1,4 @@
-#version 450
+#version 460
 
 layout (location = 0) in vec3 fragColor;
 layout (location = 1) in vec3 fragPosWorld;
@@ -7,7 +7,8 @@ layout (location = 2) in vec3 fragNormalWorld;
 layout (location = 0) out vec4 outColor;
 
 layout(set = 0, binding = 0) uniform UBO {
-    mat4 projectionViewMat;
+    mat4 projectionMat;
+    mat4 viewMat;
     vec4 ambientLightColor; // r, g, b, intensity
     vec3 lightPosition;
     vec4 lightColor; // r, g, b, intensity

@@ -38,10 +38,7 @@ std::vector<char> VRE::VRE_Pipeline::ReadFile(const std::string& filePath)
     return buffer;
 }
 
-void VRE::VRE_Pipeline::CreateGraphicsPipeline(
-    const PipelineConfigInfo& configInfo,
-    const std::string& vertShaderPath,
-    const std::string& fragShaderPath)
+void VRE::VRE_Pipeline::CreateGraphicsPipeline(const PipelineConfigInfo& configInfo, const std::string& vertShaderPath, const std::string& fragShaderPath)
 {
     auto vertCode = ReadFile(vertShaderPath);
     auto fragCode = ReadFile(fragShaderPath);
@@ -65,8 +62,8 @@ void VRE::VRE_Pipeline::CreateGraphicsPipeline(
     shaderStages[1].pNext = nullptr;
     shaderStages[1].pSpecializationInfo = nullptr;
 
-    auto bindingDescriptions = VRE_Model::Vertex::GetBindingDesc();
-    auto attributeDescriptions = VRE_Model::Vertex::GetAttributeDesc();
+    auto &bindingDescriptions = configInfo.bindingDescriptions;
+    auto &attributeDescriptions = configInfo.attributeDescriptions;
     VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
     vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
     vertexInputInfo.vertexAttributeDescriptionCount =
@@ -182,4 +179,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.dynamicStateInfo.dynamicStateCount =
         static_cast<uint32_t>(configInfo.dynamicStateEnables.size());
     configInfo.dynamicStateInfo.flags = 0;
+
+    configInfo.bindingDescriptions = VRE_Model::Vertex::GetBindingDesc();
+    configInfo.attributeDescriptions = VRE_Model::Vertex::GetAttributeDesc();
 }

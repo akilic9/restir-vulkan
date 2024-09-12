@@ -60,6 +60,9 @@
     <ClCompile Include="VRE_Descriptor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VRE_PointLightRenderSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VRE_Window.h">
@@ -107,9 +110,14 @@
     <ClInclude Include="VRE_Descriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VRE_PointLightRenderSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\test_shader.vert" />
     <None Include="Shaders\test_shader.frag" />
+    <None Include="Shaders\point_light.frag" />
+    <None Include="Shaders\point_light.vert" />
   </ItemGroup>
 </Project>

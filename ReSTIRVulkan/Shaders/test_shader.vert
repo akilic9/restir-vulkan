@@ -1,4 +1,4 @@
-#version 450
+#version 460
 
 layout(location = 0) in vec3 position;
 layout(location = 1) in vec3 color;
@@ -10,7 +10,8 @@ layout(location = 1) out vec3 fragPosWorld;
 layout(location = 2) out vec3 fragNormalWorld;
 
 layout(set = 0, binding = 0) uniform UBO {
-    mat4 projectionViewMat;
+    mat4 projectionMat;
+    mat4 viewMat;
     vec4 ambientLightColor; // r, g, b, intensity
     vec3 lightPosition;
     vec4 lightColor; // r, g, b, intensity
@@ -23,7 +24,7 @@ layout(push_constant) uniform Push {
 
 void main() {
     vec4 positionInWorld = push.modelMatrix * vec4(position, 1.0);
-    gl_Position = ubo.projectionViewMat * positionInWorld;
+    gl_Position = ubo.projectionMat * (ubo.viewMat * positionInWorld); //The order is important!
 
     fragNormalWorld = normalize(mat3(push.normalMatrix) * normal);
     fragPosWorld = positionInWorld.xyz;

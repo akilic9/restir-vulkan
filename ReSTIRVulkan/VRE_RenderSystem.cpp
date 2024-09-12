@@ -67,7 +67,7 @@ void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLa
 
     void VRE::VRE_RenderSystem::CreatePipeline(VkRenderPass renderPass)
 {
-    assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout");
+    assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout!");
 
     PipelineConfigInfo pipelineConfig{};
     VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
