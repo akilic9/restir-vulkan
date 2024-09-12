@@ -29,6 +29,9 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
     vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
 
     for (auto& e : frameInfo.mGameObjects) {
+        if (!e.second.mModel)
+            continue;
+
         SimplePCData data{};
         data.mModelMatrix = e.second.mTransform.Mat4();
         data.mNormalMatrix = e.second.mTransform.NormalMatrix();
