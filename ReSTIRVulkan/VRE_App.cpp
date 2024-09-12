@@ -54,7 +54,7 @@ void VRE::VRE_App::Run()
     UBOBuffer.Map();
 
     auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
-                         .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+                         .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
                          .Build();
 
     std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -90,7 +90,7 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             int frameIndex = mRenderer.GetFrameIndex();
-            VRE_FrameInfo frameInfo{ frameIndex, deltaTime, commandBuffer, camera, descriptorSets[frameIndex]};
+            VRE_FrameInfo frameInfo{ frameIndex, deltaTime, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects};
 
             //update
             UBO ubo;
@@ -100,7 +100,7 @@ void VRE::VRE_App::Run()
 
             //render
             mRenderer.BeginSwapChainRenderPass(commandBuffer);
-            renderSys.RenderGameObjects(frameInfo, mGameObjects);
+            renderSys.RenderGameObjects(frameInfo);
             mRenderer.EndSwapChainRenderPass(commandBuffer);
             mRenderer.EndDraw();
         }
@@ -110,13 +110,33 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadGameObjects()
 {
+    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
+    //auto flatVase = VRE_GameObject::CreateGameObject();
+    //flatVase.mModel = model;
+    //flatVase.mTransform.mTranslation = { -.5f, .5f, 0.f };
+    //flatVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
+    //mGameObjects.emplace(flatVase.GetID(), std::move(flatVase));
+
+    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/smooth_vase.obj");
+    //auto smoothVase = VRE_GameObject::CreateGameObject();
+    //smoothVase.mModel = model;
+    //smoothVase.mTransform.mTranslation = { .5f, .5f, 0.f };
+    //smoothVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
+    //mGameObjects.emplace(smoothVase.GetID(), std::move(smoothVase));
+
+    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/quad.obj");
+    //auto floor = VRE_GameObject::CreateGameObject();
+    //floor.mModel = model;
+    //floor.mTransform.mTranslation = { 0.f, .5f, 0.f };
+    //floor.mTransform.mScale = { 3.f, 1.f, 3.f };
+    //mGameObjects.emplace(floor.GetID(), std::move(floor));
+
     std::shared_ptr<VRE_Model> model = VRE::VRE_Model::CreateModel(mDevice, "Resources/Models/crate-strong.obj");
 
     auto obj = VRE::VRE_GameObject::CreateGameObject();
     obj.mModel = model;
-    obj.mColor = { .1f, .8f, .1f };
-    obj.mTransform.mTranslation = { 0.f, 0.f, 2.5f };
+    obj.mTransform.mTranslation = { 0.f, 0.f, 0.f };
     obj.mTransform.mScale = glm::vec3{ 1.f };
 
-    mGameObjects.push_back(std::move(obj));
+    mGameObjects.emplace(obj.GetID(), std::move(obj));
 }

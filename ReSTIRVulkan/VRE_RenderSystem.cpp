@@ -22,16 +22,16 @@ VRE::VRE_RenderSystem::~VRE_RenderSystem()
     vkDestroyPipelineLayout(mDevice.device(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo, std::vector<VRE_GameObject>& gameObjects)
+void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
 {
     mPipeline->Bind(frameInfo.mCommandBuffer);
 
     vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
 
-    for (auto& obj : gameObjects) {
+    for (auto& e : frameInfo.mGameObjects) {
         SimplePCData data{};
-        data.mModelMatrix = obj.mTransform.Mat4();
-        data.mNormalMatrix = obj.mTransform.NormalMatrix();
+        data.mModelMatrix = e.second.mTransform.Mat4();
+        data.mNormalMatrix = e.second.mTransform.NormalMatrix();
 
         vkCmdPushConstants(frameInfo.mCommandBuffer,
             mPipelineLayout,
@@ -40,8 +40,8 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo, std::vec
             sizeof(SimplePCData),
             &data);
 
-        obj.mModel->Bind(frameInfo.mCommandBuffer);
-        obj.mModel->Draw(frameInfo.mCommandBuffer);
+        e.second.mModel->Bind(frameInfo.mCommandBuffer);
+        e.second.mModel->Draw(frameInfo.mCommandBuffer);
     }
 }
 

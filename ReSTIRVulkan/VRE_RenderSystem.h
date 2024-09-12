@@ -16,7 +16,7 @@ namespace VRE {
         VRE_RenderSystem(const VRE_RenderSystem&) = delete;
         VRE_RenderSystem& operator=(const VRE_RenderSystem&) = delete;
 
-        void RenderGameObjects(VRE_FrameInfo &frameInfo, std::vector<VRE_GameObject>& gameObjects);
+        void RenderGameObjects(VRE_FrameInfo &frameInfo);
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);

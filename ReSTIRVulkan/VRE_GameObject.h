@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <unordered_map>
 #include "VRE_Model.h"
 #include "gtc/matrix_transform.hpp"
 
@@ -21,6 +22,7 @@ namespace VRE {
     {
     public:
         using objectID = unsigned int;
+        using ObjectsMap = std::unordered_map<objectID, VRE_GameObject>;
 
         VRE_GameObject(objectID id);
 
