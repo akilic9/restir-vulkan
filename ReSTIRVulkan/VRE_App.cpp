@@ -73,7 +73,7 @@ void VRE::VRE_App::Run()
     VRE_InputListener inputListener{};
 
     //camera.SetViewDirection(glm::vec3{ 0.f }, glm::vec3{ 0.5f, 0.f, 1.f });
-    camera.SetViewTarget(glm::vec3(-1.f, -2.f, -2.f), glm::vec3(0.f, 0.f, 2.5f));
+    //camera.SetViewTarget(glm::vec3(-1.f, -2.f, -2.f), glm::vec3(0.f, 0.f, 2.5f));
 
     auto currentTime = std::chrono::high_resolution_clock::now();
 
