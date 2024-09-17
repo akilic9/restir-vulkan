@@ -1,5 +1,15 @@
 #include "VRE_PointLightRenderSystem.h"
 #include <stdexcept>
+#include <cassert>
+#include <iostream>
+
+namespace VRE {
+    struct PointLightPC {
+        glm::vec4 mPosition{};
+        glm::vec4 mColor{};
+        float mRadius;
+    };
+}
 
 VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
     : mDevice(device)
@@ -13,20 +23,52 @@ VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
     vkDestroyPipelineLayout(mDevice.device(), mPipelineLayout, nullptr);
 }
 
+void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt)
+{
+    int index = 0;
+    auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
+
+    for (auto& light : frameInfo.mPointLights) {
+        assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in FrameInfo.h!");
+
+        light.mPosition = rotateLight * light.mPosition;
+
+        ubo.mPointLights[index].mPosition = light.mPosition;
+        ubo.mPointLights[index].mColor = glm::vec4(light.mColor, light.mLightIntensity);
+        ++index;
+    }
+
+    ubo.mActiveLightCount = index;
+}
+
 void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_FrameInfo& frameInfo)
 {
     mPipeline->Bind(frameInfo.mCommandBuffer);
 
     vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
 
-    vkCmdDraw(frameInfo.mCommandBuffer, 6, 1, 0, 0);
+    for (auto& light : frameInfo.mPointLights) {
+        PointLightPC pc;
+        pc.mPosition = light.mPosition;
+        pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);
+        pc.mRadius = light.mScale;
+
+        vkCmdPushConstants(frameInfo.mCommandBuffer,
+                           mPipelineLayout,
+                           VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                           0,
+                           sizeof(PointLightPC),
+                           &pc);
+
+        vkCmdDraw(frameInfo.mCommandBuffer, 6, 1, 0, 0);
+    }
 }
 
 void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
-    //VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-    //                       0,
-    //                       sizeof(SimplePCData) };
+    VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
+                                          0,
+                                          sizeof(PointLightPC) };
 
     std::vector<VkDescriptorSetLayout> descSetLayouts{ descSetLayout };
 
@@ -34,8 +76,8 @@ void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     pipelineLayoutInfo.setLayoutCount = static_cast<uint32_t>(descSetLayouts.size());
     pipelineLayoutInfo.pSetLayouts = descSetLayouts.data();
-    pipelineLayoutInfo.pushConstantRangeCount = 0;
-    pipelineLayoutInfo.pPushConstantRanges = nullptr;
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
     if (vkCreatePipelineLayout(mDevice.device(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("Failed to create pipeline layout!");

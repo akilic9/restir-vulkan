@@ -153,6 +153,8 @@
     <ClCompile Include="VRE_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="VRE_ObjectComponents.h" />
+    <ClInclude Include="VRE_PointLight.h" />
     <ClInclude Include="VRE_Buffer.h" />
     <ClInclude Include="VRE_Descriptor.h" />
     <ClInclude Include="VRE_FrameInfo.h" />

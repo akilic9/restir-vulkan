@@ -13,6 +13,7 @@ namespace VRE {
         VRE_PointLightRenderSystem(const VRE_PointLightRenderSystem&) = delete;
         VRE_PointLightRenderSystem& operator=(const VRE_PointLightRenderSystem&) = delete;
 
+        void Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt);
         void RenderLights(VRE_FrameInfo &frameInfo);
 
     private:

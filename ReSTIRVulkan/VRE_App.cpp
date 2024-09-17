@@ -13,17 +13,6 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
-namespace VRE {
-    struct UBO
-    {
-        glm::mat4 mProjectionMat = 1.f;
-        glm::mat4 mViewMat = 1.f;
-        glm::vec4 mAmbientLightColor{1.f, 1.f, 1.f, 0.02f}; // r, g, b, intensity
-        glm::vec3 mLightPosition{-1.f};
-        alignas(16) glm::vec4 mLightColor{1.f}; // r, g, b, intensity
-    };
-}
-
 VRE::VRE_App::VRE_App()
     : mRenderer{mWindow, mDevice}
 {
@@ -93,12 +82,13 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             int frameIndex = mRenderer.GetFrameIndex();
-            VRE_FrameInfo frameInfo{ frameIndex, deltaTime, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects};
+            VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects, mPointLights};
 
             //update
             UBO ubo;
             ubo.mProjectionMat = camera.GetProjection();
             ubo.mViewMat = camera.GetViewMat();
+            lightRenderSys.Update(frameInfo, ubo, deltaTime);
             uboBuffers[frameIndex]->WriteToBuffer(&ubo);
             uboBuffers[frameIndex]->Flush();
 
@@ -144,4 +134,19 @@ void VRE::VRE_App::LoadGameObjects()
     //obj.mTransform.mScale = glm::vec3{ 1.f };
 
     //mGameObjects.emplace(obj.GetID(), std::move(obj));
+
+    std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
+                                         {.1f, .1f, 1.f},
+                                         {.1f, 1.f, .1f},
+                                         {1.f, 1.f, .1f},
+                                         {.1f, 1.f, 1.f},
+                                         {1.f, 1.f, 1.f}};
+
+    for (int i = 0; i < coloredLights.size(); i++) {
+        auto pointLight = VRE_PointLight::CreatePointLight(0.2f);
+        pointLight.mColor = coloredLights[i];
+        auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, -1.f, 0.f });
+        pointLight.mPosition = rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f);
+        mPointLights.push_back(std::move(pointLight));
+    }
 }

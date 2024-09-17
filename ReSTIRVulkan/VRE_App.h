@@ -6,6 +6,7 @@
 #include "VRE_Renderer.h"
 #include "VRE_GameObject.h"
 #include "VRE_Descriptor.h"
+#include "VRE_PointLight.h"
 
 #include <memory>
 #include <vector>
@@ -33,7 +34,8 @@ namespace VRE {
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
-        VRE_GameObject::ObjectsMap mGameObjects;
+        VRE_GameObject::GameObjectsMap mGameObjects;
+        std::vector<VRE_PointLight> mPointLights;
     };
 }
 

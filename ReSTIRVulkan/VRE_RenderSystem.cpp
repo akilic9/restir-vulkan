@@ -32,16 +32,16 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
         if (!e.second.mModel)
             continue;
 
-        SimplePCData data{};
-        data.mModelMatrix = e.second.mTransform.Mat4();
-        data.mNormalMatrix = e.second.mTransform.NormalMatrix();
+        SimplePCData pc{};
+        pc.mModelMatrix = e.second.mTransform.Mat4();
+        pc.mNormalMatrix = e.second.mTransform.NormalMatrix();
 
         vkCmdPushConstants(frameInfo.mCommandBuffer,
             mPipelineLayout,
             VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
             0,
             sizeof(SimplePCData),
-            &data);
+            &pc);
 
         e.second.mModel->Bind(frameInfo.mCommandBuffer);
         e.second.mModel->Draw(frameInfo.mCommandBuffer);
