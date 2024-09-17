@@ -18,8 +18,8 @@ namespace VRE {
         const glm::mat4 GetProjection() const { return mProjectionMatrix; }
         const glm::mat4 GetViewMat() const { return mViewMatrix; }
 
-        glm::vec3 GetRotation() { return mRotation; }
-        glm::vec3 GetPosition() { return mPosition; }
+        glm::vec3 GetRotation() const { return mRotation; }
+        glm::vec3 GetPosition() const { return mPosition; }
 
     private:
         glm::vec3 mPosition{ 0.f, 0.f, -5.f };
