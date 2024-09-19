@@ -13,15 +13,14 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
-VRE::VRE_App::VRE_App()
-    : mRenderer{mWindow, mDevice}
+VRE::VRE_App::VRE_App() : mRenderer{mWindow, mDevice}
 {
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
                       .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .Build();
 
-    LoadGameObjects();
+    LoadObjects();
 }
 
 VRE::VRE_App::~VRE_App() {}
@@ -30,19 +29,13 @@ void VRE::VRE_App::Run()
 {
     std::vector<std::unique_ptr<VRE_Buffer>> uboBuffers(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
     for (int i = 0; i < uboBuffers.size(); i++) {
-        uboBuffers[i] = std::make_unique<VRE_Buffer>(
-            mDevice,
-            sizeof(UBO),
-            1,
-            VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
+        uboBuffers[i] = std::make_unique<VRE_Buffer>(mDevice,
+                                                     sizeof(UBO),
+                                                     1,
+                                                     VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                                                     VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
         uboBuffers[i]->Map();
     }
-
-    VRE_Buffer UBOBuffer(mDevice, sizeof(UBO), VRE_SwapChain::MAX_FRAMES_IN_FLIGHT, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-                         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, mDevice.properties.limits.minUniformBufferOffsetAlignment);
-
-    UBOBuffer.Map();
 
     auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
                          .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
@@ -52,8 +45,8 @@ void VRE::VRE_App::Run()
     for (int i = 0; i < descriptorSets.size(); i++) {
         auto bufferInfo = uboBuffers[i]->DescriptorInfo();
         VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
-            .WriteBuffer(0, &bufferInfo)
-            .Build(descriptorSets[i]);
+                            .WriteBuffer(0, &bufferInfo)
+                            .Build(descriptorSets[i]);
     }
 
     VRE_RenderSystem renderSys(mDevice, mRenderer.GetSwapChainRenderPass(), descSetLayout->GetDescriptorSetLayout());
@@ -64,14 +57,14 @@ void VRE::VRE_App::Run()
     //camera.SetViewDirection(glm::vec3{ 0.f }, glm::vec3{ 0.5f, 0.f, 1.f });
     //camera.SetViewTarget(glm::vec3(-1.f, -2.f, -2.f), glm::vec3(0.f, 0.f, 2.5f));
 
-    auto currentTime = std::chrono::high_resolution_clock::now();
+    auto startTime = std::chrono::high_resolution_clock::now();
 
     while (!mWindow.ShouldClose()) {
         glfwPollEvents();
 
-        auto newTime = std::chrono::high_resolution_clock::now();
-        float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
-        currentTime = newTime;
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+        startTime = currentTime;
 
         // TODO: can probably optimize this using glfw callback function.
         inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
@@ -84,7 +77,7 @@ void VRE::VRE_App::Run()
             int frameIndex = mRenderer.GetFrameIndex();
             VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects, mPointLights};
 
-            //update
+            //Update
             UBO ubo;
             ubo.mProjectionMat = camera.GetProjection();
             ubo.mViewMat = camera.GetViewMat();
@@ -92,7 +85,7 @@ void VRE::VRE_App::Run()
             uboBuffers[frameIndex]->WriteToBuffer(&ubo);
             uboBuffers[frameIndex]->Flush();
 
-            //render
+            //Render
             mRenderer.BeginSwapChainRenderPass(commandBuffer);
             renderSys.RenderGameObjects(frameInfo);
             lightRenderSys.RenderLights(frameInfo);
@@ -100,10 +93,10 @@ void VRE::VRE_App::Run()
             mRenderer.EndDraw();
         }
     }
-    vkDeviceWaitIdle(mDevice.device());
+    vkDeviceWaitIdle(mDevice.GetVkDevice());
 }
 
-void VRE::VRE_App::LoadGameObjects()
+void VRE::VRE_App::LoadObjects()
 {
     std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     auto flatVase = VRE_GameObject::CreateGameObject();

@@ -28,7 +28,7 @@ namespace VRE {
         void Run();
 
     private:
-        void LoadGameObjects();
+        void LoadObjects();
 
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };

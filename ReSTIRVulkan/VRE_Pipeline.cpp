@@ -16,9 +16,9 @@ VRE::VRE_Pipeline::VRE_Pipeline(
 
 VRE::VRE_Pipeline::~VRE_Pipeline()
 {
-    vkDestroyShaderModule(mDevice.device(), mVertShaderModule, nullptr);
-    vkDestroyShaderModule(mDevice.device(), mFragShaderModule, nullptr);
-    vkDestroyPipeline(mDevice.device(), mGraphicsPipeline, nullptr);
+    vkDestroyShaderModule(mDevice.GetVkDevice(), mVertShaderModule, nullptr);
+    vkDestroyShaderModule(mDevice.GetVkDevice(), mFragShaderModule, nullptr);
+    vkDestroyPipeline(mDevice.GetVkDevice(), mGraphicsPipeline, nullptr);
 }
 
 std::vector<char> VRE::VRE_Pipeline::ReadFile(const std::string& filePath)
@@ -91,7 +91,7 @@ void VRE::VRE_Pipeline::CreateGraphicsPipeline(const PipelineConfigInfo& configI
     pipelineInfo.basePipelineIndex = -1;
     pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
-    if (vkCreateGraphicsPipelines(mDevice.device(), VK_NULL_HANDLE, 1,
+    if (vkCreateGraphicsPipelines(mDevice.GetVkDevice(), VK_NULL_HANDLE, 1,
         &pipelineInfo, nullptr, &mGraphicsPipeline) != VK_SUCCESS)
         std::cout << "Failed to create graphics pipeline!" << std::endl;
 }
@@ -103,7 +103,7 @@ void VRE::VRE_Pipeline::CreateShaderModule(const std::vector<char>& shaderCode, 
     createInfo.codeSize = shaderCode.size();
     createInfo.pCode = reinterpret_cast<const uint32_t*>(shaderCode.data());
 
-    if (vkCreateShaderModule(mDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS)
+    if (vkCreateShaderModule(mDevice.GetVkDevice(), &createInfo, nullptr, shaderModule) != VK_SUCCESS)
         std::cout << "Failed to create shader module!" << std::endl;
 }
 

@@ -53,14 +53,14 @@ VRE::VRE_DescriptorSetLayout::VRE_DescriptorSetLayout(VRE_Device& device, std::u
     descriptorSetLayoutInfo.bindingCount = static_cast<uint32_t>(setLayoutBindings.size());
     descriptorSetLayoutInfo.pBindings = setLayoutBindings.data();
 
-    if (vkCreateDescriptorSetLayout(mDevice.device(), &descriptorSetLayoutInfo,
+    if (vkCreateDescriptorSetLayout(mDevice.GetVkDevice(), &descriptorSetLayoutInfo,
                                     nullptr, &mDescriptorSetLayout) != VK_SUCCESS)
         throw std::runtime_error("failed to create descriptor set layout!");
 }
 
 VRE::VRE_DescriptorSetLayout::~VRE_DescriptorSetLayout()
 {
-    vkDestroyDescriptorSetLayout(mDevice.device(), mDescriptorSetLayout, nullptr);
+    vkDestroyDescriptorSetLayout(mDevice.GetVkDevice(), mDescriptorSetLayout, nullptr);
 }
 
 VRE::VRE_DescriptorPool::VRE_DescriptorPool(VRE_Device& device, uint32_t maxSets, VkDescriptorPoolCreateFlags poolFlags, const std::vector<VkDescriptorPoolSize>& poolSizes)
@@ -73,13 +73,13 @@ VRE::VRE_DescriptorPool::VRE_DescriptorPool(VRE_Device& device, uint32_t maxSets
     descriptorPoolInfo.maxSets = maxSets;
     descriptorPoolInfo.flags = poolFlags;
 
-    if (vkCreateDescriptorPool(mDevice.device(), &descriptorPoolInfo, nullptr, &mDescriptorPool) != VK_SUCCESS)
+    if (vkCreateDescriptorPool(mDevice.GetVkDevice(), &descriptorPoolInfo, nullptr, &mDescriptorPool) != VK_SUCCESS)
         throw std::runtime_error("ERROR: Failed to create descriptor pool.");
 }
 
 VRE::VRE_DescriptorPool::~VRE_DescriptorPool()
 {
-    vkDestroyDescriptorPool(mDevice.device(), mDescriptorPool, nullptr);
+    vkDestroyDescriptorPool(mDevice.GetVkDevice(), mDescriptorPool, nullptr);
 }
 
 std::unique_ptr<VRE::VRE_DescriptorPool> VRE::VRE_DescriptorPool::Builder::Build() const
@@ -96,7 +96,7 @@ bool VRE::VRE_DescriptorPool::AllocateDescriptorSet(const VkDescriptorSetLayout 
     allocInfo.descriptorSetCount = 1;
 
     // TODO: Might want to create a "DescriptorPoolManager" class that handles this case, and builds a new pool whenever an old pool fills up.
-    if (vkAllocateDescriptorSets(mDevice.device(), &allocInfo, &descriptor) != VK_SUCCESS)
+    if (vkAllocateDescriptorSets(mDevice.GetVkDevice(), &allocInfo, &descriptor) != VK_SUCCESS)
         return false;
 
     return true;
@@ -104,12 +104,12 @@ bool VRE::VRE_DescriptorPool::AllocateDescriptorSet(const VkDescriptorSetLayout 
 
 void VRE::VRE_DescriptorPool::FreeDescriptors(std::vector<VkDescriptorSet>& descriptors) const
 {
-    vkFreeDescriptorSets(mDevice.device(), mDescriptorPool, static_cast<uint32_t>(descriptors.size()), descriptors.data());
+    vkFreeDescriptorSets(mDevice.GetVkDevice(), mDescriptorPool, static_cast<uint32_t>(descriptors.size()), descriptors.data());
 }
 
 void VRE::VRE_DescriptorPool::ResetPool()
 {
-    vkResetDescriptorPool(mDevice.device(), mDescriptorPool, 0);
+    vkResetDescriptorPool(mDevice.GetVkDevice(), mDescriptorPool, 0);
 }
 
 VRE::VRE_DescriptorWriter::VRE_DescriptorWriter(VRE_DescriptorSetLayout& setLayout, VRE_DescriptorPool& pool)
@@ -169,5 +169,5 @@ void VRE::VRE_DescriptorWriter::Overwrite(VkDescriptorSet& set)
     for (auto& write : mWrites)
         write.dstSet = set;
 
-    vkUpdateDescriptorSets(mPool.mDevice.device(), mWrites.size(), mWrites.data(), 0, nullptr);
+    vkUpdateDescriptorSets(mPool.mDevice.GetVkDevice(), mWrites.size(), mWrites.data(), 0, nullptr);
 }

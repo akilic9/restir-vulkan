@@ -8,8 +8,7 @@ namespace VRE {
 
     #define MAX_LIGHTS 10
 
-    struct VRE_FrameInfo
-    {
+    struct VRE_FrameInfo {
         int mFrameIndex;
         VkCommandBuffer mCommandBuffer;
         VRE_Camera &mCamera;
@@ -23,8 +22,7 @@ namespace VRE {
         glm::vec4 mColor{};     // w is intensity
     };
 
-    struct UBO
-    {
+    struct UBO {
         glm::mat4 mProjectionMat = 1.f;
         glm::mat4 mViewMat = 1.f;
         glm::vec4 mAmbientLightColor{ 1.f, 1.f, 1.f, 0.02f }; // r, g, b, intensity

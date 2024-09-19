@@ -112,10 +112,10 @@ void VRE::VRE_Renderer::CreateCommandBuffers()
     VkCommandBufferAllocateInfo allocInfo{};
     allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
     allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-    allocInfo.commandPool = mDevice.getCommandPool();
+    allocInfo.commandPool = mDevice.GetCommandPool();
     allocInfo.commandBufferCount = static_cast<uint32_t>(mCommandBuffers.size());
 
-    if (vkAllocateCommandBuffers(mDevice.device(), &allocInfo, mCommandBuffers.data()) != VK_SUCCESS)
+    if (vkAllocateCommandBuffers(mDevice.GetVkDevice(), &allocInfo, mCommandBuffers.data()) != VK_SUCCESS)
         throw std::runtime_error("Failed to allocate command buffers!");
 }
 
@@ -128,7 +128,7 @@ void VRE::VRE_Renderer::RecreateSwapChain()
         glfwWaitEvents();
     }
 
-    vkDeviceWaitIdle(mDevice.device());
+    vkDeviceWaitIdle(mDevice.GetVkDevice());
 
     if (mSwapChain == nullptr)
         mSwapChain = std::make_unique<VRE_SwapChain>(mDevice, extent);
@@ -145,8 +145,8 @@ void VRE::VRE_Renderer::RecreateSwapChain()
 void VRE::VRE_Renderer::FreeCommandBuffers()
 {
     vkFreeCommandBuffers(
-        mDevice.device(),
-        mDevice.getCommandPool(),
+        mDevice.GetVkDevice(),
+        mDevice.GetCommandPool(),
         static_cast<uint32_t>(mCommandBuffers.size()),
         mCommandBuffers.data());
     mCommandBuffers.clear();

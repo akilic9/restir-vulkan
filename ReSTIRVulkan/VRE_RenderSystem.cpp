@@ -19,7 +19,7 @@ VRE::VRE_RenderSystem::VRE_RenderSystem(VRE_Device& device, VkRenderPass renderP
 
 VRE::VRE_RenderSystem::~VRE_RenderSystem()
 {
-    vkDestroyPipelineLayout(mDevice.device(), mPipelineLayout, nullptr);
+    vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
 void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
@@ -63,7 +63,7 @@ void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLa
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
-    if (vkCreatePipelineLayout(mDevice.device(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS) {
+    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS) {
         throw std::runtime_error("Failed to create pipeline layout!");
     }
 }

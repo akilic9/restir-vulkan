@@ -7,7 +7,7 @@ namespace VRE {
     struct PointLightPC {
         glm::vec4 mPosition{};
         glm::vec4 mColor{};
-        float mRadius;
+        float mRadius = 0.f;
     };
 }
 
@@ -20,7 +20,7 @@ VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_Device& device, 
 
 VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
 {
-    vkDestroyPipelineLayout(mDevice.device(), mPipelineLayout, nullptr);
+    vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
 void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt)
@@ -79,7 +79,7 @@ void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
-    if (vkCreatePipelineLayout(mDevice.device(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
+    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("Failed to create pipeline layout!");
 }
 

@@ -20,14 +20,14 @@ VRE::VRE_Buffer::VRE_Buffer(VRE_Device& device, VkDeviceSize instanceSize,
 {
     mAlignmentSize = GetAlignment(instanceSize, minOffsetAlignment);
     mBufferSize = mAlignmentSize * instanceCount;
-    mDevice.createBuffer(mBufferSize, usageFlags, memoryPropertyFlags, mBuffer, mMemory);
+    mDevice.CreateBuffer(mBufferSize, usageFlags, memoryPropertyFlags, mBuffer, mMemory);
 }
 
 VRE::VRE_Buffer::~VRE_Buffer()
 {
     Unmap();
-    vkDestroyBuffer(mDevice.device(), mBuffer, nullptr);
-    vkFreeMemory(mDevice.device(), mMemory, nullptr);
+    vkDestroyBuffer(mDevice.GetVkDevice(), mBuffer, nullptr);
+    vkFreeMemory(mDevice.GetVkDevice(), mMemory, nullptr);
 }
 
 /**
@@ -42,7 +42,7 @@ VRE::VRE_Buffer::~VRE_Buffer()
 VkResult VRE::VRE_Buffer::Map(VkDeviceSize size, VkDeviceSize offset)
 {
     assert(mBuffer && mMemory && "Called map on buffer before create");
-    return vkMapMemory(mDevice.device(), mMemory, offset, size, 0, &mMapped);
+    return vkMapMemory(mDevice.GetVkDevice(), mMemory, offset, size, 0, &mMapped);
 }
 
 /**
@@ -53,7 +53,7 @@ VkResult VRE::VRE_Buffer::Map(VkDeviceSize size, VkDeviceSize offset)
 void VRE::VRE_Buffer::Unmap()
 {
     if (mMapped) {
-        vkUnmapMemory(mDevice.device(), mMemory);
+        vkUnmapMemory(mDevice.GetVkDevice(), mMemory);
         mMapped = nullptr;
     }
 }
@@ -98,7 +98,7 @@ VkResult VRE::VRE_Buffer::Flush(VkDeviceSize size, VkDeviceSize offset)
     mappedRange.memory = mMemory;
     mappedRange.offset = offset;
     mappedRange.size = size;
-    return vkFlushMappedMemoryRanges(mDevice.device(), 1, &mappedRange);
+    return vkFlushMappedMemoryRanges(mDevice.GetVkDevice(), 1, &mappedRange);
 }
 
 /**
@@ -132,7 +132,7 @@ VkResult VRE::VRE_Buffer::Invalidate(VkDeviceSize size, VkDeviceSize offset)
     mappedRange.memory = mMemory;
     mappedRange.offset = offset;
     mappedRange.size = size;
-    return vkInvalidateMappedMemoryRanges(mDevice.device(), 1, &mappedRange);
+    return vkInvalidateMappedMemoryRanges(mDevice.GetVkDevice(), 1, &mappedRange);
 }
 
 /**
