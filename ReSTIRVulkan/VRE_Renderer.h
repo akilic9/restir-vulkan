@@ -24,9 +24,9 @@ namespace VRE {
 
         bool IsDrawInProgress() const { return mDrawStarted; }
 
-        VkRenderPass GetSwapChainRenderPass() const { return mSwapChain->getRenderPass(); }
+        VkRenderPass GetSwapChainRenderPass() const { return mSwapChain->GetRenderPass(); }
 
-        float GetAspectRatio() const { return mSwapChain->extentAspectRatio(); };
+        float GetAspectRatio() const { return mSwapChain->GetExtentAspectRatio(); };
 
         VkCommandBuffer GetCurrentCommandBuffer() const {
             assert(mDrawStarted && "Cannot get command buffer when frame not in progress.");

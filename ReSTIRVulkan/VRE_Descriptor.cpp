@@ -53,9 +53,8 @@ VRE::VRE_DescriptorSetLayout::VRE_DescriptorSetLayout(VRE_Device& device, std::u
     descriptorSetLayoutInfo.bindingCount = static_cast<uint32_t>(setLayoutBindings.size());
     descriptorSetLayoutInfo.pBindings = setLayoutBindings.data();
 
-    if (vkCreateDescriptorSetLayout(mDevice.GetVkDevice(), &descriptorSetLayoutInfo,
-                                    nullptr, &mDescriptorSetLayout) != VK_SUCCESS)
-        throw std::runtime_error("failed to create descriptor set layout!");
+    if (vkCreateDescriptorSetLayout(mDevice.GetVkDevice(), &descriptorSetLayoutInfo, nullptr, &mDescriptorSetLayout) != VK_SUCCESS)
+        throw std::runtime_error("Failed to create descriptor set layout!");
 }
 
 VRE::VRE_DescriptorSetLayout::~VRE_DescriptorSetLayout()
@@ -74,7 +73,7 @@ VRE::VRE_DescriptorPool::VRE_DescriptorPool(VRE_Device& device, uint32_t maxSets
     descriptorPoolInfo.flags = poolFlags;
 
     if (vkCreateDescriptorPool(mDevice.GetVkDevice(), &descriptorPoolInfo, nullptr, &mDescriptorPool) != VK_SUCCESS)
-        throw std::runtime_error("ERROR: Failed to create descriptor pool.");
+        throw std::runtime_error("Failed to create descriptor pool.");
 }
 
 VRE::VRE_DescriptorPool::~VRE_DescriptorPool()

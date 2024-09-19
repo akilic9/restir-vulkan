@@ -36,12 +36,7 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
         pc.mModelMatrix = e.second.mTransform.Mat4();
         pc.mNormalMatrix = e.second.mTransform.NormalMatrix();
 
-        vkCmdPushConstants(frameInfo.mCommandBuffer,
-            mPipelineLayout,
-            VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-            0,
-            sizeof(SimplePCData),
-            &pc);
+        vkCmdPushConstants(frameInfo.mCommandBuffer, mPipelineLayout, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(SimplePCData), &pc);
 
         e.second.mModel->Bind(frameInfo.mCommandBuffer);
         e.second.mModel->Draw(frameInfo.mCommandBuffer);
@@ -50,9 +45,7 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
 
 void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
-    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-                               0,
-                               sizeof(SimplePCData) };
+    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(SimplePCData) };
 
     std::vector<VkDescriptorSetLayout> descSetLayouts{descSetLayout};
 
@@ -63,22 +56,17 @@ void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLa
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
-    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS) {
+    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("Failed to create pipeline layout!");
-    }
 }
 
-    void VRE::VRE_RenderSystem::CreatePipeline(VkRenderPass renderPass)
+void VRE::VRE_RenderSystem::CreatePipeline(VkRenderPass renderPass)
 {
     assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout!");
 
     PipelineConfigInfo pipelineConfig{};
     VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
-    pipelineConfig.renderPass = renderPass;
-    pipelineConfig.pipelineLayout = mPipelineLayout;
-    mPipeline = std::make_unique<VRE_Pipeline>(
-        mDevice,
-        pipelineConfig,
-        "Shaders/test_shader.vert.spv",
-        "Shaders/test_shader.frag.spv");
+    pipelineConfig.mRenderPass = renderPass;
+    pipelineConfig.mPipelineLayout = mPipelineLayout;
+    mPipeline = std::make_unique<VRE_Pipeline>(mDevice, pipelineConfig, "Shaders/test_shader.vert.spv", "Shaders/test_shader.frag.spv");
 }

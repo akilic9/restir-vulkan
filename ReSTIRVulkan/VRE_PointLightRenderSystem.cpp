@@ -89,13 +89,9 @@ void VRE::VRE_PointLightRenderSystem::CreatePipeline(VkRenderPass renderPass)
 
     PipelineConfigInfo pipelineConfig{};
     VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
-    pipelineConfig.attributeDescriptions.clear();
-    pipelineConfig.bindingDescriptions.clear();
-    pipelineConfig.renderPass = renderPass;
-    pipelineConfig.pipelineLayout = mPipelineLayout;
-    mPipeline = std::make_unique<VRE_Pipeline>(
-        mDevice,
-        pipelineConfig,
-        "Shaders/point_light.vert.spv",
-        "Shaders/point_light.frag.spv");
+    pipelineConfig.mAttributeDescriptions.clear();
+    pipelineConfig.mBindingDescriptions.clear();
+    pipelineConfig.mRenderPass = renderPass;
+    pipelineConfig.mPipelineLayout = mPipelineLayout;
+    mPipeline = std::make_unique<VRE_Pipeline>(mDevice, pipelineConfig, "Shaders/point_light.vert.spv", "Shaders/point_light.frag.spv");
 }

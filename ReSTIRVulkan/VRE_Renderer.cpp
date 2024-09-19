@@ -21,7 +21,7 @@ VkCommandBuffer VRE::VRE_Renderer::BeginDraw()
 {
     assert(!mDrawStarted && "Can't call BeginDraw while already in progress.");
 
-    auto result = mSwapChain->acquireNextImage(&mCurrentImageIndex);
+    auto result = mSwapChain->AcquireNextImage(&mCurrentImageIndex);
 
     if (result == VK_ERROR_OUT_OF_DATE_KHR) {
         RecreateSwapChain();
@@ -51,14 +51,14 @@ void VRE::VRE_Renderer::EndDraw()
     if (vkEndCommandBuffer(commandBuffer) != VK_SUCCESS)
         throw std::runtime_error("Failed to record command buffer!");
 
-    auto result = mSwapChain->submitCommandBuffers(&commandBuffer, &mCurrentImageIndex);
+    auto result = mSwapChain->SubmitCommandBuffers(&commandBuffer, &mCurrentImageIndex);
     if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR ||
         mWindow.HasWindowResized()) {
         mWindow.ResetWindowResizedFlag();
         RecreateSwapChain();
     }
     else if (result != VK_SUCCESS)
-        throw std::runtime_error("failed to present swap chain image!");
+        throw std::runtime_error("Failed to present swap chain image!");
 
     mDrawStarted = false;
     mCurrentFrameIndex = (mCurrentFrameIndex + 1) % VRE_SwapChain::MAX_FRAMES_IN_FLIGHT;
@@ -71,11 +71,11 @@ void VRE::VRE_Renderer::BeginSwapChainRenderPass(VkCommandBuffer commandBuffer)
 
     VkRenderPassBeginInfo renderPassInfo{};
     renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-    renderPassInfo.renderPass = mSwapChain->getRenderPass();
-    renderPassInfo.framebuffer = mSwapChain->getFrameBuffer(mCurrentImageIndex);
+    renderPassInfo.renderPass = mSwapChain->GetRenderPass();
+    renderPassInfo.framebuffer = mSwapChain->GetFrameBuffer(mCurrentImageIndex);
 
     renderPassInfo.renderArea.offset = { 0, 0 };
-    renderPassInfo.renderArea.extent = mSwapChain->getSwapChainExtent();
+    renderPassInfo.renderArea.extent = mSwapChain->GetSwapChainExtent();
 
     std::array<VkClearValue, 2> clearValues{};
     clearValues[0].color = { 0.01f, 0.01f, 0.01f, 1.0f };
@@ -88,11 +88,11 @@ void VRE::VRE_Renderer::BeginSwapChainRenderPass(VkCommandBuffer commandBuffer)
     VkViewport viewport{};
     viewport.x = 0.0f;
     viewport.y = 0.0f;
-    viewport.width = static_cast<float>(mSwapChain->getSwapChainExtent().width);
-    viewport.height = static_cast<float>(mSwapChain->getSwapChainExtent().height);
+    viewport.width = static_cast<float>(mSwapChain->GetSwapChainExtent().width);
+    viewport.height = static_cast<float>(mSwapChain->GetSwapChainExtent().height);
     viewport.minDepth = 0.0f;
     viewport.maxDepth = 1.0f;
-    VkRect2D scissor{ {0, 0}, mSwapChain->getSwapChainExtent() };
+    VkRect2D scissor{ {0, 0}, mSwapChain->GetSwapChainExtent() };
     vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
 }
@@ -136,18 +136,13 @@ void VRE::VRE_Renderer::RecreateSwapChain()
         std::shared_ptr<VRE_SwapChain> oldChain = std::move(mSwapChain);
         mSwapChain = std::make_unique<VRE_SwapChain>(mDevice, extent, oldChain);
 
-        if (!oldChain->CompareSwapFormats(*mSwapChain.get())) {
-            throw std::runtime_error("Swap chain image(or depth) format has changed!");
-        }
+        if (!oldChain->CompareSwapFormats(*mSwapChain.get()))
+            throw std::runtime_error("Swap chain image (or depth) format has changed!");
     }
 }
 
 void VRE::VRE_Renderer::FreeCommandBuffers()
 {
-    vkFreeCommandBuffers(
-        mDevice.GetVkDevice(),
-        mDevice.GetCommandPool(),
-        static_cast<uint32_t>(mCommandBuffers.size()),
-        mCommandBuffers.data());
+    vkFreeCommandBuffers(mDevice.GetVkDevice(), mDevice.GetCommandPool(), static_cast<uint32_t>(mCommandBuffers.size()), mCommandBuffers.data());
     mCommandBuffers.clear();
 }

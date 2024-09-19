@@ -36,9 +36,8 @@ void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& came
 
     glm::vec3 position = camera.GetPosition();
 
-    if (glm::dot(moveDir, moveDir) > std::numeric_limits<float>::epsilon()) {
+    if (glm::dot(moveDir, moveDir) > std::numeric_limits<float>::epsilon())
         position += mMoveSpeed * dt * glm::normalize(moveDir);
-    }
 
     camera.SetViewXYZ(position, rotation);
 }

@@ -67,15 +67,13 @@ void VRE::VRE_Model::CreateVertexBuffers(const std::vector<Vertex>& vertices)
 
     uint32_t vertexSize = sizeof(vertices[0]);
 
-    VRE_Buffer stagingBuffer(mDevice, vertexSize, mVertexCount,
-                             VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+    VRE_Buffer stagingBuffer(mDevice, vertexSize, mVertexCount, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
                              VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
 
     stagingBuffer.Map();
     stagingBuffer.WriteToBuffer((void*)vertices.data());
 
-    mVertexBuffer = std::make_unique<VRE_Buffer>(mDevice, vertexSize, mVertexCount,
-                                                 VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+    mVertexBuffer = std::make_unique<VRE_Buffer>(mDevice, vertexSize, mVertexCount, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
                                                  VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
     mDevice.CopyBuffer(stagingBuffer.GetBuffer(), mVertexBuffer->GetBuffer(), bufferSize);
@@ -92,14 +90,12 @@ void VRE::VRE_Model::CreateIndexBuffer(const std::vector<uint32_t>& indices)
     VkDeviceSize bufferSize = sizeof(indices[0]) * mIndexCount;
     uint32_t indexSize = sizeof(indices[0]);
 
-    VRE_Buffer stagingBuffer(mDevice, indexSize, mIndexCount,
-                             VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+    VRE_Buffer stagingBuffer(mDevice, indexSize, mIndexCount, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
                              VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
     stagingBuffer.Map();
     stagingBuffer.WriteToBuffer((void*)indices.data());
 
-    mIndexBuffer = std::make_unique<VRE_Buffer>(mDevice, indexSize, mIndexCount,
-                                                VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+    mIndexBuffer = std::make_unique<VRE_Buffer>(mDevice, indexSize, mIndexCount, VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
                                                 VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
     mDevice.CopyBuffer(stagingBuffer.GetBuffer(), mIndexBuffer->GetBuffer(), bufferSize);
@@ -133,9 +129,8 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
     std::vector<tinyobj::material_t> materials;
     std::string warning, error;
 
-    if (!tinyobj::LoadObj(&attribute, &shapes, &materials, &warning, &error, filePath.c_str())) {
+    if (!tinyobj::LoadObj(&attribute, &shapes, &materials, &warning, &error, filePath.c_str()))
         throw std::runtime_error(warning + error);
-    }
 
     mVertices.clear();
     mIndices.clear();

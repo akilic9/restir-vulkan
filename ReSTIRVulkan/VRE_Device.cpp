@@ -23,6 +23,7 @@ namespace VRE {
                                           const VkAllocationCallbacks *pAllocator, VkDebugUtilsMessengerEXT *pDebugMessenger)
     {
         auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkCreateDebugUtilsMessengerEXT");
+
         if (func != nullptr)
             return func(instance, pCreateInfo, pAllocator, pDebugMessenger);
         else
@@ -166,7 +167,7 @@ namespace VRE {
             createInfo.enabledLayerCount = 0;
     
         if (vkCreateDevice(mPhysicalDevice, &createInfo, nullptr, &mVkDevice) != VK_SUCCESS)
-            throw std::runtime_error("failed to create logical device!");
+            throw std::runtime_error("Failed to create logical device!");
     
         vkGetDeviceQueue(mVkDevice, indices.mGraphicsFamily, 0, &mGraphicsQueue);
         vkGetDeviceQueue(mVkDevice, indices.mPresentFamily, 0, &mPresentQueue);
@@ -179,8 +180,7 @@ namespace VRE {
         VkCommandPoolCreateInfo poolInfo = {};
         poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
         poolInfo.queueFamilyIndex = queueFamilyIndices.mGraphicsFamily;
-        poolInfo.flags =
-            VK_COMMAND_POOL_CREATE_TRANSIENT_BIT | VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
+        poolInfo.flags = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT | VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
     
         if (vkCreateCommandPool(mVkDevice, &poolInfo, nullptr, &mCommandPool) != VK_SUCCESS)
             throw std::runtime_error("Failed to create command pool!");
@@ -369,8 +369,7 @@ namespace VRE {
     
         if (presentModeCount != 0) {
             details.mPresentModes.resize(presentModeCount);
-            vkGetPhysicalDeviceSurfacePresentModesKHR(device, mVkSurface, &presentModeCount, 
-                                                      details.mPresentModes.data());
+            vkGetPhysicalDeviceSurfacePresentModesKHR(device, mVkSurface, &presentModeCount, details.mPresentModes.data());
         }
         return details;
     }
@@ -401,8 +400,7 @@ namespace VRE {
         throw std::runtime_error("Failed to find suitable memory type!");
     }
     
-    void VRE_Device::CreateBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties,
-                                  VkBuffer &buffer, VkDeviceMemory &bufferMemory)
+    void VRE_Device::CreateBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer &buffer, VkDeviceMemory &bufferMemory)
     {
         VkBufferCreateInfo bufferInfo{};
         bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -495,8 +493,7 @@ namespace VRE {
         EndSingleTimeCommands(commandBuffer);
     }
     
-    void VRE_Device::CreateImageWithInfo(const VkImageCreateInfo &imageInfo, VkMemoryPropertyFlags properties,
-                                         VkImage &image, VkDeviceMemory &imageMemory)
+    void VRE_Device::CreateImageWithInfo(const VkImageCreateInfo &imageInfo, VkMemoryPropertyFlags properties, VkImage &image, VkDeviceMemory &imageMemory)
     {
         if (vkCreateImage(mVkDevice, &imageInfo, nullptr, &image) != VK_SUCCESS)
             throw std::runtime_error("Failed to create image!");
@@ -510,10 +507,10 @@ namespace VRE {
         allocInfo.memoryTypeIndex = FindMemoryType(memRequirements.memoryTypeBits, properties);
     
         if (vkAllocateMemory(mVkDevice, &allocInfo, nullptr, &imageMemory) != VK_SUCCESS)
-            throw std::runtime_error("failed to allocate image memory!");
+            throw std::runtime_error("Failed to allocate image memory!");
     
         if (vkBindImageMemory(mVkDevice, image, imageMemory, 0) != VK_SUCCESS)
-            throw std::runtime_error("failed to bind image memory!");
+            throw std::runtime_error("Failed to bind image memory!");
     }
 
 }

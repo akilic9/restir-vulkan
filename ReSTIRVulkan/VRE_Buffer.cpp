@@ -41,7 +41,7 @@ VRE::VRE_Buffer::~VRE_Buffer()
  */
 VkResult VRE::VRE_Buffer::Map(VkDeviceSize size, VkDeviceSize offset)
 {
-    assert(mBuffer && mMemory && "Called map on buffer before create");
+    assert(mBuffer && mMemory && "Map function calles on buffer before create function.");
     return vkMapMemory(mDevice.GetVkDevice(), mMemory, offset, size, 0, &mMapped);
 }
 
@@ -69,7 +69,7 @@ void VRE::VRE_Buffer::Unmap()
  */
 void VRE::VRE_Buffer::WriteToBuffer(void* data, VkDeviceSize size, VkDeviceSize offset)
 {
-    assert(mMapped && "Cannot copy to unmapped buffer");
+    assert(mMapped && "Cannot copy to unmapped buffer.");
 
     if (size == VK_WHOLE_SIZE)
         memcpy(mMapped, data, mBufferSize);

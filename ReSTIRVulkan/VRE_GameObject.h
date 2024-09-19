@@ -12,9 +12,7 @@ namespace VRE {
         using GameObjectID = unsigned int;
         using GameObjectsMap = std::unordered_map<GameObjectID, VRE_GameObject>;
 
-        VRE_GameObject(GameObjectID id)
-            : mID(id)
-            , mColor(1.f) {}
+        VRE_GameObject(GameObjectID id) : mID(id) , mColor(1.f) {}
 
         static VRE_GameObject CreateGameObject() {
             static GameObjectID currentID = 0;
