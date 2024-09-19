@@ -45,6 +45,20 @@ void VRE::VRE_Camera::SetViewDirection(glm::vec3 position, glm::vec3 direction, 
     mViewMatrix[3][0] = -glm::dot(u, position);
     mViewMatrix[3][1] = -glm::dot(v, position);
     mViewMatrix[3][2] = -glm::dot(w, position);
+
+    mInvViewMatrix = glm::mat4{ 1.f };
+    mInvViewMatrix[0][0] = u.x;
+    mInvViewMatrix[0][1] = u.y;
+    mInvViewMatrix[0][2] = u.z;
+    mInvViewMatrix[1][0] = v.x;
+    mInvViewMatrix[1][1] = v.y;
+    mInvViewMatrix[1][2] = v.z;
+    mInvViewMatrix[2][0] = w.x;
+    mInvViewMatrix[2][1] = w.y;
+    mInvViewMatrix[2][2] = w.z;
+    mInvViewMatrix[3][0] = position.x;
+    mInvViewMatrix[3][1] = position.y;
+    mInvViewMatrix[3][2] = position.z;
 }
 
 void VRE::VRE_Camera::SetViewTarget(glm::vec3 position, glm::vec3 target, glm::vec3 up)
@@ -78,4 +92,18 @@ void VRE::VRE_Camera::SetViewXYZ(glm::vec3 position, glm::vec3 rotation)
     mViewMatrix[3][0] = -glm::dot(u, position);
     mViewMatrix[3][1] = -glm::dot(v, position);
     mViewMatrix[3][2] = -glm::dot(w, position);
+
+    mInvViewMatrix = glm::mat4{ 1.f };
+    mInvViewMatrix[0][0] = u.x;
+    mInvViewMatrix[0][1] = u.y;
+    mInvViewMatrix[0][2] = u.z;
+    mInvViewMatrix[1][0] = v.x;
+    mInvViewMatrix[1][1] = v.y;
+    mInvViewMatrix[1][2] = v.z;
+    mInvViewMatrix[2][0] = w.x;
+    mInvViewMatrix[2][1] = w.y;
+    mInvViewMatrix[2][2] = w.z;
+    mInvViewMatrix[3][0] = position.x;
+    mInvViewMatrix[3][1] = position.y;
+    mInvViewMatrix[3][2] = position.z;
 }

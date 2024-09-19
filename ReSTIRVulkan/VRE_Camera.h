@@ -17,6 +17,7 @@ namespace VRE {
 
         const glm::mat4 GetProjection() const { return mProjectionMatrix; }
         const glm::mat4 GetViewMat() const { return mViewMatrix; }
+        const glm::mat4 GetInvViewMat() const { return mInvViewMatrix; }
 
         glm::vec3 GetRotation() const { return mRotation; }
         glm::vec3 GetPosition() const { return mPosition; }
@@ -26,5 +27,6 @@ namespace VRE {
         glm::vec3 mRotation{ 0.f, 0.f, 0.f };
         glm::mat4 mProjectionMatrix{ 1.f };
         glm::mat4 mViewMatrix{ 1.f };
+        glm::mat4 mInvViewMatrix{ 1.f };
     };
 }

@@ -11,13 +11,14 @@ layout(location = 2) out vec3 fragNormalWorld;
 
 struct PointLightInfo {
     vec4 position;  // w is just for alignment.
-    vec4 color;     // w is intensity
+    vec4 color;     // w is intensity.
 };
 
 layout(set = 0, binding = 0) uniform UBO {
     mat4 projectionMat;
     mat4 viewMat;
-    vec4 ambientLightColor; // r, g, b, intensity
+    mat4 invViewMat;
+    vec4 ambientLightColor; // r, g, b, intensity.
     PointLightInfo pointLights[10]; //In FrameInfo.h, hard coded for now :(
     int activeLightCount;
 } ubo;

@@ -79,6 +79,7 @@ void VRE::VRE_App::Run()
             UBO ubo;
             ubo.mProjectionMat = camera.GetProjection();
             ubo.mViewMat = camera.GetViewMat();
+            ubo.mInvViewMat = camera.GetInvViewMat();
             lightRenderSys.Update(frameInfo, ubo, deltaTime);
             uboBuffers[frameIndex]->WriteToBuffer(&ubo);
             uboBuffers[frameIndex]->Flush();

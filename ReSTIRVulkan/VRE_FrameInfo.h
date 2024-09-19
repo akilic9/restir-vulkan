@@ -25,6 +25,7 @@ namespace VRE {
     struct UBO {
         glm::mat4 mProjectionMat = 1.f;
         glm::mat4 mViewMat = 1.f;
+        glm::mat4 mInvViewMat = 1.f;
         glm::vec4 mAmbientLightColor{ 1.f, 1.f, 1.f, 0.02f }; // r, g, b, intensity
         PointLightInfo mPointLights[MAX_LIGHTS];
         int mActiveLightCount;
