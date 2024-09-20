@@ -36,9 +36,6 @@
     <ClCompile Include="VRE_Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VRE_GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VRE_Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,9 +49,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VRE_Buffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VRE_FrameInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VRE_Descriptor.cpp">
