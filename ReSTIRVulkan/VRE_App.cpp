@@ -60,8 +60,8 @@ void VRE::VRE_App::Run()
     while (!mWindow.ShouldClose()) {
         glfwPollEvents();
 
-        auto currentTime = std::chrono::high_resolution_clock::now();
-        float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+        const auto currentTime = std::chrono::high_resolution_clock::now();
+        const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
         startTime = currentTime;
 
         // TODO: can probably optimize this using glfw callback function.
