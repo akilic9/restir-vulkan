@@ -22,6 +22,7 @@ namespace VRE {
 
         VRE_DescriptorSetLayout(VRE_Device& device, std::unordered_map<uint32_t, VkDescriptorSetLayoutBinding> bindings);
         ~VRE_DescriptorSetLayout();
+
         VRE_DescriptorSetLayout(const VRE_DescriptorSetLayout&) = delete;
         VRE_DescriptorSetLayout& operator=(const VRE_DescriptorSetLayout&) = delete;
 

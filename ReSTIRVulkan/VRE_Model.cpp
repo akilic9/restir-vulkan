@@ -15,7 +15,7 @@ namespace std {
     struct hash<VRE::VRE_Model::Vertex> {
         size_t operator()(VRE::VRE_Model::Vertex const& vertex) const {
             size_t seed = 0;
-            VRE::hashCombine(seed, vertex.mPosition, vertex.mColor, vertex.mNormal, vertex.mUV);
+            VRE::hashCombine(seed, vertex.mPosition, vertex.mColor, vertex.mNormal, vertex.mTexCoord);
             return seed;
         }
     };
@@ -23,7 +23,11 @@ namespace std {
 
 VRE::VRE_Model::VRE_Model(VRE_Device& device, const ModelData& data)
     : mDevice(device)
+    , mVertexBuffer(nullptr)
+    , mVertexCount(0)
     , mHasIndexBuffer(false)
+    , mIndexBuffer(nullptr)
+    , mIndexCount(0)
 {
     CreateVertexBuffers(data.mVertices);
     CreateIndexBuffer(data.mIndices);
@@ -117,7 +121,7 @@ std::vector<VkVertexInputAttributeDescription> VRE::VRE_Model::Vertex::GetAttrib
     attributeDescriptions.push_back({0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mPosition)});
     attributeDescriptions.push_back({1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mColor)});
     attributeDescriptions.push_back({2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mNormal)});
-    attributeDescriptions.push_back({3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mUV)});
+    attributeDescriptions.push_back({3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord)});
 
     return attributeDescriptions; 
 }
@@ -163,7 +167,7 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
             }
 
             if (index.texcoord_index >= 0) {
-                vertex.mUV = {
+                vertex.mTexCoord = {
                     attribute.texcoords[2 * index.texcoord_index + 0],
                     attribute.texcoords[2 * index.texcoord_index + 1],
                 };

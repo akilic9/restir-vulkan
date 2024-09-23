@@ -1,8 +1,9 @@
 #version 460
 
-layout (location = 0) in vec3 fragColor;
-layout (location = 1) in vec3 fragPosWorld;
-layout (location = 2) in vec3 fragNormalWorld;
+layout (location = 0) in vec3 inFragColor;
+layout (location = 1) in vec3 inFragPosWorld;
+layout (location = 2) in vec3 inFragNormalWorld;
+layout (location = 3) in vec2 inFragTexCoord;
 
 layout (location = 0) out vec4 outColor;
 
@@ -20,6 +21,8 @@ layout(set = 0, binding = 0) uniform UBO {
     int activeLightCount;
 } ubo;
 
+layout(set = 0, binding = 1) uniform sampler2D texSampler;
+
 layout(push_constant) uniform Push {
     mat4 modelMatrix;
     mat4 normalMatrix;
@@ -27,15 +30,15 @@ layout(push_constant) uniform Push {
 
 void main() {
     vec3 diffuse = ubo.ambientLightColor.xyz * ubo.ambientLightColor.w; //Apply the intensity scale to the ambient.
-    vec3 surfaceNormal = normalize(fragNormalWorld);
+    vec3 surfaceNormal = normalize(inFragNormalWorld);
     vec3 specularLight = vec3(0.0);
 
     vec3 cameraPosWorld = ubo.invViewMat[3].xyz;
-    vec3 viewDir = normalize(cameraPosWorld - fragPosWorld);
+    vec3 viewDir = normalize(cameraPosWorld - inFragPosWorld);
 
     for (int i = 0; i < ubo.activeLightCount; i++){
         PointLightInfo light = ubo.pointLights[i];
-        vec3 lightDir = light.position.xyz - fragPosWorld;
+        vec3 lightDir = light.position.xyz - inFragPosWorld;
         float attenuation = 1.0 / dot(lightDir, lightDir); //Inverse distance to light squared.
         lightDir = normalize(lightDir);
 
@@ -51,5 +54,6 @@ void main() {
         specularLight += lightIntensity * specAngle;
     }
 
-    outColor = vec4(diffuse * fragColor + specularLight * fragColor, 1.0);
+    vec3 color = texture(texSampler, inFragTexCoord).xyz;
+    outColor = vec4(diffuse * color + specularLight * inFragColor, 1.0);
 }

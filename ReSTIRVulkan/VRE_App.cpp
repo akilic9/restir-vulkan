@@ -18,6 +18,7 @@ VRE::VRE_App::VRE_App() : mRenderer{mWindow, mDevice}
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
                       .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                      .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .Build();
 
     LoadObjects();
@@ -37,13 +38,18 @@ void VRE::VRE_App::Run()
 
     auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
                          .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
+                         .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
                          .Build();
+
+    auto imageInfo = mTexture->getImageInfo();
+
 
     std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
     for (int i = 0; i < descriptorSets.size(); i++) {
         auto bufferInfo = uboBuffers[i]->DescriptorInfo();
         VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
                             .WriteBuffer(0, &bufferInfo)
+                            .WriteImage(1, &imageInfo)
                             .Build(descriptorSets[i]);
     }
 
@@ -72,7 +78,7 @@ void VRE::VRE_App::Run()
         camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
-            int frameIndex = mRenderer.GetFrameIndex();
+            const int frameIndex = mRenderer.GetFrameIndex();
             VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects, mPointLights};
 
             //Update
@@ -97,6 +103,8 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
+    mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Models/test-text.jpg");
+
     std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     auto flatVase = VRE_GameObject::CreateGameObject();
     flatVase.mModel = model;

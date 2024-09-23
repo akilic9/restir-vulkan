@@ -16,14 +16,14 @@ namespace VRE {
             glm::vec3 mPosition;
             glm::vec3 mColor;
             glm::vec3 mNormal;
-            glm::vec2 mUV;
+            glm::vec2 mTexCoord;
 
             static std::vector<VkVertexInputBindingDescription> GetBindingDesc();
             static std::vector<VkVertexInputAttributeDescription> GetAttributeDesc();
 
             bool operator==(const Vertex& other) const {
                 return mPosition == other.mPosition && mColor == other.mColor &&
-                       mNormal == other.mNormal && mUV == other.mUV;
+                       mNormal == other.mNormal && mTexCoord == other.mTexCoord;
             }
         };
 
