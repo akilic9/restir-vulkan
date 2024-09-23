@@ -19,7 +19,7 @@ VRE::VRE_Buffer::VRE_Buffer(VRE_Device& device, VkDeviceSize instanceSize,
     , mMemoryPropertyFlags(memoryPropertyFlags)
 {
     mAlignmentSize = GetAlignment(instanceSize, minOffsetAlignment);
-    mBufferSize = mAlignmentSize * instanceCount;
+    mBufferSize = mAlignmentSize * mInstanceCount;
     mDevice.CreateBuffer(mBufferSize, usageFlags, memoryPropertyFlags, mBuffer, mMemory);
 }
 

@@ -36,5 +36,3 @@ namespace VRE {
         GLFWwindow* mWindow;
     };
 }
-
-

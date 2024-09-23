@@ -131,6 +131,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mRasterizationInfo.depthBiasConstantFactor = 0.0f;  // Optional
     configInfo.mRasterizationInfo.depthBiasClamp = 0.0f;           // Optional
     configInfo.mRasterizationInfo.depthBiasSlopeFactor = 0.0f;     // Optional
+
     configInfo.mMultisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
     configInfo.mMultisampleInfo.sampleShadingEnable = VK_FALSE;
     configInfo.mMultisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
@@ -138,6 +139,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mMultisampleInfo.pSampleMask = nullptr;             // Optional
     configInfo.mMultisampleInfo.alphaToCoverageEnable = VK_FALSE;  // Optional
     configInfo.mMultisampleInfo.alphaToOneEnable = VK_FALSE;       // Optional
+
     configInfo.mColorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
                                                       VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
     configInfo.mColorBlendAttachment.blendEnable = VK_FALSE;
@@ -147,6 +149,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mColorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;   // Optional
     configInfo.mColorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;  // Optional
     configInfo.mColorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;              // Optional
+
     configInfo.mColorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
     configInfo.mColorBlendInfo.logicOpEnable = VK_FALSE;
     configInfo.mColorBlendInfo.logicOp = VK_LOGIC_OP_COPY;  // Optional
@@ -156,6 +159,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mColorBlendInfo.blendConstants[1] = 0.0f;  // Optional
     configInfo.mColorBlendInfo.blendConstants[2] = 0.0f;  // Optional
     configInfo.mColorBlendInfo.blendConstants[3] = 0.0f;  // Optional
+
     configInfo.mDepthStencilInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     configInfo.mDepthStencilInfo.depthTestEnable = VK_TRUE;
     configInfo.mDepthStencilInfo.depthWriteEnable = VK_TRUE;

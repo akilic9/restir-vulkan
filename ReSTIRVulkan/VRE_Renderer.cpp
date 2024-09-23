@@ -123,7 +123,7 @@ void VRE::VRE_Renderer::RecreateSwapChain()
 {
     auto extent = mWindow.GetExtent();
 
-    while (extent.width == 0 || extent.height == 0) {
+    while (extent.width == 0 || extent.height == 0) { //Pause if the window is minimized as it can cause swapchain to become out of date.
         extent = mWindow.GetExtent();
         glfwWaitEvents();
     }

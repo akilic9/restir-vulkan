@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)stb_image;$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)stb_image;$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -148,6 +148,7 @@
     <ClCompile Include="VRE_Pipeline.cpp" />
     <ClCompile Include="VRE_Renderer.cpp" />
     <ClCompile Include="VRE_SwapChain.cpp" />
+    <ClCompile Include="VRE_Texture.cpp" />
     <ClCompile Include="VRE_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,7 @@
     <ClInclude Include="VRE_Descriptor.h" />
     <ClInclude Include="VRE_FrameInfo.h" />
     <ClInclude Include="VRE_PointLightRenderSystem.h" />
+    <ClInclude Include="VRE_Texture.h" />
     <ClInclude Include="VRE_Utilities.h" />
     <ClInclude Include="VRE_Camera.h" />
     <ClInclude Include="VRE_InputListener.h" />
