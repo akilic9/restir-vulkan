@@ -24,5 +24,6 @@ namespace VRE {
         VkImage mTextureImage;
         VkDeviceMemory mTextureImageMemory;
         VkImageView mTextureImageView;
+        VkSampler mTextureSampler;
     };
 }

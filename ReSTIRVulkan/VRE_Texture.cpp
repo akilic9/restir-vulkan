@@ -9,11 +9,14 @@ VRE::VRE_Texture::VRE_Texture(VRE_Device& device)
     : mDevice(device)
     , mTextureImage(nullptr)
     , mTextureImageMemory(nullptr)
+    , mTextureImageView(nullptr)
+    , mTextureSampler(nullptr)
 {
 }
 
 VRE::VRE_Texture::~VRE_Texture()
 {
+    vkDestroySampler(mDevice.GetVkDevice(), mTextureSampler, nullptr);
     vkDestroyImageView(mDevice.GetVkDevice(), mTextureImageView, nullptr);
     vkDestroyImage(mDevice.GetVkDevice(), mTextureImage, nullptr);
     vkFreeMemory(mDevice.GetVkDevice(), mTextureImageMemory, nullptr);
@@ -128,10 +131,25 @@ void VRE::VRE_Texture::CreateTextureImageView()
 
     if (vkCreateImageView(mDevice.GetVkDevice(), &viewInfo, nullptr, &mTextureImageView) != VK_SUCCESS)
         throw std::runtime_error("Failed to create texture image view!");
-
-
 }
 
 void VRE::VRE_Texture::CreateTextureSampler()
 {
+    VkSamplerCreateInfo samplerInfo{};
+    samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+    samplerInfo.magFilter = VK_FILTER_LINEAR;
+    samplerInfo.minFilter = VK_FILTER_LINEAR;
+    samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerInfo.anisotropyEnable = VK_TRUE;
+    samplerInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;
+    samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;
+    samplerInfo.unnormalizedCoordinates = VK_FALSE;
+    samplerInfo.compareEnable = VK_FALSE;
+    samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;
+    samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+    samplerInfo.mipLodBias = 0.0f;
+    samplerInfo.minLod = 0.0f;
+    samplerInfo.maxLod = 0.0f;
 }
