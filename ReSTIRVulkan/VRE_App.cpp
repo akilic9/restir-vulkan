@@ -1,3 +1,17 @@
+/*
+*  Resources:
+*   Brendan Galea (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*   Wikipedia Contributors (2020). Blinn–Phong reflection model. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model (Accessed 15 Aug. 2024).
+*   lukasino 1214 (2022). Textures - Vulkan / Game Engine tutorial[0]. [online] YouTube. Available at: https://www.youtube.com/watch?v=_AitmLEnP28 and https://github.com/lukasino1214/Game-Engine-Tutorial (Accessed 10 Aug. 2024).
+*   Blanco, V. (2020). Vulkan Guide. [online] Vulkan Guide. Available at: https://vkguide.dev/ (Accessed 07 July 2024).
+*   GitHub. (n.d.). tinyobjloader/tinyobjloader. [online] Available at: https://github.com/tinyobjloader/tinyobjloader (Accessed 10 Jul. 2024).
+*   GitHub. (2020). g-truc/glm. [online] Available at: https://github.com/g-truc/glm (Accessed 10 Jun. 2024).
+*   GitHub. (2021). nothings/stb. [online] Available at: https://github.com/nothings/stb (Accessed 1 Aug. 2024).
+*   GLFW. (n.d.). An OpenGL library. [online] Available at: https://www.glfw.org/ (Accessed 7 Jun. 2024).
+*/
+
 #include "VRE_App.h"
 #include "VRE_RenderSystem.h"
 #include "VRE_PointLightRenderSystem.h"
@@ -103,50 +117,64 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
-    mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Models/test-text.jpg");
+    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
+    //auto flatVase = VRE_GameObject::CreateGameObject();
+    //flatVase.mModel = model;
+    //flatVase.mTransform.mTranslation = { -.5f, .5f, 0.f };
+    //flatVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
+    //mGameObjects.emplace(flatVase.GetID(), std::move(flatVase));
 
-    std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
-    auto flatVase = VRE_GameObject::CreateGameObject();
-    flatVase.mModel = model;
-    flatVase.mTransform.mTranslation = { -.5f, .5f, 0.f };
-    flatVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
-    mGameObjects.emplace(flatVase.GetID(), std::move(flatVase));
+    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/smooth_vase.obj");
+    //auto smoothVase = VRE_GameObject::CreateGameObject();
+    //smoothVase.mModel = model;
+    //smoothVase.mTransform.mTranslation = { .5f, .5f, 0.f };
+    //smoothVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
+    //mGameObjects.emplace(smoothVase.GetID(), std::move(smoothVase));
 
-    model = VRE_Model::CreateModel(mDevice, "Resources/Models/smooth_vase.obj");
-    auto smoothVase = VRE_GameObject::CreateGameObject();
-    smoothVase.mModel = model;
-    smoothVase.mTransform.mTranslation = { .5f, .5f, 0.f };
-    smoothVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
-    mGameObjects.emplace(smoothVase.GetID(), std::move(smoothVase));
+    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/quad.obj");
+    //auto floor = VRE_GameObject::CreateGameObject();
+    //floor.mModel = model;
+    //floor.mTransform.mTranslation = { 0.f, .5f, 0.f };
+    //floor.mTransform.mScale = { 3.f, 1.f, 3.f };
+    //mGameObjects.emplace(floor.GetID(), std::move(floor));
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    model = VRE_Model::CreateModel(mDevice, "Resources/Models/quad.obj");
-    auto floor = VRE_GameObject::CreateGameObject();
-    floor.mModel = model;
-    floor.mTransform.mTranslation = { 0.f, .5f, 0.f };
-    floor.mTransform.mScale = { 3.f, 1.f, 3.f };
-    mGameObjects.emplace(floor.GetID(), std::move(floor));
+    mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/viking_room.png");
 
-    //std::shared_ptr<VRE_Model> model = VRE::VRE_Model::CreateModel(mDevice, "Resources/Models/crate-strong.obj");
+    std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/viking_room.obj");
+    auto room = VRE_GameObject::CreateGameObject();
+    room.mModel = model;
+    room.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
+    room.mTransform.mTranslation = { -.5f, .5f, 0.f };
+    room.mTransform.mScale = { 1.5f, 1.5f, 1.5f };
+    mGameObjects.emplace(room.GetID(), std::move(room));
 
-    //auto obj = VRE::VRE_GameObject::CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    //obj.mTransform.mScale = glm::vec3{ 1.f };
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //mGameObjects.emplace(obj.GetID(), std::move(obj));
+    //mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/gold.jpg");
 
-    std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
+    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/coin-gold.obj");
+    //auto coin = VRE_GameObject::CreateGameObject();
+    //coin.mModel = model;
+    //coin.mTransform.mTranslation = { .0f, -.5f, 0.5f };
+    //coin.mTransform.mScale = { 1.5f, 1.5f, 1.5f };
+    //mGameObjects.emplace(coin.GetID(), std::move(coin));
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    std::vector<glm::vec3> coloredLights{/*{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
                                          {.1f, 1.f, .1f},
                                          {1.f, 1.f, .1f},
-                                         {.1f, 1.f, 1.f},
+                                         {.1f, 1.f, 1.f},*/
                                          {1.f, 1.f, 1.f}};
 
     for (int i = 0; i < coloredLights.size(); i++) {
-        auto pointLight = VRE_PointLight::CreatePointLight(0.2f);
+        auto pointLight = VRE_PointLight::CreatePointLight(0.5f);
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, -1.f, 0.f });
-        pointLight.mPosition = rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f);
+        pointLight.mPosition = /*rotateLight **/ glm::vec4(0.f, -1.f, 0.f, 1.f);
         mPointLights.push_back(std::move(pointLight));
     }
 }

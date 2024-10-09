@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VRE::VRE_Buffer" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAgAEABAAAACASCAAuUAAAEAIAAQBEAAxIAIqIEA=</HashCode>
+      <FileName>VRE_Buffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_DescriptorSetLayout" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <NestedTypes>
+      <Class Name="VRE::VRE_DescriptorSetLayout::Builder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>VRE_Descriptor.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAEAAAACAAAAAAAACgIAAAAIA=</HashCode>
+      <FileName>VRE_Descriptor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_DescriptorWriter" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAGAABAAAAAAAAAAgAAAIAAAAFAAAAA=</HashCode>
+      <FileName>VRE_Descriptor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_DescriptorPool" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Class Name="VRE::VRE_DescriptorPool::Builder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>VRE_Descriptor.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAACAAEAAAAAAAAAAAAABgIIAAACA=</HashCode>
+      <FileName>VRE_Descriptor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_PointLightRenderSystem" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAEAAgAACAAAAAAAQAAAAgIAAAIBA=</HashCode>
+      <FileName>VRE_PointLightRenderSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Texture" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAEEAAIAEIAIAAAACAAAAgAAAAAAgAAAwIEABAAA=</HashCode>
+      <FileName>VRE_Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Camera">
+    <Position X="15" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAQQAABCCAAAAAAAAAAAAAAEAQKAAAAAAAgAABAwA=</HashCode>
+      <FileName>VRE_Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_InputListener" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VRE_InputListener.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_RenderSystem" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAQAgAAABAAAAABQAAAAgIAAAABA=</HashCode>
+      <FileName>VRE_RenderSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_GameObject">
+    <Position X="11.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAEABAAAAAIAAAAAAAgAgAAAAAAAAAAAAgAAAAAgA=</HashCode>
+      <FileName>VRE_GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_App" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEAIBAAABAAAAAAAAABAAOAAAACAAgIABAACI=</HashCode>
+      <FileName>VRE_App.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Device" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EhYCLCIEAIRCggQAQAAAIAAEAtkAIgBAhAjkUIANAAA=</HashCode>
+      <FileName>VRE_Device.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Model">
+    <Position X="15.25" Y="4.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="VRE::VRE_Model::Vertex">
+        <TypeIdentifier>
+          <NewMemberFileName>VRE_Model.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="VRE::VRE_Model::ModelData">
+        <TypeIdentifier>
+          <NewMemberFileName>VRE_Model.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAgAIAIAAAAAAAgABAAEoAAIgICAAAAg=</HashCode>
+      <FileName>VRE_Model.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Pipeline" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgIAAAAAAQAAACAAFAACCAAAAAQAAAAAgIAAAAAA=</HashCode>
+      <FileName>VRE_Pipeline.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Renderer" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>giAAEADBAAAEBABAIAABRhgAAQAAAACgAAAgIAAAAAA=</HashCode>
+      <FileName>VRE_Renderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_SwapChain" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEYAEYBABAAAQAAEIACQEARBhgIAIxCMIIEiMMBBAZg=</HashCode>
+      <FileName>VRE_SwapChain.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRE::VRE_Window" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAoAAAAAogBoAAACAAAAAAAQQAAAQAAAAiAAAAAAI=</HashCode>
+      <FileName>VRE_Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="VRE::PointLightPC" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgA=</HashCode>
+      <FileName>VRE_PointLightRenderSystem.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::SimplePCData" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>VRE_RenderSystem.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::Transform">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABQAAAAAAAgAAAAAAAAAACAAAAAAAAQAAAAA=</HashCode>
+      <FileName>VRE_ObjectComponents.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::VRE_PointLight" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAACACAAAAAAAAAAgg=</HashCode>
+      <FileName>VRE_PointLight.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::VRE_FrameInfo" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAAAAAIAAAAAAAAAAQAAAAAAIAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>VRE_FrameInfo.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::PointLightInfo" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>VRE_FrameInfo.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::UBO" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAAAAAAAAAAIAIAIAAEAAAAAAAAAA=</HashCode>
+      <FileName>VRE_FrameInfo.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::SwapChainSupportDetails" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAgAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VRE_Device.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::QueueFamilyIndices" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAEAABAAAAAAAAAAACAAAAAAAACAAAAAA=</HashCode>
+      <FileName>VRE_Device.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VRE::PipelineConfigInfo" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAKAQBAAEAAEAAAACAAAAAAEAAGAAAAQAAIgAwAAABA=</HashCode>
+      <FileName>VRE_Pipeline.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="std::hash&lt;VRE::VRE_Model::Vertex&gt;" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VRE_Model.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
