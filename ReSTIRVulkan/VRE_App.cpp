@@ -1,6 +1,6 @@
 /*
 *  Resources:
-*   Brendan Galea (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
 *   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
 *   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
 *   Wikipedia Contributors (2020). Blinn–Phong reflection model. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model (Accessed 15 Aug. 2024).
@@ -146,8 +146,8 @@ void VRE::VRE_App::LoadObjects()
     auto room = VRE_GameObject::CreateGameObject();
     room.mModel = model;
     room.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
-    room.mTransform.mTranslation = { -.5f, .5f, 0.f };
-    room.mTransform.mScale = { 1.5f, 1.5f, 1.5f };
+    room.mTransform.mTranslation = { 0.f, 0.f, 0.f };
+    room.mTransform.mScale = { 1.f, 1.f, 1.f };
     mGameObjects.emplace(room.GetID(), std::move(room));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,18 +163,24 @@ void VRE::VRE_App::LoadObjects()
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    std::vector<glm::vec3> coloredLights{/*{1.f, .1f, .1f},
+    std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
                                          {.1f, 1.f, .1f},
                                          {1.f, 1.f, .1f},
-                                         {.1f, 1.f, 1.f},*/
+                                         {.1f, 1.f, 1.f},
                                          {1.f, 1.f, 1.f}};
 
     for (int i = 0; i < coloredLights.size(); i++) {
-        auto pointLight = VRE_PointLight::CreatePointLight(0.5f);
+        auto pointLight = VRE_PointLight::CreatePointLight(0.2f);
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, -1.f, 0.f });
-        pointLight.mPosition = /*rotateLight **/ glm::vec4(0.f, -1.f, 0.f, 1.f);
+        pointLight.mPosition = rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f);
         mPointLights.push_back(std::move(pointLight));
     }
+
+    //auto pointLight = VRE_PointLight::CreatePointLight(0.5f);
+    //pointLight.mColor = { 0.5f, 0.5f, 0.5f };
+    //pointLight.mPosition = { 0.f, 0.f, 0.f, 1.f };
+    //pointLight.mScale = 0.2f;
+    //mPointLights.push_back(std::move(pointLight));
 }

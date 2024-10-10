@@ -31,7 +31,7 @@ void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo,
     for (auto& light : frameInfo.mPointLights) {
         assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in FrameInfo.h!");
 
-        //light.mPosition = rotateLight * light.mPosition;
+        light.mPosition = rotateLight * light.mPosition;
 
         ubo.mPointLights[index].mPosition = light.mPosition;
         ubo.mPointLights[index].mColor = glm::vec4(light.mColor, light.mLightIntensity);
