@@ -7,7 +7,6 @@
 #include "VRE_GameObject.h"
 #include "VRE_Descriptor.h"
 #include "VRE_PointLight.h"
-#include "VRE_Texture.h"
 
 #include <memory>
 #include <vector>
@@ -37,7 +36,6 @@ namespace VRE {
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
         VRE_GameObject::GameObjectsMap mGameObjects;
         std::vector<VRE_PointLight> mPointLights;
-        std::shared_ptr<VRE_Texture> mTexture;
     };
 }
 

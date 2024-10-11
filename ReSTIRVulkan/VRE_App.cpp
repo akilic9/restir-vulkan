@@ -18,6 +18,7 @@
 #include "VRE_Camera.h"
 #include "VRE_InputListener.h"
 #include "VRE_Buffer.h"
+#include "VRE_glTFModel.h"
 #include <iostream>
 #include <array>
 #include <chrono>
@@ -55,7 +56,7 @@ void VRE::VRE_App::Run()
                          .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
                          .Build();
 
-    auto imageInfo = mTexture->getImageInfo();
+    //auto imageInfo = mTexture->getImageInfo();
 
 
     std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
@@ -63,7 +64,7 @@ void VRE::VRE_App::Run()
         auto bufferInfo = uboBuffers[i]->DescriptorInfo();
         VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
                             .WriteBuffer(0, &bufferInfo)
-                            .WriteImage(1, &imageInfo)
+                            //.WriteImage(1, &imageInfo)
                             .Build(descriptorSets[i]);
     }
 
@@ -117,6 +118,9 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
+    VRE_glTFModel* model = new VRE_glTFModel(mDevice, "Resources/Models/Duck/", "Duck");
+    model->LoadImages();
+
     //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     //auto flatVase = VRE_GameObject::CreateGameObject();
     //flatVase.mModel = model;
@@ -140,15 +144,15 @@ void VRE::VRE_App::LoadObjects()
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/viking_room.png");
+    //mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/viking_room.png");
 
-    std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/viking_room.obj");
-    auto room = VRE_GameObject::CreateGameObject();
-    room.mModel = model;
-    room.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
-    room.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    room.mTransform.mScale = { 1.f, 1.f, 1.f };
-    mGameObjects.emplace(room.GetID(), std::move(room));
+    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/viking_room.obj");
+    //auto room = VRE_GameObject::CreateGameObject();
+    //room.mModel = model;
+    //room.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
+    //room.mTransform.mTranslation = { 0.f, 0.f, 0.f };
+    //room.mTransform.mScale = { 1.f, 1.f, 1.f };
+    //mGameObjects.emplace(room.GetID(), std::move(room));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 

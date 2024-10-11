@@ -2,7 +2,6 @@
 #include "VRE_Buffer.h"
 #include <stdexcept>
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 VRE::VRE_Texture::VRE_Texture(VRE_Device& device, const std::string& filePath)

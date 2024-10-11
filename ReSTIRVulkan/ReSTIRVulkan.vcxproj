@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)stb_image;$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TinyGLTF;$(SolutionDir)stb_image;$(SolutionDir)TinyOBJLoader;$(SolutionDir)glfw-3.4\include;$(SolutionDir)glm;$(SolutionDir)VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -138,6 +138,7 @@
     <ClCompile Include="VRE_Buffer.cpp" />
     <ClCompile Include="VRE_Camera.cpp" />
     <ClCompile Include="VRE_Descriptor.cpp" />
+    <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
     <ClCompile Include="VRE_PointLightRenderSystem.cpp" />
     <ClCompile Include="VRE_RenderSystem.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="VRE_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="VRE_glTFModel.h" />
     <ClInclude Include="VRE_ObjectComponents.h" />
     <ClInclude Include="VRE_PointLight.h" />
     <ClInclude Include="VRE_Buffer.h" />
