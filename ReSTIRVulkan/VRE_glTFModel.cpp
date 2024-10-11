@@ -2,7 +2,8 @@
 #include <iostream>
 #include <gtc/type_ptr.hpp>
 
-//TinyGLTF library definitions and include. Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
+// TinyGLTF library definitions and include.
+// Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
 #define TINYGLTF_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #define TINYGLTF_NO_STB_IMAGE_WRITE
@@ -23,7 +24,8 @@ VRE::VRE_glTFModel::~VRE_glTFModel()
     for (auto node : mNodes) delete node;
 }
 
-//Just trying to test whether LoadNode is working for now, the class will be cleaned up later.
+// Just trying to test whether LoadNode and other stuff is working for now, so threw everything in this function.
+// The class will be cleaned up and organized once I get the code working.
 void VRE::VRE_glTFModel::LoadImages()
 {
     tinygltf::Model glTFInput;
@@ -74,7 +76,7 @@ void VRE::VRE_glTFModel::LoadImages()
 
 }
 
-//Want to pass tinygltf::Node and tinygltf::Model here, but how should the include be done in this case?
+// Want to pass tinygltf::Node and tinygltf::Model here, but how should the include be done in this case?
 void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent)
 {
     Node* node = new Node{};
