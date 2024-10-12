@@ -140,6 +140,7 @@
     <ClCompile Include="VRE_Descriptor.cpp" />
     <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
+    <ClCompile Include="VRE_ModelProperties.cpp" />
     <ClCompile Include="VRE_PointLightRenderSystem.cpp" />
     <ClCompile Include="VRE_RenderSystem.cpp" />
     <ClCompile Include="VRE_App.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VRE_glTFModel.h" />
+    <ClInclude Include="VRE_ModelProperties.h" />
     <ClInclude Include="VRE_ObjectComponents.h" />
     <ClInclude Include="VRE_PointLight.h" />
     <ClInclude Include="VRE_Buffer.h" />

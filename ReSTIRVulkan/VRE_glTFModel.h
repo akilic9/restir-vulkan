@@ -2,37 +2,16 @@
 #include "VRE_Device.h"
 #include "VRE_Buffer.h"
 #include "VRE_Texture.h"
+#include "VRE_ModelProperties.h"
 
-#include <vector>
 #include <memory>
 
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#include <glm.hpp>
+#define TINYGLTF_NO_STB_IMAGE_WRITE
+#include <tiny_gltf.h>
 
 namespace VRE {
 	class VRE_glTFModel {
     public:
-        struct Vertex {
-            glm::vec3 mPosition;
-            glm::vec3 mColor;
-            glm::vec3 mNormal;
-            glm::vec2 mTexCoord;
-
-            static std::vector<VkVertexInputBindingDescription> GetBindingDesc();
-            static std::vector<VkVertexInputAttributeDescription> GetAttributeDesc();
-
-            bool operator==(const Vertex& other) const {
-                return mPosition == other.mPosition && mColor == other.mColor &&
-                    mNormal == other.mNormal && mTexCoord == other.mTexCoord;
-            }
-        };
-
-        struct ModelData {
-            std::vector<Vertex> mVertices;
-            std::vector<uint32_t> mIndices;
-        };
-
         //Forward delare Node.
         struct Node;
 
@@ -67,8 +46,6 @@ namespace VRE {
 
         VRE_glTFModel(const VRE_glTFModel&) = delete;
         VRE_glTFModel& operator=(const VRE_glTFModel&) = delete;
-
-        static std::unique_ptr<VRE_glTFModel> CreateModel(VRE_Device& device, const std::string& filePath);
 
         void Bind(VkCommandBuffer commandBuffer);
         void Draw(VkCommandBuffer commandBuffer);

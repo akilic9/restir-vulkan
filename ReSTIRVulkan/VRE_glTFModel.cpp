@@ -2,13 +2,6 @@
 #include <iostream>
 #include <gtc/type_ptr.hpp>
 
-// TinyGLTF library definitions and include.
-// Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
-#define TINYGLTF_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#define TINYGLTF_NO_STB_IMAGE_WRITE
-#include <tiny_gltf.h>
-
 VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFolder, const std::string& fileName)
     : mDevice(device)
     , mVertexCount(0)
@@ -19,10 +12,7 @@ VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFol
 
 }
 
-VRE::VRE_glTFModel::~VRE_glTFModel()
-{
-    for (auto node : mNodes) delete node;
-}
+VRE::VRE_glTFModel::~VRE_glTFModel() { for (auto node : mNodes) delete node; }
 
 // Just trying to test whether LoadNode and other stuff is working for now, so threw everything in this function.
 // The class will be cleaned up and organized once I get the code working.

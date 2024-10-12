@@ -1,5 +1,4 @@
 #include "VRE_Model.h"
-#include "VRE_Utilities.h"
 #include <cassert>
 #include <cstring>
 #include <unordered_map>
@@ -7,21 +6,7 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <tiny_obj_loader.h>
 
-#define GLM_ENABLE_EXPERIMENTAL
-#include <gtx/hash.hpp>
-
-namespace std {
-    template <>
-    struct hash<VRE::VRE_Model::Vertex> {
-        size_t operator()(VRE::VRE_Model::Vertex const& vertex) const {
-            size_t seed = 0;
-            VRE::hashCombine(seed, vertex.mPosition, vertex.mColor, vertex.mNormal, vertex.mTexCoord);
-            return seed;
-        }
-    };
-}  // namespace std
-
-VRE::VRE_Model::VRE_Model(VRE_Device& device, const ModelData& data)
+VRE::VRE_Model::VRE_Model(VRE_Device& device, const std::string& filePath)
     : mDevice(device)
     , mVertexBuffer(nullptr)
     , mVertexCount(0)
@@ -29,19 +14,17 @@ VRE::VRE_Model::VRE_Model(VRE_Device& device, const ModelData& data)
     , mIndexBuffer(nullptr)
     , mIndexCount(0)
 {
-    CreateVertexBuffers(data.mVertices);
-    CreateIndexBuffer(data.mIndices);
+    VRE::ModelData modelData{};
+    LoadModel(filePath, modelData);
+    CreateVertexBuffers(modelData.mVertices);
+    CreateIndexBuffer(modelData.mIndices);
 }
 
 VRE::VRE_Model::~VRE_Model() {}
 
 std::unique_ptr<VRE::VRE_Model> VRE::VRE_Model::CreateModel(VRE_Device& device, const std::string& filePath)
 {
-    ModelData data{};
-
-    data.LoadModel(filePath);
-
-    return std::make_unique<VRE_Model>(device, data);
+    return std::make_unique<VRE_Model>(device, filePath);
 }
 
 void VRE::VRE_Model::Bind(VkCommandBuffer commandBuffer)
@@ -105,28 +88,7 @@ void VRE::VRE_Model::CreateIndexBuffer(const std::vector<uint32_t>& indices)
     mDevice.CopyBuffer(stagingBuffer.GetBuffer(), mIndexBuffer->GetBuffer(), bufferSize);
 }
 
-std::vector<VkVertexInputBindingDescription> VRE::VRE_Model::Vertex::GetBindingDesc()
-{
-    std::vector<VkVertexInputBindingDescription> bindingDescriptions(1);
-    bindingDescriptions[0].binding = 0;
-    bindingDescriptions[0].stride = sizeof(Vertex);
-    bindingDescriptions[0].inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-    return bindingDescriptions;
-}
-
-std::vector<VkVertexInputAttributeDescription> VRE::VRE_Model::Vertex::GetAttributeDesc()
-{
-    std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
-
-    attributeDescriptions.push_back({0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mPosition)});
-    attributeDescriptions.push_back({1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mColor)});
-    attributeDescriptions.push_back({2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mNormal)});
-    attributeDescriptions.push_back({3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord)});
-
-    return attributeDescriptions; 
-}
-
-void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
+void VRE::VRE_Model::LoadModel(const std::string& filePath, ModelData& data)
 {
     tinyobj::attrib_t attribute;
     std::vector<tinyobj::shape_t> shapes;
@@ -136,8 +98,8 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
     if (!tinyobj::LoadObj(&attribute, &shapes, &materials, &warning, &error, filePath.c_str()))
         throw std::runtime_error(warning + error);
 
-    mVertices.clear();
-    mIndices.clear();
+    data.mVertices.clear();
+    data.mIndices.clear();
 
     std::unordered_map<Vertex, uint32_t> uniqueVertices{};
     for (const auto& shape : shapes) {
@@ -174,10 +136,10 @@ void VRE::VRE_Model::ModelData::LoadModel(const std::string& filePath)
             }
 
             if (uniqueVertices.count(vertex) == 0) {
-                uniqueVertices[vertex] = static_cast<uint32_t>(mVertices.size());
-                mVertices.push_back(vertex);
+                uniqueVertices[vertex] = static_cast<uint32_t>(data.mVertices.size());
+                data.mVertices.push_back(vertex);
             }
-            mIndices.push_back(uniqueVertices[vertex]);
+            data.mIndices.push_back(uniqueVertices[vertex]);
         }
     }
 }
