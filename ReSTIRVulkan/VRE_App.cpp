@@ -28,12 +28,6 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
-// TinyGLTF library definitions and include.
-// Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
-#define TINYGLTF_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#include <tiny_gltf.h>
-
 VRE::VRE_App::VRE_App() : mRenderer{mWindow, mDevice}
 {
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
@@ -79,9 +73,6 @@ void VRE::VRE_App::Run()
     VRE_Camera camera{};
     VRE_InputListener inputListener{};
 
-    //camera.SetViewDirection(glm::vec3{ 0.f }, glm::vec3{ 0.5f, 0.f, 1.f });
-    //camera.SetViewTarget(glm::vec3(-1.f, -2.f, -2.f), glm::vec3(0.f, 0.f, 2.5f));
-
     auto startTime = std::chrono::high_resolution_clock::now();
 
     while (!mWindow.ShouldClose()) {
@@ -95,7 +86,6 @@ void VRE::VRE_App::Run()
         inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
 
         float aspRatio = mRenderer.GetAspectRatio();
-        //camera.SetOrthographicProjection(-1.f, 1.f, -aspRatio, aspRatio, -1.f, 1.f);
         camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
@@ -124,8 +114,13 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
-    VRE_glTFModel* model = new VRE_glTFModel(mDevice, "Resources/Models/Duck/", "Duck");
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
     model->LoadImages();
+    auto duck = VRE_GameObject::CreateGameObject();
+    duck.mModel = model;
+    duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
+    duck.mTransform.mScale = { 1.f, 1.f, 1.f };
+    mGameObjects.emplace(duck.GetID(), std::move(duck));
 
     //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     //auto flatVase = VRE_GameObject::CreateGameObject();

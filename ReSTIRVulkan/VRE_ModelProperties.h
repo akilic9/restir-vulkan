@@ -7,6 +7,12 @@
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm.hpp>
 
+// TinyGLTF library definitions and include.
+// Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
+#define TINYGLTF_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+#include <tiny_gltf.h>
+
 namespace VRE {
     struct Vertex {
         glm::vec3 mPosition;

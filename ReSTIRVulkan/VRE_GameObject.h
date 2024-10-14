@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <unordered_map>
-#include "VRE_Model.h"
+#include "VRE_glTFModel.h"
 #include "gtc/matrix_transform.hpp"
 #include "VRE_ObjectComponents.h"
 
@@ -26,7 +26,7 @@ namespace VRE {
 
         GameObjectID GetID() const { return mID; }
 
-        std::shared_ptr<VRE_Model> mModel;
+        std::shared_ptr<VRE_glTFModel> mModel;
         glm::vec3 mColor;
         VRE::Transform mTransform{};
 

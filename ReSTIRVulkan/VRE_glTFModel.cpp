@@ -63,6 +63,8 @@ void VRE::VRE_glTFModel::LoadImages()
         LoadNode(node, glTFInput, nullptr);
     }
 
+    CreateVertexBuffers(mModelData.mVertices);
+    CreateIndexBuffer(mModelData.mIndices);
 
 }
 
@@ -204,16 +206,81 @@ void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinyglt
 
 void VRE::VRE_glTFModel::CreateVertexBuffers(const std::vector<Vertex>& vertices)
 {
+    mVertexCount = static_cast<uint32_t>(vertices.size());
+
+    assert(mVertexCount >= 3 && "Vertex count must be at least 3!");
+    VkDeviceSize bufferSize = sizeof(vertices[0]) * mVertexCount;
+
+    uint32_t vertexSize = sizeof(vertices[0]);
+
+    VRE_Buffer stagingBuffer(mDevice, vertexSize, mVertexCount, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+
+    stagingBuffer.Map();
+    stagingBuffer.WriteToBuffer((void*)vertices.data());
+
+    mVertexBuffer = std::make_unique<VRE_Buffer>(mDevice, vertexSize, mVertexCount,
+        VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+
+    mDevice.CopyBuffer(stagingBuffer.GetBuffer(), mVertexBuffer->GetBuffer(), bufferSize);
 }
 
 void VRE::VRE_glTFModel::CreateIndexBuffer(const std::vector<uint32_t>& indices)
 {
+    mIndexCount = static_cast<uint32_t>(indices.size());
+
+    VkDeviceSize bufferSize = sizeof(indices[0]) * mIndexCount;
+    uint32_t indexSize = sizeof(indices[0]);
+
+    VRE_Buffer stagingBuffer(mDevice, indexSize, mIndexCount, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+    stagingBuffer.Map();
+    stagingBuffer.WriteToBuffer((void*)indices.data());
+
+    mIndexBuffer = std::make_unique<VRE_Buffer>(mDevice, indexSize, mIndexCount,
+        VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+
+    mDevice.CopyBuffer(stagingBuffer.GetBuffer(), mIndexBuffer->GetBuffer(), bufferSize);
 }
 
 void VRE::VRE_glTFModel::Bind(VkCommandBuffer commandBuffer)
 {
+    VkBuffer buffers[] = { mVertexBuffer->GetBuffer() };
+    VkDeviceSize offsets[] = { 0 };
+    vkCmdBindVertexBuffers(commandBuffer, 0, 1, buffers, offsets);
+
+    vkCmdBindIndexBuffer(commandBuffer, mIndexBuffer->GetBuffer(), 0, VK_INDEX_TYPE_UINT32);
 }
 
 void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer)
 {
+    for (auto& node : mNodes)
+    {
+        if (node->mMesh.mPrimitives.size() > 0) {
+            // Pass the node's matrix via push constants
+            // Traverse the node hierarchy to the top-most parent to get the final matrix of the current node
+            //glm::mat4 nodeMatrix = node->mMatrix;
+            //Node* currentParent = node->mParent;
+            //while (currentParent) {
+            //    nodeMatrix = currentParent->mMatrix * nodeMatrix;
+            //    currentParent = currentParent->mParent;
+            //}
+            //// Pass the final matrix to the vertex shader using push constants
+            //vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &nodeMatrix);
+            for (Primitive& primitive : node->mMesh.mPrimitives) {
+                if (primitive.mIndexCount > 0) {
+                    // Get the texture index for this primitive
+                    auto textureIndex = mTextureIndices[mMaterials[primitive.mMaterialIndex].mBaseColorTextureIndex];
+                    // Bind the descriptor for the current primitive's texture
+                    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &mTextures[textureIndex]->GetImageInfo(), 0, nullptr);
+                    vkCmdDrawIndexed(commandBuffer, primitive.mIndexCount, 1, primitive.mFirstIndex, 0, 0);
+                }
+            }
+        }
+        for (auto& child : node->mChildren) {
+            drawNode(commandBuffer, pipelineLayout, child);
+        }
+    }
 }
