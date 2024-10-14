@@ -258,29 +258,31 @@ void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer)
 {
     for (auto& node : mNodes)
     {
-        if (node->mMesh.mPrimitives.size() > 0) {
-            // Pass the node's matrix via push constants
-            // Traverse the node hierarchy to the top-most parent to get the final matrix of the current node
-            //glm::mat4 nodeMatrix = node->mMatrix;
-            //Node* currentParent = node->mParent;
-            //while (currentParent) {
-            //    nodeMatrix = currentParent->mMatrix * nodeMatrix;
-            //    currentParent = currentParent->mParent;
-            //}
-            //// Pass the final matrix to the vertex shader using push constants
-            //vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &nodeMatrix);
-            for (Primitive& primitive : node->mMesh.mPrimitives) {
-                if (primitive.mIndexCount > 0) {
-                    // Get the texture index for this primitive
-                    auto textureIndex = mTextureIndices[mMaterials[primitive.mMaterialIndex].mBaseColorTextureIndex];
-                    // Bind the descriptor for the current primitive's texture
-                    vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &mTextures[textureIndex]->GetImageInfo(), 0, nullptr);
-                    vkCmdDrawIndexed(commandBuffer, primitive.mIndexCount, 1, primitive.mFirstIndex, 0, 0);
-                }
+        DrawNode(commandBuffer, node);
+    }
+}
+
+void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, Node* node)
+{
+    if (node->mMesh.mPrimitives.size() > 0) {
+        // Pass the node's matrix via push constants
+        // Traverse the node hierarchy to the top-most parent to get the final matrix of the current node
+        //glm::mat4 nodeMatrix = node->mMatrix;
+        //Node* currentParent = node->mParent;
+        //while (currentParent) {
+        //    nodeMatrix = currentParent->mMatrix * nodeMatrix;
+        //    currentParent = currentParent->mParent;
+        //}
+        //// Pass the final matrix to the vertex shader using push constants
+        //vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &nodeMatrix);
+        for (Primitive& primitive : node->mMesh.mPrimitives) {
+            if (primitive.mIndexCount > 0) {
+                // Bind the descriptor for the current primitive's texture
+                vkCmdDrawIndexed(commandBuffer, primitive.mIndexCount, 1, primitive.mFirstIndex, 0, 0);
             }
         }
-        for (auto& child : node->mChildren) {
-            drawNode(commandBuffer, pipelineLayout, child);
-        }
+    }
+    for (auto& child : node->mChildren) {
+        DrawNode(commandBuffer, child);
     }
 }

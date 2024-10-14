@@ -28,6 +28,12 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
+// TinyGLTF library definitions and include.
+// Example and instructions: https://github.com/syoyo/tinygltf?tab=readme-ov-file#loading-gltf-20-model
+#define TINYGLTF_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+#include <tiny_gltf.h>
+
 VRE::VRE_App::VRE_App() : mRenderer{mWindow, mDevice}
 {
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
@@ -56,15 +62,12 @@ void VRE::VRE_App::Run()
                          .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
                          .Build();
 
-    //auto imageInfo = mTexture->getImageInfo();
-
 
     std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
     for (int i = 0; i < descriptorSets.size(); i++) {
         auto bufferInfo = uboBuffers[i]->DescriptorInfo();
         VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
                             .WriteBuffer(0, &bufferInfo)
-                            //.WriteImage(1, &imageInfo)
                             .Build(descriptorSets[i]);
     }
 
@@ -82,11 +85,11 @@ void VRE::VRE_App::Run()
         const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
         startTime = currentTime;
 
-        // TODO: can probably optimize this using glfw callback function.
-        inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
-
         float aspRatio = mRenderer.GetAspectRatio();
         camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
+
+        // TODO: can probably optimize this using glfw callback function.
+        inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
@@ -119,7 +122,7 @@ void VRE::VRE_App::LoadObjects()
     auto duck = VRE_GameObject::CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    duck.mTransform.mScale = { 1.f, 1.f, 1.f };
+    duck.mTransform.mScale = { 0.001f, 0.001f, 0.001f };
     mGameObjects.emplace(duck.GetID(), std::move(duck));
 
     //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
@@ -178,8 +181,8 @@ void VRE::VRE_App::LoadObjects()
     for (int i = 0; i < coloredLights.size(); i++) {
         auto pointLight = VRE_PointLight::CreatePointLight(0.2f);
         pointLight.mColor = coloredLights[i];
-        auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, -1.f, 0.f });
-        pointLight.mPosition = rotateLight * glm::vec4(-1.f, -1.f, -1.f, 1.f);
+        auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, 1.f, 0.f });
+        pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);
         mPointLights.push_back(std::move(pointLight));
     }
 

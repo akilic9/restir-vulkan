@@ -49,6 +49,7 @@ namespace VRE {
 
         void Bind(VkCommandBuffer commandBuffer);
         void Draw(VkCommandBuffer commandBuffer);
+        void DrawNode(VkCommandBuffer commandBuffer, Node* node);
 
         void LoadImages();
         void LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent);
