@@ -115,6 +115,7 @@ void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinyglt
                 const float* positionBuffer = nullptr;
                 const float* normalsBuffer = nullptr;
                 const float* texCoordsBuffer = nullptr;
+                const float* coloursBuffer = nullptr;
                 size_t vertexCount = 0;
 
                 // Get buffer data for vertex positions
@@ -140,13 +141,19 @@ void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinyglt
                     texCoordsBuffer = reinterpret_cast<const float*>(&(input.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
                 }
 
+                if (glTFPrimitive.attributes.find("COLOR_0") != glTFPrimitive.attributes.end()) {
+                    const tinygltf::Accessor& accessor = input.accessors[glTFPrimitive.attributes.find("COLOR_0")->second];
+                    const tinygltf::BufferView& view = input.bufferViews[accessor.bufferView];
+                    coloursBuffer = reinterpret_cast<const float*>(&(input.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
+                }
+
                 // Append data to model's vertex buffer
                 for (size_t v = 0; v < vertexCount; v++) {
                     Vertex vert{};
                     vert.mPosition = glm::vec4(glm::make_vec3(&positionBuffer[v * 3]), 1.0f);
                     vert.mNormal = glm::normalize(glm::vec3(normalsBuffer ? glm::make_vec3(&normalsBuffer[v * 3]) : glm::vec3(0.0f)));
                     vert.mTexCoord = texCoordsBuffer ? glm::make_vec2(&texCoordsBuffer[v * 2]) : glm::vec3(0.0f);
-                    vert.mColor = glm::vec3(1.0f);
+                    vert.mColor = coloursBuffer ? glm::make_vec3(&coloursBuffer[v * 3]) : glm::vec3(1.0f);
                     mModelData.mVertices.push_back(vert);
                     mVertexCount++;
                 }
