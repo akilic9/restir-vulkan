@@ -138,6 +138,7 @@
     <ClCompile Include="VRE_Buffer.cpp" />
     <ClCompile Include="VRE_Camera.cpp" />
     <ClCompile Include="VRE_Descriptor.cpp" />
+    <ClCompile Include="VRE_GameObject.cpp" />
     <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
     <ClCompile Include="VRE_ModelProperties.cpp" />

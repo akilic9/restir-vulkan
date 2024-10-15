@@ -1,15 +1,6 @@
 #include "VRE_RenderSystem.h"
 #include <stdexcept>
 
-//will be refactored and moved.
-namespace VRE {
-    //push constant data.
-    struct SimplePCData {
-        glm::mat4 mModelMatrix{ 1.f };
-        glm::mat4 mNormalMatrix{ 1.f };
-    };
-}
-
 VRE::VRE_RenderSystem::VRE_RenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
     : mDevice(device)
 {
@@ -32,11 +23,14 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
         if (!e.second.mModel)
             continue;
 
-        SimplePCData pc{};
-        pc.mModelMatrix = e.second.mTransform.Mat4();
-        pc.mNormalMatrix = e.second.mTransform.NormalMatrix();
+        auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
+        VkDescriptorSet gameObjectDescriptorSet;
 
-        vkCmdPushConstants(frameInfo.mCommandBuffer, mPipelineLayout, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(SimplePCData), &pc);
+        VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool)
+                             .WriteBuffer(0, &bufferInfo)
+                             .Build(gameObjectDescriptorSet);
+
+        vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &gameObjectDescriptorSet, 0, nullptr);
 
         e.second.mModel->Bind(frameInfo.mCommandBuffer);
         e.second.mModel->Draw(frameInfo.mCommandBuffer);
@@ -45,9 +39,14 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
 
 void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
-    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(SimplePCData) };
+    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData) };
 
-    std::vector<VkDescriptorSetLayout> descSetLayouts{descSetLayout};
+    mRenderSystemLayout = VRE_DescriptorSetLayout::Builder(mDevice)
+                         .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT)
+                         .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+                         .Build();
+
+    std::vector<VkDescriptorSetLayout> descSetLayouts{descSetLayout, mRenderSystemLayout->GetDescriptorSetLayout() };
 
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;

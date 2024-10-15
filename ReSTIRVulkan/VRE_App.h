@@ -33,7 +33,8 @@ namespace VRE {
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
-        VRE_GameObject::GameObjectsMap mGameObjects;
+        std::vector<std::unique_ptr<VRE_DescriptorPool>> mFramePools;
+        VRE_GameObjectManager mGameObjectManager;
         std::vector<VRE_PointLight> mPointLights;
     };
 }

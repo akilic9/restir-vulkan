@@ -3,6 +3,7 @@
 #include "VRE_Camera.h"
 #include "VRE_GameObject.h"
 #include "VRE_PointLight.h"
+#include "VRE_Descriptor.h"
 
 namespace VRE {
 
@@ -13,6 +14,7 @@ namespace VRE {
         VkCommandBuffer mCommandBuffer;
         VRE_Camera &mCamera;
         VkDescriptorSet mDescSet;
+        VRE_DescriptorPool &mFrameDescPool;
         VRE_GameObject::GameObjectsMap &mGameObjects;
         std::vector<VRE_PointLight> &mPointLights;
     };

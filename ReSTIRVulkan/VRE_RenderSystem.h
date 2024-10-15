@@ -25,5 +25,6 @@ namespace VRE {
         VRE_Device& mDevice;
         std::unique_ptr<VRE_Pipeline> mPipeline;
         VkPipelineLayout mPipelineLayout;
+        std::unique_ptr<VRE_DescriptorSetLayout> mRenderSystemLayout;
     };
 }

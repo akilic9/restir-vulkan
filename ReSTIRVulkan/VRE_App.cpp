@@ -34,13 +34,23 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <tiny_gltf.h>
 
-VRE::VRE_App::VRE_App() : mRenderer{mWindow, mDevice}
+VRE::VRE_App::VRE_App() : mRenderer(mWindow, mDevice), mGameObjectManager(mDevice)
 {
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
                       .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
-                      .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .Build();
+
+    mFramePools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
+    auto framePoolBuilder = VRE_DescriptorPool::Builder(mDevice)
+        .SetMaxSets(1000)
+        .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
+        .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
+        .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
+
+    for (int i = 0; i < mFramePools.size(); i++) {
+        mFramePools[i] = framePoolBuilder.Build();
+    }
 
     LoadObjects();
 }
@@ -93,7 +103,9 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
-            VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex], mGameObjects, mPointLights};
+            mFramePools[frameIndex]->ResetPool();
+            VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex],
+                                     *mFramePools[frameIndex], mGameObjectManager.mGameObjectsMap, mPointLights};
 
             //Update
             UBO ubo;
@@ -103,6 +115,8 @@ void VRE::VRE_App::Run()
             lightRenderSys.Update(frameInfo, ubo, deltaTime);
             uboBuffers[frameIndex]->WriteToBuffer(&ubo);
             uboBuffers[frameIndex]->Flush();
+
+            mGameObjectManager.UpdateBuffer(frameIndex);
 
             //Render
             mRenderer.BeginSwapChainRenderPass(commandBuffer);
@@ -119,11 +133,10 @@ void VRE::VRE_App::LoadObjects()
 {
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
     model->LoadImages();
-    auto duck = VRE_GameObject::CreateGameObject();
+    VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
     duck.mTransform.mScale = { 0.001f, 0.001f, 0.001f };
-    mGameObjects.emplace(duck.GetID(), std::move(duck));
 
     //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     //auto flatVase = VRE_GameObject::CreateGameObject();
