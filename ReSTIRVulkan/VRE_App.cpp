@@ -191,7 +191,7 @@ void VRE::VRE_App::LoadObjects()
                                          {1.f, 1.f, 1.f}};
 
     for (int i = 0; i < coloredLights.size(); i++) {
-        auto pointLight = VRE_PointLight::CreatePointLight(0.2f);
+        auto pointLight = VRE_PointLight::CreatePointLight(0.75f);
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, 1.f, 0.f });
         pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);
