@@ -23,17 +23,12 @@ void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
         if (!e.second.mModel)
             continue;
 
-        auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
-        VkDescriptorSet gameObjectDescriptorSet;
-
-        VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool)
-                             .WriteBuffer(0, &bufferInfo)
-                             .Build(gameObjectDescriptorSet);
-
-        vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &gameObjectDescriptorSet, 0, nullptr);
-
         e.second.mModel->Bind(frameInfo.mCommandBuffer);
-        e.second.mModel->Draw(frameInfo.mCommandBuffer);
+
+        auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
+        auto writer = VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool);
+        writer.WriteBuffer(0, &bufferInfo);
+        e.second.mModel->Draw(frameInfo.mCommandBuffer, mPipelineLayout, writer);
     }
 }
 

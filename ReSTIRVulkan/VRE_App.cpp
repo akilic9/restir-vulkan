@@ -69,7 +69,6 @@ void VRE::VRE_App::Run()
 
     auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
                          .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
-                         .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
                          .Build();
 
 
@@ -131,12 +130,12 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
-    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
     model->LoadImages();
     VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    duck.mTransform.mScale = { 0.001f, 0.001f, 0.001f };
+    duck.mTransform.mScale = { 1.f, 1.f, 1.f };
 
     //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
     //auto flatVase = VRE_GameObject::CreateGameObject();

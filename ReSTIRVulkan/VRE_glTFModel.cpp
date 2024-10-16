@@ -28,10 +28,8 @@ void VRE::VRE_glTFModel::LoadImages()
         throw std::runtime_error("Failed to load glTF file!");
 
     // Load textures
-    mTextures.resize(glTFInput.images.size());
-    filePath = mFileFolder;
-
     for (auto &image : glTFInput.images) {
+        filePath = mFileFolder;
         std::cout << filePath.append(image.name).append(image.uri) << std::endl;
         mTextures.push_back(std::move(VRE_Texture::CreateTexture(mDevice, filePath)));
     }
@@ -72,24 +70,7 @@ void VRE::VRE_glTFModel::LoadImages()
 void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent)
 {
     Node* node = new Node{};
-    node->mMatrix = glm::mat4(1.0f);
     node->mParent = parent;
-
-    // Get the local node matrix
-    // It's either made up from translation, rotation, scale or a 4x4 matrix
-    if (inputNode.translation.size() == 3) {
-        node->mMatrix = glm::translate(node->mMatrix, glm::vec3(glm::make_vec3(inputNode.translation.data())));
-    }
-    if (inputNode.rotation.size() == 4) {
-        glm::quat q = glm::make_quat(inputNode.rotation.data());
-        node->mMatrix *= glm::mat4(q);
-    }
-    if (inputNode.scale.size() == 3) {
-        node->mMatrix = glm::scale(node->mMatrix, glm::vec3(glm::make_vec3(inputNode.scale.data())));
-    }
-    if (inputNode.matrix.size() == 16) {
-        node->mMatrix = glm::make_mat4x4(inputNode.matrix.data());
-    };
 
     // Load node's children
     if (inputNode.children.size() > 0) {
@@ -261,35 +242,33 @@ void VRE::VRE_glTFModel::Bind(VkCommandBuffer commandBuffer)
     vkCmdBindIndexBuffer(commandBuffer, mIndexBuffer->GetBuffer(), 0, VK_INDEX_TYPE_UINT32);
 }
 
-void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer)
+void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer)
 {
     for (auto& node : mNodes)
     {
-        DrawNode(commandBuffer, node);
+        DrawNode(commandBuffer, node, pipelineLayout, writer);
     }
 }
 
-void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, Node* node)
+void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer)
 {
     if (node->mMesh.mPrimitives.size() > 0) {
-        // Pass the node's matrix via push constants
-        // Traverse the node hierarchy to the top-most parent to get the final matrix of the current node
-        //glm::mat4 nodeMatrix = node->mMatrix;
-        //Node* currentParent = node->mParent;
-        //while (currentParent) {
-        //    nodeMatrix = currentParent->mMatrix * nodeMatrix;
-        //    currentParent = currentParent->mParent;
-        //}
-        //// Pass the final matrix to the vertex shader using push constants
-        //vkCmdPushConstants(commandBuffer, pipelineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(glm::mat4), &nodeMatrix);
         for (Primitive& primitive : node->mMesh.mPrimitives) {
             if (primitive.mIndexCount > 0) {
+                // Get the texture index for this primitive
+                auto texture = mTextureIndices[mMaterials[primitive.mMaterialIndex].mBaseColorTextureIndex];
                 // Bind the descriptor for the current primitive's texture
+                auto imageInfo = mTextures[texture]->GetImageInfo();
+                VRE_DescriptorWriter w = writer;
+                w.WriteImage(1, &imageInfo);
+                VkDescriptorSet gameObjectDescriptorSet;
+                w.Build(gameObjectDescriptorSet);
+                vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &gameObjectDescriptorSet, 0, nullptr);
                 vkCmdDrawIndexed(commandBuffer, primitive.mIndexCount, 1, primitive.mFirstIndex, 0, 0);
             }
         }
     }
     for (auto& child : node->mChildren) {
-        DrawNode(commandBuffer, child);
+        DrawNode(commandBuffer, child, pipelineLayout, writer);
     }
 }

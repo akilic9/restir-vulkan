@@ -3,6 +3,8 @@
 #include "VRE_Buffer.h"
 #include "VRE_Texture.h"
 #include "VRE_ModelProperties.h"
+#include "VRE_Pipeline.h"
+#include "VRE_Descriptor.h"
 
 #include <memory>
 
@@ -31,7 +33,6 @@ namespace VRE {
             Node* mParent;
             std::vector<Node*> mChildren;
             Mesh mMesh;
-            glm::mat4 mMatrix;
             ~Node() { for (auto& child : mChildren) delete child; }
         };
 
@@ -48,8 +49,8 @@ namespace VRE {
         VRE_glTFModel& operator=(const VRE_glTFModel&) = delete;
 
         void Bind(VkCommandBuffer commandBuffer);
-        void Draw(VkCommandBuffer commandBuffer);
-        void DrawNode(VkCommandBuffer commandBuffer, Node* node);
+        void Draw(VkCommandBuffer commandBuffer, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
+        void DrawNode(VkCommandBuffer commandBuffer, Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
 
         void LoadImages();
         void LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent);
