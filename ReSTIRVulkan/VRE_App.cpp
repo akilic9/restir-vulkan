@@ -92,6 +92,7 @@ void VRE::VRE_App::Run()
 
         const auto currentTime = std::chrono::high_resolution_clock::now();
         const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+        std::cout << 1.0f / deltaTime << std::endl;
         startTime = currentTime;
 
         float aspRatio = mRenderer.GetAspectRatio();

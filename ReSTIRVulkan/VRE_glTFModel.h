@@ -14,7 +14,7 @@
 namespace VRE {
 	class VRE_glTFModel {
     public:
-        //Forward delare Node.
+        //Forward declare Node.
         struct Node;
 
         struct Primitive {

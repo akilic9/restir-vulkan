@@ -259,10 +259,9 @@ void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, Node* node, VkP
                 auto texture = mTextureIndices[mMaterials[primitive.mMaterialIndex].mBaseColorTextureIndex];
                 // Bind the descriptor for the current primitive's texture
                 auto imageInfo = mTextures[texture]->GetImageInfo();
-                VRE_DescriptorWriter w = writer;
-                w.WriteImage(1, &imageInfo);
+                writer.WriteImage(1, &imageInfo);
                 VkDescriptorSet gameObjectDescriptorSet;
-                w.Build(gameObjectDescriptorSet);
+                writer.Build(gameObjectDescriptorSet);
                 vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 1, 1, &gameObjectDescriptorSet, 0, nullptr);
                 vkCmdDrawIndexed(commandBuffer, primitive.mIndexCount, 1, primitive.mFirstIndex, 0, 0);
             }
