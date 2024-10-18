@@ -75,6 +75,6 @@ namespace VRE {
         const std::string mFileFolder;
         const std::string mFileName;
 
-        ModelData mModelData;
+        ModelData mModelData; // TODO: Might not need all this stuff to be member variable?
     };
 }

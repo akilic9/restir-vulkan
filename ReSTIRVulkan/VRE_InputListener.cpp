@@ -1,6 +1,7 @@
 #include "VRE_InputListener.h"
 #include <iostream>
 
+// TODO: Expand this into a proper input system.
 void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& camera)
 {
     int width, height;

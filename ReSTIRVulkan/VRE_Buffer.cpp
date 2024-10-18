@@ -1,5 +1,5 @@
 /*
- * Encapsulates a vulkan buffer
+ * Encapsulates a Vulkan buffer.
  *
  * Initially based off VulkanBuffer by Sascha Willems -
  * https://github.com/SaschaWillems/Vulkan/blob/master/base/VulkanBuffer.h

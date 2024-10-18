@@ -12,6 +12,8 @@
 *   GLFW. (n.d.). An OpenGL library. [online] Available at: https://www.glfw.org/ (Accessed 7 Jun. 2024).
 */
 
+#include <imgui.h>
+
 #include "VRE_App.h"
 #include "VRE_RenderSystem.h"
 #include "VRE_PointLightRenderSystem.h"
@@ -19,6 +21,7 @@
 #include "VRE_InputListener.h"
 #include "VRE_Buffer.h"
 #include "VRE_glTFModel.h"
+
 #include <iostream>
 #include <array>
 #include <chrono>
@@ -33,6 +36,8 @@
 #define TINYGLTF_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #include <tiny_gltf.h>
+
+// TODO: Tidy up this place???
 
 VRE::VRE_App::VRE_App() : mRenderer(mWindow, mDevice), mGameObjectManager(mDevice)
 {
@@ -136,7 +141,7 @@ void VRE::VRE_App::LoadObjects()
     VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    duck.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
+    duck.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
     duck.mTransform.mScale = { 1.f, 1.f, 1.f };
 
     std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},

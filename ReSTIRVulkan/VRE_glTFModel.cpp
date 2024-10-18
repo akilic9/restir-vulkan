@@ -8,12 +8,11 @@ VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFol
     , mIndexCount(0)
     , mFileFolder(fileFolder)
     , mFileName(fileName)
-{
-
-}
+{}
 
 VRE::VRE_glTFModel::~VRE_glTFModel() { for (auto node : mNodes) delete node; }
 
+// TODO: Clean up and restructure.
 // Just trying to test whether LoadNode and other stuff is working for now, so threw everything in this function.
 // The class will be cleaned up and organized once I get the code working.
 void VRE::VRE_glTFModel::LoadImages()
@@ -66,6 +65,7 @@ void VRE::VRE_glTFModel::LoadImages()
 
 }
 
+// TODO: Clean up and restructure.
 // Want to pass tinygltf::Node and tinygltf::Model here, but how should the include be done in this case?
 void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent)
 {
@@ -242,6 +242,7 @@ void VRE::VRE_glTFModel::Bind(VkCommandBuffer commandBuffer)
     vkCmdBindIndexBuffer(commandBuffer, mIndexBuffer->GetBuffer(), 0, VK_INDEX_TYPE_UINT32);
 }
 
+// TODO: Make draw functions better? Somehow?
 void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer)
 {
     for (auto& node : mNodes)
