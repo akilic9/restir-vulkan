@@ -6,8 +6,6 @@
 #include "VRE_Pipeline.h"
 #include "VRE_Descriptor.h"
 
-#include <memory>
-
 #define TINYGLTF_NO_STB_IMAGE_WRITE
 #include "tiny_gltf.h"
 
@@ -15,29 +13,29 @@ namespace VRE {
 	class VRE_glTFModel {
     public:
         //Forward declare Node.
-        struct Node;
+        struct VRE_Node;
 
-        struct Primitive {
+        struct VRE_Primitive {
             uint32_t mFirstIndex;
             uint32_t mIndexCount;
             int32_t mMaterialIndex;
         };
 
         // Contains the node's (optional) geometry and can be made up of an arbitrary number of primitives.
-        struct Mesh {
-            std::vector<Primitive> mPrimitives;
+        struct VRE_Mesh {
+            std::vector<VRE_Primitive> mPrimitives;
         };
 
         // A node represents an object in the glTF scene graph.
-        struct Node {
-            Node* mParent;
-            std::vector<Node*> mChildren;
-            Mesh mMesh;
-            ~Node() { for (auto& child : mChildren) delete child; }
+        struct VRE_Node {
+            VRE_Node* mParent;
+            std::vector<VRE_Node*> mChildren;
+            VRE_Mesh mMesh;
+            ~VRE_Node() { for (auto& child : mChildren) delete child; }
         };
 
         // A glTF material stores information in e.g. the texture that is attached to it and colors.
-        struct Material {
+        struct VRE_Material {
             glm::vec4 mBaseColorFactor = glm::vec4(1.0f);
             uint32_t mBaseColorTextureIndex;
         };
@@ -50,10 +48,10 @@ namespace VRE {
 
         void Bind(VkCommandBuffer commandBuffer);
         void Draw(VkCommandBuffer commandBuffer, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
-        void DrawNode(VkCommandBuffer commandBuffer, Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
+        void DrawNode(VkCommandBuffer commandBuffer, VRE_Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
 
         void LoadImages();
-        void LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent);
+        void LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, VRE_Node* parent);
 
     private:
         void CreateVertexBuffers(const std::vector<Vertex>& vertices);
@@ -68,8 +66,8 @@ namespace VRE {
         uint32_t mIndexCount;
 
         std::vector<std::unique_ptr<VRE_Texture>> mTextures;
-        std::vector<Material> mMaterials;
-        std::vector<Node*> mNodes;
+        std::vector<VRE_Material> mMaterials;
+        std::vector<VRE_Node*> mNodes;
         std::vector<int32_t> mTextureIndices;
 
         const std::string mFileFolder;

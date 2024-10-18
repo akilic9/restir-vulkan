@@ -1,9 +1,10 @@
+#define TINYGLTF_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+#define STBI_MSC_SECURE_CRT
+
 #include "VRE_glTFModel.h"
 #include <iostream>
 #include <gtc/type_ptr.hpp>
-
-//#define TINYGLTF_IMPLEMENTATION
-//#define STB_IMAGE_IMPLEMENTATION
 
 VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFolder, const std::string& fileName)
     : mDevice(device)
@@ -70,9 +71,9 @@ void VRE::VRE_glTFModel::LoadImages()
 
 // TODO: Clean up and restructure.
 // Want to pass tinygltf::Node and tinygltf::Model here, but how should the include be done in this case?
-void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, Node* parent)
+void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinygltf::Model& input, VRE_Node* parent)
 {
-    Node* node = new Node{};
+    VRE_Node* node = new VRE_Node{};
     node->mParent = parent;
 
     // Load node's children
@@ -181,7 +182,7 @@ void VRE::VRE_glTFModel::LoadNode(const tinygltf::Node& inputNode, const tinyglt
                     return;
                 }
             }
-            Primitive primitive{};
+            VRE_Primitive primitive{};
             primitive.mFirstIndex = firstIndex;
             primitive.mIndexCount = indexCount;
             primitive.mMaterialIndex = glTFPrimitive.material;
@@ -254,10 +255,10 @@ void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer, VkPipelineLayout& p
     }
 }
 
-void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer)
+void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, VRE_Node* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer)
 {
     if (node->mMesh.mPrimitives.size() > 0) {
-        for (Primitive& primitive : node->mMesh.mPrimitives) {
+        for (VRE_Primitive& primitive : node->mMesh.mPrimitives) {
             if (primitive.mIndexCount > 0) {
                 // Get the texture index for this primitive
                 auto texture = mTextureIndices[mMaterials[primitive.mMaterialIndex].mBaseColorTextureIndex];
