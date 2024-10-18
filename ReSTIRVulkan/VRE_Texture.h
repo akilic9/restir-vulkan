@@ -18,6 +18,7 @@ namespace VRE {
 
     private:
         void CreateImage(const std::string& filePath);
+        void GenerateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight);
         void TransitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout);
         void CreateTextureImageView();
         void CreateTextureSampler();
@@ -30,5 +31,7 @@ namespace VRE {
         VkImageView mTextureImageView;
         VkSampler mTextureSampler;
         VkDescriptorImageInfo mDescriptor{};
+
+        uint32_t mMipLevels;
     };
 }

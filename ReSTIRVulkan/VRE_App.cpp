@@ -43,10 +43,10 @@ VRE::VRE_App::VRE_App() : mRenderer(mWindow, mDevice), mGameObjectManager(mDevic
 
     mFramePools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
     auto framePoolBuilder = VRE_DescriptorPool::Builder(mDevice)
-        .SetMaxSets(1000)
-        .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
-        .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
-        .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
+                            .SetMaxSets(1000)
+                            .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
+                            .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
+                            .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
 
     for (int i = 0; i < mFramePools.size(); i++) {
         mFramePools[i] = framePoolBuilder.Build();
@@ -131,58 +131,13 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::LoadObjects()
 {
-    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
     model->LoadImages();
     VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
+    duck.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
     duck.mTransform.mScale = { 1.f, 1.f, 1.f };
-
-    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/flat_vase.obj");
-    //auto flatVase = VRE_GameObject::CreateGameObject();
-    //flatVase.mModel = model;
-    //flatVase.mTransform.mTranslation = { -.5f, .5f, 0.f };
-    //flatVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
-    //mGameObjects.emplace(flatVase.GetID(), std::move(flatVase));
-
-    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/smooth_vase.obj");
-    //auto smoothVase = VRE_GameObject::CreateGameObject();
-    //smoothVase.mModel = model;
-    //smoothVase.mTransform.mTranslation = { .5f, .5f, 0.f };
-    //smoothVase.mTransform.mScale = { 3.f, 1.5f, 3.f };
-    //mGameObjects.emplace(smoothVase.GetID(), std::move(smoothVase));
-
-    //model = VRE_Model::CreateModel(mDevice, "Resources/Models/quad.obj");
-    //auto floor = VRE_GameObject::CreateGameObject();
-    //floor.mModel = model;
-    //floor.mTransform.mTranslation = { 0.f, .5f, 0.f };
-    //floor.mTransform.mScale = { 3.f, 1.f, 3.f };
-    //mGameObjects.emplace(floor.GetID(), std::move(floor));
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/viking_room.png");
-
-    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/viking_room.obj");
-    //auto room = VRE_GameObject::CreateGameObject();
-    //room.mModel = model;
-    //room.mTransform.mRotation = { glm::half_pi<float>(), glm::half_pi<float>(), 0.f };
-    //room.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    //room.mTransform.mScale = { 1.f, 1.f, 1.f };
-    //mGameObjects.emplace(room.GetID(), std::move(room));
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //mTexture = VRE_Texture::CreateTexture(mDevice, "Resources/Textures/gold.jpg");
-
-    //std::shared_ptr<VRE_Model> model = VRE_Model::CreateModel(mDevice, "Resources/Models/coin-gold.obj");
-    //auto coin = VRE_GameObject::CreateGameObject();
-    //coin.mModel = model;
-    //coin.mTransform.mTranslation = { .0f, -.5f, 0.5f };
-    //coin.mTransform.mScale = { 1.5f, 1.5f, 1.5f };
-    //mGameObjects.emplace(coin.GetID(), std::move(coin));
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
@@ -198,10 +153,4 @@ void VRE::VRE_App::LoadObjects()
         pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);
         mPointLights.push_back(std::move(pointLight));
     }
-
-    //auto pointLight = VRE_PointLight::CreatePointLight(0.5f);
-    //pointLight.mColor = { 0.5f, 0.5f, 0.5f };
-    //pointLight.mPosition = { 0.f, 0.f, 0.f, 1.f };
-    //pointLight.mScale = 0.2f;
-    //mPointLights.push_back(std::move(pointLight));
 }

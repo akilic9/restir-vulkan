@@ -42,6 +42,7 @@ namespace VRE {
         
         VkCommandPool GetCommandPool() { return mCommandPool; }
         VkDevice GetVkDevice() { return mVkDevice; }
+        VkPhysicalDevice GetPhysicalDevice() { return mPhysicalDevice; }
         VkSurfaceKHR Surface() { return mVkSurface; }
         VkQueue GraphicsQueue() { return mGraphicsQueue; }
         VkQueue PresentQueue() { return mPresentQueue; }
