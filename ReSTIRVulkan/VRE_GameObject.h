@@ -2,8 +2,8 @@
 #include <memory>
 #include <unordered_map>
 
-#include "VRE_glTFModel.h"
 #include "gtc/matrix_transform.hpp"
+#include "VRE_glTFModel.h"
 #include "VRE_ObjectComponents.h"
 #include "VRE_SwapChain.h"
 

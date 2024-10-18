@@ -2,6 +2,9 @@
 #include <iostream>
 #include <gtc/type_ptr.hpp>
 
+//#define TINYGLTF_IMPLEMENTATION
+//#define STB_IMAGE_IMPLEMENTATION
+
 VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFolder, const std::string& fileName)
     : mDevice(device)
     , mVertexCount(0)

@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\TinyGLTF;$(SolutionDir)External\stb_image;$(SolutionDir)External\TinyOBJLoader;$(SolutionDir)External\glfw-3.4;$(SolutionDir)External\DearImGUI;$(SolutionDir)External\glm;$(SolutionDir)External\Vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\TinyGLTF;$(SolutionDir)External\glfw-3.4;$(SolutionDir)External\DearImGUI;$(SolutionDir)External\glm;$(SolutionDir)External\Vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -141,13 +141,11 @@
     <ClCompile Include="VRE_GameObject.cpp" />
     <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
-    <ClCompile Include="VRE_ModelProperties.cpp" />
     <ClCompile Include="VRE_PointLightRenderSystem.cpp" />
     <ClCompile Include="VRE_RenderSystem.cpp" />
     <ClCompile Include="VRE_App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VRE_Device.cpp" />
-    <ClCompile Include="VRE_Model.cpp" />
     <ClCompile Include="VRE_Pipeline.cpp" />
     <ClCompile Include="VRE_Renderer.cpp" />
     <ClCompile Include="VRE_SwapChain.cpp" />
@@ -171,7 +169,6 @@
     <ClInclude Include="VRE_GameObject.h" />
     <ClInclude Include="VRE_App.h" />
     <ClInclude Include="VRE_Device.h" />
-    <ClInclude Include="VRE_Model.h" />
     <ClInclude Include="VRE_Pipeline.h" />
     <ClInclude Include="VRE_Renderer.h" />
     <ClInclude Include="VRE_SwapChain.h" />

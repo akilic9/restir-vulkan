@@ -20,7 +20,6 @@
 #include "VRE_Camera.h"
 #include "VRE_InputListener.h"
 #include "VRE_Buffer.h"
-#include "VRE_glTFModel.h"
 
 #include <iostream>
 #include <array>

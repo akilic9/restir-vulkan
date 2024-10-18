@@ -9,7 +9,7 @@
 #include <memory>
 
 #define TINYGLTF_NO_STB_IMAGE_WRITE
-#include <tiny_gltf.h>
+#include "tiny_gltf.h"
 
 namespace VRE {
 	class VRE_glTFModel {

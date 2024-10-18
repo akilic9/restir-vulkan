@@ -3,8 +3,8 @@
 #include "VRE_Window.h"
 #include "VRE_Device.h"
 #include "VRE_Renderer.h"
-#include "VRE_GameObject.h"
 #include "VRE_Descriptor.h"
+#include "VRE_GameObject.h"
 #include "VRE_PointLight.h"
 
 #include <memory>
