@@ -163,8 +163,8 @@ void VRE::VRE_Texture::TransitionImageLayout(VkImage image, VkFormat format, VkI
     barrier.subresourceRange.baseArrayLayer = 0;
     barrier.subresourceRange.layerCount = 1;
 
-    barrier.srcAccessMask = 0; // TODO
-    barrier.dstAccessMask = 0; // TODO
+    barrier.srcAccessMask = 0;
+    barrier.dstAccessMask = 0;
 
     VkPipelineStageFlags sourceStage;
     VkPipelineStageFlags destinationStage;
