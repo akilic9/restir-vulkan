@@ -16,7 +16,7 @@ namespace VRE {
         VRE_GameObjRenderSystem(const VRE_GameObjRenderSystem&) = delete;
         VRE_GameObjRenderSystem& operator=(const VRE_GameObjRenderSystem&) = delete;
 
-        void RenderGameObjects(VRE_SharedContext &frameInfo);
+        void RenderGameObjects(VRE_FrameContext &frameInfo);
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);

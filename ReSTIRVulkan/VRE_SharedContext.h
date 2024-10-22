@@ -1,7 +1,6 @@
 #pragma once
 #include "vulkan/vulkan.h"
-#include "VRE_Camera.h"
-#include "VRE_GameObject.h"
+#include "VRE_Renderer.h"
 #include "VRE_PointLight.h"
 #include "VRE_Descriptor.h"
 
@@ -9,11 +8,16 @@ namespace VRE {
 
     #define MAX_LIGHTS 10
 
-    struct VRE_SharedContext {
+    struct VRE_FrameContext {
         int mFrameIndex;
         VkCommandBuffer mCommandBuffer;
         VkDescriptorSet mDescSet;
-        std::vector<VRE_PointLight> &mPointLights;
+    };
+
+    struct VRE_SceneContext {
+        std::vector<VRE_PointLight> mPointLights;
+        std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSet;
+        VRE_Renderer* mRenderer;
     };
 
     struct PointLightInfo {

@@ -56,11 +56,11 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
-            VRE_SharedContext sharedContext{ frameIndex, commandBuffer, mSceneDescriptorSets[frameIndex], mPointLights};
+            VRE_FrameContext frameContext{ frameIndex, commandBuffer, mSceneDescriptorSets[frameIndex] };
             UBO ubo;
 
-            Update(sharedContext, deltaTime, ubo);
-            Render(commandBuffer, sharedContext, ubo);
+            Update(frameContext, deltaTime, ubo);
+            Render(commandBuffer, frameContext, ubo);
 
             mRenderer.EndDraw();
         }
@@ -70,6 +70,8 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::Init()
 {
+    mSceneContext.mRenderer = &mRenderer;
+
     //Create descriptor pool for global data.
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
                       .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
@@ -81,42 +83,43 @@ void VRE::VRE_App::Init()
         mSceneUBOs[i]->Map();
     }
 
-    auto sceneDescSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
-                               .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
-                               .Build();
+    mSceneContext.mGlobalDescSet = VRE_DescriptorSetLayout::Builder(mDevice)
+                                  .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
+                                  .Build();
+
 
     for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
         auto bufferInfo = mSceneUBOs[i]->DescriptorInfo();
         mSceneDescriptorSets.push_back(VkDescriptorSet());
-        VRE_DescriptorWriter(*sceneDescSetLayout, *mDescriptorPool)
+        VRE_DescriptorWriter(*mSceneContext.mGlobalDescSet, *mDescriptorPool)
                              .WriteBuffer(0, &bufferInfo)
                              .Build(mSceneDescriptorSets[i]);
     }
 
     mCamera = VRE_Camera();
-    mPLRenderSystem = std::make_unique<VRE_PointLightRenderSystem>(mDevice, mRenderer.GetSwapChainRenderPass(), sceneDescSetLayout->GetDescriptorSetLayout());
+    mPLRenderSystem = std::make_unique<VRE_PointLightRenderSystem>(mDevice, mRenderer.GetSwapChainRenderPass(), mSceneContext.mGlobalDescSet->GetDescriptorSetLayout());
     mInputListener = VRE_InputListener();
 
     LoadObjects();
 }
 
-void VRE::VRE_App::Update(VRE_SharedContext& sharedContext, float dt, UBO& ubo)
+void VRE::VRE_App::Update(VRE_FrameContext& frameContext, float dt, UBO& ubo)
 {
     ubo.mProjectionMat = mCamera.GetProjection();
     ubo.mViewMat = mCamera.GetViewMat();
     ubo.mInvViewMat = mCamera.GetInvViewMat();
-    mPLRenderSystem->Update(sharedContext, ubo, dt);
+    mPLRenderSystem->Update(frameContext, ubo, dt, mSceneContext);
 
-    mSceneUBOs[sharedContext.mFrameIndex]->WriteToBuffer(&ubo);
-    mSceneUBOs[sharedContext.mFrameIndex]->Flush();
+    mSceneUBOs[frameContext.mFrameIndex]->WriteToBuffer(&ubo);
+    mSceneUBOs[frameContext.mFrameIndex]->Flush();
 
-    mGameObjectManager.UpdateBuffer(sharedContext.mFrameIndex);
+    mGameObjectManager.UpdateBuffer(frameContext.mFrameIndex);
 }
 
-void VRE::VRE_App::Render(VkCommandBuffer commandBuffer, VRE_SharedContext& sharedContext, UBO& ubo)
+void VRE::VRE_App::Render(VkCommandBuffer commandBuffer, VRE_FrameContext& frameContext, UBO& ubo)
 {
     mRenderer.BeginSwapChainRenderPass(commandBuffer);
-    mPLRenderSystem->RenderLights(sharedContext);
+    mPLRenderSystem->RenderLights(frameContext, mSceneContext);
     mRenderer.EndSwapChainRenderPass(commandBuffer);
 }
 
@@ -181,6 +184,6 @@ void VRE::VRE_App::LoadObjects()
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, 1.f, 0.f });
         pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);
-        mPointLights.push_back(std::move(pointLight));
+        mSceneContext.mPointLights.push_back(std::move(pointLight));
     }
 }

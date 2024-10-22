@@ -8,6 +8,7 @@
 #include "VRE_PointLightRenderSystem.h"
 #include "VRE_Camera.h"
 #include "VRE_InputListener.h"
+#include "VRE_GameObject.h"
 
 #include <memory>
 #include <vector>
@@ -29,8 +30,8 @@ namespace VRE {
         void Run();
 
         void Init();
-        void Update(VRE_SharedContext& sharedContext, float dt, UBO& ubo);
-        void Render(VkCommandBuffer commandBuffer, VRE_SharedContext& sharedContext, UBO& ubo);
+        void Update(VRE_FrameContext& frameContext, float dt, UBO& ubo);
+        void Render(VkCommandBuffer commandBuffer, VRE_FrameContext& frameContext, UBO& ubo);
 
     private:
         void LoadObjects();
@@ -45,6 +46,6 @@ namespace VRE {
         std::unique_ptr<VRE_PointLightRenderSystem> mPLRenderSystem;
         VRE_InputListener mInputListener;
         VRE_GameObjectManager mGameObjectManager;
-        std::vector<VRE_PointLight> mPointLights;
+        VRE_SceneContext mSceneContext;
     };
 }

@@ -13,8 +13,8 @@ namespace VRE {
         VRE_PointLightRenderSystem(const VRE_PointLightRenderSystem&) = delete;
         VRE_PointLightRenderSystem& operator=(const VRE_PointLightRenderSystem&) = delete;
 
-        void Update(VRE_SharedContext& frameInfo, UBO &ubo, float dt);
-        void RenderLights(VRE_SharedContext &sharedContext);
+        void Update(VRE_FrameContext& frameInfo, UBO &ubo, float dt, VRE_SceneContext& sceneContext);
+        void RenderLights(VRE_FrameContext& frameContext, VRE_SceneContext& sceneContext);
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <iostream>
+#include "gtc/matrix_transform.hpp"
 
 namespace VRE {
     struct PointLightPC {
@@ -23,12 +24,12 @@ VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_PointLightRenderSystem::Update(VRE_SharedContext& frameInfo, UBO &ubo, float dt)
+void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameContext& frameInfo, UBO &ubo, float dt, VRE_SceneContext& sceneContext)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
 
-    for (auto& light : frameInfo.mPointLights) {
+    for (auto& light : sceneContext.mPointLights) {
         assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in FrameInfo.h!");
 
         light.mPosition = rotateLight * light.mPosition;
@@ -41,26 +42,26 @@ void VRE::VRE_PointLightRenderSystem::Update(VRE_SharedContext& frameInfo, UBO &
     ubo.mActiveLightCount = index;
 }
 
-void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_SharedContext& sharedContext)
+void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_FrameContext& frameContext, VRE_SceneContext& sceneContext)
 {
-    mPipeline->Bind(sharedContext.mCommandBuffer);
+    mPipeline->Bind(frameContext.mCommandBuffer);
 
-    vkCmdBindDescriptorSets(sharedContext.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &sharedContext.mDescSet, 0, nullptr);
+    vkCmdBindDescriptorSets(frameContext.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameContext.mDescSet, 0, nullptr);
 
-    for (auto& light : sharedContext.mPointLights) {
+    for (auto& light : sceneContext.mPointLights) {
         PointLightPC pc;
         pc.mPosition = light.mPosition;
         pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);
         pc.mRadius = light.mScale;
 
-        vkCmdPushConstants(sharedContext.mCommandBuffer,
+        vkCmdPushConstants(frameContext.mCommandBuffer,
                            mPipelineLayout,
                            VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                            0,
                            sizeof(PointLightPC),
                            &pc);
 
-        vkCmdDraw(sharedContext.mCommandBuffer, 6, 1, 0, 0);
+        vkCmdDraw(frameContext.mCommandBuffer, 6, 1, 0, 0);
     }
 }
 
