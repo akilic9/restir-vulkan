@@ -130,7 +130,7 @@ void VRE::VRE_App::Run()
 void VRE::VRE_App::LoadObjects()
 {
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
-    model->LoadImages();
+    model->LoadModel();
     VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
     duck.mModel = model;
     duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };

@@ -141,6 +141,7 @@
     <ClCompile Include="VRE_GameObject.cpp" />
     <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
+    <ClCompile Include="VRE_ModelProperties.cpp" />
     <ClCompile Include="VRE_PointLightRenderSystem.cpp" />
     <ClCompile Include="VRE_RenderSystem.cpp" />
     <ClCompile Include="VRE_App.cpp" />
