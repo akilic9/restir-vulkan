@@ -2,6 +2,8 @@
 #include "glm.hpp"
 
 namespace VRE {
+    static const int MAX_OBJECT_COUNT = 1000;
+
     struct Transform {
         glm::vec3 mTranslation{ 0.f };
         glm::vec3 mScale{ 1.f };

@@ -36,7 +36,7 @@
     <ClCompile Include="VRE_Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VRE_RenderSystem.cpp">
+    <ClCompile Include="VRE_GameObjRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VRE_Camera.cpp">
@@ -89,7 +89,7 @@
     <ClInclude Include="VRE_Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_RenderSystem.h">
+    <ClInclude Include="VRE_GameObjRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Camera.h">
@@ -104,7 +104,7 @@
     <ClInclude Include="VRE_Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_FrameInfo.h">
+    <ClInclude Include="VRE_SharedContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Descriptor.h">

@@ -1,43 +1,43 @@
-#include "VRE_RenderSystem.h"
+#include "VRE_GameObjRenderSystem.h"
 #include <stdexcept>
 
-VRE::VRE_RenderSystem::VRE_RenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
+VRE::VRE_GameObjRenderSystem::VRE_GameObjRenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
     : mDevice(device)
 {
     CreatePipelineLayout(descSetLayout);
     CreatePipeline(renderPass);
 }
 
-VRE::VRE_RenderSystem::~VRE_RenderSystem()
+VRE::VRE_GameObjRenderSystem::~VRE_GameObjRenderSystem()
 {
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_RenderSystem::RenderGameObjects(VRE_FrameInfo& frameInfo)
+void VRE::VRE_GameObjRenderSystem::RenderGameObjects(VRE_SharedContext& frameInfo)
 {
-    mPipeline->Bind(frameInfo.mCommandBuffer);
+    //mPipeline->Bind(frameInfo.mCommandBuffer);
 
-    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
+    //vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
 
-    for (auto& e : frameInfo.mGameObjects) {
-        if (!e.second.mModel)
-            continue;
+    //for (auto& e : frameInfo.mGameObjects) {
+    //    if (!e.second.mModel)
+    //        continue;
 
-        auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
+    //    auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
 
-        VkDescriptorSet gameObjDescSet;
-        VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool)
-            .WriteBuffer(0, &bufferInfo)
-            .Build(gameObjDescSet);
+    //    VkDescriptorSet gameObjDescSet;
+    //    VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool)
+    //        .WriteBuffer(0, &bufferInfo)
+    //        .Build(gameObjDescSet);
 
-        vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &gameObjDescSet, 0, nullptr);
+    //    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &gameObjDescSet, 0, nullptr);
 
-        e.second.mModel->Bind(frameInfo.mCommandBuffer);
-        e.second.mModel->Draw(frameInfo.mCommandBuffer);
-    }
+    //    e.second.mModel->Bind(frameInfo.mCommandBuffer);
+    //    e.second.mModel->Draw(frameInfo.mCommandBuffer);
+    //}
 }
 
-void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
+void VRE::VRE_GameObjRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
     VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData) };
 
@@ -59,7 +59,7 @@ void VRE::VRE_RenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLa
         throw std::runtime_error("Failed to create pipeline layout!");
 }
 
-void VRE::VRE_RenderSystem::CreatePipeline(VkRenderPass renderPass)
+void VRE::VRE_GameObjRenderSystem::CreatePipeline(VkRenderPass renderPass)
 {
     assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout!");
 

@@ -45,8 +45,6 @@ namespace VRE {
 
     class VRE_GameObjectManager {
     public:
-        static const int MAX_OBJECT_COUNT = 1000;
-
         VRE_GameObjectManager(VRE_Device& device);
         ~VRE_GameObjectManager();
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "VRE_Device.h"
-#include "VRE_FrameInfo.h"
+#include "VRE_SharedContext.h"
 #include "VRE_Pipeline.h"
 
 namespace VRE {
@@ -13,8 +13,8 @@ namespace VRE {
         VRE_PointLightRenderSystem(const VRE_PointLightRenderSystem&) = delete;
         VRE_PointLightRenderSystem& operator=(const VRE_PointLightRenderSystem&) = delete;
 
-        void Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt);
-        void RenderLights(VRE_FrameInfo &frameInfo);
+        void Update(VRE_SharedContext& frameInfo, UBO &ubo, float dt);
+        void RenderLights(VRE_SharedContext &sharedContext);
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);

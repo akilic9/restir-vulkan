@@ -9,13 +9,10 @@ namespace VRE {
 
     #define MAX_LIGHTS 10
 
-    struct VRE_FrameInfo {
+    struct VRE_SharedContext {
         int mFrameIndex;
         VkCommandBuffer mCommandBuffer;
-        VRE_Camera &mCamera;
         VkDescriptorSet mDescSet;
-        VRE_DescriptorPool &mFrameDescPool;
-        VRE_GameObject::GameObjectsMap &mGameObjects;
         std::vector<VRE_PointLight> &mPointLights;
     };
 

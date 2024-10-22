@@ -23,7 +23,7 @@ VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt)
+void VRE::VRE_PointLightRenderSystem::Update(VRE_SharedContext& frameInfo, UBO &ubo, float dt)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
@@ -41,26 +41,26 @@ void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo,
     ubo.mActiveLightCount = index;
 }
 
-void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_FrameInfo& frameInfo)
+void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_SharedContext& sharedContext)
 {
-    mPipeline->Bind(frameInfo.mCommandBuffer);
+    mPipeline->Bind(sharedContext.mCommandBuffer);
 
-    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
+    vkCmdBindDescriptorSets(sharedContext.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &sharedContext.mDescSet, 0, nullptr);
 
-    for (auto& light : frameInfo.mPointLights) {
+    for (auto& light : sharedContext.mPointLights) {
         PointLightPC pc;
         pc.mPosition = light.mPosition;
         pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);
         pc.mRadius = light.mScale;
 
-        vkCmdPushConstants(frameInfo.mCommandBuffer,
+        vkCmdPushConstants(sharedContext.mCommandBuffer,
                            mPipelineLayout,
                            VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                            0,
                            sizeof(PointLightPC),
                            &pc);
 
-        vkCmdDraw(frameInfo.mCommandBuffer, 6, 1, 0, 0);
+        vkCmdDraw(sharedContext.mCommandBuffer, 6, 1, 0, 0);
     }
 }
 

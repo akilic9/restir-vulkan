@@ -15,10 +15,6 @@
 #include <imgui.h>
 
 #include "VRE_App.h"
-#include "VRE_RenderSystem.h"
-#include "VRE_PointLightRenderSystem.h"
-#include "VRE_Camera.h"
-#include "VRE_InputListener.h"
 #include "VRE_Buffer.h"
 
 #include <iostream>
@@ -31,58 +27,17 @@
 #include <gtc/constants.hpp>
 
 // TODO: Tidy up this place???
-
-VRE::VRE_App::VRE_App() : mRenderer(mWindow, mDevice), mGameObjectManager(mDevice)
+VRE::VRE_App::VRE_App()
+    : mRenderer(mWindow, mDevice)
+    , mGameObjectManager(mDevice)
 {
-    mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
-                      .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
-                      .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
-                      .Build();
-
-    mFramePools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
-    auto framePoolBuilder = VRE_DescriptorPool::Builder(mDevice)
-                            .SetMaxSets(1000)
-                            .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
-                            .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
-                            .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
-
-    for (int i = 0; i < mFramePools.size(); i++) {
-        mFramePools[i] = framePoolBuilder.Build();
-    }
-
-    LoadObjects();
+    Init();
 }
 
 VRE::VRE_App::~VRE_App() {}
 
 void VRE::VRE_App::Run()
 {
-    std::vector<std::unique_ptr<VRE_Buffer>> uboBuffers(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
-    for (int i = 0; i < uboBuffers.size(); i++) {
-        uboBuffers[i] = std::make_unique<VRE_Buffer>(mDevice, sizeof(UBO), 1,
-                                                     VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-                                                     VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
-        uboBuffers[i]->Map();
-    }
-
-    auto descSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
-                         .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
-                         .Build();
-
-
-    std::vector<VkDescriptorSet> descriptorSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
-    for (int i = 0; i < descriptorSets.size(); i++) {
-        auto bufferInfo = uboBuffers[i]->DescriptorInfo();
-        VRE_DescriptorWriter(*descSetLayout, *mDescriptorPool)
-                            .WriteBuffer(0, &bufferInfo)
-                            .Build(descriptorSets[i]);
-    }
-
-    VRE_RenderSystem renderSys(mDevice, mRenderer.GetSwapChainRenderPass(), descSetLayout->GetDescriptorSetLayout());
-    VRE_PointLightRenderSystem lightRenderSys(mDevice, mRenderer.GetSwapChainRenderPass(), descSetLayout->GetDescriptorSetLayout());
-    VRE_Camera camera{};
-    VRE_InputListener inputListener{};
-
     auto startTime = std::chrono::high_resolution_clock::now();
 
     while (!mWindow.ShouldClose()) {
@@ -94,48 +49,125 @@ void VRE::VRE_App::Run()
         startTime = currentTime;
 
         float aspRatio = mRenderer.GetAspectRatio();
-        camera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
+        mCamera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
 
         // TODO: can probably optimize this using glfw callback function.
-        inputListener.Move(mWindow.GetGLFWwindow(), deltaTime, camera);
+        mInputListener.Move(mWindow.GetGLFWwindow(), deltaTime, mCamera);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
-            mFramePools[frameIndex]->ResetPool();
-            VRE_FrameInfo frameInfo{ frameIndex, commandBuffer, camera, descriptorSets[frameIndex],
-                                     *mFramePools[frameIndex], mGameObjectManager.mGameObjectsMap, mPointLights};
-
-            //Update
+            VRE_SharedContext sharedContext{ frameIndex, commandBuffer, mSceneDescriptorSets[frameIndex], mPointLights};
             UBO ubo;
-            ubo.mProjectionMat = camera.GetProjection();
-            ubo.mViewMat = camera.GetViewMat();
-            ubo.mInvViewMat = camera.GetInvViewMat();
-            lightRenderSys.Update(frameInfo, ubo, deltaTime);
-            uboBuffers[frameIndex]->WriteToBuffer(&ubo);
-            uboBuffers[frameIndex]->Flush();
 
-            mGameObjectManager.UpdateBuffer(frameIndex);
+            Update(sharedContext, deltaTime, ubo);
+            Render(commandBuffer, sharedContext, ubo);
 
-            //Render
-            mRenderer.BeginSwapChainRenderPass(commandBuffer);
-            renderSys.RenderGameObjects(frameInfo);
-            lightRenderSys.RenderLights(frameInfo);
-            mRenderer.EndSwapChainRenderPass(commandBuffer);
             mRenderer.EndDraw();
         }
     }
     vkDeviceWaitIdle(mDevice.GetVkDevice());
 }
 
+void VRE::VRE_App::Init()
+{
+    //Create descriptor pool for global data.
+    mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
+                      .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                      .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                      .Build();
+
+    for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
+        mSceneUBOs.push_back(std::make_unique<VRE_Buffer>(mDevice, sizeof(UBO), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT));
+        mSceneUBOs[i]->Map();
+    }
+
+    auto sceneDescSetLayout = VRE_DescriptorSetLayout::Builder(mDevice)
+                               .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_ALL_GRAPHICS)
+                               .Build();
+
+    for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
+        auto bufferInfo = mSceneUBOs[i]->DescriptorInfo();
+        mSceneDescriptorSets.push_back(VkDescriptorSet());
+        VRE_DescriptorWriter(*sceneDescSetLayout, *mDescriptorPool)
+                             .WriteBuffer(0, &bufferInfo)
+                             .Build(mSceneDescriptorSets[i]);
+    }
+
+    mCamera = VRE_Camera();
+    mPLRenderSystem = std::make_unique<VRE_PointLightRenderSystem>(mDevice, mRenderer.GetSwapChainRenderPass(), sceneDescSetLayout->GetDescriptorSetLayout());
+    mInputListener = VRE_InputListener();
+
+    LoadObjects();
+}
+
+void VRE::VRE_App::Update(VRE_SharedContext& sharedContext, float dt, UBO& ubo)
+{
+    ubo.mProjectionMat = mCamera.GetProjection();
+    ubo.mViewMat = mCamera.GetViewMat();
+    ubo.mInvViewMat = mCamera.GetInvViewMat();
+    mPLRenderSystem->Update(sharedContext, ubo, dt);
+
+    mSceneUBOs[sharedContext.mFrameIndex]->WriteToBuffer(&ubo);
+    mSceneUBOs[sharedContext.mFrameIndex]->Flush();
+
+    mGameObjectManager.UpdateBuffer(sharedContext.mFrameIndex);
+}
+
+void VRE::VRE_App::Render(VkCommandBuffer commandBuffer, VRE_SharedContext& sharedContext, UBO& ubo)
+{
+    mRenderer.BeginSwapChainRenderPass(commandBuffer);
+    mPLRenderSystem->RenderLights(sharedContext);
+    mRenderer.EndSwapChainRenderPass(commandBuffer);
+}
+
 void VRE::VRE_App::LoadObjects()
 {
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
+    //model->LoadModel();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
+    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 0.01f, 0.01f, 0.01f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/ToyCar/", "ToyCar");
+    //model->LoadModel();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -.25f, 0.f };
+    //obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 0.005f, 0.005f, 0.005f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
+    //model->LoadImages();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
+    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
     model->LoadModel();
-    VRE::VRE_GameObject& duck = mGameObjectManager.CreateGameObject();
-    duck.mModel = model;
-    duck.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    duck.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
-    duck.mTransform.mScale = { 1.f, 1.f, 1.f };
+    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    obj.mModel = model;
+    obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
+    obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
+    obj.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
