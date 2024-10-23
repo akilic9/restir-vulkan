@@ -24,13 +24,13 @@ VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameContext& frameInfo, UBO &ubo, float dt, VRE_SceneContext& sceneContext)
+void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameContext& sharedContext, UBO &ubo, float dt, VRE_SceneContext& sceneContext)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
 
     for (auto& light : sceneContext.mPointLights) {
-        assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in FrameInfo.h!");
+        assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in SharedContext.h!");
 
         light.mPosition = rotateLight * light.mPosition;
 

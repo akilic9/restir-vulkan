@@ -13,7 +13,7 @@ VRE::VRE_GameObjRenderSystem::~VRE_GameObjRenderSystem()
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_GameObjRenderSystem::RenderGameObjects(VRE_FrameContext& frameInfo)
+void VRE::VRE_GameObjRenderSystem::RenderGameObjects(VRE_FrameContext& frameContext)
 {
     //mPipeline->Bind(frameInfo.mCommandBuffer);
 

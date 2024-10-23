@@ -176,7 +176,6 @@
     <ClInclude Include="VRE_Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="Shaders\point_light.frag" />
     <None Include="Shaders\point_light.vert" />
     <None Include="Shaders\test_shader.frag" />

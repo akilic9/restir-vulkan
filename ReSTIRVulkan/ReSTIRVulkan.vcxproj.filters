@@ -134,6 +134,5 @@
     <None Include="Shaders\test_shader.frag" />
     <None Include="Shaders\point_light.frag" />
     <None Include="Shaders\point_light.vert" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
