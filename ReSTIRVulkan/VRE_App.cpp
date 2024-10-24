@@ -26,7 +26,6 @@
 #include <glm.hpp>
 #include <gtc/constants.hpp>
 
-// TODO: Tidy up this place???
 VRE::VRE_App::VRE_App()
     : mRenderer(mWindow, mDevice)
     , mGameObjectManager(mDevice)
@@ -36,6 +35,7 @@ VRE::VRE_App::VRE_App()
 
 VRE::VRE_App::~VRE_App() {}
 
+// TODO: This function can be simplified.
 void VRE::VRE_App::Run()
 {
     auto startTime = std::chrono::high_resolution_clock::now();
@@ -51,7 +51,7 @@ void VRE::VRE_App::Run()
         float aspRatio = mRenderer.GetAspectRatio();
         mCamera.SetPerspectiveProjection(glm::radians(50.f), aspRatio, 0.1f, 1000.f);
 
-        // TODO: can probably optimize this using glfw callback function.
+        // TODO: Can probably optimize this using GLFW callback function.
         mInputListener.Move(mWindow.GetGLFWwindow(), deltaTime, mCamera);
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
