@@ -1,16 +1,18 @@
 #include "VRE_GameObjRenderSystem.h"
 #include <stdexcept>
 
-VRE::VRE_GameObjRenderSystem::VRE_GameObjRenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
-    : mDevice(device)
-{
-    CreatePipelineLayout(descSetLayout);
-    CreatePipeline(renderPass);
-}
+VRE::VRE_GameObjRenderSystem::VRE_GameObjRenderSystem(VRE_SharedContext* sharedContext)
+    : mSharedContext(sharedContext) {}
 
 VRE::VRE_GameObjRenderSystem::~VRE_GameObjRenderSystem()
 {
-    vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
+    vkDestroyPipelineLayout(mSharedContext->mDevice->GetVkDevice(), mPipelineLayout, nullptr);
+}
+
+void VRE::VRE_GameObjRenderSystem::Init()
+{
+    CreatePipelineLayout(mSharedContext->mGlobalDescSetLayout->GetDescriptorSetLayout());
+    CreatePipeline(mSharedContext->mRenderer->GetSwapChainRenderPass());
 }
 
 void VRE::VRE_GameObjRenderSystem::RenderGameObjects()
@@ -41,7 +43,7 @@ void VRE::VRE_GameObjRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout de
 {
     VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData) };
 
-    mRenderSystemLayout = VRE_DescriptorSetLayout::Builder(mDevice)
+    mRenderSystemLayout = VRE_DescriptorSetLayout::Builder(*mSharedContext->mDevice)
                          .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT)
                          .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
                          .Build();
@@ -55,7 +57,7 @@ void VRE::VRE_GameObjRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout de
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
-    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
+    if (vkCreatePipelineLayout(mSharedContext->mDevice->GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("Failed to create pipeline layout!");
 }
 
@@ -67,5 +69,5 @@ void VRE::VRE_GameObjRenderSystem::CreatePipeline(VkRenderPass renderPass)
     VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
     pipelineConfig.mRenderPass = renderPass;
     pipelineConfig.mPipelineLayout = mPipelineLayout;
-    mPipeline = std::make_unique<VRE_Pipeline>(mDevice, pipelineConfig, "Shaders/test_shader.vert.spv", "Shaders/test_shader.frag.spv");
+    mPipeline = std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/test_shader.vert.spv", "Shaders/test_shader.frag.spv");
 }

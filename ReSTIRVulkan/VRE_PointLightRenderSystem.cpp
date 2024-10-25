@@ -12,17 +12,18 @@ namespace VRE {
     };
 }
 
-VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SharedContext& sceneContext)
-    : mDevice(*sceneContext.mDevice)
-    , mSceneContext(sceneContext)
-{
-    CreatePipelineLayout(mSceneContext.mGlobalDescSet->GetDescriptorSetLayout());
-    CreatePipeline(mSceneContext.mRenderer->GetSwapChainRenderPass());
-}
+VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SharedContext* sceneContext)
+    : mSceneContext(sceneContext) {}
 
 VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
 {
-    vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
+    vkDestroyPipelineLayout(mSceneContext->mDevice->GetVkDevice(), mPipelineLayout, nullptr);
+}
+
+void VRE::VRE_PointLightRenderSystem::Init()
+{
+    CreatePipelineLayout(mSceneContext->mGlobalDescSetLayout->GetDescriptorSetLayout());
+    CreatePipeline(mSceneContext->mRenderer->GetSwapChainRenderPass());
 }
 
 void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
@@ -30,7 +31,7 @@ void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
 
-    for (auto& light : mSceneContext.mPointLights) {
+    for (auto& light : mSceneContext->mPointLights) {
         assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in SharedContext.h!");
 
         light.mPosition = rotateLight * light.mPosition;
@@ -45,24 +46,24 @@ void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
 
 void VRE::VRE_PointLightRenderSystem::RenderLights()
 {
-    mPipeline->Bind(mSceneContext.mRenderer->GetCurrentCommandBuffer());
-    VkDescriptorSet* descSet = &mSceneContext.mSceneDescriptorSets[mSceneContext.mRenderer->GetFrameIndex()];
-    vkCmdBindDescriptorSets(mSceneContext.mRenderer->GetCurrentCommandBuffer(), VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, descSet, 0, nullptr);
+    mPipeline->Bind(mSceneContext->mRenderer->GetCurrentCommandBuffer());
+    VkDescriptorSet* descSet = &mSceneContext->mSceneDescriptorSets[mSceneContext->mRenderer->GetFrameIndex()];
+    vkCmdBindDescriptorSets(mSceneContext->mRenderer->GetCurrentCommandBuffer(), VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, descSet, 0, nullptr);
 
-    for (auto& light : mSceneContext.mPointLights) {
+    for (auto& light : mSceneContext->mPointLights) {
         PointLightPC pc;
         pc.mPosition = light.mPosition;
         pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);
         pc.mRadius = light.mScale;
 
-        vkCmdPushConstants(mSceneContext.mRenderer->GetCurrentCommandBuffer(),
+        vkCmdPushConstants(mSceneContext->mRenderer->GetCurrentCommandBuffer(),
                            mPipelineLayout,
                            VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                            0,
                            sizeof(PointLightPC),
                            &pc);
 
-        vkCmdDraw(mSceneContext.mRenderer->GetCurrentCommandBuffer(), 6, 1, 0, 0);
+        vkCmdDraw(mSceneContext->mRenderer->GetCurrentCommandBuffer(), 6, 1, 0, 0);
     }
 }
 
@@ -81,7 +82,7 @@ void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
 
-    if (vkCreatePipelineLayout(mDevice.GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
+    if (vkCreatePipelineLayout(mSceneContext->mDevice->GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
         throw std::runtime_error("Failed to create pipeline layout!");
 }
 
@@ -95,5 +96,5 @@ void VRE::VRE_PointLightRenderSystem::CreatePipeline(VkRenderPass renderPass)
     pipelineConfig.mBindingDescriptions.clear();
     pipelineConfig.mRenderPass = renderPass;
     pipelineConfig.mPipelineLayout = mPipelineLayout;
-    mPipeline = std::make_unique<VRE_Pipeline>(mDevice, pipelineConfig, "Shaders/point_light.vert.spv", "Shaders/point_light.frag.spv");
+    mPipeline = std::make_unique<VRE_Pipeline>(*mSceneContext->mDevice, pipelineConfig, "Shaders/point_light.vert.spv", "Shaders/point_light.frag.spv");
 }

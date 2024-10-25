@@ -10,21 +10,22 @@ namespace VRE {
     class VRE_GameObjRenderSystem
     {
     public:
-        VRE_GameObjRenderSystem(VRE_Device &device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout);
+        VRE_GameObjRenderSystem(VRE_SharedContext* sharedContext);
         ~VRE_GameObjRenderSystem();
 
         VRE_GameObjRenderSystem(const VRE_GameObjRenderSystem&) = delete;
         VRE_GameObjRenderSystem& operator=(const VRE_GameObjRenderSystem&) = delete;
 
+        void Init();
         void RenderGameObjects();
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);
         void CreatePipeline(VkRenderPass renderPass);
 
-        VRE_Device& mDevice;
         std::unique_ptr<VRE_Pipeline> mPipeline;
         VkPipelineLayout mPipelineLayout;
         std::unique_ptr<VRE_DescriptorSetLayout> mRenderSystemLayout;
+        VRE_SharedContext* mSharedContext;
     };
 }

@@ -9,11 +9,11 @@ namespace VRE {
     #define MAX_LIGHTS 10
 
     struct VRE_SharedContext {
-        std::vector<VRE_PointLight> mPointLights;
-        std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSet;
-        VRE_Renderer* mRenderer;
-        std::vector<VkDescriptorSet> mSceneDescriptorSets;
         VRE_Device* mDevice;
+        VRE_Renderer* mRenderer;
+        std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSetLayout;
+        std::vector<VkDescriptorSet> mSceneDescriptorSets;
+        std::vector<VRE_PointLight> mPointLights;
     };
 
     struct PointLightInfo {

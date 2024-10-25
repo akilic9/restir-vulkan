@@ -6,7 +6,7 @@
 namespace VRE {
     class VRE_GameObjectManager {
     public:
-        VRE_GameObjectManager(VRE_SharedContext& sharedContext);
+        VRE_GameObjectManager(VRE_SharedContext* sharedContext);
         ~VRE_GameObjectManager();
 
         VRE_GameObjectManager(const VRE_GameObjectManager&) = delete;
@@ -18,14 +18,13 @@ namespace VRE {
 
         VkDescriptorBufferInfo GetBufferInfoForGameObject(VRE_GameObject::GameObjectID gObjectID) const;
 
+        void Init();
         void Update(float deltaTime);
-
-        VRE_GameObject::GameObjectsMap mGameObjectsMap{};
-        std::vector<std::unique_ptr<VRE_Buffer>> mUboBuffers{ VRE_SwapChain::MAX_FRAMES_IN_FLIGHT };
 
     private:
         VRE_GameObject::GameObjectID mLastID = 0;
-        VRE_Device& mDevice;
-        VRE_SharedContext& mSharedContext;
+        VRE_SharedContext* mSharedContext;
+        VRE_GameObject::GameObjectsMap mGameObjectsMap{};
+        std::vector<std::unique_ptr<VRE_Buffer>> mUboBuffers{ VRE_SwapChain::MAX_FRAMES_IN_FLIGHT };
     };
 }

@@ -9,6 +9,7 @@
 #include "VRE_Camera.h"
 #include "VRE_InputListener.h"
 #include "VRE_GameObjectManager.h"
+#include "VRE_GameObjRenderSystem.h"
 
 #include <memory>
 #include <vector>
@@ -39,12 +40,13 @@ namespace VRE {
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
+        VRE_SharedContext mSceneContext {&mDevice, &mRenderer};
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
         std::vector<std::unique_ptr<VRE_Buffer>> mSceneUBOs;
-        VRE_Camera mCamera;
-        std::unique_ptr<VRE_PointLightRenderSystem> mPLRenderSystem;
+        VRE_PointLightRenderSystem mPLRenderSystem;
+        VRE_GameObjectManager mGameObjectManager;
+        VRE_GameObjRenderSystem mGameObjRenderSystem;
         VRE_InputListener mInputListener;
-        std::unique_ptr<VRE_GameObjectManager> mGameObjectManager;
-        VRE_SharedContext mSceneContext;
+        VRE_Camera mCamera;
     };
 }
