@@ -18,6 +18,8 @@ namespace VRE {
         std::vector<VRE_PointLight> mPointLights;
         std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSet;
         VRE_Renderer* mRenderer;
+        std::vector<VkDescriptorSet> mSceneDescriptorSets;
+        VRE_Device* mDevice;
     };
 
     struct PointLightInfo {

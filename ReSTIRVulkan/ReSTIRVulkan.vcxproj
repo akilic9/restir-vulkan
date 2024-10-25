@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="VRE_GameObjectManager.cpp" />
     <ClCompile Include="VRE_Buffer.cpp" />
     <ClCompile Include="VRE_Camera.cpp" />
     <ClCompile Include="VRE_Descriptor.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="VRE_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="VRE_GameObjectManager.h" />
     <ClInclude Include="VRE_glTFModel.h" />
     <ClInclude Include="VRE_ModelProperties.h" />
     <ClInclude Include="VRE_ObjectComponents.h" />

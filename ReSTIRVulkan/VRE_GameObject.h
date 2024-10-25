@@ -29,7 +29,7 @@ namespace VRE {
 
         GameObjectID GetID() const { return mID; }
 
-        VkDescriptorBufferInfo GetBufferInfo(int frameIndex);
+        VkDescriptorBufferInfo GetBufferInfo();
 
         std::shared_ptr<VRE_glTFModel> mModel;
         VRE::Transform mTransform{};
@@ -41,28 +41,5 @@ namespace VRE {
         const VRE_GameObjectManager& mManager;
 
         friend class VRE_GameObjectManager;
-    };
-
-    class VRE_GameObjectManager {
-    public:
-        VRE_GameObjectManager(VRE_Device& device);
-        ~VRE_GameObjectManager();
-
-        VRE_GameObjectManager(const VRE_GameObjectManager&) = delete;
-        VRE_GameObjectManager& operator=(const VRE_GameObjectManager&) = delete;
-        VRE_GameObjectManager(VRE_GameObjectManager&&) = delete;
-        VRE_GameObjectManager& operator=(VRE_GameObjectManager&&) = delete;
-
-        VRE_GameObject& CreateGameObject();
-
-        VkDescriptorBufferInfo GetBufferInfoForGameObject(int frameIndex, VRE_GameObject::GameObjectID gObjectID) const;
-
-        void UpdateBuffer(int frameIndex);
-
-        VRE_GameObject::GameObjectsMap mGameObjectsMap{};
-        std::vector<std::unique_ptr<VRE_Buffer>> mUboBuffers{ VRE_SwapChain::MAX_FRAMES_IN_FLIGHT };
-
-    private:
-        VRE_GameObject::GameObjectID mLastID = 0;
     };
 }

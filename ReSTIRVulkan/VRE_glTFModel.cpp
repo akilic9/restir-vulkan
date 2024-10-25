@@ -161,7 +161,7 @@ void VRE::VRE_glTFModel::LoadMaterials(tinygltf::Model& model)
 
 void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygltf::Node& inputNode, uint32_t nodeIndex, const tinygltf::Model& model, ModelData& data)
 {
-    std::shared_ptr<glTFNode> node(new glTFNode(nodeIndex, inputNode.name, glm::mat4(1.0f), parent));
+    std::shared_ptr<glTFNode> node = std::make_shared<glTFNode>(nodeIndex, inputNode.name, glm::mat4(1.0f), parent);
     node->mIndex = nodeIndex;
     node->mParent = parent;
     node->mName = inputNode.name;
@@ -309,7 +309,7 @@ void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygl
                 return;
             }
 
-            std::unique_ptr<glTFPrimitive> primitive(new glTFPrimitive(indexStart, indexCount, vertexCount, inputPrimitive.material > -1 ? mMaterials[inputPrimitive.material] : mMaterials.back()));
+            std::unique_ptr<glTFPrimitive> primitive = std::make_unique<glTFPrimitive>(indexStart, indexCount, vertexCount, inputPrimitive.material > -1 ? mMaterials[inputPrimitive.material] : mMaterials.back());
             node->mMesh->mPrimitives.push_back(std::move(primitive));
         }
     }

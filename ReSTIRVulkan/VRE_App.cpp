@@ -28,7 +28,6 @@
 
 VRE::VRE_App::VRE_App()
     : mRenderer(mWindow, mDevice)
-    , mGameObjectManager(mDevice)
 {
     Init();
 }
@@ -56,11 +55,11 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
-            VRE_FrameContext frameContext{ frameIndex, commandBuffer, mSceneDescriptorSets[frameIndex] };
+            VRE_FrameContext frameContext{ frameIndex, commandBuffer, mSceneContext.mSceneDescriptorSets[frameIndex] };
             UBO ubo;
 
-            Update(frameContext, deltaTime, ubo);
-            Render(commandBuffer, frameContext, ubo);
+            Update(deltaTime, ubo);
+            Render(ubo);
 
             mRenderer.EndDraw();
         }
@@ -71,6 +70,7 @@ void VRE::VRE_App::Run()
 void VRE::VRE_App::Init()
 {
     mSceneContext.mRenderer = &mRenderer;
+    mSceneContext.mDevice = &mDevice;
 
     //Create descriptor pool for global data.
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
@@ -90,37 +90,38 @@ void VRE::VRE_App::Init()
 
     for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
         auto bufferInfo = mSceneUBOs[i]->DescriptorInfo();
-        mSceneDescriptorSets.push_back(VkDescriptorSet());
+        mSceneContext.mSceneDescriptorSets.push_back(VkDescriptorSet());
         VRE_DescriptorWriter(*mSceneContext.mGlobalDescSet, *mDescriptorPool)
                              .WriteBuffer(0, &bufferInfo)
-                             .Build(mSceneDescriptorSets[i]);
+                             .Build(mSceneContext.mSceneDescriptorSets[i]);
     }
 
     mCamera = VRE_Camera();
-    mPLRenderSystem = std::make_unique<VRE_PointLightRenderSystem>(mDevice, mRenderer.GetSwapChainRenderPass(), mSceneContext.mGlobalDescSet->GetDescriptorSetLayout());
+    mPLRenderSystem = std::make_unique<VRE_PointLightRenderSystem>(mSceneContext);
     mInputListener = VRE_InputListener();
+    mGameObjectManager = std::make_unique<VRE_GameObjectManager>(mSceneContext);
 
     LoadObjects();
 }
 
-void VRE::VRE_App::Update(VRE_FrameContext& frameContext, float dt, UBO& ubo)
+void VRE::VRE_App::Update(float dt, UBO& ubo)
 {
     ubo.mProjectionMat = mCamera.GetProjection();
     ubo.mViewMat = mCamera.GetViewMat();
     ubo.mInvViewMat = mCamera.GetInvViewMat();
-    mPLRenderSystem->Update(frameContext, ubo, dt, mSceneContext);
+    mPLRenderSystem->Update(ubo, dt);
 
-    mSceneUBOs[frameContext.mFrameIndex]->WriteToBuffer(&ubo);
-    mSceneUBOs[frameContext.mFrameIndex]->Flush();
+    mSceneUBOs[mRenderer.GetFrameIndex()]->WriteToBuffer(&ubo);
+    mSceneUBOs[mRenderer.GetFrameIndex()]->Flush();
 
-    mGameObjectManager.UpdateBuffer(frameContext.mFrameIndex);
+    mGameObjectManager->Update(dt);
 }
 
-void VRE::VRE_App::Render(VkCommandBuffer commandBuffer, VRE_FrameContext& frameContext, UBO& ubo)
+void VRE::VRE_App::Render(UBO& ubo)
 {
-    mRenderer.BeginSwapChainRenderPass(commandBuffer);
-    mPLRenderSystem->RenderLights(frameContext, mSceneContext);
-    mRenderer.EndSwapChainRenderPass(commandBuffer);
+    mRenderer.BeginSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
+    mPLRenderSystem->RenderLights();
+    mRenderer.EndSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
 }
 
 void VRE::VRE_App::LoadObjects()
@@ -163,7 +164,7 @@ void VRE::VRE_App::LoadObjects()
 
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
     model->LoadModel();
-    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    VRE::VRE_GameObject& obj = mGameObjectManager->CreateGameObject();
     obj.mModel = model;
     obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
     obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };

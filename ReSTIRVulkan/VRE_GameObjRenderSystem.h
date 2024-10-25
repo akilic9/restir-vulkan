@@ -28,20 +28,3 @@ namespace VRE {
         std::unique_ptr<VRE_DescriptorSetLayout> mRenderSystemLayout;
     };
 }
-
-/*
-     mFramePools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
-    auto framePoolBuilder = VRE_DescriptorPool::Builder(mDevice)
-                            .SetMaxSets(1000)
-                            .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
-                            .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
-                            .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
-
-    for (int i = 0; i < mFramePools.size(); i++) {
-        mFramePools[i] = framePoolBuilder.Build();
-    }
-
-
-
-
-*/
