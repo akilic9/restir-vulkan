@@ -52,4 +52,3 @@ namespace VRE {
         bool mDrawStarted;
     };
 }
-

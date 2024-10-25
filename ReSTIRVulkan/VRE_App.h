@@ -2,12 +2,13 @@
 #include <string>
 #include "VRE_Window.h"
 #include "VRE_Device.h"
-#include "VRE_Model.h"
 #include "VRE_Renderer.h"
-#include "VRE_GameObject.h"
 #include "VRE_Descriptor.h"
 #include "VRE_PointLight.h"
-#include "VRE_Texture.h"
+#include "VRE_PointLightRenderSystem.h"
+#include "VRE_Camera.h"
+#include "VRE_InputListener.h"
+#include "VRE_GameObjectManager.h"
 
 #include <memory>
 #include <vector>
@@ -28,6 +29,10 @@ namespace VRE {
 
         void Run();
 
+        void Init();
+        void Update(float dt, UBO& ubo);
+        void Render(UBO& ubo);
+
     private:
         void LoadObjects();
 
@@ -35,9 +40,11 @@ namespace VRE {
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
-        VRE_GameObject::GameObjectsMap mGameObjects;
-        std::vector<VRE_PointLight> mPointLights;
-        std::shared_ptr<VRE_Texture> mTexture;
+        std::vector<std::unique_ptr<VRE_Buffer>> mSceneUBOs;
+        VRE_Camera mCamera;
+        std::unique_ptr<VRE_PointLightRenderSystem> mPLRenderSystem;
+        VRE_InputListener mInputListener;
+        std::unique_ptr<VRE_GameObjectManager> mGameObjectManager;
+        VRE_SceneContext mSceneContext;
     };
 }
-

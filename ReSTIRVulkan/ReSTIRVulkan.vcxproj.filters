@@ -33,13 +33,10 @@
     <ClCompile Include="VRE_SwapChain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VRE_Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VRE_Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VRE_RenderSystem.cpp">
+    <ClCompile Include="VRE_GameObjRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VRE_Camera.cpp">
@@ -60,6 +57,18 @@
     <ClCompile Include="VRE_Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VRE_glTFModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VRE_GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VRE_ModelProperties.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VRE_GameObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VRE_Window.h">
@@ -77,16 +86,13 @@
     <ClInclude Include="VRE_SwapChain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VRE_GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_RenderSystem.h">
+    <ClInclude Include="VRE_GameObjRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Camera.h">
@@ -101,7 +107,7 @@
     <ClInclude Include="VRE_Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_FrameInfo.h">
+    <ClInclude Include="VRE_SharedContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Descriptor.h">
@@ -117,6 +123,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VRE_glTFModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VRE_ModelProperties.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VRE_GameObjectManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

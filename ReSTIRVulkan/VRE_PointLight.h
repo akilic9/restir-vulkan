@@ -1,6 +1,5 @@
 #pragma once
 #include "glm.hpp"
-#include "VRE_ObjectComponents.h"
 #include <memory>
 
 namespace VRE {

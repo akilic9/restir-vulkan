@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <iostream>
+#include "gtc/matrix_transform.hpp"
 
 namespace VRE {
     struct PointLightPC {
@@ -11,11 +12,12 @@ namespace VRE {
     };
 }
 
-VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_Device& device, VkRenderPass renderPass, VkDescriptorSetLayout descSetLayout)
-    : mDevice(device)
+VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SceneContext& sceneContext)
+    : mDevice(*sceneContext.mDevice)
+    , mSceneContext(sceneContext)
 {
-    CreatePipelineLayout(descSetLayout);
-    CreatePipeline(renderPass);
+    CreatePipelineLayout(mSceneContext.mGlobalDescSet->GetDescriptorSetLayout());
+    CreatePipeline(mSceneContext.mRenderer->GetSwapChainRenderPass());
 }
 
 VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
@@ -23,13 +25,13 @@ VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
     vkDestroyPipelineLayout(mDevice.GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo, float dt)
+void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
 
-    for (auto& light : frameInfo.mPointLights) {
-        assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in FrameInfo.h!");
+    for (auto& light : mSceneContext.mPointLights) {
+        assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in SharedContext.h!");
 
         light.mPosition = rotateLight * light.mPosition;
 
@@ -41,26 +43,26 @@ void VRE::VRE_PointLightRenderSystem::Update(VRE_FrameInfo& frameInfo, UBO &ubo,
     ubo.mActiveLightCount = index;
 }
 
-void VRE::VRE_PointLightRenderSystem::RenderLights(VRE_FrameInfo& frameInfo)
+void VRE::VRE_PointLightRenderSystem::RenderLights()
 {
-    mPipeline->Bind(frameInfo.mCommandBuffer);
+    mPipeline->Bind(mSceneContext.mRenderer->GetCurrentCommandBuffer());
+    VkDescriptorSet* descSet = &mSceneContext.mSceneDescriptorSets[mSceneContext.mRenderer->GetFrameIndex()];
+    vkCmdBindDescriptorSets(mSceneContext.mRenderer->GetCurrentCommandBuffer(), VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, descSet, 0, nullptr);
 
-    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
-
-    for (auto& light : frameInfo.mPointLights) {
+    for (auto& light : mSceneContext.mPointLights) {
         PointLightPC pc;
         pc.mPosition = light.mPosition;
         pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);
         pc.mRadius = light.mScale;
 
-        vkCmdPushConstants(frameInfo.mCommandBuffer,
+        vkCmdPushConstants(mSceneContext.mRenderer->GetCurrentCommandBuffer(),
                            mPipelineLayout,
                            VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                            0,
                            sizeof(PointLightPC),
                            &pc);
 
-        vkCmdDraw(frameInfo.mCommandBuffer, 6, 1, 0, 0);
+        vkCmdDraw(mSceneContext.mRenderer->GetCurrentCommandBuffer(), 6, 1, 0, 0);
     }
 }
 

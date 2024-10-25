@@ -1,5 +1,5 @@
 #include "VRE_Pipeline.h"
-#include "VRE_Model.h"
+#include "VRE_ModelProperties.h"
 
 #include <fstream>
 #include <iostream>
@@ -177,6 +177,6 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mDynamicStateInfo.dynamicStateCount = static_cast<uint32_t>(configInfo.mDynamicStateEnables.size());
     configInfo.mDynamicStateInfo.flags = 0;
 
-    configInfo.mBindingDescriptions = VRE_Model::Vertex::GetBindingDesc();
-    configInfo.mAttributeDescriptions = VRE_Model::Vertex::GetAttributeDesc();
+    configInfo.mBindingDescriptions = Vertex::GetBindingDesc();
+    configInfo.mAttributeDescriptions = Vertex::GetAttributeDesc();
 }

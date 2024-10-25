@@ -1,10 +1,10 @@
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+#include <glfw3.h>
 #include <string>
-//Window wrapper class.
 
+//Window wrapper class.
 namespace VRE {
     class VRE_Window
     {

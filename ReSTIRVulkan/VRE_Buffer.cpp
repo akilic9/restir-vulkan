@@ -1,5 +1,5 @@
 /*
- * Encapsulates a vulkan buffer
+ * Encapsulates a Vulkan buffer.
  *
  * Initially based off VulkanBuffer by Sascha Willems -
  * https://github.com/SaschaWillems/Vulkan/blob/master/base/VulkanBuffer.h
@@ -195,8 +195,8 @@ VkResult VRE::VRE_Buffer::InvalidateIndex(int index)
  */
 VkDeviceSize VRE::VRE_Buffer::GetAlignment(VkDeviceSize instanceSize, VkDeviceSize minOffsetAlignment)
 {
-    if (minOffsetAlignment > 0) {
+    if (minOffsetAlignment > 0)
         return (instanceSize + minOffsetAlignment - 1) & ~(minOffsetAlignment - 1);
-    }
+
     return instanceSize;
 }

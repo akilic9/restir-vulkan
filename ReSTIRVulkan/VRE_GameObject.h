@@ -1,36 +1,45 @@
 #pragma once
 #include <memory>
 #include <unordered_map>
-#include "VRE_Model.h"
+
 #include "gtc/matrix_transform.hpp"
+#include "VRE_glTFModel.h"
 #include "VRE_ObjectComponents.h"
+#include "VRE_SwapChain.h"
 
 namespace VRE {
+
+    struct GameObjectBufferData {
+        glm::mat4 mModelMatrix{ 1.f };
+        glm::mat4 mNormalMatrix{ 1.f };
+    };
+
+    class VRE_GameObjectManager;
+
     class VRE_GameObject
     {
     public:
         using GameObjectID = unsigned int;
-        using GameObjectsMap = std::unordered_map<GameObjectID, VRE_GameObject>;
+        using GameObjectsMap = std::unordered_map<GameObjectID, VRE::VRE_GameObject>;
 
-        VRE_GameObject(GameObjectID id) : mID(id) , mColor(1.f) {}
-
-        static VRE_GameObject CreateGameObject() {
-            static GameObjectID currentID = 0;
-            return VRE_GameObject(currentID++);
-        }
-
+        VRE_GameObject(VRE_GameObject&&) = default;
         VRE_GameObject(const VRE_GameObject&) = delete;
         VRE_GameObject& operator=(const VRE_GameObject&) = delete;
-        VRE_GameObject(VRE_GameObject&&) = default;
-        VRE_GameObject& operator=(VRE_GameObject&&) = default;
+        VRE_GameObject& operator=(VRE_GameObject&&) = delete;
 
         GameObjectID GetID() const { return mID; }
 
-        std::shared_ptr<VRE_Model> mModel;
-        glm::vec3 mColor;
+        VkDescriptorBufferInfo GetBufferInfo();
+
+        std::shared_ptr<VRE_glTFModel> mModel;
         VRE::Transform mTransform{};
 
     private:
+        VRE_GameObject(GameObjectID id, const VRE_GameObjectManager& manager);
+
         GameObjectID mID;
+        const VRE_GameObjectManager& mManager;
+
+        friend class VRE_GameObjectManager;
     };
 }

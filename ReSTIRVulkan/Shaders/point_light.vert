@@ -21,7 +21,7 @@ layout(set = 0, binding = 0) uniform UBO {
     mat4 viewMat;
     mat4 invViewMat;
     vec4 ambientLightColor; // r, g, b, intensity.
-    PointLightInfo pointLights[10]; //In FrameInfo.h, hard coded for now :(
+    PointLightInfo pointLights[10]; //In ShaerdContext.h, hard coded for now :(
     int activeLightCount;
 } ubo;
 

@@ -2,6 +2,8 @@
 #include "glm.hpp"
 
 namespace VRE {
+    static const int MAX_OBJECT_COUNT = 1000;
+
     struct Transform {
         glm::vec3 mTranslation{ 0.f };
         glm::vec3 mScale{ 1.f };
@@ -9,7 +11,7 @@ namespace VRE {
 
         // Matrix corresponds to Translate * Ry * Rx * Rz * Scale
         // Rotations correspond to Tait-bryan angles of Y(1), X(2), Z(3)
-        // https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix
+        // Wikipedia Contributors (2024). Euler angles. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix.
         glm::mat4 Mat4() {
             const float c3 = glm::cos(mRotation.z);
             const float s3 = glm::sin(mRotation.z);
