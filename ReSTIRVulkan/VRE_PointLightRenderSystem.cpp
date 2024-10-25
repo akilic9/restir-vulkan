@@ -12,7 +12,7 @@ namespace VRE {
     };
 }
 
-VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SceneContext& sceneContext)
+VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SharedContext& sceneContext)
     : mDevice(*sceneContext.mDevice)
     , mSceneContext(sceneContext)
 {

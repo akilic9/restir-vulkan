@@ -45,6 +45,6 @@ namespace VRE {
         std::unique_ptr<VRE_PointLightRenderSystem> mPLRenderSystem;
         VRE_InputListener mInputListener;
         std::unique_ptr<VRE_GameObjectManager> mGameObjectManager;
-        VRE_SceneContext mSceneContext;
+        VRE_SharedContext mSceneContext;
     };
 }

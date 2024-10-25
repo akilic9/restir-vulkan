@@ -2,7 +2,7 @@
 
 #include <numeric>
 
-VRE::VRE_GameObjectManager::VRE_GameObjectManager(VRE_SceneContext& sharedContext)
+VRE::VRE_GameObjectManager::VRE_GameObjectManager(VRE_SharedContext& sharedContext)
     : mSharedContext(sharedContext)
     , mDevice(*sharedContext.mDevice)
 {

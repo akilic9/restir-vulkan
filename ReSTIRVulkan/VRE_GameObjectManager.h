@@ -6,7 +6,7 @@
 namespace VRE {
     class VRE_GameObjectManager {
     public:
-        VRE_GameObjectManager(VRE_SceneContext& sharedContext);
+        VRE_GameObjectManager(VRE_SharedContext& sharedContext);
         ~VRE_GameObjectManager();
 
         VRE_GameObjectManager(const VRE_GameObjectManager&) = delete;
@@ -26,6 +26,6 @@ namespace VRE {
     private:
         VRE_GameObject::GameObjectID mLastID = 0;
         VRE_Device& mDevice;
-        VRE_SceneContext& mSharedContext;
+        VRE_SharedContext& mSharedContext;
     };
 }

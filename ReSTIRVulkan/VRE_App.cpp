@@ -55,7 +55,6 @@ void VRE::VRE_App::Run()
 
         if (auto commandBuffer = mRenderer.BeginDraw()) {
             const int frameIndex = mRenderer.GetFrameIndex();
-            VRE_FrameContext frameContext{ frameIndex, commandBuffer, mSceneContext.mSceneDescriptorSets[frameIndex] };
             UBO ubo;
 
             Update(deltaTime, ubo);

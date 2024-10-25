@@ -7,7 +7,7 @@ namespace VRE {
     class VRE_PointLightRenderSystem
     {
     public:
-        VRE_PointLightRenderSystem(VRE_SceneContext& sceneContext);
+        VRE_PointLightRenderSystem(VRE_SharedContext& sceneContext);
         ~VRE_PointLightRenderSystem();
 
         VRE_PointLightRenderSystem(const VRE_PointLightRenderSystem&) = delete;
@@ -23,6 +23,6 @@ namespace VRE {
         VRE_Device& mDevice;
         std::unique_ptr<VRE_Pipeline> mPipeline;
         VkPipelineLayout mPipelineLayout;
-        VRE_SceneContext& mSceneContext;
+        VRE_SharedContext& mSceneContext;
     };
 }

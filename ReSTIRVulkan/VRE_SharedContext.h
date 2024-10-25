@@ -8,13 +8,7 @@ namespace VRE {
 
     #define MAX_LIGHTS 10
 
-    struct VRE_FrameContext {
-        int mFrameIndex;
-        VkCommandBuffer mCommandBuffer;
-        VkDescriptorSet mDescSet;
-    };
-
-    struct VRE_SceneContext {
+    struct VRE_SharedContext {
         std::vector<VRE_PointLight> mPointLights;
         std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSet;
         VRE_Renderer* mRenderer;
