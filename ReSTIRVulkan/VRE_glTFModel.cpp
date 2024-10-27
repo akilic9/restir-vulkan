@@ -317,6 +317,8 @@ void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygl
         parent->mChildren.push_back(node);
     else
         mNodes.push_back(node);
+
+    mAllNodes.push_back(node);
 }
 
 void VRE::VRE_glTFModel::CreateTextureSamplers(tinygltf::Model& model)

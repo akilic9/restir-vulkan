@@ -2,6 +2,7 @@
 
 #include "vulkan/vulkan.h"
 #include "VRE_Texture.h"
+#include "VRE_Buffer.h"
 #include <vector>
 
 #define GLM_FORCE_RADIANS
@@ -84,7 +85,9 @@ namespace VRE {
 
     struct glTFMesh {
         std::vector<std::unique_ptr<glTFPrimitive>> mPrimitives;
-        glTFMesh();
+        glm::mat4 mMatrix;
+        std::unique_ptr<VRE_Buffer> mBuffer;
+        glTFMesh(VRE_Device& device, glm::mat4 matrix);
         ~glTFMesh();
     };
 

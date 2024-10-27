@@ -31,14 +31,16 @@ namespace VRE {
 
         VkDescriptorBufferInfo GetBufferInfo();
 
-        std::shared_ptr<VRE_glTFModel> mModel;
-        VRE::Transform mTransform{};
+        inline std::shared_ptr<VRE_glTFModel> GetModel() { return mModel; }
 
     private:
         VRE_GameObject(GameObjectID id, const VRE_GameObjectManager& manager);
 
         GameObjectID mID;
         const VRE_GameObjectManager& mManager;
+
+        std::shared_ptr<VRE_glTFModel> mModel;
+        VRE::Transform mTransform{};
 
         friend class VRE_GameObjectManager;
     };

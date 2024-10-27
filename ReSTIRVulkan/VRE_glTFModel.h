@@ -23,6 +23,10 @@ namespace VRE {
         void Draw(VkCommandBuffer commandBuffer);
         void DrawNode(VkCommandBuffer commandBuffer, std::shared_ptr<glTFNode> node);
 
+        inline std::vector<glTFMaterial>& GetMaterials() { return mMaterials; }
+        inline std::vector<std::shared_ptr<glTFNode>>& GetAllNodes() { return mAllNodes; }
+        inline std::vector<std::shared_ptr<glTFNode>>& GetNodes() { return mNodes; }
+
     private:
         void LoadTextures(tinygltf::Model& model);
         void LoadMaterials(tinygltf::Model& model);
@@ -43,6 +47,7 @@ namespace VRE {
         std::vector<VRE_Texture::SamplerProperties> mTextureSamplerProps;
         std::vector<std::shared_ptr<VRE_Texture>> mTextures;
         std::vector<std::shared_ptr<glTFNode>> mNodes;
+        std::vector<std::shared_ptr<glTFNode>> mAllNodes;
         std::vector<glTFMaterial> mMaterials;
 
         std::unique_ptr<VRE_Buffer> mVertexBuffer;

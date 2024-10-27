@@ -51,7 +51,7 @@
     <ClCompile Include="VRE_Descriptor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VRE_PointLightRenderSystem.cpp">
+    <ClCompile Include="VRE_LightRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VRE_Texture.cpp">
@@ -113,7 +113,7 @@
     <ClInclude Include="VRE_Descriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VRE_PointLightRenderSystem.h">
+    <ClInclude Include="VRE_LightRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VRE_PointLight.h">

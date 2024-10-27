@@ -21,6 +21,8 @@ namespace VRE {
         void Init();
         void Update(float deltaTime);
 
+        inline VRE_GameObject::GameObjectsMap& GetGameObjectsMap() { return mGameObjectsMap; }
+
     private:
         VRE_GameObject::GameObjectID mLastID = 0;
         VRE_SharedContext* mSharedContext;

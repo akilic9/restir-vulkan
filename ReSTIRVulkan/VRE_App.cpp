@@ -98,6 +98,7 @@ void VRE::VRE_App::Init()
     mPLRenderSystem.Init();
     mGameObjectManager.Init();
     mGameObjRenderSystem.Init();
+    mSceneContext.mGameObjMap = mGameObjectManager.GetGameObjectsMap();
     mCamera = VRE_Camera();
     mInputListener = VRE_InputListener();
     LoadObjects();
@@ -120,7 +121,7 @@ void VRE::VRE_App::Render(UBO& ubo)
 {
     mRenderer.BeginSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
     mPLRenderSystem.RenderLights();
-    mGameObjRenderSystem.RenderGameObjects();
+    mGameObjRenderSystem.Render();
     mRenderer.EndSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
 }
 

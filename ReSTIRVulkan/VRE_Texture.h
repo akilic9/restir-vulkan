@@ -22,7 +22,7 @@ namespace VRE {
 
         static std::unique_ptr<VRE_Texture> CreateTexture(VRE_Device& device, const std::string& filePath, SamplerProperties props = SamplerProperties{});
 
-        VkDescriptorImageInfo GetImageInfo() const { return mDescriptor; }
+        VkDescriptorImageInfo GetDescImageInfo() const { return mDescriptor; }
 
     private:
         void CreateImage(const std::string& filePath);

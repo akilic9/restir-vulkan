@@ -143,7 +143,7 @@
     <ClCompile Include="VRE_glTFModel.cpp" />
     <ClCompile Include="VRE_InputListener.cpp" />
     <ClCompile Include="VRE_ModelProperties.cpp" />
-    <ClCompile Include="VRE_PointLightRenderSystem.cpp" />
+    <ClCompile Include="VRE_LightRenderSystem.cpp" />
     <ClCompile Include="VRE_GameObjRenderSystem.cpp" />
     <ClCompile Include="VRE_App.cpp" />
     <ClCompile Include="main.cpp" />
@@ -163,7 +163,7 @@
     <ClInclude Include="VRE_Buffer.h" />
     <ClInclude Include="VRE_Descriptor.h" />
     <ClInclude Include="VRE_SharedContext.h" />
-    <ClInclude Include="VRE_PointLightRenderSystem.h" />
+    <ClInclude Include="VRE_LightRenderSystem.h" />
     <ClInclude Include="VRE_Texture.h" />
     <ClInclude Include="VRE_Utilities.h" />
     <ClInclude Include="VRE_Camera.h" />

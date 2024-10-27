@@ -14,9 +14,10 @@ std::vector<VkVertexInputAttributeDescription> VRE::Vertex::GetAttributeDesc()
     std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
 
     attributeDescriptions.push_back({ 0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mPosition) });
-    attributeDescriptions.push_back({ 1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mColor) });
+    attributeDescriptions.push_back({ 1, 0, VK_FORMAT_R32G32B32A32_SFLOAT, offsetof(Vertex, mColor) });
     attributeDescriptions.push_back({ 2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mNormal) });
     attributeDescriptions.push_back({ 3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord0) });
+    attributeDescriptions.push_back({ 4, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord1) });
 
     return attributeDescriptions;
 }
@@ -34,8 +35,16 @@ VRE::glTFPrimitive::glTFPrimitive(uint32_t firstIndex, uint32_t indexCount, uint
     , mMaterial(material)
     , mHasIndices(mIndexCount > 0) {}
 
-VRE::glTFMesh::glTFMesh()
+VRE::glTFMesh::glTFMesh(VRE_Device& device, glm::mat4 matrix) : mMatrix(matrix)
 {
+    VRE_Buffer stagingBuffer(device, sizeof(glm::mat4), 1, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+
+    stagingBuffer.Map();
+    stagingBuffer.WriteToBuffer(&mMatrix);
+
+    mBuffer = std::make_unique<VRE_Buffer>(device, sizeof(glm::mat4), 1, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+
+    device.CopyBuffer(stagingBuffer.GetBuffer(), mBuffer->GetBuffer(), sizeof(glm::mat4));
 }
 
 VRE::glTFMesh::~glTFMesh()

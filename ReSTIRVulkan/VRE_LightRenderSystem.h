@@ -4,14 +4,14 @@
 #include "VRE_Pipeline.h"
 
 namespace VRE {
-    class VRE_PointLightRenderSystem
+    class VRE_LightRenderSystem
     {
     public:
-        VRE_PointLightRenderSystem(VRE_SharedContext* sceneContext);
-        ~VRE_PointLightRenderSystem();
+        VRE_LightRenderSystem(VRE_SharedContext* sceneContext);
+        ~VRE_LightRenderSystem();
 
-        VRE_PointLightRenderSystem(const VRE_PointLightRenderSystem&) = delete;
-        VRE_PointLightRenderSystem& operator=(const VRE_PointLightRenderSystem&) = delete;
+        VRE_LightRenderSystem(const VRE_LightRenderSystem&) = delete;
+        VRE_LightRenderSystem& operator=(const VRE_LightRenderSystem&) = delete;
 
         void Init();
         void Update(UBO &ubo, float dt);

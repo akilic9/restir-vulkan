@@ -14,6 +14,7 @@ namespace VRE {
         std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSetLayout;
         std::vector<VkDescriptorSet> mSceneDescriptorSets;
         std::vector<VRE_PointLight> mPointLights;
+        VRE_GameObject::GameObjectsMap& mGameObjMap;
     };
 
     struct PointLightInfo {

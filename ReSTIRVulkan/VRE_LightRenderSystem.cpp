@@ -1,4 +1,4 @@
-#include "VRE_PointLightRenderSystem.h"
+#include "VRE_LightRenderSystem.h"
 #include <stdexcept>
 #include <cassert>
 #include <iostream>
@@ -12,21 +12,21 @@ namespace VRE {
     };
 }
 
-VRE::VRE_PointLightRenderSystem::VRE_PointLightRenderSystem(VRE_SharedContext* sceneContext)
+VRE::VRE_LightRenderSystem::VRE_LightRenderSystem(VRE_SharedContext* sceneContext)
     : mSceneContext(sceneContext) {}
 
-VRE::VRE_PointLightRenderSystem::~VRE_PointLightRenderSystem()
+VRE::VRE_LightRenderSystem::~VRE_LightRenderSystem()
 {
     vkDestroyPipelineLayout(mSceneContext->mDevice->GetVkDevice(), mPipelineLayout, nullptr);
 }
 
-void VRE::VRE_PointLightRenderSystem::Init()
+void VRE::VRE_LightRenderSystem::Init()
 {
     CreatePipelineLayout(mSceneContext->mGlobalDescSetLayout->GetDescriptorSetLayout());
     CreatePipeline(mSceneContext->mRenderer->GetSwapChainRenderPass());
 }
 
-void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
+void VRE::VRE_LightRenderSystem::Update(UBO &ubo, float dt)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
@@ -44,7 +44,7 @@ void VRE::VRE_PointLightRenderSystem::Update(UBO &ubo, float dt)
     ubo.mActiveLightCount = index;
 }
 
-void VRE::VRE_PointLightRenderSystem::RenderLights()
+void VRE::VRE_LightRenderSystem::RenderLights()
 {
     mPipeline->Bind(mSceneContext->mRenderer->GetCurrentCommandBuffer());
     VkDescriptorSet* descSet = &mSceneContext->mSceneDescriptorSets[mSceneContext->mRenderer->GetFrameIndex()];
@@ -67,7 +67,7 @@ void VRE::VRE_PointLightRenderSystem::RenderLights()
     }
 }
 
-void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
+void VRE::VRE_LightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
     VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
                                           0,
@@ -86,7 +86,7 @@ void VRE::VRE_PointLightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout
         throw std::runtime_error("Failed to create pipeline layout!");
 }
 
-void VRE::VRE_PointLightRenderSystem::CreatePipeline(VkRenderPass renderPass)
+void VRE::VRE_LightRenderSystem::CreatePipeline(VkRenderPass renderPass)
 {
     assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout!");
 

@@ -10,6 +10,37 @@ namespace VRE {
     class VRE_GameObjRenderSystem
     {
     public:
+        enum MaterialType {
+            PBR = 0,
+            Unlit = 1
+        };
+
+        struct DescSetLayouts {
+            std::unique_ptr<VRE_DescriptorSetLayout> mMaterialDescSetLayout;
+            std::unique_ptr<VRE_DescriptorSetLayout> mNodeDescSetLayout;
+            std::unique_ptr<VRE_DescriptorSetLayout> mMaterialBufferDescSetLayout;
+        };
+
+        struct alignas(16) ShaderMaterial {
+            glm::vec4 mBaseColorFactor;
+            glm::vec4 mEmissiveFactor;
+            glm::vec4 mDiffuseFactor;
+            glm::vec4 mSpecularFactor;
+            float mWorkflow;
+            int mBaseColorTextureSet;
+            int mPhysicalDescriptorTextureSet;
+            int mNormalTextureSet;
+            int mOcclusionTextureSet;
+            int mEmissiveTextureSet;
+            float mMetallicFactor;
+            float mRoughnessFactor;
+            float mAlphaMask;
+            float mAlphaCutoff;
+            float mEmissiveStrength;
+        };
+
+        using PipelinesMap = std::unordered_map<MaterialType, std::unique_ptr<VRE_Pipeline>>;
+
         VRE_GameObjRenderSystem(VRE_SharedContext* sharedContext);
         ~VRE_GameObjRenderSystem();
 
@@ -17,15 +48,24 @@ namespace VRE {
         VRE_GameObjRenderSystem& operator=(const VRE_GameObjRenderSystem&) = delete;
 
         void Init();
-        void RenderGameObjects();
+        void Render();
 
     private:
-        void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);
-        void CreatePipeline(VkRenderPass renderPass);
+        void CreatePipelineLayouts();
+        void CreatePipelines();
+        void CreateDescSetLayouts();
+        void CreateDescPools();
+        void CreateShaderMatBuffer();
+        void WriteToMaterialDesc();
+        void WriteToNodeDesc();
+        void WriteToNodeDescByNode(std::shared_ptr<glTFNode> node);
+        void WriteToMaterialBufferDesc();
 
-        std::unique_ptr<VRE_Pipeline> mPipeline;
+        PipelinesMap mPipelines;
         VkPipelineLayout mPipelineLayout;
-        std::unique_ptr<VRE_DescriptorSetLayout> mRenderSystemLayout;
+        std::vector<std::unique_ptr<VRE_DescriptorPool>> mDescPools;
         VRE_SharedContext* mSharedContext;
+        DescSetLayouts mDescSetLayouts;
+        std::unique_ptr<VRE_Buffer> mShaderMatBuffer;
     };
 }
