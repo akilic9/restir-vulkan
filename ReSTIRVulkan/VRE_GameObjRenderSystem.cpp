@@ -73,8 +73,23 @@ void VRE::VRE_GameObjRenderSystem::CreatePipelines()
     VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
     pipelineConfig.mRenderPass = mSharedContext->mRenderer->GetSwapChainRenderPass();
     pipelineConfig.mPipelineLayout = mPipelineLayout;
-    mPipelines.emplace(MaterialType::PBR, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", "Shaders/mat_pbr.frag.spv")));
-    mPipelines.emplace(MaterialType::Unlit, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", "Shaders/mat_unlit.frag.spv")));
+
+    mPipelines.emplace(PipelineType::PBR, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", "Shaders/mat_pbr.frag.spv")));
+    mPipelines.emplace(PipelineType::Unlit, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", "Shaders/mat_unlit.frag.spv")));
+
+    for (auto baseType : { PipelineType::PBR, PipelineType::Unlit }) {
+        std::string fragShader = baseType == 0 ? "Shaders/mat_pbr.frag.spv" : "Shaders/mat_unlit.frag.spv";
+
+        pipelineConfig.mRasterizationInfo.cullMode = VK_CULL_MODE_NONE;
+        mPipelines.emplace(baseType + 1, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
+
+        pipelineConfig.mColorBlendAttachment.blendEnable = VK_TRUE;
+        pipelineConfig.mColorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
+        pipelineConfig.mColorBlendAttachment.dstColorBlendFactor= VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+        pipelineConfig.mColorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+        mPipelines.emplace(baseType + 2, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
+    }
+
 }
 
 void VRE::VRE_GameObjRenderSystem::CreateDescSetLayouts()

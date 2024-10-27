@@ -10,9 +10,13 @@ namespace VRE {
     class VRE_GameObjRenderSystem
     {
     public:
-        enum MaterialType {
+        enum PipelineType {
             PBR = 0,
-            Unlit = 1
+            PBR_DoubleSide,
+            PBR_AplhaBlend,
+            Unlit,
+            Unlit_DoubleSide,
+            Unlit_AlphaBlend
         };
 
         struct DescSetLayouts {
@@ -39,7 +43,7 @@ namespace VRE {
             float mEmissiveStrength;
         };
 
-        using PipelinesMap = std::unordered_map<MaterialType, std::unique_ptr<VRE_Pipeline>>;
+        using PipelinesMap = std::unordered_map<PipelineType, std::unique_ptr<VRE_Pipeline>>;
 
         VRE_GameObjRenderSystem(VRE_SharedContext* sharedContext);
         ~VRE_GameObjRenderSystem();

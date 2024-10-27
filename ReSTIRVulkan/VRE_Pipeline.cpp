@@ -62,8 +62,7 @@ void VRE::VRE_Pipeline::CreateGraphicsPipeline(const PipelineConfigInfo& configI
     auto &attributeDescriptions = configInfo.mAttributeDescriptions;
     VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
     vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-    vertexInputInfo.vertexAttributeDescriptionCount =
-        static_cast<uint32_t>(attributeDescriptions.size());
+    vertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(attributeDescriptions.size());
     vertexInputInfo.vertexBindingDescriptionCount = static_cast<uint32_t>(bindingDescriptions.size());
     vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
     vertexInputInfo.pVertexBindingDescriptions = bindingDescriptions.data();
@@ -125,8 +124,8 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mRasterizationInfo.rasterizerDiscardEnable = VK_FALSE;
     configInfo.mRasterizationInfo.polygonMode = VK_POLYGON_MODE_FILL;
     configInfo.mRasterizationInfo.lineWidth = 1.0f;
-    configInfo.mRasterizationInfo.cullMode = VK_CULL_MODE_NONE;
-    configInfo.mRasterizationInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
+    configInfo.mRasterizationInfo.cullMode = VK_CULL_MODE_BACK_BIT;
+    configInfo.mRasterizationInfo.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
     configInfo.mRasterizationInfo.depthBiasEnable = VK_FALSE;
     configInfo.mRasterizationInfo.depthBiasConstantFactor = 0.0f;  // Optional
     configInfo.mRasterizationInfo.depthBiasClamp = 0.0f;           // Optional
@@ -134,7 +133,7 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
 
     configInfo.mMultisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
     configInfo.mMultisampleInfo.sampleShadingEnable = VK_FALSE;
-    configInfo.mMultisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
+    configInfo.mMultisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_4_BIT;
     configInfo.mMultisampleInfo.minSampleShading = 1.0f;           // Optional
     configInfo.mMultisampleInfo.pSampleMask = nullptr;             // Optional
     configInfo.mMultisampleInfo.alphaToCoverageEnable = VK_FALSE;  // Optional
@@ -163,13 +162,14 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mDepthStencilInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     configInfo.mDepthStencilInfo.depthTestEnable = VK_TRUE;
     configInfo.mDepthStencilInfo.depthWriteEnable = VK_TRUE;
-    configInfo.mDepthStencilInfo.depthCompareOp = VK_COMPARE_OP_LESS;
+    configInfo.mDepthStencilInfo.depthCompareOp = VK_COMPARE_OP_LESS_OR_EQUAL;
     configInfo.mDepthStencilInfo.depthBoundsTestEnable = VK_FALSE;
     configInfo.mDepthStencilInfo.minDepthBounds = 0.0f;  // Optional
     configInfo.mDepthStencilInfo.maxDepthBounds = 1.0f;  // Optional
     configInfo.mDepthStencilInfo.stencilTestEnable = VK_FALSE;
-    configInfo.mDepthStencilInfo.front = {};  // Optional
+    configInfo.mDepthStencilInfo.front = configInfo.mDepthStencilInfo.back;
     configInfo.mDepthStencilInfo.back = {};   // Optional
+    configInfo.mDepthStencilInfo.back.compareOp = VK_COMPARE_OP_ALWAYS;
 
     configInfo.mDynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
     configInfo.mDynamicStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
