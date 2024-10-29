@@ -11,6 +11,7 @@ VRE::VRE_GameObjRenderSystem::~VRE_GameObjRenderSystem()
 
 void VRE::VRE_GameObjRenderSystem::Init()
 {
+    mEmptyTexture = VRE_Texture::CreateTexture(*mSharedContext->mDevice, "Resources/Textures/empty.png");
     CreatePipelineLayouts();
     CreatePipelines();
     CreateShaderMatBuffer();
@@ -21,31 +22,65 @@ void VRE::VRE_GameObjRenderSystem::Init()
 
 void VRE::VRE_GameObjRenderSystem::Render()
 {
-    //mPipeline->Bind(frameInfo.mCommandBuffer);
+    for (auto& e : *mSharedContext->mGameObjMap) {
+        GameObjectBufferData data{};
+        data.mModelMatrix = e.second.mTransform.Mat4();
+        data.mModelMatrix = e.second.mTransform.NormalMatrix();
 
-    //vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1, &frameInfo.mDescSet, 0, nullptr);
+        for (auto& node : e.second.mModel->GetNodes()) {
+            RenderNode(node, glTFMaterial::AlphaMode::ALPHAMODE_OPAQUE, data);
+        }
+        for (auto& node : e.second.mModel->GetNodes()) {
+            RenderNode(node, glTFMaterial::AlphaMode::ALPHAMODE_MASK, data);
+        }
+        for (auto& node : e.second.mModel->GetNodes()) {
+            RenderNode(node, glTFMaterial::AlphaMode::ALPHAMODE_BLEND, data);
+        }
+    }
+}
 
-    //for (auto& e : frameInfo.mGameObjects) {
-    //    if (!e.second.mModel)
-    //        continue;
+void VRE::VRE_GameObjRenderSystem::RenderNode(std::shared_ptr<glTFNode> node, glTFMaterial::AlphaMode alphaMode, GameObjectBufferData& data)
+{
+    if (!node->mMesh)
+        return;
 
-    //    auto bufferInfo = e.second.GetBufferInfo(frameInfo.mFrameIndex);
+    for (auto& prim : node->mMesh->mPrimitives) {
 
-    //    VkDescriptorSet gameObjDescSet;
-    //    VRE_DescriptorWriter(*mRenderSystemLayout, frameInfo.mFrameDescPool)
-    //        .WriteBuffer(0, &bufferInfo)
-    //        .Build(gameObjDescSet);
+        auto pipelineType = prim->mMaterial.mUnlit ? PipelineType::Unlit : PipelineType::PBR;
 
-    //    vkCmdBindDescriptorSets(frameInfo.mCommandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &gameObjDescSet, 0, nullptr);
+        pipelineType = alphaMode == glTFMaterial::AlphaMode::ALPHAMODE_BLEND ?
+                                        PipelineType(pipelineType + 2) : prim->mMaterial.mDoubleSided ?
+                                            PipelineType(pipelineType + 1) : pipelineType;
 
-    //    e.second.mModel->Bind(frameInfo.mCommandBuffer);
-    //    e.second.mModel->Draw(frameInfo.mCommandBuffer);
-    //}
+        auto& pipeline = mPipelines[pipelineType];
+
+        pipeline->Bind(mSharedContext->mRenderer->GetCurrentCommandBuffer());
+
+        const std::vector<VkDescriptorSet> sets = { mSharedContext->mSceneDescriptorSets[mSharedContext->mRenderer->GetFrameIndex()],
+                                                   prim->mMaterial.mDescriptor,
+                                                   node->mMesh->mDescriptor,
+                                                   mMatBufferDescriptor };
+
+        vkCmdBindDescriptorSets(mSharedContext->mRenderer->GetCurrentCommandBuffer(), VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout,
+                                0, static_cast<uint32_t>(sets.size()), sets.data(), 0, nullptr);
+
+        data.mMaterialIndex = prim->mMaterial.mIndex;
+
+        vkCmdPushConstants(mSharedContext->mRenderer->GetCurrentCommandBuffer(), mPipelineLayout, VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData), &data);
+
+        if (prim->mHasIndices)
+            vkCmdDrawIndexed(mSharedContext->mRenderer->GetCurrentCommandBuffer(), prim->mIndexCount, 1, prim->mFirstIndex, 0, 0);
+        else
+            vkCmdDraw(mSharedContext->mRenderer->GetCurrentCommandBuffer(), prim->mVertexCount, 1, 0, 0);
+    }
+
+    for (auto& child : node->mChildren)
+        RenderNode(child, alphaMode, data);
 }
 
 void VRE::VRE_GameObjRenderSystem::CreatePipelineLayouts()
 {
-    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData) };
+    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(uint32_t) };
     
     CreateDescSetLayouts();
 
@@ -81,15 +116,14 @@ void VRE::VRE_GameObjRenderSystem::CreatePipelines()
         std::string fragShader = baseType == 0 ? "Shaders/mat_pbr.frag.spv" : "Shaders/mat_unlit.frag.spv";
 
         pipelineConfig.mRasterizationInfo.cullMode = VK_CULL_MODE_NONE;
-        mPipelines.emplace(baseType + 1, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
+        mPipelines.emplace(PipelineType(baseType + 1), std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
 
         pipelineConfig.mColorBlendAttachment.blendEnable = VK_TRUE;
         pipelineConfig.mColorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
         pipelineConfig.mColorBlendAttachment.dstColorBlendFactor= VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
         pipelineConfig.mColorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
-        mPipelines.emplace(baseType + 2, std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
+        mPipelines.emplace(PipelineType(baseType + 2), std::move(std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/pbr.vert.spv", fragShader)));
     }
-
 }
 
 void VRE::VRE_GameObjRenderSystem::CreateDescSetLayouts()
@@ -119,31 +153,28 @@ void VRE::VRE_GameObjRenderSystem::CreateDescPools()
     uint32_t matCount = 0;
     uint32_t meshCount = 0;
 
-    for (auto& e : mSharedContext->mGameObjMap) {
-        for (auto& objMat : e.second.GetModel()->GetMaterials()) {
+    for (auto& e : *mSharedContext->mGameObjMap) {
+        for (auto& objMat : e.second.mModel->GetMaterials()) {
             texSampCount += 5;
             matCount++;
         }
-        for (auto& node : e.second.GetModel()->GetAllNodes())
+        for (auto& node : e.second.mModel->GetAllNodes())
             if (node->mMesh) meshCount++;
     }
 
-    mDescPools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
-    for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
-        mDescPools[i] = VRE_DescriptorPool::Builder(*mSharedContext->mDevice)
-                        .SetMaxSets(matCount + meshCount)
-                        .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, meshCount)
-                        .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, texSampCount)
-                        .AddPoolSize(VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1)
-                        .Build();
-    }
+    mDescPool = VRE_DescriptorPool::Builder(*mSharedContext->mDevice)
+                    .SetMaxSets((matCount + meshCount) * VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                    .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, meshCount * VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                    .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, texSampCount * VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
+                    .AddPoolSize(VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1)
+                    .Build();
 }
 
 void VRE::VRE_GameObjRenderSystem::CreateShaderMatBuffer()
 {
     std::vector<ShaderMaterial> shaderMatList;
-    for (auto& e : mSharedContext->mGameObjMap) {
-        for (auto& mat : e.second.GetModel()->GetMaterials()) {
+    for (auto& e : *mSharedContext->mGameObjMap) {
+        for (auto& mat : e.second.mModel->GetMaterials()) {
             ShaderMaterial shdMat{};
 
             shdMat.mBaseColorTextureSet = mat.mBaseColorTexture ? mat.mTexCoordSets.mBaseColor : -1;
@@ -184,7 +215,7 @@ void VRE::VRE_GameObjRenderSystem::CreateShaderMatBuffer()
                              VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
 
     stagingBuffer.Map();
-    stagingBuffer.WriteToBuffer(&shaderMatList);
+    stagingBuffer.WriteToBuffer((void*)shaderMatList.data());
 
     mShaderMatBuffer = std::make_unique<VRE_Buffer>(*mSharedContext->mDevice, sizeof(ShaderMaterial), shaderMatList.size() * sizeof(ShaderMaterial),
                                            VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
@@ -194,32 +225,41 @@ void VRE::VRE_GameObjRenderSystem::CreateShaderMatBuffer()
 
 void VRE::VRE_GameObjRenderSystem::WriteToMaterialDesc()
 {
-    for (auto& e : mSharedContext->mGameObjMap) {
-        for (auto& objMat : e.second.GetModel()->GetMaterials()) {
-            VkDescriptorSet materialDescSet;
-            auto writer = VRE_DescriptorWriter(*mDescSetLayouts.mMaterialDescSetLayout, *mDescPools[mSharedContext->mRenderer->GetFrameIndex()]);
+    for (auto& e : *mSharedContext->mGameObjMap) {
+        for (auto& objMat : e.second.mModel->GetMaterials()) {
+            auto writer = VRE_DescriptorWriter(*mDescSetLayouts.mMaterialDescSetLayout, *mDescPool);
             if (objMat.mPbrWorkflows.mMetallicRoughness) {
-                writer.WriteImage(0, objMat.mBaseColorTexture ? &objMat.mBaseColorTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
-                writer.WriteImage(1, objMat.mMetallicRoughnessTexture ? &objMat.mMetallicRoughnessTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
+                auto info = objMat.mBaseColorTexture ? objMat.mBaseColorTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+                writer.WriteImage(0, &info);
+
+                auto info1 = objMat.mMetallicRoughnessTexture ? objMat.mMetallicRoughnessTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+                writer.WriteImage(1, &info1);
             }
             else {
-                writer.WriteImage(0, objMat.mExtension.mDiffuseTexture ? &objMat.mExtension.mDiffuseTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
-                writer.WriteImage(1, objMat.mExtension.mSpecularGlossTexture ? &objMat.mExtension.mSpecularGlossTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
+                auto info = objMat.mExtension.mDiffuseTexture ? objMat.mExtension.mDiffuseTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+                writer.WriteImage(0, &info);
+
+                auto info1 = objMat.mExtension.mSpecularGlossTexture ? objMat.mExtension.mSpecularGlossTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+                writer.WriteImage(1,  &info1);
             }
-            writer.WriteImage(2, objMat.mNormalTexture ? &objMat.mNormalTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
-            writer.WriteImage(3, objMat.mOcclusionTexture ? &objMat.mOcclusionTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
-            writer.WriteImage(4, objMat.mEmissiveTexture ? &objMat.mEmissiveTexture->GetDescImageInfo() : &VkDescriptorImageInfo());
-            writer.Build(materialDescSet);
-            vkCmdBindDescriptorSets(mSharedContext->mRenderer->GetCurrentCommandBuffer(),
-                                    VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 1, 1, &materialDescSet, 0, nullptr);
+            auto info2 = objMat.mNormalTexture ? objMat.mNormalTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+            writer.WriteImage(2, &info2);
+
+            auto info3 = objMat.mOcclusionTexture ? objMat.mOcclusionTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+            writer.WriteImage(3, &info3);
+
+            auto info4 = objMat.mEmissiveTexture ? objMat.mEmissiveTexture->GetDescImageInfo() : mEmptyTexture->GetDescImageInfo();
+            writer.WriteImage(4, &info4);
+
+            writer.Build(objMat.mDescriptor);
         }
     }
 }
 
 void VRE::VRE_GameObjRenderSystem::WriteToNodeDesc()
 {
-    for (auto& e : mSharedContext->mGameObjMap)
-        for (auto& node : e.second.GetModel()->GetNodes())
+    for (auto& e : *mSharedContext->mGameObjMap)
+        for (auto& node : e.second.mModel->GetNodes())
             WriteToNodeDescByNode(node);
 }
 
@@ -227,11 +267,10 @@ void VRE::VRE_GameObjRenderSystem::WriteToNodeDescByNode(std::shared_ptr<glTFNod
 {
     if (node->mMesh) {
         VkDescriptorSet nodeDescSet;
-        VRE_DescriptorWriter(*mDescSetLayouts.mNodeDescSetLayout, *mDescPools[mSharedContext->mRenderer->GetFrameIndex()])
-            .WriteBuffer(0, &node->mMesh->mBuffer->DescriptorInfo())
-            .Build(nodeDescSet);
-        vkCmdBindDescriptorSets(mSharedContext->mRenderer->GetCurrentCommandBuffer(),
-            VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 2, 1, &nodeDescSet, 0, nullptr);
+        auto info = node->mMesh->mBuffer->DescriptorInfo();
+        VRE_DescriptorWriter(*mDescSetLayouts.mNodeDescSetLayout, *mDescPool)
+                             .WriteBuffer(0, &info)
+                             .Build(nodeDescSet);
     }
     for (auto& child : node->mChildren)
         WriteToNodeDescByNode(child);
@@ -239,10 +278,8 @@ void VRE::VRE_GameObjRenderSystem::WriteToNodeDescByNode(std::shared_ptr<glTFNod
 
 void VRE::VRE_GameObjRenderSystem::WriteToMaterialBufferDesc()
 {
-    VkDescriptorSet shdMatDescSet;
-    VRE_DescriptorWriter(*mDescSetLayouts.mMaterialBufferDescSetLayout, *mDescPools[mSharedContext->mRenderer->GetFrameIndex()])
-        .WriteBuffer(0, &mShaderMatBuffer->DescriptorInfo())
-        .Build(shdMatDescSet);
-    vkCmdBindDescriptorSets(mSharedContext->mRenderer->GetCurrentCommandBuffer(),
-        VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 3, 1, &shdMatDescSet, 0, nullptr);
+    auto info = mShaderMatBuffer->DescriptorInfo();
+    VRE_DescriptorWriter(*mDescSetLayouts.mMaterialBufferDescSetLayout, *mDescPool)
+                         .WriteBuffer(0, &info)
+                         .Build(mMatBufferDescriptor);
 }

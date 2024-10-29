@@ -40,7 +40,7 @@ namespace VRE {
         VRE_Window mWindow{ DEF_WINDOW_WIDTH, DEF_WINDOW_HEIGHT, DEF_WINDOW_TITLE };
         VRE_Device mDevice{ mWindow };
         VRE_Renderer mRenderer;
-        VRE_SharedContext mSceneContext {&mDevice, &mRenderer};
+        VRE_SharedContext mSceneContext;
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
         std::vector<std::unique_ptr<VRE_Buffer>> mSceneUBOs;
         VRE_LightRenderSystem mPLRenderSystem;

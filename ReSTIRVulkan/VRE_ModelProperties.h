@@ -46,6 +46,8 @@ namespace VRE {
         glm::vec4 mBaseColorFactor = glm::vec4(1.0f);
         glm::vec4 mEmissiveFactor = glm::vec4(0.0f);
 
+        VkDescriptorSet mDescriptor{};
+
         std::shared_ptr<VRE_Texture> mBaseColorTexture;
         std::shared_ptr<VRE_Texture> mMetallicRoughnessTexture;
         std::shared_ptr<VRE_Texture> mNormalTexture;
@@ -87,6 +89,7 @@ namespace VRE {
         std::vector<std::unique_ptr<glTFPrimitive>> mPrimitives;
         glm::mat4 mMatrix;
         std::unique_ptr<VRE_Buffer> mBuffer;
+        VkDescriptorSet mDescriptor{};
         glTFMesh(VRE_Device& device, glm::mat4 matrix);
         ~glTFMesh();
     };
@@ -106,7 +109,7 @@ namespace VRE {
         std::shared_ptr<glTFNode> mParent;
         std::vector<std::shared_ptr<glTFNode>> mChildren;
 
-        glTFNode(uint32_t index, std::string name, glm::mat4 matrix, std::shared_ptr<glTFNode> parent);
+        glTFNode(VRE_Device& device, uint32_t index, std::string name, glm::mat4 matrix, std::shared_ptr<glTFNode> parent);
         glm::mat4 GetLocalMatrix();
         glm::mat4 GetMatrix();
     };

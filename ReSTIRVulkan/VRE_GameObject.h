@@ -12,6 +12,7 @@ namespace VRE {
     struct GameObjectBufferData {
         glm::mat4 mModelMatrix{ 1.f };
         glm::mat4 mNormalMatrix{ 1.f };
+        uint32_t mMaterialIndex;
     };
 
     class VRE_GameObjectManager;
@@ -22,6 +23,8 @@ namespace VRE {
         using GameObjectID = unsigned int;
         using GameObjectsMap = std::unordered_map<GameObjectID, VRE::VRE_GameObject>;
 
+        VRE::Transform mTransform{};
+
         VRE_GameObject(VRE_GameObject&&) = default;
         VRE_GameObject(const VRE_GameObject&) = delete;
         VRE_GameObject& operator=(const VRE_GameObject&) = delete;
@@ -31,7 +34,7 @@ namespace VRE {
 
         VkDescriptorBufferInfo GetBufferInfo();
 
-        inline std::shared_ptr<VRE_glTFModel> GetModel() { return mModel; }
+        std::shared_ptr<VRE_glTFModel> mModel;
 
     private:
         VRE_GameObject(GameObjectID id, const VRE_GameObjectManager& manager);
@@ -39,8 +42,6 @@ namespace VRE {
         GameObjectID mID;
         const VRE_GameObjectManager& mManager;
 
-        std::shared_ptr<VRE_glTFModel> mModel;
-        VRE::Transform mTransform{};
 
         friend class VRE_GameObjectManager;
     };

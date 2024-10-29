@@ -51,13 +51,13 @@ VRE::glTFMesh::~glTFMesh()
 {
 }
 
-VRE::glTFNode::glTFNode(uint32_t index, std::string name, glm::mat4 matrix, std::shared_ptr<glTFNode> parent)
+VRE::glTFNode::glTFNode(VRE_Device& device, uint32_t index, std::string name, glm::mat4 matrix, std::shared_ptr<glTFNode> parent)
     : mIndex(index)
     , mName(name)
     , mMatrix(matrix)
     , mParent(parent)
 {
-    mMesh = std::make_unique<glTFMesh>();
+    mMesh = std::make_unique<glTFMesh>(device, mMatrix);
 }
 
 glm::mat4 VRE::glTFNode::GetLocalMatrix()

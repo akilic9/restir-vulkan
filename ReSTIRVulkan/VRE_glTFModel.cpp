@@ -161,11 +161,7 @@ void VRE::VRE_glTFModel::LoadMaterials(tinygltf::Model& model)
 
 void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygltf::Node& inputNode, uint32_t nodeIndex, const tinygltf::Model& model, ModelData& data)
 {
-    std::shared_ptr<glTFNode> node = std::make_shared<glTFNode>(nodeIndex, inputNode.name, glm::mat4(1.0f), parent);
-    node->mIndex = nodeIndex;
-    node->mParent = parent;
-    node->mName = inputNode.name;
-    node->mMatrix = glm::mat4(1.0f);
+    std::shared_ptr<glTFNode> node = std::make_shared<glTFNode>(mDevice, nodeIndex, inputNode.name, glm::mat4(1.0f), parent);
     
     glm::vec3 translation = glm::vec3(0.0f);
     if (inputNode.translation.size() == 3) {

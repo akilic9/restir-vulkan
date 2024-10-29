@@ -2,7 +2,6 @@
 #include "VRE_Device.h"
 #include "VRE_GameObject.h"
 #include "VRE_Pipeline.h"
-#include "VRE_Camera.h"
 #include "VRE_SharedContext.h"
 #include <memory>
 
@@ -64,12 +63,15 @@ namespace VRE {
         void WriteToNodeDesc();
         void WriteToNodeDescByNode(std::shared_ptr<glTFNode> node);
         void WriteToMaterialBufferDesc();
+        void RenderNode(std::shared_ptr<glTFNode> node, glTFMaterial::AlphaMode alphaMode, GameObjectBufferData& data);
 
         PipelinesMap mPipelines;
         VkPipelineLayout mPipelineLayout;
-        std::vector<std::unique_ptr<VRE_DescriptorPool>> mDescPools;
+        std::unique_ptr<VRE_DescriptorPool> mDescPool;
         VRE_SharedContext* mSharedContext;
         DescSetLayouts mDescSetLayouts;
         std::unique_ptr<VRE_Buffer> mShaderMatBuffer;
+        VkDescriptorSet mMatBufferDescriptor;
+        std::unique_ptr<VRE_Texture> mEmptyTexture;
     };
 }
