@@ -26,7 +26,7 @@ void VRE::VRE_glTFModel::LoadModel()
     if (!gltfContext.LoadASCIIFromFile(&model, &error, &warning, filePath.append(mFileName).append(".gltf")))
         throw std::runtime_error("Failed to load glTF file!");
 
-    CreateTextureSamplers(model);
+    //CreateTextureSamplers(model);
     LoadTextures(model);
     LoadMaterials(model);
 
@@ -53,7 +53,7 @@ void VRE::VRE_glTFModel::LoadTextures(tinygltf::Model& model)
             continue;
         }
 
-        mTextures.push_back(std::move(VRE_Texture::CreateTexture(mDevice, filePath, mTextureSamplerProps[tex.sampler])));
+        mTextures.push_back(std::move(VRE_Texture::CreateTexture(mDevice, filePath)));
     }
 }
 
@@ -259,7 +259,7 @@ void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygl
                 vertex.mPosition = glm::vec4(glm::make_vec3(&bufferPos[v * posByteStride]), 1.0f);
                 vertex.mNormal = glm::normalize(glm::vec3(bufferNormals ? glm::make_vec3(&bufferNormals[v * normByteStride]) : glm::vec3(0.0f)));
                 vertex.mTexCoord0 = bufferTexCoordSet0 ? glm::make_vec2(&bufferTexCoordSet0[v * texCoord0ByteStride]) : glm::vec3(0.0f);
-                vertex.mTexCoord1 = bufferTexCoordSet1 ? glm::make_vec2(&bufferTexCoordSet1[v * texCoord1ByteStride]) : glm::vec3(0.0f);
+                //vertex.mTexCoord1 = bufferTexCoordSet1 ? glm::make_vec2(&bufferTexCoordSet1[v * texCoord1ByteStride]) : glm::vec3(0.0f);
                 vertex.mColor = bufferColorSet ? glm::make_vec4(&bufferColorSet[v * color0ByteStride]) : glm::vec4(1.0f);
                 data.mVertices.push_back(vertex);
                 data.mVertexPosition++;
@@ -317,36 +317,18 @@ void VRE::VRE_glTFModel::LoadNode(std::shared_ptr<glTFNode> parent, const tinygl
     mAllNodes.push_back(node);
 }
 
-void VRE::VRE_glTFModel::CreateTextureSamplers(tinygltf::Model& model)
-{
-    for (tinygltf::Sampler sampler : model.samplers) {
-        VRE_Texture::SamplerProperties sp{};
-        sp.minFilter = GetFilterMode(sampler.minFilter);
-        sp.magFilter = GetFilterMode(sampler.magFilter);
-        sp.addressModeU = GetWrapMode(sampler.wrapS);
-        sp.addressModeV = GetWrapMode(sampler.wrapT);
-        sp.addressModeW = sp.addressModeV;
-        mTextureSamplerProps.push_back(sp);
-    }
-}
-
-void VRE::VRE_glTFModel::Draw(VkCommandBuffer commandBuffer)
-{
-    for (auto &node : mNodes)
-        DrawNode(commandBuffer, node);
-}
-
-void VRE::VRE_glTFModel::DrawNode(VkCommandBuffer commandBuffer, std::shared_ptr<glTFNode> node)
-{
-    if (node->mMesh) {
-        for (auto& primitive : node->mMesh->mPrimitives) {
-            vkCmdDrawIndexed(commandBuffer, primitive->mIndexCount, 1, primitive->mFirstIndex, 0, 0);
-        }
-    }
-    for (auto& child : node->mChildren) {
-        DrawNode(commandBuffer, child);
-    }
-}
+//void VRE::VRE_glTFModel::CreateTextureSamplers(tinygltf::Model& model)
+//{
+//    for (tinygltf::Sampler sampler : model.samplers) {
+//        VRE_Texture::SamplerProperties sp{};
+//        sp.minFilter = GetFilterMode(sampler.minFilter);
+//        sp.magFilter = GetFilterMode(sampler.magFilter);
+//        sp.addressModeU = GetWrapMode(sampler.wrapS);
+//        sp.addressModeV = GetWrapMode(sampler.wrapT);
+//        sp.addressModeW = sp.addressModeV;
+//        mTextureSamplerProps.push_back(sp);
+//    }
+//}
 
 void VRE::VRE_glTFModel::Bind(VkCommandBuffer commandBuffer)
 {

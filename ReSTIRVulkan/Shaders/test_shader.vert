@@ -24,16 +24,20 @@ layout(set = 0, binding = 0) uniform UBO {
     int activeLightCount;
 } ubo;
 
-layout(set = 1, binding = 0) uniform GameObjectBufferData {
-  mat4 modelMatrix;
-  mat4 normalMatrix;
-} gameObject;
+layout(set = 1, binding = 0) uniform NodeMatrix {
+  mat4 nodeMatrix;
+} node;
+
+layout(push_constant) uniform Push {
+    mat4 modelMatrix;
+    mat4 normalMatrix;
+} push;
 
 void main() {
-    vec4 positionInWorld = gameObject.modelMatrix * vec4(inPosition, 1.0);
+    vec4 positionInWorld = push.modelMatrix * node.nodeMatrix * vec4(inPosition, 1.0);
     gl_Position = ubo.projectionMat * ubo.viewMat * positionInWorld; //The order is important!
 
-    fragNormalWorld = normalize(mat3(gameObject.normalMatrix) * inNormal);
+    fragNormalWorld = normalize(mat3(push.normalMatrix) * inNormal);
     fragPosWorld = positionInWorld.xyz;
     fragColor = inColor;
     fragTexCoord = inTexCoord;

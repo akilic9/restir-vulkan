@@ -49,7 +49,7 @@ void VRE::VRE_App::Run()
 
         const auto currentTime = std::chrono::high_resolution_clock::now();
         const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
-        std::cout << 1.0f / deltaTime << std::endl;
+        //std::cout << 1.0f / deltaTime << std::endl;
         startTime = currentTime;
 
         float aspRatio = mRenderer.GetAspectRatio();
@@ -154,24 +154,24 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
-    //model->LoadImages();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
     model->LoadModel();
     VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
     obj.mModel = model;
     obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
-    obj.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
+    obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
+    //model->LoadModel();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
+    //obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

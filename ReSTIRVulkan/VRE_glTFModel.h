@@ -20,8 +20,6 @@ namespace VRE {
         void LoadModel();
 
         void Bind(VkCommandBuffer commandBuffer);
-        void Draw(VkCommandBuffer commandBuffer);
-        void DrawNode(VkCommandBuffer commandBuffer, std::shared_ptr<glTFNode> node);
 
         inline std::vector<glTFMaterial>& GetMaterials() { return mMaterials; }
         inline std::vector<std::shared_ptr<glTFNode>>& GetAllNodes() { return mAllNodes; }
@@ -35,7 +33,7 @@ namespace VRE {
         void CreateVertexBuffers(const std::vector<Vertex>& vertices);
         void CreateIndexBuffer(const std::vector<uint32_t>& indices);
 
-        void CreateTextureSamplers(tinygltf::Model& model);
+        //void CreateTextureSamplers(tinygltf::Model& model);
         VkSamplerAddressMode GetWrapMode(int32_t wrapMode);
         VkFilter GetFilterMode(int32_t filterMode);
 
@@ -44,7 +42,6 @@ namespace VRE {
         const std::string mFileFolder;
         const std::string mFileName;
 
-        std::vector<VRE_Texture::SamplerProperties> mTextureSamplerProps;
         std::vector<std::shared_ptr<VRE_Texture>> mTextures;
         std::vector<std::shared_ptr<glTFNode>> mNodes;
         std::vector<std::shared_ptr<glTFNode>> mAllNodes;

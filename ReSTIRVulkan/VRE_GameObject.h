@@ -12,7 +12,6 @@ namespace VRE {
     struct GameObjectBufferData {
         glm::mat4 mModelMatrix{ 1.f };
         glm::mat4 mNormalMatrix{ 1.f };
-        uint32_t mMaterialIndex;
     };
 
     class VRE_GameObjectManager;

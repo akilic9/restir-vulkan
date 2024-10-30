@@ -5,7 +5,7 @@
 
 #include "stb_image.h"
 
-VRE::VRE_Texture::VRE_Texture(VRE_Device& device, const std::string& filePath, SamplerProperties props)
+VRE::VRE_Texture::VRE_Texture(VRE_Device& device, const std::string& filePath)
     : mDevice(device)
     , mTextureImage(nullptr)
     , mTextureImageMemory(nullptr)
@@ -15,7 +15,7 @@ VRE::VRE_Texture::VRE_Texture(VRE_Device& device, const std::string& filePath, S
 {
     CreateImage(filePath);
     CreateTextureImageView();
-    CreateTextureSampler(props);
+    CreateTextureSampler();
     UpdateDescriptor();
 }
 
@@ -27,9 +27,9 @@ VRE::VRE_Texture::~VRE_Texture()
     vkFreeMemory(mDevice.GetVkDevice(), mTextureImageMemory, nullptr);
 }
 
-std::unique_ptr<VRE::VRE_Texture> VRE::VRE_Texture::CreateTexture(VRE_Device& device, const std::string &filePath, SamplerProperties props)
+std::unique_ptr<VRE::VRE_Texture> VRE::VRE_Texture::CreateTexture(VRE_Device& device, const std::string &filePath)
 {
-    return std::make_unique<VRE_Texture>(device, filePath, props);
+    return std::make_unique<VRE_Texture>(device, filePath);
 }
 
 void VRE::VRE_Texture::CreateImage(const std::string &filePath)
@@ -64,7 +64,7 @@ void VRE::VRE_Texture::CreateImage(const std::string &filePath)
     imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
     imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
     imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
-    imageInfo.flags = 0;
+    imageInfo.flags = 0; // Optional
 
     mDevice.CreateImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, mTextureImage, mTextureImageMemory);
 
@@ -208,15 +208,15 @@ void VRE::VRE_Texture::CreateTextureImageView()
         throw std::runtime_error("Failed to create texture image view!");
 }
 
-void VRE::VRE_Texture::CreateTextureSampler(SamplerProperties props)
+void VRE::VRE_Texture::CreateTextureSampler()
 {
     VkSamplerCreateInfo samplerInfo{};
     samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
-    samplerInfo.magFilter = props.magFilter;
-    samplerInfo.minFilter = props.minFilter;
-    samplerInfo.addressModeU = props.addressModeU;
-    samplerInfo.addressModeV = props.addressModeV;
-    samplerInfo.addressModeW = props.addressModeW;
+    samplerInfo.magFilter = VK_FILTER_LINEAR;
+    samplerInfo.minFilter = VK_FILTER_LINEAR;
+    samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
     samplerInfo.anisotropyEnable = VK_TRUE;
     samplerInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;
     samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;

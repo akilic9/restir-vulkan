@@ -17,7 +17,7 @@ std::vector<VkVertexInputAttributeDescription> VRE::Vertex::GetAttributeDesc()
     attributeDescriptions.push_back({ 1, 0, VK_FORMAT_R32G32B32A32_SFLOAT, offsetof(Vertex, mColor) });
     attributeDescriptions.push_back({ 2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, mNormal) });
     attributeDescriptions.push_back({ 3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord0) });
-    attributeDescriptions.push_back({ 4, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord1) });
+    //attributeDescriptions.push_back({ 4, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, mTexCoord1) });
 
     return attributeDescriptions;
 }
@@ -25,7 +25,7 @@ std::vector<VkVertexInputAttributeDescription> VRE::Vertex::GetAttributeDesc()
 bool VRE::Vertex::operator==(const Vertex& other) const
 {
     return mPosition == other.mPosition && mColor == other.mColor &&
-           mNormal == other.mNormal && mTexCoord0 == other.mTexCoord0 && mTexCoord1 == other.mTexCoord1;
+           mNormal == other.mNormal && mTexCoord0 == other.mTexCoord0;
 }
 
 VRE::glTFPrimitive::glTFPrimitive(uint32_t firstIndex, uint32_t indexCount, uint32_t vertexCount, glTFMaterial& material)
@@ -42,7 +42,7 @@ VRE::glTFMesh::glTFMesh(VRE_Device& device, glm::mat4 matrix) : mMatrix(matrix)
     stagingBuffer.Map();
     stagingBuffer.WriteToBuffer(&mMatrix);
 
-    mBuffer = std::make_unique<VRE_Buffer>(device, sizeof(glm::mat4), 1, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
+    mBuffer = std::make_unique<VRE_Buffer>(device, sizeof(glm::mat4), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
     device.CopyBuffer(stagingBuffer.GetBuffer(), mBuffer->GetBuffer(), sizeof(glm::mat4));
 }
@@ -57,7 +57,7 @@ VRE::glTFNode::glTFNode(VRE_Device& device, uint32_t index, std::string name, gl
     , mMatrix(matrix)
     , mParent(parent)
 {
-    mMesh = std::make_unique<glTFMesh>(device, mMatrix);
+    mMesh = std::make_unique<glTFMesh>(device, GetMatrix());
 }
 
 glm::mat4 VRE::glTFNode::GetLocalMatrix()

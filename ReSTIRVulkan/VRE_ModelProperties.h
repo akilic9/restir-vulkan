@@ -16,7 +16,7 @@ namespace VRE {
         glm::vec3 mColor;
         glm::vec3 mNormal;
         glm::vec2 mTexCoord0;
-        glm::vec2 mTexCoord1;
+        //glm::vec2 mTexCoord1;
 
         static std::vector<VkVertexInputBindingDescription> GetBindingDesc();
         static std::vector<VkVertexInputAttributeDescription> GetAttributeDesc();

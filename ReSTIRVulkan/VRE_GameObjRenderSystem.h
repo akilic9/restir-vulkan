@@ -58,20 +58,22 @@ namespace VRE {
         void CreatePipelines();
         void CreateDescSetLayouts();
         void CreateDescPools();
-        void CreateShaderMatBuffer();
-        void WriteToMaterialDesc();
-        void WriteToNodeDesc();
-        void WriteToNodeDescByNode(std::shared_ptr<glTFNode> node);
-        void WriteToMaterialBufferDesc();
-        void RenderNode(std::shared_ptr<glTFNode> node, glTFMaterial::AlphaMode alphaMode, GameObjectBufferData& data);
+        //void CreateShaderMatBuffer();
+        //void WriteToMaterialDesc();
+        //void WriteToNodeDesc();
+        //void WriteToNodeDescByNode(std::shared_ptr<glTFNode> node);
+        //void WriteToMaterialBufferDesc();
+        void RenderNode(std::shared_ptr<glTFNode> node);
 
-        PipelinesMap mPipelines;
+        //PipelinesMap mPipelines;
+        std::unique_ptr<VRE_Pipeline> mPipeline;
         VkPipelineLayout mPipelineLayout;
         std::unique_ptr<VRE_DescriptorPool> mDescPool;
         VRE_SharedContext* mSharedContext;
-        DescSetLayouts mDescSetLayouts;
-        std::unique_ptr<VRE_Buffer> mShaderMatBuffer;
-        VkDescriptorSet mMatBufferDescriptor;
-        std::unique_ptr<VRE_Texture> mEmptyTexture;
+        std::unique_ptr<VRE_DescriptorSetLayout> mDescSetLayout;
+        //DescSetLayouts mDescSetLayouts;
+        //std::unique_ptr<VRE_Buffer> mShaderMatBuffer;
+        //VkDescriptorSet mMatBufferDescriptor;
+        //std::unique_ptr<VRE_Texture> mEmptyTexture;
     };
 }
