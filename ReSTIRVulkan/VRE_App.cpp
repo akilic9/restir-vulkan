@@ -79,6 +79,17 @@ void VRE::VRE_App::Init()
                       .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .Build();
 
+    mSceneContext.mObjectDescPools.resize(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT);
+    auto objPoolBuilder = VRE_DescriptorPool::Builder(mDevice)
+        .SetMaxSets(1000)
+        .AddPoolSize(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000)
+        .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000)
+        .SetPoolFlags(VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT);
+
+    for (int i = 0; i < mSceneContext.mObjectDescPools.size(); i++) {
+        mSceneContext.mObjectDescPools[i] = objPoolBuilder.Build();
+    }
+
     for (int i = 0; i < VRE_SwapChain::MAX_FRAMES_IN_FLIGHT; i++) {
         mSceneUBOs.push_back(std::make_unique<VRE_Buffer>(mDevice, sizeof(UBO), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT));
         mSceneUBOs[i]->Map();

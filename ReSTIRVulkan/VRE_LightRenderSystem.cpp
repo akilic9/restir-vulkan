@@ -69,9 +69,7 @@ void VRE::VRE_LightRenderSystem::RenderLights()
 
 void VRE::VRE_LightRenderSystem::CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)
 {
-    VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
-                                          0,
-                                          sizeof(PointLightPC) };
+    VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(PointLightPC) };
 
     std::vector<VkDescriptorSetLayout> descSetLayouts{ descSetLayout };
 

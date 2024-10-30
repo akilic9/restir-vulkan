@@ -42,6 +42,7 @@ namespace VRE {
         VRE_Renderer mRenderer;
         VRE_SharedContext mSceneContext;
         std::unique_ptr<VRE_DescriptorPool> mDescriptorPool;
+        std::vector<std::unique_ptr<VRE_DescriptorPool>> mObjectPools;
         std::vector<std::unique_ptr<VRE_Buffer>> mSceneUBOs;
         VRE_LightRenderSystem mPLRenderSystem;
         VRE_GameObjectManager mGameObjectManager;

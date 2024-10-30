@@ -20,22 +20,16 @@ namespace VRE {
         void LoadModel();
 
         void Bind(VkCommandBuffer commandBuffer);
-
-        inline std::vector<glTFMaterial>& GetMaterials() { return mMaterials; }
-        inline std::vector<std::shared_ptr<glTFNode>>& GetAllNodes() { return mAllNodes; }
-        inline std::vector<std::shared_ptr<glTFNode>>& GetNodes() { return mNodes; }
+        void Render(VkCommandBuffer commandBuffer, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
+        void RenderNode(VkCommandBuffer commandBuffer, glTFNode* node, VkPipelineLayout& pipelineLayout, VRE_DescriptorWriter& writer);
 
     private:
         void LoadTextures(tinygltf::Model& model);
         void LoadMaterials(tinygltf::Model& model);
-        void LoadNode(std::shared_ptr<glTFNode> parent, const tinygltf::Node& node, uint32_t nodeIndex, const tinygltf::Model& model, ModelData& data);
+        void LoadNode(glTFNode* parent, const tinygltf::Node& node, const tinygltf::Model& model, ModelData& data);
 
         void CreateVertexBuffers(const std::vector<Vertex>& vertices);
         void CreateIndexBuffer(const std::vector<uint32_t>& indices);
-
-        //void CreateTextureSamplers(tinygltf::Model& model);
-        VkSamplerAddressMode GetWrapMode(int32_t wrapMode);
-        VkFilter GetFilterMode(int32_t filterMode);
 
         VRE_Device& mDevice;
 
@@ -43,11 +37,14 @@ namespace VRE {
         const std::string mFileName;
 
         std::vector<std::shared_ptr<VRE_Texture>> mTextures;
-        std::vector<std::shared_ptr<glTFNode>> mNodes;
-        std::vector<std::shared_ptr<glTFNode>> mAllNodes;
+        std::vector<glTFNode*> mNodes;
         std::vector<glTFMaterial> mMaterials;
+        std::vector<int32_t> mTextureIndices;
 
         std::unique_ptr<VRE_Buffer> mVertexBuffer;
         std::unique_ptr<VRE_Buffer> mIndexBuffer;
+
+        uint32_t mVertexCount;
+        uint32_t mIndexCount;
     };
 }

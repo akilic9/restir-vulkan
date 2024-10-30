@@ -21,16 +21,7 @@ layout(set = 0, binding = 0) uniform UBO {
     int activeLightCount;
 } ubo;
 
-layout(set = 1, binding = 0) uniform NodeMatrix {
-  mat4 nodeMatrix;
-} node;
-
 layout(set = 1, binding = 1) uniform sampler2D texSampler;
-
-layout(push_constant) uniform Push {
-    mat4 modelMatrix;
-    mat4 normalMatrix;
-} push;
 
 void main() {
     vec3 diffuse = ubo.ambientLightColor.xyz * ubo.ambientLightColor.w; //Apply the intensity scale to the ambient.

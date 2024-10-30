@@ -14,6 +14,7 @@ namespace VRE {
         VRE_Device* mDevice;
         VRE_Renderer* mRenderer;
         std::shared_ptr<VRE_DescriptorSetLayout> mGlobalDescSetLayout;
+        std::vector<std::unique_ptr<VRE_DescriptorPool>> mObjectDescPools;
         std::vector<VkDescriptorSet> mSceneDescriptorSets;
         std::vector<VRE_PointLight> mPointLights;
         VRE_GameObject::GameObjectsMap* mGameObjMap;
