@@ -21,6 +21,7 @@ VRE::VRE_glTFModel::~VRE_glTFModel()
 
 void VRE::VRE_glTFModel::LoadModel()
 {
+    auto startTime = std::chrono::high_resolution_clock::now();
     tinygltf::Model model;
     tinygltf::TinyGLTF gltfContext;
     std::string error, warning;
@@ -37,13 +38,22 @@ void VRE::VRE_glTFModel::LoadModel()
 
     ModelData data{};
 
+
     for (size_t i = 0; i < scene.nodes.size(); i++) {
         const tinygltf::Node node = model.nodes[scene.nodes[i]];
         LoadNode(nullptr, node, model, data);
     }
 
+    std::cout << "Model index count: " << mIndexCount << std::endl;
+    std::cout << "Model vertex count: " << mVertexCount << std::endl;
+    std::cout << "Model texture count: " << mTextures.size() << std::endl;
+
     CreateVertexBuffers(data.mVertices);
     CreateIndexBuffer(data.mIndices);
+
+    const auto currentTime = std::chrono::high_resolution_clock::now();
+    const float loadTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+    std::cout << "Model load time: " << loadTime << std::endl;
 }
 
 void VRE::VRE_glTFModel::LoadTextures(tinygltf::Model& model)

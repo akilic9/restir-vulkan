@@ -42,6 +42,9 @@ VRE::VRE_App::~VRE_App() {}
 // TODO: This function can be simplified.
 void VRE::VRE_App::Run()
 {
+    auto totalFrames = 0.f;
+    int frameCount = 0;
+
     auto startTime = std::chrono::high_resolution_clock::now();
 
     while (!mWindow.ShouldClose()) {
@@ -50,6 +53,8 @@ void VRE::VRE_App::Run()
         const auto currentTime = std::chrono::high_resolution_clock::now();
         const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
         //std::cout << 1.0f / deltaTime << std::endl;
+        totalFrames += (1.0f / deltaTime);
+        frameCount++;
         startTime = currentTime;
 
         float aspRatio = mRenderer.GetAspectRatio();
@@ -68,6 +73,8 @@ void VRE::VRE_App::Run()
             mRenderer.EndDraw();
         }
     }
+
+    std::cout << "Avg. frame rate for run: " << totalFrames / frameCount << std::endl;
     vkDeviceWaitIdle(mDevice.GetVkDevice());
 }
 
@@ -158,31 +165,42 @@ void VRE::VRE_App::LoadObjects()
     //model->LoadModel();
     //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
     //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -.25f, 0.f };
+    //obj.mTransform.mTranslation = { 0.f, 0.f, 0.f };
     //obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 0.005f, 0.005f, 0.005f };
+    //obj.mTransform.mScale = { 0.004f, 0.004f, 0.004f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
-    model->LoadModel();
-    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    obj.mModel = model;
-    obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
+    //model->LoadModel();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -.75f, 0.f };
+    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/DamagedHelmet/", "DamagedHelmet");
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/SciFiHelmet/", "SciFiHelmet");
     //model->LoadModel();
     //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
     //obj.mModel = model;
     //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    //obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
+    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
     //obj.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
+    model->LoadModel();
+    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    obj.mModel = model;
+    obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
+    obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,7 +213,7 @@ void VRE::VRE_App::LoadObjects()
                                          {1.f, 1.f, 1.f}};
 
     for (int i = 0; i < coloredLights.size(); i++) {
-        auto pointLight = VRE_PointLight::CreatePointLight(0.75f);
+        auto pointLight = VRE_PointLight::CreatePointLight(1.0f);
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, 1.f, 0.f });
         pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);

@@ -44,7 +44,7 @@ void main() {
         diffuse += lightIntensity * lambertian;
 
         //blinn phong specular
-        float specAngle = pow(max(dot(surfaceNormal, halfAngle), 0.0), 512.0);
+        float specAngle = pow(max(dot(surfaceNormal, halfAngle), 0.0), 128.0);
         specularLight += lightIntensity * specAngle;
     }
 
