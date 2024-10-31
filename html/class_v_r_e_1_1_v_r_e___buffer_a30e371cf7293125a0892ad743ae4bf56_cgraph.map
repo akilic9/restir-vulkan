@@ -1,0 +1,9 @@
+<map id="VRE::VRE_Buffer::VRE_Buffer" name="VRE::VRE_Buffer::VRE_Buffer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,168,65"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___device.html#a7f4e71666ae4d01a47823eeb2d4f8b01" title=" " alt="" coords="216,5,430,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,33,200,29,200,34,169,38"/>
+<area shape="rect" id="Node000004" href="$class_v_r_e_1_1_v_r_e___buffer.html#a08abc6cbd120730de3ae1fc7eff78d97" title=" " alt="" coords="216,56,430,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,50,201,54,200,59,168,55"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html#a2e8b8fd1480951dd2b669b263e0611e5" title=" " alt="" coords="478,5,719,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,16,463,16,463,21,431,21"/>
+</map>

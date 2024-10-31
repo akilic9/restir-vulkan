@@ -1,0 +1,30 @@
+<map id="ReSTIRVulkan/VRE_ModelProperties.cpp" name="ReSTIRVulkan/VRE_ModelProperties.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="238,5,504,32"/>
+<area shape="rect" id="Node000002" href="$_v_r_e___model_properties_8h.html" title=" " alt="" coords="290,80,452,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="374,33,374,64,368,64,368,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,118,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,110,131,153,130,148,316,105"/>
+<area shape="rect" id="Node000004" href="$_v_r_e___texture_8h.html" title=" " alt="" coords="142,155,253,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="342,110,243,151,241,146,340,105"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="380,304,437,331"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="378,106,392,154,404,227,409,288,404,289,398,227,387,155,373,108"/>
+<area shape="rect" id="Node000011" href="$_v_r_e___buffer_8h.html" title=" " alt="" coords="276,155,378,181"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="365,109,345,143,340,140,361,106"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="452,155,519,181"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="392,105,454,144,451,148,389,109"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="543,155,671,181"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="413,105,552,147,550,152,411,110"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="163,229,232,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="200,182,200,214,195,214,195,182"/>
+<area shape="rect" id="Node000006" href="$_v_r_e___device_8h.html" title=" " alt="" coords="269,229,377,256"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="221,180,289,219,287,224,218,184"/>
+<area shape="rect" id="Node000007" href="$_v_r_e___window_8h.html" title=" " alt="" coords="178,304,292,331"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="309,259,263,296,260,292,306,254"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="296,379,350,405"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="326,257,326,363,320,363,320,257"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="339,255,384,292,380,296,336,259"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="203,379,266,405"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="238,331,238,363,232,363,232,331"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="252,329,298,367,294,371,248,333"/>
+<area shape="poly" id="edge12_Node000011_Node000006" title=" " alt="" coords="329,182,327,214,322,214,323,182"/>
+</map>

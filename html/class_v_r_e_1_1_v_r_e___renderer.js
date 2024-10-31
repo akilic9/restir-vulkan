@@ -1,0 +1,26 @@
+var class_v_r_e_1_1_v_r_e___renderer =
+[
+    [ "VRE_Renderer", "class_v_r_e_1_1_v_r_e___renderer.html#a9e78e8fd7f9433c941084be8cadd9fd9", null ],
+    [ "~VRE_Renderer", "class_v_r_e_1_1_v_r_e___renderer.html#a8a0c8192b41384735c1067f07c1d92b9", null ],
+    [ "VRE_Renderer", "class_v_r_e_1_1_v_r_e___renderer.html#ad33a0e85dcd145197d289ca85b64ce97", null ],
+    [ "BeginDraw", "class_v_r_e_1_1_v_r_e___renderer.html#a9028afecac5b01b9638fedbfe5c8341b", null ],
+    [ "BeginSwapChainRenderPass", "class_v_r_e_1_1_v_r_e___renderer.html#af7e0fcd6b3e1ad850881850665d3a0b3", null ],
+    [ "CreateCommandBuffers", "class_v_r_e_1_1_v_r_e___renderer.html#a0b9f58e169ca5a32ae3a1384eb5d778e", null ],
+    [ "EndDraw", "class_v_r_e_1_1_v_r_e___renderer.html#a461e3f9ffefbbf1b1a0bc8030b380e11", null ],
+    [ "EndSwapChainRenderPass", "class_v_r_e_1_1_v_r_e___renderer.html#a1f1670c0170abf4c54df963d36af6c2b", null ],
+    [ "FreeCommandBuffers", "class_v_r_e_1_1_v_r_e___renderer.html#ab2f3337321e2ea291a3aac08cba9d413", null ],
+    [ "GetAspectRatio", "class_v_r_e_1_1_v_r_e___renderer.html#aeca301036a6ee3cdfd7ebde0abfaee2a", null ],
+    [ "GetCurrentCommandBuffer", "class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf", null ],
+    [ "GetFrameIndex", "class_v_r_e_1_1_v_r_e___renderer.html#a7d3f610759402a62e33f5ebb62eacf7d", null ],
+    [ "GetSwapChainRenderPass", "class_v_r_e_1_1_v_r_e___renderer.html#a03e51cee505d388b8719ed8e30e71380", null ],
+    [ "IsDrawInProgress", "class_v_r_e_1_1_v_r_e___renderer.html#a0cc740a1e6b9c08418ed67908a69c80d", null ],
+    [ "operator=", "class_v_r_e_1_1_v_r_e___renderer.html#ab162296949ee058e0d803eb2ba95698f", null ],
+    [ "RecreateSwapChain", "class_v_r_e_1_1_v_r_e___renderer.html#a93eaa61fbc695db703560760dd6db5a7", null ],
+    [ "mCommandBuffers", "class_v_r_e_1_1_v_r_e___renderer.html#a89ecbc585ff7a5ce4387e5933ed49cae", null ],
+    [ "mCurrentFrameIndex", "class_v_r_e_1_1_v_r_e___renderer.html#aea56f84ba77f0038762d34ae35fe7fc1", null ],
+    [ "mCurrentImageIndex", "class_v_r_e_1_1_v_r_e___renderer.html#a476f842a93b0aa054a3de2dca7e5fdf1", null ],
+    [ "mDevice", "class_v_r_e_1_1_v_r_e___renderer.html#aa917769ff9a44d9cc7bc9a99fa2efbc3", null ],
+    [ "mDrawStarted", "class_v_r_e_1_1_v_r_e___renderer.html#a50c3b1caded2a32f9b63f3aac97aaa76", null ],
+    [ "mSwapChain", "class_v_r_e_1_1_v_r_e___renderer.html#a9a0f5654a7e903ac28ced4e2ded71019", null ],
+    [ "mWindow", "class_v_r_e_1_1_v_r_e___renderer.html#ab6b54e9966df1c0f094f2468bddfba7c", null ]
+];

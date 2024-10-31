@@ -1,0 +1,9 @@
+<map id="VRE::VRE_Device::SetupDebugMessenger" name="VRE::VRE_Device::SetupDebugMessenger">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,219,69"/>
+<area shape="rect" id="Node000002" href="$namespace_v_r_e.html#a411c34cbfcabaf6ba94f2e11a759dce7" title=" " alt="" coords="267,5,518,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,34,251,31,251,36,219,39"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html#a5be545b677e320b86cd1250844bfb466" title=" " alt="" coords="296,56,488,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,57,281,63,280,68,219,62"/>
+<area shape="rect" id="Node000004" href="$namespace_v_r_e.html#a3d5fd8bffde402e896abe076f5ca86d0" title=" " alt="" coords="566,64,709,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="489,75,550,75,550,80,489,80"/>
+</map>

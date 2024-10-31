@@ -1,0 +1,22 @@
+<map id="ReSTIRVulkan/VRE_Device.cpp" name="ReSTIRVulkan/VRE_Device.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="248,5,460,32"/>
+<area shape="rect" id="Node000002" href="$_v_r_e___device_8h.html" title=" " alt="" coords="102,80,211,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,35,207,77,205,72,319,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="234,80,295,107"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="340,35,294,72,290,68,337,30"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="318,80,390,107"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="357,33,357,64,351,64,351,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="414,80,454,107"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="370,31,411,68,407,72,366,35"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="478,80,582,107"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="386,30,486,71,484,76,384,35"/>
+<area shape="rect" id="Node000003" href="$_v_r_e___window_8h.html" title=" " alt="" coords="5,155,119,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,109,92,147,89,143,139,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="123,229,177,256"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="159,107,154,214,149,214,153,107"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="195,155,252,181"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="170,105,204,141,200,145,166,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="30,229,94,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="65,182,65,214,59,214,59,182"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="79,180,125,217,121,221,76,184"/>
+</map>

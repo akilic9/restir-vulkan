@@ -1,0 +1,40 @@
+<map id="ReSTIRVulkan/VRE_ModelProperties.h" name="ReSTIRVulkan/VRE_ModelProperties.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="454,5,705,32"/>
+<area shape="rect" id="Node000002" href="$_v_r_e___model_properties_8cpp.html" title=" " alt="" coords="181,80,447,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="520,39,361,82,360,77,518,34"/>
+<area shape="rect" id="Node000003" href="$_v_r_e___pipeline_8cpp.html" title=" " alt="" coords="471,80,688,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="582,48,582,80,577,80,577,48"/>
+<area shape="rect" id="Node000004" href="$_v_r_e__gl_t_f_model_8h.html" title=" " alt="" coords="712,80,930,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="637,34,779,77,778,82,635,39"/>
+<area shape="rect" id="Node000005" href="$_v_r_e___game_object_8h.html" title=" " alt="" coords="578,155,808,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="787,117,716,156,714,152,784,112"/>
+<area shape="rect" id="Node000017" href="$_v_r_e__gl_t_f_model_8cpp.html" title=" " alt="" coords="832,155,1065,181"/>
+<area shape="poly" id="edge21_Node000004_Node000017" title=" " alt="" coords="857,112,928,152,925,156,855,117"/>
+<area shape="rect" id="Node000006" href="$_v_r_e___game_obj_render_system_8h.html" title=" " alt="" coords="219,304,420,347"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="581,187,509,205,439,232,384,267,341,305,337,301,381,263,437,227,508,200,580,182"/>
+<area shape="rect" id="Node000011" href="$_v_r_e___game_object_8cpp.html" title=" " alt="" coords="920,403,1164,429"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="731,187,818,237,917,302,982,355,1031,400,1028,404,979,359,914,306,815,241,728,191"/>
+<area shape="rect" id="Node000012" href="$_v_r_e___game_object_manager_8h.html" title=" " alt="" coords="684,304,904,347"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="712,193,783,302,778,305,707,196"/>
+<area shape="rect" id="Node000014" href="$_v_r_e___shared_context_8h.html" title=" " alt="" coords="450,229,695,256"/>
+<area shape="poly" id="edge15_Node000005_Node000014" title=" " alt="" coords="660,192,595,231,592,226,658,187"/>
+<area shape="rect" id="Node000007" href="$_v_r_e___app_8h.html" title=" " alt="" coords="472,403,652,429"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="391,350,528,400,526,405,390,355"/>
+<area shape="rect" id="Node000010" href="$_v_r_e___game_obj_render_system_8cpp.html" title=" " alt="" coords="5,395,207,437"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="256,356,157,396,155,392,254,351"/>
+<area shape="rect" id="Node000008" href="$_v_r_e___app_8cpp.html" title=" " alt="" coords="362,485,556,512"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="536,441,477,487,474,483,532,437"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html" title=" " alt="" coords="581,485,746,512"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="591,437,650,483,646,487,588,441"/>
+<area shape="poly" id="edge12_Node000012_Node000007" title=" " alt="" coords="726,355,596,405,594,400,725,350"/>
+<area shape="poly" id="edge13_Node000012_Node000011" title=" " alt="" coords="867,350,1007,400,1006,405,865,355"/>
+<area shape="rect" id="Node000013" href="$_v_r_e___game_object_manager_8cpp.html" title=" " alt="" coords="676,395,896,437"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="793,362,791,395,785,394,788,362"/>
+<area shape="poly" id="edge16_Node000014_Node000006" title=" " alt="" coords="520,264,386,306,384,301,518,258"/>
+<area shape="poly" id="edge17_Node000014_Node000012" title=" " alt="" coords="622,259,738,301,736,306,621,264"/>
+<area shape="rect" id="Node000015" href="$_v_r_e___light_render_system_8h.html" title=" " alt="" coords="444,304,661,347"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="568,272,560,304,555,303,563,271"/>
+<area shape="poly" id="edge19_Node000015_Node000007" title=" " alt="" coords="559,362,563,402,558,403,554,363"/>
+<area shape="rect" id="Node000016" href="$_v_r_e___light_render_system_8cpp.html" title=" " alt="" coords="231,395,448,437"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="490,356,390,396,388,392,488,351"/>
+</map>

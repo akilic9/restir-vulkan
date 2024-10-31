@@ -1,0 +1,13 @@
+<map id="VRE::VRE_GameObjRenderSystem" name="VRE::VRE_GameObjRenderSystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,2992,253,3413"/>
+<area shape="rect" id="Node000002" href="$struct_v_r_e_1_1_v_r_e___shared_context.html" title=" " alt="" coords="19,2661,239,2928"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,2928,132,2975,127,2975,127,2928"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html" title=" " alt="" coords="47,603,281,1851"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,1851,123,1915,116,2256,123,2597,124,2644,119,2644,117,2597,111,2256,117,1915,120,1851"/>
+<area shape="rect" id="Node000005" href="$class_v_r_e_1_1_v_r_e___renderer.html" title=" " alt="" coords="196,1915,463,2597"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="246,1850,253,1890,255,1897,249,1898,248,1891,241,1851"/>
+<area shape="rect" id="Node000004" href="$class_v_r_e_1_1_v_r_e___window.html" title=" " alt="" coords="136,5,357,539"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,539,222,586,217,586,221,538"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="292,538,295,562,296,603,325,1898,320,1898,291,603,289,563,287,539"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="205,2598,187,2647,182,2645,200,2596"/>
+</map>

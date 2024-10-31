@@ -1,0 +1,13 @@
+<map id="ReSTIRVulkan/VRE_GameObjectManager.h" name="ReSTIRVulkan/VRE_GameObjectManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="330,5,550,48"/>
+<area shape="rect" id="Node000002" href="$_v_r_e___app_8h.html" title=" " alt="" coords="114,104,294,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="371,56,239,106,237,101,369,51"/>
+<area shape="rect" id="Node000005" href="$_v_r_e___game_object_8cpp.html" title=" " alt="" coords="318,104,562,131"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="442,64,442,104,437,104,437,64"/>
+<area shape="rect" id="Node000006" href="$_v_r_e___game_object_manager_8cpp.html" title=" " alt="" coords="586,96,806,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="515,51,637,93,635,98,513,56"/>
+<area shape="rect" id="Node000003" href="$_v_r_e___app_8cpp.html" title=" " alt="" coords="5,187,200,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,143,120,189,116,184,174,139"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html" title=" " alt="" coords="224,187,389,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="234,138,292,184,289,188,230,143"/>
+</map>

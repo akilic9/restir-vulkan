@@ -1,0 +1,9 @@
+<map id="VRE::VRE_InputListener::Move" name="VRE::VRE_InputListener::Move">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,48,173,91"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___camera.html#a60ab4af9eb093f8502079efdb7adbca6" title=" " alt="" coords="224,5,438,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,49,248,33,249,38,174,54"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___camera.html#a0b4c1872de3523415d43411fddfe96e1" title=" " alt="" coords="223,56,440,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,67,207,67,207,72,173,72"/>
+<area shape="rect" id="Node000004" href="$class_v_r_e_1_1_v_r_e___camera.html#a3ce0bfe578cf47e6c6084c30e563c5b5" title=" " alt="" coords="221,107,442,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,84,249,100,248,105,173,89"/>
+</map>

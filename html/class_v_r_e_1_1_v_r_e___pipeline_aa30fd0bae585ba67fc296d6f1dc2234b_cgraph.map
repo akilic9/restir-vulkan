@@ -1,0 +1,7 @@
+<map id="VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo" name="VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,196,65"/>
+<area shape="rect" id="Node000002" href="$struct_v_r_e_1_1_vertex.html#aa02a08c6e6f16997ee7d1ba41362e7ee" title=" " alt="" coords="244,5,447,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,31,228,28,228,33,196,37"/>
+<area shape="rect" id="Node000003" href="$struct_v_r_e_1_1_vertex.html#a728c4116a202c00fdeae9494f9bf5f80" title=" " alt="" coords="247,56,444,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,51,231,55,231,60,196,57"/>
+</map>

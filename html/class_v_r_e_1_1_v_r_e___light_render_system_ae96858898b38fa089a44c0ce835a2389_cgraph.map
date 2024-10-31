@@ -1,0 +1,9 @@
+<map id="VRE::VRE_LightRenderSystem::CreatePipeline" name="VRE::VRE_LightRenderSystem::CreatePipeline">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,213,65"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___pipeline.html#aa30fd0bae585ba67fc296d6f1dc2234b" title=" " alt="" coords="261,23,451,65"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,41,245,41,245,47,213,47"/>
+<area shape="rect" id="Node000003" href="$struct_v_r_e_1_1_vertex.html#aa02a08c6e6f16997ee7d1ba41362e7ee" title=" " alt="" coords="499,5,702,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="451,31,483,28,484,33,452,37"/>
+<area shape="rect" id="Node000004" href="$struct_v_r_e_1_1_vertex.html#a728c4116a202c00fdeae9494f9bf5f80" title=" " alt="" coords="502,56,699,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="452,51,487,55,486,60,451,57"/>
+</map>

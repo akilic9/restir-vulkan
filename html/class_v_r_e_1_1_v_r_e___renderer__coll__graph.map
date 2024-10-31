@@ -1,0 +1,8 @@
+<map id="VRE::VRE_Renderer" name="VRE::VRE_Renderer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,1915,272,2597"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___window.html" title=" " alt="" coords="28,5,249,539"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,538,133,603,128,1227,133,1851,133,1897,128,1897,127,1851,122,1227,127,603,128,538"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html" title=" " alt="" coords="207,603,441,1851"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="193,538,207,609,201,610,188,539"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,1851,206,1899,200,1898,209,1850"/>
+</map>

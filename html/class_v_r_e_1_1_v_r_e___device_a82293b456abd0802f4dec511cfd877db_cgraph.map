@@ -1,0 +1,9 @@
+<map id="VRE::VRE_Device::CreateCommandPool" name="VRE::VRE_Device::CreateCommandPool">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,272,40"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___device.html#a69f90869ef38058b3880e3f87ae07ade" title=" " alt="" coords="320,5,536,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,24,304,24,304,29,272,29"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html#a49164610e5f85640d5a4f59613cb3539" title=" " alt="" coords="584,5,788,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="536,24,569,24,569,29,536,29"/>
+<area shape="rect" id="Node000004" href="$struct_v_r_e_1_1_queue_family_indices.html#a163909a037bfb772931414e8557eb5b6" title=" " alt="" coords="836,5,1013,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="789,24,821,24,821,29,789,29"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="VRE::VRE_SwapChain::CreateFramebuffers" name="VRE::VRE_SwapChain::CreateFramebuffers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,165,115"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___swap_chain.html#a0d7125e8f2743c4ebff9b1e217d0a531" title=" " alt="" coords="243,5,402,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,69,229,50,230,55,164,74"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___swap_chain.html#a323d9f1e3959053b88f7af19744b578c" title=" " alt="" coords="243,72,402,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,91,227,91,227,96,165,96"/>
+<area shape="rect" id="Node000004" href="$class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e" title=" " alt="" coords="213,139,432,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,112,213,124,246,132,245,137,212,129,164,117"/>
+</map>

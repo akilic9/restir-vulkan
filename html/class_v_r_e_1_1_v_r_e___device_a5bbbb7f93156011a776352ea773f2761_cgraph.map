@@ -1,0 +1,14 @@
+<map id="VRE::VRE_Device::CreateInstance" name="VRE::VRE_Device::CreateInstance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,236,128"/>
+<area shape="rect" id="Node000002" href="$class_v_r_e_1_1_v_r_e___device.html#a491f794af166b3377214663df8abc85e" title=" " alt="" coords="284,5,519,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,98,316,51,317,56,167,103"/>
+<area shape="rect" id="Node000003" href="$class_v_r_e_1_1_v_r_e___device.html#a5e60ae7c2652c1fe60d3feab81c77927" title=" " alt="" coords="567,93,781,136"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,109,284,108,519,108,552,109,551,114,519,113,284,113,236,114"/>
+<area shape="rect" id="Node000004" href="$class_v_r_e_1_1_v_r_e___device.html#ab5f5627926ed001d28590a45c0120222" title=" " alt="" coords="305,123,498,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="236,124,290,130,289,135,236,129"/>
+<area shape="rect" id="Node000005" href="$class_v_r_e_1_1_v_r_e___device.html#a5be545b677e320b86cd1250844bfb466" title=" " alt="" coords="305,189,498,232"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="156,126,285,175,307,182,305,187,283,180,154,131"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="498,131,551,125,552,130,498,136"/>
+<area shape="rect" id="Node000006" href="$namespace_v_r_e.html#a3d5fd8bffde402e896abe076f5ca86d0" title=" " alt="" coords="602,197,746,224"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="498,208,587,208,587,213,498,213"/>
+</map>
