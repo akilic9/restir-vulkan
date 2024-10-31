@@ -133,7 +133,7 @@ void VRE::VRE_App::Update(float dt, UBO& ubo)
 void VRE::VRE_App::Render(UBO& ubo)
 {
     mRenderer.BeginSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
-    mPLRenderSystem.RenderLights();
+    mPLRenderSystem.Render();
     mGameObjRenderSystem.Render();
     mRenderer.EndSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());
 }

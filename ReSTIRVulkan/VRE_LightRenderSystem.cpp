@@ -44,7 +44,7 @@ void VRE::VRE_LightRenderSystem::Update(UBO &ubo, float dt)
     ubo.mActiveLightCount = index;
 }
 
-void VRE::VRE_LightRenderSystem::RenderLights()
+void VRE::VRE_LightRenderSystem::Render()
 {
     mPipeline->Bind(mSceneContext->mRenderer->GetCurrentCommandBuffer());
     VkDescriptorSet* descSet = &mSceneContext->mSceneDescriptorSets[mSceneContext->mRenderer->GetFrameIndex()];

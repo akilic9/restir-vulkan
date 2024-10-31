@@ -15,7 +15,9 @@ VRE::VRE_glTFModel::VRE_glTFModel(VRE_Device& device, const std::string& fileFol
 {}
 
 VRE::VRE_glTFModel::~VRE_glTFModel()
-{}
+{
+    for (auto node : mNodes) delete node;
+}
 
 void VRE::VRE_glTFModel::LoadModel()
 {

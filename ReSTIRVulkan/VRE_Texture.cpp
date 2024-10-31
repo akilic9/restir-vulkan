@@ -9,20 +9,20 @@ VRE::VRE_Texture::VRE_Texture(VRE_Device& device, const std::string& filePath)
     : mDevice(device)
     , mTextureImage(nullptr)
     , mTextureImageMemory(nullptr)
-    , mTextureImageView(nullptr)
+    , mImageView(nullptr)
     , mTextureSampler(nullptr)
     , mMipLevels(0)
 {
     CreateImage(filePath);
-    CreateTextureImageView();
+    CreateImageView();
     CreateTextureSampler();
-    UpdateDescriptor();
+    UpdateDescriptorInfo();
 }
 
 VRE::VRE_Texture::~VRE_Texture()
 {
     vkDestroySampler(mDevice.GetVkDevice(), mTextureSampler, nullptr);
-    vkDestroyImageView(mDevice.GetVkDevice(), mTextureImageView, nullptr);
+    vkDestroyImageView(mDevice.GetVkDevice(), mImageView, nullptr);
     vkDestroyImage(mDevice.GetVkDevice(), mTextureImage, nullptr);
     vkFreeMemory(mDevice.GetVkDevice(), mTextureImageMemory, nullptr);
 }
@@ -50,23 +50,23 @@ void VRE::VRE_Texture::CreateImage(const std::string &filePath)
     
     mMipLevels = static_cast<uint32_t>(std::floor(std::log2(std::max(width, height)))) + 1;
 
-    VkImageCreateInfo imageInfo{};
-    imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
-    imageInfo.imageType = VK_IMAGE_TYPE_2D;
-    imageInfo.extent.width = static_cast<uint32_t>(width);
-    imageInfo.extent.height = static_cast<uint32_t>(height);
-    imageInfo.extent.depth = 1;
-    imageInfo.mipLevels = mMipLevels;
-    imageInfo.arrayLayers = 1;
-    imageInfo.format = VK_FORMAT_R8G8B8A8_SRGB;
-    imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
-    imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-    imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
-    imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-    imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
-    imageInfo.flags = 0; // Optional
+    VkImageCreateInfo imageCreateInfo{};
+    imageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+    imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;
+    imageCreateInfo.extent.width = static_cast<uint32_t>(width);
+    imageCreateInfo.extent.height = static_cast<uint32_t>(height);
+    imageCreateInfo.extent.depth = 1;
+    imageCreateInfo.mipLevels = mMipLevels;
+    imageCreateInfo.arrayLayers = 1;
+    imageCreateInfo.format = VK_FORMAT_R8G8B8A8_SRGB;
+    imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+    imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    imageCreateInfo.usage = VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
+    imageCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+    imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+    imageCreateInfo.flags = 0;
 
-    mDevice.CreateImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, mTextureImage, mTextureImageMemory);
+    mDevice.CreateImageWithInfo(imageCreateInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, mTextureImage, mTextureImageMemory);
 
     TransitionImageLayout(mTextureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
     mDevice.CopyBufferToImage(stagingBuffer.GetBuffer(), mTextureImage, static_cast<uint32_t>(width), static_cast<uint32_t>(height), 1);
@@ -191,50 +191,50 @@ void VRE::VRE_Texture::TransitionImageLayout(VkImage image, VkFormat format, VkI
     mDevice.EndSingleTimeCommands(commandBuffer);
 }
 
-void VRE::VRE_Texture::CreateTextureImageView()
+void VRE::VRE_Texture::CreateImageView()
 {
-    VkImageViewCreateInfo viewInfo{};
-    viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-    viewInfo.image = mTextureImage;
-    viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
-    viewInfo.format = VK_FORMAT_R8G8B8A8_SRGB;
-    viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-    viewInfo.subresourceRange.baseMipLevel = 0;
-    viewInfo.subresourceRange.levelCount = mMipLevels;
-    viewInfo.subresourceRange.baseArrayLayer = 0;
-    viewInfo.subresourceRange.layerCount = 1;
+    VkImageViewCreateInfo viewCreateInfo{};
+    viewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+    viewCreateInfo.image = mTextureImage;
+    viewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+    viewCreateInfo.format = VK_FORMAT_R8G8B8A8_SRGB;
+    viewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+    viewCreateInfo.subresourceRange.baseMipLevel = 0;
+    viewCreateInfo.subresourceRange.levelCount = mMipLevels;
+    viewCreateInfo.subresourceRange.baseArrayLayer = 0;
+    viewCreateInfo.subresourceRange.layerCount = 1;
 
-    if (vkCreateImageView(mDevice.GetVkDevice(), &viewInfo, nullptr, &mTextureImageView) != VK_SUCCESS)
+    if (vkCreateImageView(mDevice.GetVkDevice(), &viewCreateInfo, nullptr, &mImageView) != VK_SUCCESS)
         throw std::runtime_error("Failed to create texture image view!");
 }
 
 void VRE::VRE_Texture::CreateTextureSampler()
 {
-    VkSamplerCreateInfo samplerInfo{};
-    samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
-    samplerInfo.magFilter = VK_FILTER_LINEAR;
-    samplerInfo.minFilter = VK_FILTER_LINEAR;
-    samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.anisotropyEnable = VK_TRUE;
-    samplerInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;
-    samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;
-    samplerInfo.unnormalizedCoordinates = VK_FALSE;
-    samplerInfo.compareEnable = VK_FALSE;
-    samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;
-    samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
-    samplerInfo.minLod = 0.0f;
-    samplerInfo.maxLod = static_cast<float>(mMipLevels);
-    samplerInfo.mipLodBias = 0.0f;
+    VkSamplerCreateInfo samplerCreateInfo{};
+    samplerCreateInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+    samplerCreateInfo.magFilter = VK_FILTER_LINEAR;
+    samplerCreateInfo.minFilter = VK_FILTER_LINEAR;
+    samplerCreateInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerCreateInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerCreateInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+    samplerCreateInfo.anisotropyEnable = VK_TRUE;
+    samplerCreateInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;
+    samplerCreateInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;
+    samplerCreateInfo.unnormalizedCoordinates = VK_FALSE;
+    samplerCreateInfo.compareEnable = VK_FALSE;
+    samplerCreateInfo.compareOp = VK_COMPARE_OP_ALWAYS;
+    samplerCreateInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+    samplerCreateInfo.minLod = 0.0f;
+    samplerCreateInfo.maxLod = static_cast<float>(mMipLevels);
+    samplerCreateInfo.mipLodBias = 0.0f;
 
-    if (vkCreateSampler(mDevice.GetVkDevice(), &samplerInfo, nullptr, &mTextureSampler) != VK_SUCCESS)
+    if (vkCreateSampler(mDevice.GetVkDevice(), &samplerCreateInfo, nullptr, &mTextureSampler) != VK_SUCCESS)
         throw std::runtime_error("Failed to create texture sampler!");
 }
 
-void VRE::VRE_Texture::UpdateDescriptor()
+void VRE::VRE_Texture::UpdateDescriptorInfo()
 {
     mDescriptor.sampler = mTextureSampler;
-    mDescriptor.imageView = mTextureImageView;
+    mDescriptor.imageView = mImageView;
     mDescriptor.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
 }

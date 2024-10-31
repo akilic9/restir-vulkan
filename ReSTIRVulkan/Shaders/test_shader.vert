@@ -5,10 +5,10 @@ layout(location = 1) in vec3 inColor;
 layout(location = 2) in vec3 inNormal;
 layout(location = 3) in vec2 inTexCoord;
 
-layout(location = 0) out vec3 fragColor;
-layout(location = 1) out vec3 fragPosWorld;
-layout(location = 2) out vec3 fragNormalWorld;
-layout(location = 3) out vec2 fragTexCoord;
+layout(location = 0) out vec3 outColor;
+layout(location = 1) out vec3 outPosWorld;
+layout(location = 2) out vec3 outNormalWorld;
+layout(location = 3) out vec2 outTexCoord;
 
 struct PointLightInfo {
     vec4 position;  // w is just for alignment.
@@ -33,8 +33,8 @@ void main() {
     vec4 positionInWorld = gameObject.modelMatrix * vec4(inPosition, 1.0);
     gl_Position = ubo.projectionMat * ubo.viewMat * positionInWorld; //The order is important!
 
-    fragNormalWorld = normalize(mat3(gameObject.normalMatrix) * inNormal);
-    fragPosWorld = positionInWorld.xyz;
-    fragColor = inColor;
-    fragTexCoord = inTexCoord;
+    outNormalWorld = normalize(mat3(gameObject.normalMatrix) * inNormal);
+    outPosWorld = positionInWorld.xyz;
+    outColor = inColor;
+    outTexCoord = inTexCoord;
 }

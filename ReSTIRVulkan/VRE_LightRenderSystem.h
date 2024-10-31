@@ -15,7 +15,7 @@ namespace VRE {
 
         void Init();
         void Update(UBO &ubo, float dt);
-        void RenderLights();
+        void Render();
 
     private:
         void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout);
