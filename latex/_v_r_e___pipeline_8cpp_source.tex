@@ -1,0 +1,194 @@
+\doxysection{VRE\+\_\+\+Pipeline.\+cpp}
+\hypertarget{_v_r_e___pipeline_8cpp_source}{}\label{_v_r_e___pipeline_8cpp_source}\index{ReSTIRVulkan/VRE\_Pipeline.cpp@{ReSTIRVulkan/VRE\_Pipeline.cpp}}
+\mbox{\hyperlink{_v_r_e___pipeline_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___pipeline_8h}{VRE\_Pipeline.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___model_properties_8h}{VRE\_ModelProperties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00013}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a5f79ebb9a9b85b08da9d36068f3a267e}{00013}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a5f79ebb9a9b85b08da9d36068f3a267e}{VRE::VRE\_Pipeline::VRE\_Pipeline}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\_Device}}\&\ device,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info}{PipelineConfigInfo}}\&\ configInfo,\ \textcolor{keyword}{const}\ std::string\&\ vertShaderPath,\ \textcolor{keyword}{const}\ std::string\&\ fragShaderPath)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00014}00014\ \ \ \ \ :\ mDevice(device)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_abad8eddbd504eca00d604961fb1402a7}{CreateGraphicsPipeline}}(configInfo,\ vertShaderPath,\ fragShaderPath);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00019}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a21397d81974ebc04b7bb8fddd5284288}{00019}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a21397d81974ebc04b7bb8fddd5284288}{VRE::VRE\_Pipeline::\string~VRE\_Pipeline}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00021}00021\ \ \ \ \ vkDestroyShaderModule(mDevice.GetVkDevice(),\ mVertShaderModule,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00022}00022\ \ \ \ \ vkDestroyShaderModule(mDevice.GetVkDevice(),\ mFragShaderModule,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00023}00023\ \ \ \ \ vkDestroyPipeline(mDevice.GetVkDevice(),\ mGraphicsPipeline,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00026}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_ab4ddcb0c2fc82f30f30e7677d12af74e}{00026}}\ std::vector<char>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_ab4ddcb0c2fc82f30f30e7677d12af74e}{VRE::VRE\_Pipeline::ReadFile}}(\textcolor{keyword}{const}\ std::string\&\ filePath)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00028}00028\ \ \ \ \ std::ifstream\ file\{\ filePath,\ std::ios::ate\ |\ std::ios::binary\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Could\ not\ open\ file:"{}}\ <<\ filePath\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ fileSize\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(file.tellg());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00034}00034\ \ \ \ \ std::vector<char>\ buffer(fileSize);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00036}00036\ \ \ \ \ file.seekg(0);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00037}00037\ \ \ \ \ file.read(buffer.data(),\ fileSize);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00039}00039\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ buffer;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00043}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_abad8eddbd504eca00d604961fb1402a7}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_abad8eddbd504eca00d604961fb1402a7}{VRE::VRE\_Pipeline::CreateGraphicsPipeline}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info}{PipelineConfigInfo}}\&\ configInfo,\ \textcolor{keyword}{const}\ std::string\&\ vertShaderPath,\ \textcolor{keyword}{const}\ std::string\&\ fragShaderPath)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{auto}\ vertCode\ =\ ReadFile(vertShaderPath);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{auto}\ fragCode\ =\ ReadFile(fragShaderPath);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00048}00048\ \ \ \ \ CreateShaderModule(vertCode,\ \&mVertShaderModule);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00049}00049\ \ \ \ \ CreateShaderModule(fragCode,\ \&mFragShaderModule);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00051}00051\ \ \ \ \ VkPipelineShaderStageCreateInfo\ shaderStages[2];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00052}00052\ \ \ \ \ shaderStages[0].sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_SHADER\_STAGE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00053}00053\ \ \ \ \ shaderStages[0].stage\ =\ VK\_SHADER\_STAGE\_VERTEX\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00054}00054\ \ \ \ \ shaderStages[0].module\ =\ mVertShaderModule;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00055}00055\ \ \ \ \ shaderStages[0].pName\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00056}00056\ \ \ \ \ shaderStages[0].flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00057}00057\ \ \ \ \ shaderStages[0].pNext\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00058}00058\ \ \ \ \ shaderStages[0].pSpecializationInfo\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00059}00059\ \ \ \ \ shaderStages[1].sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_SHADER\_STAGE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00060}00060\ \ \ \ \ shaderStages[1].stage\ =\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00061}00061\ \ \ \ \ shaderStages[1].module\ =\ mFragShaderModule;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00062}00062\ \ \ \ \ shaderStages[1].pName\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00063}00063\ \ \ \ \ shaderStages[1].flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00064}00064\ \ \ \ \ shaderStages[1].pNext\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00065}00065\ \ \ \ \ shaderStages[1].pSpecializationInfo\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{auto}\&\ bindingDescriptions\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a272e4760fdd49583cda7a981af03b33e}{mBindingDescriptions}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{auto}\&\ attributeDescriptions\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a9f5d372c03f3695f25098a81bf837beb}{mAttributeDescriptions}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00069}00069\ \ \ \ \ VkPipelineVertexInputStateCreateInfo\ vertexInputInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00070}00070\ \ \ \ \ vertexInputInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_VERTEX\_INPUT\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00071}00071\ \ \ \ \ vertexInputInfo.vertexAttributeDescriptionCount\ =}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(attributeDescriptions.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00073}00073\ \ \ \ \ vertexInputInfo.vertexBindingDescriptionCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(bindingDescriptions.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00074}00074\ \ \ \ \ vertexInputInfo.pVertexAttributeDescriptions\ =\ attributeDescriptions.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00075}00075\ \ \ \ \ vertexInputInfo.pVertexBindingDescriptions\ =\ bindingDescriptions.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00077}00077\ \ \ \ \ VkGraphicsPipelineCreateInfo\ pipelineInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00078}00078\ \ \ \ \ pipelineInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_GRAPHICS\_PIPELINE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00079}00079\ \ \ \ \ pipelineInfo.stageCount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00080}00080\ \ \ \ \ pipelineInfo.pStages\ =\ shaderStages;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00081}00081\ \ \ \ \ pipelineInfo.pVertexInputState\ =\ \&vertexInputInfo;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00082}00082\ \ \ \ \ pipelineInfo.pInputAssemblyState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a0d8da653e06b6f33ddbee5235f519a02}{mInputAssemblyInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00083}00083\ \ \ \ \ pipelineInfo.pViewportState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00084}00084\ \ \ \ \ pipelineInfo.pRasterizationState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00085}00085\ \ \ \ \ pipelineInfo.pMultisampleState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00086}00086\ \ \ \ \ pipelineInfo.pColorBlendState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00087}00087\ \ \ \ \ pipelineInfo.pDepthStencilState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00088}00088\ \ \ \ \ pipelineInfo.pDynamicState\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a857af370d6bf1dfef285c193da31151f}{mDynamicStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00089}00089\ \ \ \ \ pipelineInfo.layout\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_af168721ac53da90d67dc9ca8984f53ea}{mPipelineLayout}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00090}00090\ \ \ \ \ pipelineInfo.renderPass\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_abb3f2e45440e9e25b99567cc65653472}{mRenderPass}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00091}00091\ \ \ \ \ pipelineInfo.subpass\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ab3c6203b0acbc3f3f02e721b195c79f7}{mSubpass}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00093}00093\ \ \ \ \ pipelineInfo.basePipelineIndex\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00094}00094\ \ \ \ \ pipelineInfo.basePipelineHandle\ =\ VK\_NULL\_HANDLE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateGraphicsPipelines(mDevice.GetVkDevice(),\ VK\_NULL\_HANDLE,\ 1,\ \&pipelineInfo,\ \textcolor{keyword}{nullptr},\ \&mGraphicsPipeline)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ create\ graphics\ pipeline!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00100}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a2d04afefcb55ed0bd2d2edb3bdd0c426}{00100}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_a2d04afefcb55ed0bd2d2edb3bdd0c426}{VRE::VRE\_Pipeline::CreateShaderModule}}(\textcolor{keyword}{const}\ std::vector<char>\&\ shaderCode,\ VkShaderModule*\ shaderModule)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00102}00102\ \ \ \ \ VkShaderModuleCreateInfo\ createInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00103}00103\ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_SHADER\_MODULE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00104}00104\ \ \ \ \ createInfo.codeSize\ =\ shaderCode.size();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00105}00105\ \ \ \ \ createInfo.pCode\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint32\_t*\textcolor{keyword}{>}(shaderCode.data());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateShaderModule(mDevice.GetVkDevice(),\ \&createInfo,\ \textcolor{keyword}{nullptr},\ shaderModule)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ create\ shader\ module!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00112}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_af110524d367705214b2a80627900903b}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_af110524d367705214b2a80627900903b}{VRE::VRE\_Pipeline::Bind}}(VkCommandBuffer\ commandBuffer)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00114}00114\ \ \ \ \ vkCmdBindPipeline(commandBuffer,\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ mGraphicsPipeline);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00117}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{VRE::VRE\_Pipeline::GetDefaultPipelineConfigInfo}}(\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info}{PipelineConfigInfo}}\&\ configInfo)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00119}00119\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a0d8da653e06b6f33ddbee5235f519a02}{mInputAssemblyInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_INPUT\_ASSEMBLY\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00120}00120\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a0d8da653e06b6f33ddbee5235f519a02}{mInputAssemblyInfo}}.topology\ =\ VK\_PRIMITIVE\_TOPOLOGY\_TRIANGLE\_LIST;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00121}00121\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a0d8da653e06b6f33ddbee5235f519a02}{mInputAssemblyInfo}}.primitiveRestartEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00123}00123\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_VIEWPORT\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00124}00124\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}}.viewportCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00125}00125\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}}.pViewports\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00126}00126\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}}.scissorCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00127}00127\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a6b1d0ee40503cc3f9a93a5f535f52fd2}{mViewportInfo}}.pScissors\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00129}00129\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_RASTERIZATION\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00130}00130\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.depthClampEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00131}00131\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.rasterizerDiscardEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00132}00132\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.polygonMode\ =\ VK\_POLYGON\_MODE\_FILL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00133}00133\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.lineWidth\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00134}00134\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.cullMode\ =\ VK\_CULL\_MODE\_NONE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00135}00135\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.frontFace\ =\ VK\_FRONT\_FACE\_CLOCKWISE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00136}00136\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.depthBiasEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00137}00137\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.depthBiasConstantFactor\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00138}00138\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.depthBiasClamp\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00139}00139\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada993afdd5d4bff6ce30e0f2465ddb8d}{mRasterizationInfo}}.depthBiasSlopeFactor\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00141}00141\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_MULTISAMPLE\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00142}00142\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.sampleShadingEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00143}00143\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.rasterizationSamples\ =\ VK\_SAMPLE\_COUNT\_1\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00144}00144\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.minSampleShading\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00145}00145\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.pSampleMask\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00146}00146\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.alphaToCoverageEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00147}00147\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ad6db69a948e6f2c1dfc3c71204673d54}{mMultisampleInfo}}.alphaToOneEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00149}00149\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.colorWriteMask\ =\ VK\_COLOR\_COMPONENT\_R\_BIT\ |\ VK\_COLOR\_COMPONENT\_G\_BIT\ |}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ VK\_COLOR\_COMPONENT\_B\_BIT\ |\ VK\_COLOR\_COMPONENT\_A\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00151}00151\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.blendEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00152}00152\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.srcColorBlendFactor\ =\ VK\_BLEND\_FACTOR\_ONE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00153}00153\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.dstColorBlendFactor\ =\ VK\_BLEND\_FACTOR\_ZERO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00154}00154\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.colorBlendOp\ =\ VK\_BLEND\_OP\_ADD;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00155}00155\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.srcAlphaBlendFactor\ =\ VK\_BLEND\_FACTOR\_ONE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00156}00156\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.dstAlphaBlendFactor\ =\ VK\_BLEND\_FACTOR\_ZERO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00157}00157\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}}.alphaBlendOp\ =\ VK\_BLEND\_OP\_ADD;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00159}00159\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_COLOR\_BLEND\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00160}00160\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.logicOpEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00161}00161\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.logicOp\ =\ VK\_LOGIC\_OP\_COPY;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00162}00162\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.attachmentCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00163}00163\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.pAttachments\ =\ \&configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a19f8f75b22388d74baa11a612b540623}{mColorBlendAttachment}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00164}00164\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.blendConstants[0]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00165}00165\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.blendConstants[1]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00166}00166\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.blendConstants[2]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00167}00167\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a45b86558e26cf4383bd61f04d46adb47}{mColorBlendInfo}}.blendConstants[3]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00169}00169\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_DEPTH\_STENCIL\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00170}00170\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.depthTestEnable\ =\ VK\_TRUE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00171}00171\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.depthWriteEnable\ =\ VK\_TRUE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00172}00172\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.depthCompareOp\ =\ VK\_COMPARE\_OP\_LESS;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00173}00173\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.depthBoundsTestEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00174}00174\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.minDepthBounds\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00175}00175\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.maxDepthBounds\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00176}00176\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.stencilTestEnable\ =\ VK\_FALSE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00177}00177\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.front\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00178}00178\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a801b689bbda28694b33eec1213709cb0}{mDepthStencilInfo}}.back\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00180}00180\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada56ede067c9b1211d449c179b916ad0}{mDynamicStateEnables}}\ =\ \{\ VK\_DYNAMIC\_STATE\_VIEWPORT,\ VK\_DYNAMIC\_STATE\_SCISSOR\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00181}00181\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a857af370d6bf1dfef285c193da31151f}{mDynamicStateInfo}}.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_DYNAMIC\_STATE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00182}00182\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a857af370d6bf1dfef285c193da31151f}{mDynamicStateInfo}}.pDynamicStates\ =\ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada56ede067c9b1211d449c179b916ad0}{mDynamicStateEnables}}.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00183}00183\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a857af370d6bf1dfef285c193da31151f}{mDynamicStateInfo}}.dynamicStateCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_ada56ede067c9b1211d449c179b916ad0}{mDynamicStateEnables}}.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00184}00184\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a857af370d6bf1dfef285c193da31151f}{mDynamicStateInfo}}.flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00186}00186\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a272e4760fdd49583cda7a981af03b33e}{mBindingDescriptions}}\ =\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}{Vertex::GetBindingDesc}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00187}00187\ \ \ \ \ configInfo.\mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info_a9f5d372c03f3695f25098a81bf837beb}{mAttributeDescriptions}}\ =\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}{Vertex::GetAttributeDesc}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___pipeline_8cpp_source_l00188}00188\ \}}
+
+\end{DoxyCode}

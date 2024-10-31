@@ -1,3 +1,9 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
 #include "VRE_Pipeline.h"
 #include "VRE_ModelProperties.h"
 
@@ -128,48 +134,48 @@ void VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo(PipelineConfigInfo& configI
     configInfo.mRasterizationInfo.cullMode = VK_CULL_MODE_NONE;
     configInfo.mRasterizationInfo.frontFace = VK_FRONT_FACE_CLOCKWISE;
     configInfo.mRasterizationInfo.depthBiasEnable = VK_FALSE;
-    configInfo.mRasterizationInfo.depthBiasConstantFactor = 0.0f;  // Optional
-    configInfo.mRasterizationInfo.depthBiasClamp = 0.0f;           // Optional
-    configInfo.mRasterizationInfo.depthBiasSlopeFactor = 0.0f;     // Optional
+    configInfo.mRasterizationInfo.depthBiasConstantFactor = 0.0f;
+    configInfo.mRasterizationInfo.depthBiasClamp = 0.0f;
+    configInfo.mRasterizationInfo.depthBiasSlopeFactor = 0.0f;
 
     configInfo.mMultisampleInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
     configInfo.mMultisampleInfo.sampleShadingEnable = VK_FALSE;
     configInfo.mMultisampleInfo.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
-    configInfo.mMultisampleInfo.minSampleShading = 1.0f;           // Optional
-    configInfo.mMultisampleInfo.pSampleMask = nullptr;             // Optional
-    configInfo.mMultisampleInfo.alphaToCoverageEnable = VK_FALSE;  // Optional
-    configInfo.mMultisampleInfo.alphaToOneEnable = VK_FALSE;       // Optional
+    configInfo.mMultisampleInfo.minSampleShading = 1.0f;
+    configInfo.mMultisampleInfo.pSampleMask = nullptr;
+    configInfo.mMultisampleInfo.alphaToCoverageEnable = VK_FALSE;
+    configInfo.mMultisampleInfo.alphaToOneEnable = VK_FALSE;
 
     configInfo.mColorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
         VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
     configInfo.mColorBlendAttachment.blendEnable = VK_FALSE;
-    configInfo.mColorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_ONE;   // Optional
-    configInfo.mColorBlendAttachment.dstColorBlendFactor = VK_BLEND_FACTOR_ZERO;  // Optional
-    configInfo.mColorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;              // Optional
-    configInfo.mColorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;   // Optional
-    configInfo.mColorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;  // Optional
-    configInfo.mColorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;              // Optional
+    configInfo.mColorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_ONE;
+    configInfo.mColorBlendAttachment.dstColorBlendFactor = VK_BLEND_FACTOR_ZERO;
+    configInfo.mColorBlendAttachment.colorBlendOp = VK_BLEND_OP_ADD;
+    configInfo.mColorBlendAttachment.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
+    configInfo.mColorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+    configInfo.mColorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
 
     configInfo.mColorBlendInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
     configInfo.mColorBlendInfo.logicOpEnable = VK_FALSE;
-    configInfo.mColorBlendInfo.logicOp = VK_LOGIC_OP_COPY;  // Optional
+    configInfo.mColorBlendInfo.logicOp = VK_LOGIC_OP_COPY;
     configInfo.mColorBlendInfo.attachmentCount = 1;
     configInfo.mColorBlendInfo.pAttachments = &configInfo.mColorBlendAttachment;
-    configInfo.mColorBlendInfo.blendConstants[0] = 0.0f;  // Optional
-    configInfo.mColorBlendInfo.blendConstants[1] = 0.0f;  // Optional
-    configInfo.mColorBlendInfo.blendConstants[2] = 0.0f;  // Optional
-    configInfo.mColorBlendInfo.blendConstants[3] = 0.0f;  // Optional
+    configInfo.mColorBlendInfo.blendConstants[0] = 0.0f;
+    configInfo.mColorBlendInfo.blendConstants[1] = 0.0f;
+    configInfo.mColorBlendInfo.blendConstants[2] = 0.0f;
+    configInfo.mColorBlendInfo.blendConstants[3] = 0.0f;
 
     configInfo.mDepthStencilInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     configInfo.mDepthStencilInfo.depthTestEnable = VK_TRUE;
     configInfo.mDepthStencilInfo.depthWriteEnable = VK_TRUE;
     configInfo.mDepthStencilInfo.depthCompareOp = VK_COMPARE_OP_LESS;
     configInfo.mDepthStencilInfo.depthBoundsTestEnable = VK_FALSE;
-    configInfo.mDepthStencilInfo.minDepthBounds = 0.0f;  // Optional
-    configInfo.mDepthStencilInfo.maxDepthBounds = 1.0f;  // Optional
+    configInfo.mDepthStencilInfo.minDepthBounds = 0.0f;
+    configInfo.mDepthStencilInfo.maxDepthBounds = 1.0f;
     configInfo.mDepthStencilInfo.stencilTestEnable = VK_FALSE;
-    configInfo.mDepthStencilInfo.front = {};  // Optional
-    configInfo.mDepthStencilInfo.back = {};   // Optional
+    configInfo.mDepthStencilInfo.front = {};
+    configInfo.mDepthStencilInfo.back = {};
 
     configInfo.mDynamicStateEnables = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
     configInfo.mDynamicStateInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;

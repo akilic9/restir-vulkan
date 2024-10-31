@@ -1,6 +1,11 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
 #include "VRE_Device.h"
 
-// std headers
 #include <cstring>
 #include <iostream>
 #include <set>
@@ -8,7 +13,6 @@
 
 namespace VRE {
 
-    // Local callback functions
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
         VkDebugUtilsMessageTypeFlagsEXT messageType,
         const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
@@ -158,7 +162,6 @@ namespace VRE {
         createInfo.enabledExtensionCount = static_cast<uint32_t>(mDeviceExtensions.size());
         createInfo.ppEnabledExtensionNames = mDeviceExtensions.data();
     
-        // Might not really be necessary anymore because device specific validation layers have been deprecated.
         if (mEnableValidationLayers) {
             createInfo.enabledLayerCount = static_cast<uint32_t>(mValidationLayers.size());
             createInfo.ppEnabledLayerNames = mValidationLayers.data();
@@ -464,8 +467,8 @@ namespace VRE {
         VkCommandBuffer commandBuffer = BeginSingleTimeCommands();
     
         VkBufferCopy copyRegion{};
-        copyRegion.srcOffset = 0;  // Optional
-        copyRegion.dstOffset = 0;  // Optional
+        copyRegion.srcOffset = 0;
+        copyRegion.dstOffset = 0;
         copyRegion.size = size;
         vkCmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, &copyRegion);
     

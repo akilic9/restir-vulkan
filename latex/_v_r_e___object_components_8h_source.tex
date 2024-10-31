@@ -1,0 +1,80 @@
+\doxysection{VRE\+\_\+\+Object\+Components.\+h}
+\hypertarget{_v_r_e___object_components_8h_source}{}\label{_v_r_e___object_components_8h_source}\index{ReSTIRVulkan/VRE\_ObjectComponents.h@{ReSTIRVulkan/VRE\_ObjectComponents.h}}
+\mbox{\hyperlink{_v_r_e___object_components_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00001}00001\ \textcolor{comment}{//Transform\ code\ by\ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00002}00002\ \textcolor{comment}{//\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00003}00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}glm.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00007}\mbox{\hyperlink{namespace_v_r_e_aa9d1755788ca2e9061d788834a0ea1f2}{00007}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_v_r_e_aa9d1755788ca2e9061d788834a0ea1f2}{MAX\_OBJECT\_COUNT}}\ =\ 1000;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00009}\mbox{\hyperlink{struct_v_r_e_1_1_transform}{00009}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1_transform}{Transform}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00010}\mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{00010}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}\{\ 0.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00011}\mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{00011}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}\{\ 1.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00012}\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{00012}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}\{\ 0.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Matrix\ corresponds\ to\ Translate\ *\ Ry\ *\ Rx\ *\ Rz\ *\ Scale}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotations\ correspond\ to\ Tait-\/bryan\ angles\ of\ Y(1),\ X(2),\ Z(3)}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wikipedia\ Contributors\ (2024).\ Euler\ angles.\ [online]\ Wikipedia.\ Available\ at:\ https://en.wikipedia.org/wiki/Euler\_angles\#Rotation\_matrix.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00017}\mbox{\hyperlink{struct_v_r_e_1_1_transform_ae1b0897211068cf091aeb5deb3ed2b15}{00017}}\ \ \ \ \ \ \ \ \ glm::mat4\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_ae1b0897211068cf091aeb5deb3ed2b15}{Mat4}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c3\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s3\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c2\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s2\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c1\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s1\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mat4\{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c1\ *\ c3\ +\ s1\ *\ s2\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c2\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c1\ *\ s2\ *\ s3\ -\/\ c3\ *\ s1),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c3\ *\ s1\ *\ s2\ -\/\ c1\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c2\ *\ c3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c1\ *\ c3\ *\ s2\ +\ s1\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (c2\ *\ s1),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (-\/s2),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (c1\ *\ c2),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.x,\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.y,\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.z,\ 1.0f\}\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00046}\mbox{\hyperlink{struct_v_r_e_1_1_transform_a561d7872072e38f278227a66aa9343c3}{00046}}\ \ \ \ \ \ \ \ \ glm::mat3\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a561d7872072e38f278227a66aa9343c3}{NormalMatrix}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c3\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s3\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c2\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s2\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c1\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s1\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\ inverseScale\ =\ 1.0f\ /\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mat3\{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c1\ *\ c3\ +\ s1\ *\ s2\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c2\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c1\ *\ s2\ *\ s3\ -\/\ c3\ *\ s1),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c3\ *\ s1\ *\ s2\ -\/\ c1\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c2\ *\ c3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c1\ *\ c3\ *\ s2\ +\ s1\ *\ s3),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (c2\ *\ s1),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (-\/s2),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (c1\ *\ c2),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00073}00073\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___object_components_8h_source_l00074}00074\ \}}
+
+\end{DoxyCode}

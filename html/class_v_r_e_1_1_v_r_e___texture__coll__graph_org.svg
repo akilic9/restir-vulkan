@@ -20,7 +20,7 @@
 <text text-anchor="start" x="16" y="-490.5" font-family="Helvetica,sans-Serif" font-size="10.00">VkDeviceMemory mTextureImage</text>
 <text text-anchor="start" x="16" y="-478.5" font-family="Helvetica,sans-Serif" font-size="10.00">Memory</text>
 <text text-anchor="start" x="7.5" y="-462.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="16" y="-462.5" font-family="Helvetica,sans-Serif" font-size="10.00">VkImageView mTextureImageView</text>
+<text text-anchor="start" x="16" y="-462.5" font-family="Helvetica,sans-Serif" font-size="10.00">VkImageView mImageView</text>
 <text text-anchor="start" x="7.5" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="16" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00">VkSampler mTextureSampler</text>
 <text text-anchor="start" x="7.5" y="-430.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
@@ -64,11 +64,11 @@
 <text text-anchor="start" x="16" y="-66.5" font-family="Helvetica,sans-Serif" font-size="10.00"> format, VkImageLayout oldLayout,</text>
 <text text-anchor="start" x="16" y="-54.5" font-family="Helvetica,sans-Serif" font-size="10.00"> VkImageLayout newLayout)</text>
 <text text-anchor="start" x="7.5" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="16" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">void CreateTextureImageView()</text>
+<text text-anchor="start" x="16" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">void CreateImageView()</text>
 <text text-anchor="start" x="7.5" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="16" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">void CreateTextureSampler()</text>
 <text text-anchor="start" x="7.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
-<text text-anchor="start" x="16" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">void UpdateDescriptor()</text>
+<text text-anchor="start" x="16" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">void UpdateDescriptorInfo()</text>
 <polygon fill="#666666" stroke="#666666" points="2,-518 2,-518 173,-518 173,-518 2,-518"/>
 <polygon fill="#666666" stroke="#666666" points="2,-398 2,-398 14,-398 14,-398 2,-398"/>
 <polygon fill="#666666" stroke="#666666" points="14,-398 14,-398 173,-398 173,-398 14,-398"/>

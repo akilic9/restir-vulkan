@@ -7,7 +7,7 @@ var class_v_r_e_1_1_v_r_e___light_render_system =
     [ "CreatePipelineLayout", "class_v_r_e_1_1_v_r_e___light_render_system.html#a3490beb0ae0f9b33fe59818cc6936939", null ],
     [ "Init", "class_v_r_e_1_1_v_r_e___light_render_system.html#a9a33fa60bb23e7c648e53df10ad896a8", null ],
     [ "operator=", "class_v_r_e_1_1_v_r_e___light_render_system.html#ab6d81155312ab7c3e4a2b6cde3fd4e30", null ],
-    [ "RenderLights", "class_v_r_e_1_1_v_r_e___light_render_system.html#a3e7f9be186ea8866215c097a2da3166c", null ],
+    [ "Render", "class_v_r_e_1_1_v_r_e___light_render_system.html#a2c87fa8eb742387a716e180e5968ece4", null ],
     [ "Update", "class_v_r_e_1_1_v_r_e___light_render_system.html#a9077d5dee2e9615aa8c31aef44261d77", null ],
     [ "mPipeline", "class_v_r_e_1_1_v_r_e___light_render_system.html#a9280982e97d3cc59b922b8b067f1dcc4", null ],
     [ "mPipelineLayout", "class_v_r_e_1_1_v_r_e___light_render_system.html#a931b354d084f2baa2b2196692bf24b77", null ],

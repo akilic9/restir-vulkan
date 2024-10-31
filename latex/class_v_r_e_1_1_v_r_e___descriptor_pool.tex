@@ -1,0 +1,229 @@
+\doxysection{VRE\+::VRE\+\_\+\+Descriptor\+Pool Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool}{}\label{class_v_r_e_1_1_v_r_e___descriptor_pool}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Descriptor.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Descriptor\+Pool\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___descriptor_pool__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder}{Builder}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a3a1609113426bd12fea71e7b64b64343}{VRE\+\_\+\+Descriptor\+Pool}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&device, uint32\+\_\+t max\+Sets, Vk\+Descriptor\+Pool\+Create\+Flags pool\+Flags, const std\+::vector$<$ Vk\+Descriptor\+Pool\+Size $>$ \&pool\+Sizes)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_afaaf9eb22dc9dcc298e8231e7164cb90}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Descriptor\+Pool}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a9a4d72738ad15f226b38c494eb7637f8}{VRE\+\_\+\+Descriptor\+Pool}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a219ded6325cb7889d8d1c62890a5b39e}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \&)=delete
+\item 
+bool \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a87bd1daa504f9abc9d3ca068246ed598}{Allocate\+Descriptor\+Set}} (const Vk\+Descriptor\+Set\+Layout descriptor\+Set\+Layout, Vk\+Descriptor\+Set \&descriptor) const
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a01d8279a971bd9021c80835f3252d82c}{Free\+Descriptors}} (std\+::vector$<$ Vk\+Descriptor\+Set $>$ \&descriptors) const
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_ad47fe2ed7082ddbb1adc18a65e47dd48}{Reset\+Pool}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{m\+Device}}
+\item 
+Vk\+Descriptor\+Pool \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{m\+Descriptor\+Pool}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aa580abaca29cd4105fa801915dd48481}{VRE\+\_\+\+Descriptor\+Writer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00045}{45}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a3a1609113426bd12fea71e7b64b64343}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!VRE\_DescriptorPool@{VRE\_DescriptorPool}}
+\index{VRE\_DescriptorPool@{VRE\_DescriptorPool}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{VRE\_DescriptorPool()}{VRE\_DescriptorPool()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a3a1609113426bd12fea71e7b64b64343} 
+VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\+VRE\+\_\+\+Descriptor\+Pool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&}]{device}{, }\item[{uint32\+\_\+t}]{max\+Sets}{, }\item[{Vk\+Descriptor\+Pool\+Create\+Flags}]{pool\+Flags}{, }\item[{const std\+::vector$<$ Vk\+Descriptor\+Pool\+Size $>$ \&}]{pool\+Sizes}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}(device) }
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ VkDescriptorPoolCreateInfo\ descriptorPoolInfo\{\};}
+\DoxyCodeLine{00075\ \ \ \ \ descriptorPoolInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_DESCRIPTOR\_POOL\_CREATE\_INFO;}
+\DoxyCodeLine{00076\ \ \ \ \ descriptorPoolInfo.poolSizeCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(poolSizes.size());}
+\DoxyCodeLine{00077\ \ \ \ \ descriptorPoolInfo.pPoolSizes\ =\ poolSizes.data();}
+\DoxyCodeLine{00078\ \ \ \ \ descriptorPoolInfo.maxSets\ =\ maxSets;}
+\DoxyCodeLine{00079\ \ \ \ \ descriptorPoolInfo.flags\ =\ poolFlags;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateDescriptorPool(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&descriptorPoolInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{mDescriptorPool}})\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ descriptor\ pool."{}});}
+\DoxyCodeLine{00083\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___descriptor_pool_a3a1609113426bd12fea71e7b64b64343_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_afaaf9eb22dc9dcc298e8231e7164cb90}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!````~VRE\_DescriptorPool@{\texorpdfstring{$\sim$}{\string~}VRE\_DescriptorPool}}
+\index{````~VRE\_DescriptorPool@{\texorpdfstring{$\sim$}{\string~}VRE\_DescriptorPool}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_DescriptorPool()}{\string~VRE\_DescriptorPool()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_afaaf9eb22dc9dcc298e8231e7164cb90} 
+VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Descriptor\+Pool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ vkDestroyDescriptorPool(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{mDescriptorPool}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a9a4d72738ad15f226b38c494eb7637f8}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!VRE\_DescriptorPool@{VRE\_DescriptorPool}}
+\index{VRE\_DescriptorPool@{VRE\_DescriptorPool}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{VRE\_DescriptorPool()}{VRE\_DescriptorPool()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a9a4d72738ad15f226b38c494eb7637f8} 
+VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\+VRE\+\_\+\+Descriptor\+Pool (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a87bd1daa504f9abc9d3ca068246ed598}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!AllocateDescriptorSet@{AllocateDescriptorSet}}
+\index{AllocateDescriptorSet@{AllocateDescriptorSet}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{AllocateDescriptorSet()}{AllocateDescriptorSet()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a87bd1daa504f9abc9d3ca068246ed598} 
+bool VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\+Allocate\+Descriptor\+Set (\begin{DoxyParamCaption}\item[{const Vk\+Descriptor\+Set\+Layout}]{descriptor\+Set\+Layout}{, }\item[{Vk\+Descriptor\+Set \&}]{descriptor}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00096\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ VkDescriptorSetAllocateInfo\ allocInfo\{\};}
+\DoxyCodeLine{00098\ \ \ \ \ allocInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_DESCRIPTOR\_SET\_ALLOCATE\_INFO;}
+\DoxyCodeLine{00099\ \ \ \ \ allocInfo.descriptorPool\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{mDescriptorPool}};}
+\DoxyCodeLine{00100\ \ \ \ \ allocInfo.pSetLayouts\ =\ \&descriptorSetLayout;}
+\DoxyCodeLine{00101\ \ \ \ \ allocInfo.descriptorSetCount\ =\ 1;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Might\ want\ to\ create\ a\ "{}DescriptorPoolManager"{}\ class\ that\ handles\ this\ case,\ and\ builds\ a\ new\ pool\ whenever\ an\ old\ pool\ fills\ up.}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkAllocateDescriptorSets(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&allocInfo,\ \&descriptor)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00108\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a01d8279a971bd9021c80835f3252d82c}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!FreeDescriptors@{FreeDescriptors}}
+\index{FreeDescriptors@{FreeDescriptors}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{FreeDescriptors()}{FreeDescriptors()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a01d8279a971bd9021c80835f3252d82c} 
+void VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\+Free\+Descriptors (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Vk\+Descriptor\+Set $>$ \&}]{descriptors}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00111\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ vkFreeDescriptorSets(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{mDescriptorPool}},\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(descriptors.size()),\ descriptors.data());}
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a219ded6325cb7889d8d1c62890a5b39e}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a219ded6325cb7889d8d1c62890a5b39e} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \& VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool}{VRE\+\_\+\+Descriptor\+Pool}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_ad47fe2ed7082ddbb1adc18a65e47dd48}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!ResetPool@{ResetPool}}
+\index{ResetPool@{ResetPool}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{ResetPool()}{ResetPool()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_ad47fe2ed7082ddbb1adc18a65e47dd48} 
+void VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::\+Reset\+Pool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ vkResetDescriptorPool(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}{mDescriptorPool}},\ 0);}
+\DoxyCodeLine{00118\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_aa580abaca29cd4105fa801915dd48481}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!VRE\_DescriptorWriter@{VRE\_DescriptorWriter}}
+\index{VRE\_DescriptorWriter@{VRE\_DescriptorWriter}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{VRE\_DescriptorWriter}{VRE\_DescriptorWriter}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_aa580abaca29cd4105fa801915dd48481} 
+friend class \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\+\_\+\+Descriptor\+Writer}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00078}{78}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!mDescriptorPool@{mDescriptorPool}}
+\index{mDescriptorPool@{mDescriptorPool}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{mDescriptorPool}{mDescriptorPool}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_aed66d345104dcb81c4e4f47ff16fed28} 
+Vk\+Descriptor\+Pool VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::m\+Descriptor\+Pool\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00076}{76}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce}\index{VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}!mDevice@{mDevice}}
+\index{mDevice@{mDevice}!VRE::VRE\_DescriptorPool@{VRE::VRE\_DescriptorPool}}
+\doxysubsubsection{\texorpdfstring{mDevice}{mDevice}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_pool_a2d209468106844514b49900781dcc5ce} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}}\& VRE\+::\+VRE\+\_\+\+Descriptor\+Pool\+::m\+Device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00075}{75}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___descriptor_8h}{VRE\+\_\+\+Descriptor.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___descriptor_8cpp}{VRE\+\_\+\+Descriptor.\+cpp}}\end{DoxyCompactItemize}

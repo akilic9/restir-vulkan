@@ -1,0 +1,608 @@
+\doxysection{VRE\+::VRE\+\_\+\+Buffer Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___buffer}{}\label{class_v_r_e_1_1_v_r_e___buffer}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Buffer.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Buffer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___buffer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a30e371cf7293125a0892ad743ae4bf56}{VRE\+\_\+\+Buffer}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&device, Vk\+Device\+Size instance\+Size, uint32\+\_\+t instance\+Count, Vk\+Buffer\+Usage\+Flags usage\+Flags, Vk\+Memory\+Property\+Flags memory\+Property\+Flags, Vk\+Device\+Size min\+Offset\+Alignment=1)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_afabea73ae5c56e0f43262c5b384c883e}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Buffer}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a0bf9d2dff185636a9f641b40036afdf5}{VRE\+\_\+\+Buffer}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_af055c29dff9843d373e2c629854fa567}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \&)=delete
+\item 
+Vk\+Result \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a1fcc1a81e90c3fb8a143ae4366b1f7d8}{Map}} (Vk\+Device\+Size size=VK\+\_\+\+WHOLE\+\_\+\+SIZE, Vk\+Device\+Size offset=0)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a87bd8317bcbab03d1cfcae804fd778bb}{Unmap}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ab3316823e14587f60b98ccdb0bf71c47}{Write\+To\+Buffer}} (void \texorpdfstring{$\ast$}{*}data, Vk\+Device\+Size size=VK\+\_\+\+WHOLE\+\_\+\+SIZE, Vk\+Device\+Size offset=0)
+\item 
+Vk\+Result \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a827e2fb0299ce23c42d92f42eaed8083}{Flush}} (Vk\+Device\+Size size=VK\+\_\+\+WHOLE\+\_\+\+SIZE, Vk\+Device\+Size offset=0)
+\item 
+Vk\+Descriptor\+Buffer\+Info \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a06bfdb89272633f211b186fac7919ded}{Descriptor\+Info}} (Vk\+Device\+Size size=VK\+\_\+\+WHOLE\+\_\+\+SIZE, Vk\+Device\+Size offset=0)
+\item 
+Vk\+Result \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_acce51f87e0be1217e7982ef29f98c865}{Invalidate}} (Vk\+Device\+Size size=VK\+\_\+\+WHOLE\+\_\+\+SIZE, Vk\+Device\+Size offset=0)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a9a457bda9b34124e90637e5acaaf2655}{Write\+To\+Index}} (void \texorpdfstring{$\ast$}{*}data, int index)
+\item 
+Vk\+Result \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aace41dccc869775f0d53c6a12c8b7d6d}{Flush\+Index}} (int index)
+\item 
+Vk\+Descriptor\+Buffer\+Info \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a6faa36310e8f90be253b3c81164152c3}{Descriptor\+Info\+For\+Index}} (int index)
+\item 
+Vk\+Result \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ac91ab19a50a087bc152ffe921a38bd70}{Invalidate\+Index}} (int index)
+\item 
+Vk\+Buffer \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a0b4e8cbd307ba5cb1efde5e350b15f34}{Get\+Buffer}} () const
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ad9e5e1c9f56173f51091725d37761921}{Get\+Mapped\+Memory}} () const
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aaae7c07bf3b702391f26cc23cdb3a83c}{Get\+Instance\+Count}} () const
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a8934947cfbc215feea1ef7e7e2c2060f}{Get\+Instance\+Size}} () const
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a291ce50c15f8faff9f8074ecf8e4d55b}{Get\+Alignment\+Size}} () const
+\item 
+Vk\+Buffer\+Usage\+Flags \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ab0f42f500ab11fe5eff2014d52966dd3}{Get\+Usage\+Flags}} () const
+\item 
+Vk\+Memory\+Property\+Flags \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ac4c09b359e60a23245bfd4dbdee4f5e0}{Get\+Memory\+Property\+Flags}} () const
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a64360d174181f1f90802d925a27bf6b3}{Get\+Buffer\+Size}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a08abc6cbd120730de3ae1fc7eff78d97}{Get\+Alignment}} (Vk\+Device\+Size instance\+Size, Vk\+Device\+Size min\+Offset\+Alignment)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{m\+Device}}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{m\+Mapped}} = nullptr
+\item 
+Vk\+Buffer \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{m\+Buffer}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+Vk\+Device\+Memory \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{m\+Memory}} = VK\+\_\+\+NULL\+\_\+\+HANDLE
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}{m\+Buffer\+Size}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843}{m\+Instance\+Count}}
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611}{m\+Instance\+Size}}
+\item 
+Vk\+Device\+Size \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{m\+Alignment\+Size}}
+\item 
+Vk\+Buffer\+Usage\+Flags \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a162a3da0337dc87be648e6a930b683d6}{m\+Usage\+Flags}}
+\item 
+Vk\+Memory\+Property\+Flags \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aecc964dcd7ee3442e974b04184e43dd6}{m\+Memory\+Property\+Flags}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00011}{11}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a30e371cf7293125a0892ad743ae4bf56}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!VRE\_Buffer@{VRE\_Buffer}}
+\index{VRE\_Buffer@{VRE\_Buffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{VRE\_Buffer()}{VRE\_Buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a30e371cf7293125a0892ad743ae4bf56} 
+VRE\+::\+VRE\+\_\+\+Buffer\+::\+VRE\+\_\+\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&}]{device}{, }\item[{Vk\+Device\+Size}]{instance\+Size}{, }\item[{uint32\+\_\+t}]{instance\+Count}{, }\item[{Vk\+Buffer\+Usage\+Flags}]{usage\+Flags}{, }\item[{Vk\+Memory\+Property\+Flags}]{memory\+Property\+Flags}{, }\item[{Vk\+Device\+Size}]{min\+Offset\+Alignment}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}(device)}
+\DoxyCodeLine{00023\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611}{mInstanceSize}}(instanceSize)}
+\DoxyCodeLine{00024\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843}{mInstanceCount}}(instanceCount)}
+\DoxyCodeLine{00025\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a162a3da0337dc87be648e6a930b683d6}{mUsageFlags}}(usageFlags)}
+\DoxyCodeLine{00026\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aecc964dcd7ee3442e974b04184e43dd6}{mMemoryPropertyFlags}}(memoryPropertyFlags) }
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}}\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a08abc6cbd120730de3ae1fc7eff78d97}{GetAlignment}}(instanceSize,\ minOffsetAlignment);}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}{mBufferSize}}\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}}\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843}{mInstanceCount}};}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a7f4e71666ae4d01a47823eeb2d4f8b01}{CreateBuffer}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}{mBufferSize}},\ usageFlags,\ memoryPropertyFlags,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{mBuffer}},\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}});}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___buffer_a30e371cf7293125a0892ad743ae4bf56_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_afabea73ae5c56e0f43262c5b384c883e}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!````~VRE\_Buffer@{\texorpdfstring{$\sim$}{\string~}VRE\_Buffer}}
+\index{````~VRE\_Buffer@{\texorpdfstring{$\sim$}{\string~}VRE\_Buffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_Buffer()}{\string~VRE\_Buffer()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_afabea73ae5c56e0f43262c5b384c883e} 
+VRE\+::\+VRE\+\_\+\+Buffer\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a87bd8317bcbab03d1cfcae804fd778bb}{Unmap}}();}
+\DoxyCodeLine{00036\ \ \ \ \ vkDestroyBuffer(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{mBuffer}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00037\ \ \ \ \ vkFreeMemory(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a0bf9d2dff185636a9f641b40036afdf5}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!VRE\_Buffer@{VRE\_Buffer}}
+\index{VRE\_Buffer@{VRE\_Buffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{VRE\_Buffer()}{VRE\_Buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a0bf9d2dff185636a9f641b40036afdf5} 
+VRE\+::\+VRE\+\_\+\+Buffer\+::\+VRE\+\_\+\+Buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a06bfdb89272633f211b186fac7919ded}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!DescriptorInfo@{DescriptorInfo}}
+\index{DescriptorInfo@{DescriptorInfo}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{DescriptorInfo()}{DescriptorInfo()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a06bfdb89272633f211b186fac7919ded} 
+Vk\+Descriptor\+Buffer\+Info VRE\+::\+VRE\+\_\+\+Buffer\+::\+Descriptor\+Info (\begin{DoxyParamCaption}\item[{Vk\+Device\+Size}]{size}{ = {\ttfamily VK\+\_\+WHOLE\+\_\+SIZE}, }\item[{Vk\+Device\+Size}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{return}\ VkDescriptorBufferInfo\{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{mBuffer}},\ offset,\ size\};}
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a6faa36310e8f90be253b3c81164152c3}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!DescriptorInfoForIndex@{DescriptorInfoForIndex}}
+\index{DescriptorInfoForIndex@{DescriptorInfoForIndex}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{DescriptorInfoForIndex()}{DescriptorInfoForIndex()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a6faa36310e8f90be253b3c81164152c3} 
+Vk\+Descriptor\+Buffer\+Info VRE\+::\+VRE\+\_\+\+Buffer\+::\+Descriptor\+Info\+For\+Index (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a06bfdb89272633f211b186fac7919ded}{DescriptorInfo}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}},\ index\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}});}
+\DoxyCodeLine{00105\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a827e2fb0299ce23c42d92f42eaed8083}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!Flush@{Flush}}
+\index{Flush@{Flush}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{Flush()}{Flush()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a827e2fb0299ce23c42d92f42eaed8083} 
+Vk\+Result VRE\+::\+VRE\+\_\+\+Buffer\+::\+Flush (\begin{DoxyParamCaption}\item[{Vk\+Device\+Size}]{size}{ = {\ttfamily VK\+\_\+WHOLE\+\_\+SIZE}, }\item[{Vk\+Device\+Size}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ VkMappedMemoryRange\ mappedRange\ =\ \{\};}
+\DoxyCodeLine{00070\ \ \ \ \ mappedRange.sType\ =\ VK\_STRUCTURE\_TYPE\_MAPPED\_MEMORY\_RANGE;}
+\DoxyCodeLine{00071\ \ \ \ \ mappedRange.memory\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}};}
+\DoxyCodeLine{00072\ \ \ \ \ mappedRange.offset\ =\ offset;}
+\DoxyCodeLine{00073\ \ \ \ \ mappedRange.size\ =\ size;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ vkFlushMappedMemoryRanges(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ 1,\ \&mappedRange);}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_aace41dccc869775f0d53c6a12c8b7d6d}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!FlushIndex@{FlushIndex}}
+\index{FlushIndex@{FlushIndex}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{FlushIndex()}{FlushIndex()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_aace41dccc869775f0d53c6a12c8b7d6d} 
+Vk\+Result VRE\+::\+VRE\+\_\+\+Buffer\+::\+Flush\+Index (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a827e2fb0299ce23c42d92f42eaed8083}{Flush}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}},\ index\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}});}
+\DoxyCodeLine{00100\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a08abc6cbd120730de3ae1fc7eff78d97}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetAlignment@{GetAlignment}}
+\index{GetAlignment@{GetAlignment}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetAlignment()}{GetAlignment()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a08abc6cbd120730de3ae1fc7eff78d97} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Alignment (\begin{DoxyParamCaption}\item[{Vk\+Device\+Size}]{instance\+Size}{, }\item[{Vk\+Device\+Size}]{min\+Offset\+Alignment}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (minOffsetAlignment\ >\ 0)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (instanceSize\ +\ minOffsetAlignment\ -\/\ 1)\ \&\ \string~(minOffsetAlignment\ -\/\ 1);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{return}\ instanceSize;}
+\DoxyCodeLine{00118\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a291ce50c15f8faff9f8074ecf8e4d55b}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetAlignmentSize@{GetAlignmentSize}}
+\index{GetAlignmentSize@{GetAlignmentSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetAlignmentSize()}{GetAlignmentSize()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a291ce50c15f8faff9f8074ecf8e4d55b} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Alignment\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00039}{39}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a0b4e8cbd307ba5cb1efde5e350b15f34}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetBuffer@{GetBuffer}}
+\index{GetBuffer@{GetBuffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetBuffer()}{GetBuffer()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a0b4e8cbd307ba5cb1efde5e350b15f34} 
+Vk\+Buffer VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00035}{35}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{mBuffer}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a64360d174181f1f90802d925a27bf6b3}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetBufferSize@{GetBufferSize}}
+\index{GetBufferSize@{GetBufferSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetBufferSize()}{GetBufferSize()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a64360d174181f1f90802d925a27bf6b3} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Buffer\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00042}{42}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}{mBufferSize}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_aaae7c07bf3b702391f26cc23cdb3a83c}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetInstanceCount@{GetInstanceCount}}
+\index{GetInstanceCount@{GetInstanceCount}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetInstanceCount()}{GetInstanceCount()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_aaae7c07bf3b702391f26cc23cdb3a83c} 
+uint32\+\_\+t VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Instance\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00037}{37}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843}{mInstanceCount}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a8934947cfbc215feea1ef7e7e2c2060f}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetInstanceSize@{GetInstanceSize}}
+\index{GetInstanceSize@{GetInstanceSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetInstanceSize()}{GetInstanceSize()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a8934947cfbc215feea1ef7e7e2c2060f} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Instance\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00038}{38}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611}{mInstanceSize}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_ad9e5e1c9f56173f51091725d37761921}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetMappedMemory@{GetMappedMemory}}
+\index{GetMappedMemory@{GetMappedMemory}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetMappedMemory()}{GetMappedMemory()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_ad9e5e1c9f56173f51091725d37761921} 
+void \texorpdfstring{$\ast$}{*} VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Mapped\+Memory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00036}{36}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_ac4c09b359e60a23245bfd4dbdee4f5e0}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetMemoryPropertyFlags@{GetMemoryPropertyFlags}}
+\index{GetMemoryPropertyFlags@{GetMemoryPropertyFlags}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetMemoryPropertyFlags()}{GetMemoryPropertyFlags()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_ac4c09b359e60a23245bfd4dbdee4f5e0} 
+Vk\+Memory\+Property\+Flags VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Memory\+Property\+Flags (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00041}{41}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aecc964dcd7ee3442e974b04184e43dd6}{mMemoryPropertyFlags}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_ab0f42f500ab11fe5eff2014d52966dd3}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!GetUsageFlags@{GetUsageFlags}}
+\index{GetUsageFlags@{GetUsageFlags}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{GetUsageFlags()}{GetUsageFlags()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_ab0f42f500ab11fe5eff2014d52966dd3} 
+Vk\+Buffer\+Usage\+Flags VRE\+::\+VRE\+\_\+\+Buffer\+::\+Get\+Usage\+Flags (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00040}{40}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a162a3da0337dc87be648e6a930b683d6}{mUsageFlags}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_acce51f87e0be1217e7982ef29f98c865}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!Invalidate@{Invalidate}}
+\index{Invalidate@{Invalidate}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{Invalidate()}{Invalidate()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_acce51f87e0be1217e7982ef29f98c865} 
+Vk\+Result VRE\+::\+VRE\+\_\+\+Buffer\+::\+Invalidate (\begin{DoxyParamCaption}\item[{Vk\+Device\+Size}]{size}{ = {\ttfamily VK\+\_\+WHOLE\+\_\+SIZE}, }\item[{Vk\+Device\+Size}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ VkMappedMemoryRange\ mappedRange;}
+\DoxyCodeLine{00085\ \ \ \ \ mappedRange.sType\ =\ VK\_STRUCTURE\_TYPE\_MAPPED\_MEMORY\_RANGE;}
+\DoxyCodeLine{00086\ \ \ \ \ mappedRange.memory\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}};}
+\DoxyCodeLine{00087\ \ \ \ \ mappedRange.offset\ =\ offset;}
+\DoxyCodeLine{00088\ \ \ \ \ mappedRange.size\ =\ size;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ vkInvalidateMappedMemoryRanges(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ 1,\ \&mappedRange);}
+\DoxyCodeLine{00090\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_ac91ab19a50a087bc152ffe921a38bd70}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!InvalidateIndex@{InvalidateIndex}}
+\index{InvalidateIndex@{InvalidateIndex}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{InvalidateIndex()}{InvalidateIndex()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_ac91ab19a50a087bc152ffe921a38bd70} 
+Vk\+Result VRE\+::\+VRE\+\_\+\+Buffer\+::\+Invalidate\+Index (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_acce51f87e0be1217e7982ef29f98c865}{Invalidate}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}},\ index\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}});}
+\DoxyCodeLine{00110\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a1fcc1a81e90c3fb8a143ae4366b1f7d8}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!Map@{Map}}
+\index{Map@{Map}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a1fcc1a81e90c3fb8a143ae4366b1f7d8} 
+Vk\+Result VRE\+::\+VRE\+\_\+\+Buffer\+::\+Map (\begin{DoxyParamCaption}\item[{Vk\+Device\+Size}]{size}{ = {\ttfamily VK\+\_\+WHOLE\+\_\+SIZE}, }\item[{Vk\+Device\+Size}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}{mBuffer}}\ \&\&\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}}\ \&\&\ \textcolor{stringliteral}{"{}Map\ function\ calles\ on\ buffer\ before\ create\ function."{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ vkMapMemory(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}},\ offset,\ size,\ 0,\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}});}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_af055c29dff9843d373e2c629854fa567}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_af055c29dff9843d373e2c629854fa567} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \& VRE\+::\+VRE\+\_\+\+Buffer\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a87bd8317bcbab03d1cfcae804fd778bb}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!Unmap@{Unmap}}
+\index{Unmap@{Unmap}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{Unmap()}{Unmap()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a87bd8317bcbab03d1cfcae804fd778bb} 
+void VRE\+::\+VRE\+\_\+\+Buffer\+::\+Unmap (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}})\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ vkUnmapMemory(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}{mMemory}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_ab3316823e14587f60b98ccdb0bf71c47}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!WriteToBuffer@{WriteToBuffer}}
+\index{WriteToBuffer@{WriteToBuffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{WriteToBuffer()}{WriteToBuffer()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_ab3316823e14587f60b98ccdb0bf71c47} 
+void VRE\+::\+VRE\+\_\+\+Buffer\+::\+Write\+To\+Buffer (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{Vk\+Device\+Size}]{size}{ = {\ttfamily VK\+\_\+WHOLE\+\_\+SIZE}, }\item[{Vk\+Device\+Size}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ copy\ to\ unmapped\ buffer."{}});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ ==\ VK\_WHOLE\_SIZE)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ memcpy(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}},\ data,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}{mBufferSize}});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ memOffset\ =\ (\textcolor{keywordtype}{char}*)\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}{mMapped}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ memOffset\ +=\ offset;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ memcpy(memOffset,\ data,\ size);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a9a457bda9b34124e90637e5acaaf2655}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!WriteToIndex@{WriteToIndex}}
+\index{WriteToIndex@{WriteToIndex}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{WriteToIndex()}{WriteToIndex()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a9a457bda9b34124e90637e5acaaf2655} 
+void VRE\+::\+VRE\+\_\+\+Buffer\+::\+Write\+To\+Index (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{_v_r_e___buffer_8cpp_source}{VRE\+\_\+\+Buffer.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_ab3316823e14587f60b98ccdb0bf71c47}{WriteToBuffer}}(data,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611}{mInstanceSize}},\ index\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}{mAlignmentSize}});}
+\DoxyCodeLine{00095\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mAlignmentSize@{mAlignmentSize}}
+\index{mAlignmentSize@{mAlignmentSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mAlignmentSize}{mAlignmentSize}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a4b5c644fd341dc15341f4b5993a08704} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Alignment\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00055}{55}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mBuffer@{mBuffer}}
+\index{mBuffer@{mBuffer}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mBuffer}{mBuffer}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a7d89a3d94a162c0d3b961a5452fc06ee} 
+Vk\+Buffer VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Buffer = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00049}{49}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mBufferSize@{mBufferSize}}
+\index{mBufferSize@{mBufferSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mBufferSize}{mBufferSize}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a75fb4a6dafbd12624205e07e1e36bc15} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Buffer\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00052}{52}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mDevice@{mDevice}}
+\index{mDevice@{mDevice}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mDevice}{mDevice}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a14409bd3c93fc72cba3ec194c6f2ebb8} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}}\& VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00047}{47}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mInstanceCount@{mInstanceCount}}
+\index{mInstanceCount@{mInstanceCount}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mInstanceCount}{mInstanceCount}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a25c92522e437e9a03e4a83c9b345a843} 
+uint32\+\_\+t VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Instance\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00053}{53}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mInstanceSize@{mInstanceSize}}
+\index{mInstanceSize@{mInstanceSize}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mInstanceSize}{mInstanceSize}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a948eccabc336f4c1d143b5f485c3e611} 
+Vk\+Device\+Size VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Instance\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00054}{54}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mMapped@{mMapped}}
+\index{mMapped@{mMapped}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mMapped}{mMapped}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_aa4163675edb33ed14b52bc5eb1297db9} 
+void\texorpdfstring{$\ast$}{*} VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Mapped = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00048}{48}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mMemory@{mMemory}}
+\index{mMemory@{mMemory}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mMemory}{mMemory}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a7748356dfcd7a489a8279c7b7e243c28} 
+Vk\+Device\+Memory VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Memory = VK\+\_\+\+NULL\+\_\+\+HANDLE\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00050}{50}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_aecc964dcd7ee3442e974b04184e43dd6}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mMemoryPropertyFlags@{mMemoryPropertyFlags}}
+\index{mMemoryPropertyFlags@{mMemoryPropertyFlags}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mMemoryPropertyFlags}{mMemoryPropertyFlags}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_aecc964dcd7ee3442e974b04184e43dd6} 
+Vk\+Memory\+Property\+Flags VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Memory\+Property\+Flags\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00057}{57}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___buffer_a162a3da0337dc87be648e6a930b683d6}\index{VRE::VRE\_Buffer@{VRE::VRE\_Buffer}!mUsageFlags@{mUsageFlags}}
+\index{mUsageFlags@{mUsageFlags}!VRE::VRE\_Buffer@{VRE::VRE\_Buffer}}
+\doxysubsubsection{\texorpdfstring{mUsageFlags}{mUsageFlags}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___buffer_a162a3da0337dc87be648e6a930b683d6} 
+Vk\+Buffer\+Usage\+Flags VRE\+::\+VRE\+\_\+\+Buffer\+::m\+Usage\+Flags\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___buffer_8h_source_l00056}{56}} of file \mbox{\hyperlink{_v_r_e___buffer_8h_source}{VRE\+\_\+\+Buffer.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___buffer_8h}{VRE\+\_\+\+Buffer.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___buffer_8cpp}{VRE\+\_\+\+Buffer.\+cpp}}\end{DoxyCompactItemize}

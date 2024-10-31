@@ -1,0 +1,40 @@
+\doxysection{VRE\+\_\+\+Light\+Render\+System.\+h}
+\hypertarget{_v_r_e___light_render_system_8h_source}{}\label{_v_r_e___light_render_system_8h_source}\index{ReSTIRVulkan/VRE\_LightRenderSystem.h@{ReSTIRVulkan/VRE\_LightRenderSystem.h}}
+\mbox{\hyperlink{_v_r_e___light_render_system_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00007}00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___device_8h}{VRE\_Device.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___shared_context_8h}{VRE\_SharedContext.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___pipeline_8h}{VRE\_Pipeline.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00013}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{00013}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\_LightRenderSystem}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608}{VRE\_LightRenderSystem}}(\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ sceneContext);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792}{\string~VRE\_LightRenderSystem}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00019}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_aa43259761949f726f85b7210ae3ae385}{00019}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_aa43259761949f726f85b7210ae3ae385}{VRE\_LightRenderSystem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\_LightRenderSystem}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00020}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ab6d81155312ab7c3e4a2b6cde3fd4e30}{00020}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\_LightRenderSystem}}\&\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ab6d81155312ab7c3e4a2b6cde3fd4e30}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\_LightRenderSystem}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77}{Update}}(\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}\ \&ubo,\ \textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}{CreatePipelineLayout}}(VkDescriptorSetLayout\ descSetLayout);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}{CreatePipeline}}(VkRenderPass\ renderPass);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00030}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}{00030}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<VRE\_Pipeline>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}{mPipeline}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00031}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{00031}}\ \ \ \ \ \ \ \ \ VkPipelineLayout\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00032}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{00032}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00033}00033\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8h_source_l00034}00034\ \}}
+
+\end{DoxyCode}

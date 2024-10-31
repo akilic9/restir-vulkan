@@ -189,7 +189,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00005">5</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00011">11</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a30e371cf7293125a0892ad743ae4bf56" name="a30e371cf7293125a0892ad743ae4bf56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30e371cf7293125a0892ad743ae4bf56">&#9670;&#160;</a></span>VRE_Buffer() <span class="overload">[1/2]</span></h2>
@@ -230,28 +230,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00012">12</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>    : <a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>(device)</div>
-<div class="line"><span class="lineno">   16</span>    , <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>(instanceSize)</div>
-<div class="line"><span class="lineno">   17</span>    , <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>(instanceCount)</div>
-<div class="line"><span class="lineno">   18</span>    , <a class="code hl_variable" href="#a162a3da0337dc87be648e6a930b683d6">mUsageFlags</a>(usageFlags)</div>
-<div class="line"><span class="lineno">   19</span>    , <a class="code hl_variable" href="#aecc964dcd7ee3442e974b04184e43dd6">mMemoryPropertyFlags</a>(memoryPropertyFlags)</div>
-<div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a> = <a class="code hl_function" href="#a08abc6cbd120730de3ae1fc7eff78d97">GetAlignment</a>(instanceSize, minOffsetAlignment);</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a> = <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a> * <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>;</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a7f4e71666ae4d01a47823eeb2d4f8b01">CreateBuffer</a>(<a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>, usageFlags, memoryPropertyFlags, <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>);</div>
-<div class="line"><span class="lineno">   24</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a08abc6cbd120730de3ae1fc7eff78d97"><div class="ttname"><a href="#a08abc6cbd120730de3ae1fc7eff78d97">VRE::VRE_Buffer::GetAlignment</a></div><div class="ttdeci">static VkDeviceSize GetAlignment(VkDeviceSize instanceSize, VkDeviceSize minOffsetAlignment)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00196">VRE_Buffer.cpp:196</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a14409bd3c93fc72cba3ec194c6f2ebb8"><div class="ttname"><a href="#a14409bd3c93fc72cba3ec194c6f2ebb8">VRE::VRE_Buffer::mDevice</a></div><div class="ttdeci">VRE_Device &amp; mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00041">VRE_Buffer.h:41</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a162a3da0337dc87be648e6a930b683d6"><div class="ttname"><a href="#a162a3da0337dc87be648e6a930b683d6">VRE::VRE_Buffer::mUsageFlags</a></div><div class="ttdeci">VkBufferUsageFlags mUsageFlags</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00050">VRE_Buffer.h:50</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a25c92522e437e9a03e4a83c9b345a843"><div class="ttname"><a href="#a25c92522e437e9a03e4a83c9b345a843">VRE::VRE_Buffer::mInstanceCount</a></div><div class="ttdeci">uint32_t mInstanceCount</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00047">VRE_Buffer.h:47</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a4b5c644fd341dc15341f4b5993a08704"><div class="ttname"><a href="#a4b5c644fd341dc15341f4b5993a08704">VRE::VRE_Buffer::mAlignmentSize</a></div><div class="ttdeci">VkDeviceSize mAlignmentSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00049">VRE_Buffer.h:49</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a75fb4a6dafbd12624205e07e1e36bc15"><div class="ttname"><a href="#a75fb4a6dafbd12624205e07e1e36bc15">VRE::VRE_Buffer::mBufferSize</a></div><div class="ttdeci">VkDeviceSize mBufferSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00046">VRE_Buffer.h:46</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a7748356dfcd7a489a8279c7b7e243c28"><div class="ttname"><a href="#a7748356dfcd7a489a8279c7b7e243c28">VRE::VRE_Buffer::mMemory</a></div><div class="ttdeci">VkDeviceMemory mMemory</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00044">VRE_Buffer.h:44</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a7d89a3d94a162c0d3b961a5452fc06ee"><div class="ttname"><a href="#a7d89a3d94a162c0d3b961a5452fc06ee">VRE::VRE_Buffer::mBuffer</a></div><div class="ttdeci">VkBuffer mBuffer</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00043">VRE_Buffer.h:43</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a948eccabc336f4c1d143b5f485c3e611"><div class="ttname"><a href="#a948eccabc336f4c1d143b5f485c3e611">VRE::VRE_Buffer::mInstanceSize</a></div><div class="ttdeci">VkDeviceSize mInstanceSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00048">VRE_Buffer.h:48</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_aecc964dcd7ee3442e974b04184e43dd6"><div class="ttname"><a href="#aecc964dcd7ee3442e974b04184e43dd6">VRE::VRE_Buffer::mMemoryPropertyFlags</a></div><div class="ttdeci">VkMemoryPropertyFlags mMemoryPropertyFlags</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00051">VRE_Buffer.h:51</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a7f4e71666ae4d01a47823eeb2d4f8b01"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a7f4e71666ae4d01a47823eeb2d4f8b01">VRE::VRE_Device::CreateBuffer</a></div><div class="ttdeci">void CreateBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer &amp;buffer, VkDeviceMemory &amp;bufferMemory)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8cpp_source.html#l00403">VRE_Device.cpp:403</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00019">19</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>    : <a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>(device)</div>
+<div class="line"><span class="lineno">   23</span>    , <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>(instanceSize)</div>
+<div class="line"><span class="lineno">   24</span>    , <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>(instanceCount)</div>
+<div class="line"><span class="lineno">   25</span>    , <a class="code hl_variable" href="#a162a3da0337dc87be648e6a930b683d6">mUsageFlags</a>(usageFlags)</div>
+<div class="line"><span class="lineno">   26</span>    , <a class="code hl_variable" href="#aecc964dcd7ee3442e974b04184e43dd6">mMemoryPropertyFlags</a>(memoryPropertyFlags)</div>
+<div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a> = <a class="code hl_function" href="#a08abc6cbd120730de3ae1fc7eff78d97">GetAlignment</a>(instanceSize, minOffsetAlignment);</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a> = <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a> * <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>;</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a7f4e71666ae4d01a47823eeb2d4f8b01">CreateBuffer</a>(<a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>, usageFlags, memoryPropertyFlags, <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>);</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a08abc6cbd120730de3ae1fc7eff78d97"><div class="ttname"><a href="#a08abc6cbd120730de3ae1fc7eff78d97">VRE::VRE_Buffer::GetAlignment</a></div><div class="ttdeci">static VkDeviceSize GetAlignment(VkDeviceSize instanceSize, VkDeviceSize minOffsetAlignment)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00112">VRE_Buffer.cpp:112</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a14409bd3c93fc72cba3ec194c6f2ebb8"><div class="ttname"><a href="#a14409bd3c93fc72cba3ec194c6f2ebb8">VRE::VRE_Buffer::mDevice</a></div><div class="ttdeci">VRE_Device &amp; mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00047">VRE_Buffer.h:47</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a162a3da0337dc87be648e6a930b683d6"><div class="ttname"><a href="#a162a3da0337dc87be648e6a930b683d6">VRE::VRE_Buffer::mUsageFlags</a></div><div class="ttdeci">VkBufferUsageFlags mUsageFlags</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00056">VRE_Buffer.h:56</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a25c92522e437e9a03e4a83c9b345a843"><div class="ttname"><a href="#a25c92522e437e9a03e4a83c9b345a843">VRE::VRE_Buffer::mInstanceCount</a></div><div class="ttdeci">uint32_t mInstanceCount</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00053">VRE_Buffer.h:53</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a4b5c644fd341dc15341f4b5993a08704"><div class="ttname"><a href="#a4b5c644fd341dc15341f4b5993a08704">VRE::VRE_Buffer::mAlignmentSize</a></div><div class="ttdeci">VkDeviceSize mAlignmentSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00055">VRE_Buffer.h:55</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a75fb4a6dafbd12624205e07e1e36bc15"><div class="ttname"><a href="#a75fb4a6dafbd12624205e07e1e36bc15">VRE::VRE_Buffer::mBufferSize</a></div><div class="ttdeci">VkDeviceSize mBufferSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00052">VRE_Buffer.h:52</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a7748356dfcd7a489a8279c7b7e243c28"><div class="ttname"><a href="#a7748356dfcd7a489a8279c7b7e243c28">VRE::VRE_Buffer::mMemory</a></div><div class="ttdeci">VkDeviceMemory mMemory</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00050">VRE_Buffer.h:50</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a7d89a3d94a162c0d3b961a5452fc06ee"><div class="ttname"><a href="#a7d89a3d94a162c0d3b961a5452fc06ee">VRE::VRE_Buffer::mBuffer</a></div><div class="ttdeci">VkBuffer mBuffer</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00049">VRE_Buffer.h:49</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a948eccabc336f4c1d143b5f485c3e611"><div class="ttname"><a href="#a948eccabc336f4c1d143b5f485c3e611">VRE::VRE_Buffer::mInstanceSize</a></div><div class="ttdeci">VkDeviceSize mInstanceSize</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00054">VRE_Buffer.h:54</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_aecc964dcd7ee3442e974b04184e43dd6"><div class="ttname"><a href="#aecc964dcd7ee3442e974b04184e43dd6">VRE::VRE_Buffer::mMemoryPropertyFlags</a></div><div class="ttdeci">VkMemoryPropertyFlags mMemoryPropertyFlags</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00057">VRE_Buffer.h:57</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a7f4e71666ae4d01a47823eeb2d4f8b01"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a7f4e71666ae4d01a47823eeb2d4f8b01">VRE::VRE_Device::CreateBuffer</a></div><div class="ttdeci">void CreateBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer &amp;buffer, VkDeviceMemory &amp;bufferMemory)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8cpp_source.html#l00406">VRE_Device.cpp:406</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -275,14 +275,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00026">26</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_function" href="#a87bd8317bcbab03d1cfcae804fd778bb">Unmap</a>();</div>
-<div class="line"><span class="lineno">   29</span>    vkDestroyBuffer(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   30</span>    vkFreeMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   31</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a87bd8317bcbab03d1cfcae804fd778bb"><div class="ttname"><a href="#a87bd8317bcbab03d1cfcae804fd778bb">VRE::VRE_Buffer::Unmap</a></div><div class="ttdeci">void Unmap()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00053">VRE_Buffer.cpp:53</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00044">VRE_Device.h:44</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00033">33</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_function" href="#a87bd8317bcbab03d1cfcae804fd778bb">Unmap</a>();</div>
+<div class="line"><span class="lineno">   36</span>    vkDestroyBuffer(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   37</span>    vkFreeMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   38</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a87bd8317bcbab03d1cfcae804fd778bb"><div class="ttname"><a href="#a87bd8317bcbab03d1cfcae804fd778bb">VRE::VRE_Buffer::Unmap</a></div><div class="ttdeci">void Unmap()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00046">VRE_Buffer.cpp:46</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00049">VRE_Device.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -330,20 +330,11 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a buffer info descriptor</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>(Optional) Size of the memory range of the descriptor </td></tr>
-    <tr><td class="paramname">offset</td><td>(Optional) Byte offset from beginning</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkDescriptorBufferInfo of specified offset and range </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00112">112</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>{</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">return</span> VkDescriptorBufferInfo{<a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, offset, size};</div>
-<div class="line"><span class="lineno">  115</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00077">77</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> VkDescriptorBufferInfo{<a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>, offset, size};</div>
+<div class="line"><span class="lineno">   80</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -361,20 +352,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create a buffer info descriptor</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>Specifies the region given by index * alignmentSize</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkDescriptorBufferInfo for instance at index </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00168">168</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>{</div>
-<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a06bfdb89272633f211b186fac7919ded">DescriptorInfo</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
-<div class="line"><span class="lineno">  171</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a06bfdb89272633f211b186fac7919ded"><div class="ttname"><a href="#a06bfdb89272633f211b186fac7919ded">VRE::VRE_Buffer::DescriptorInfo</a></div><div class="ttdeci">VkDescriptorBufferInfo DescriptorInfo(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00112">VRE_Buffer.cpp:112</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00102">102</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a06bfdb89272633f211b186fac7919ded">DescriptorInfo</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a06bfdb89272633f211b186fac7919ded"><div class="ttname"><a href="#a06bfdb89272633f211b186fac7919ded">VRE::VRE_Buffer::DescriptorInfo</a></div><div class="ttdeci">VkDescriptorBufferInfo DescriptorInfo(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00077">VRE_Buffer.cpp:77</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -396,26 +379,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flush a memory range of the buffer to make it visible to the device</p>
-<dl class="section note"><dt>Note</dt><dd>Only required for non-coherent memory</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>(Optional) Size of the memory range to flush. Pass VK_WHOLE_SIZE to flush the complete buffer range. </td></tr>
-    <tr><td class="paramname">offset</td><td>(Optional) Byte offset from beginning</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkResult of the flush call </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00094">94</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    VkMappedMemoryRange mappedRange = {};</div>
-<div class="line"><span class="lineno">   97</span>    mappedRange.sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;</div>
-<div class="line"><span class="lineno">   98</span>    mappedRange.memory = <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>;</div>
-<div class="line"><span class="lineno">   99</span>    mappedRange.offset = offset;</div>
-<div class="line"><span class="lineno">  100</span>    mappedRange.size = size;</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> vkFlushMappedMemoryRanges(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), 1, &amp;mappedRange);</div>
-<div class="line"><span class="lineno">  102</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00067">67</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    VkMappedMemoryRange mappedRange = {};</div>
+<div class="line"><span class="lineno">   70</span>    mappedRange.sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;</div>
+<div class="line"><span class="lineno">   71</span>    mappedRange.memory = <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>;</div>
+<div class="line"><span class="lineno">   72</span>    mappedRange.offset = offset;</div>
+<div class="line"><span class="lineno">   73</span>    mappedRange.size = size;</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> vkFlushMappedMemoryRanges(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), 1, &amp;mappedRange);</div>
+<div class="line"><span class="lineno">   75</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -433,19 +406,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flush the memory range at index * alignmentSize of the buffer to make it visible to the device</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>Used in offset calculation </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00156">156</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a827e2fb0299ce23c42d92f42eaed8083">Flush</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
-<div class="line"><span class="lineno">  159</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a827e2fb0299ce23c42d92f42eaed8083"><div class="ttname"><a href="#a827e2fb0299ce23c42d92f42eaed8083">VRE::VRE_Buffer::Flush</a></div><div class="ttdeci">VkResult Flush(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00094">VRE_Buffer.cpp:94</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00097">97</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a827e2fb0299ce23c42d92f42eaed8083">Flush</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
+<div class="line"><span class="lineno">  100</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a827e2fb0299ce23c42d92f42eaed8083"><div class="ttname"><a href="#a827e2fb0299ce23c42d92f42eaed8083">VRE::VRE_Buffer::Flush</a></div><div class="ttdeci">VkResult Flush(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00067">VRE_Buffer.cpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -475,23 +441,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the minimum instance size required to be compatible with devices minOffsetAlignment</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">instanceSize</td><td>The size of an instance </td></tr>
-    <tr><td class="paramname">minOffsetAlignment</td><td>The minimum required alignment, in bytes, for the offset member (eg minUniformBufferOffsetAlignment)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkResult of the buffer mapping call </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00196">196</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  197</span>{</div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">if</span> (minOffsetAlignment &gt; 0)</div>
-<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">return</span> (instanceSize + minOffsetAlignment - 1) &amp; ~(minOffsetAlignment - 1);</div>
-<div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">return</span> instanceSize;</div>
-<div class="line"><span class="lineno">  202</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00112">112</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>{</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (minOffsetAlignment &gt; 0)</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span> (instanceSize + minOffsetAlignment - 1) &amp; ~(minOffsetAlignment - 1);</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> instanceSize;</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -518,8 +475,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00033">33</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00039">39</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -546,8 +503,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00029">29</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00035">35</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -574,8 +531,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00036">36</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00042">42</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,8 +559,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00031">31</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00037">37</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a25c92522e437e9a03e4a83c9b345a843">mInstanceCount</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -630,8 +587,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00032">32</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00038">38</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -658,9 +615,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00030">30</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>; }</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_aa4163675edb33ed14b52bc5eb1297db9"><div class="ttname"><a href="#aa4163675edb33ed14b52bc5eb1297db9">VRE::VRE_Buffer::mMapped</a></div><div class="ttdeci">void * mMapped</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00042">VRE_Buffer.h:42</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00036">36</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>; }</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_aa4163675edb33ed14b52bc5eb1297db9"><div class="ttname"><a href="#aa4163675edb33ed14b52bc5eb1297db9">VRE::VRE_Buffer::mMapped</a></div><div class="ttdeci">void * mMapped</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00048">VRE_Buffer.h:48</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -687,8 +644,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00035">35</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aecc964dcd7ee3442e974b04184e43dd6">mMemoryPropertyFlags</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00041">41</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#aecc964dcd7ee3442e974b04184e43dd6">mMemoryPropertyFlags</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -715,8 +672,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00034">34</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a162a3da0337dc87be648e6a930b683d6">mUsageFlags</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00040">40</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="#a162a3da0337dc87be648e6a930b683d6">mUsageFlags</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -738,26 +695,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Invalidate a memory range of the buffer to make it visible to the host</p>
-<dl class="section note"><dt>Note</dt><dd>Only required for non-coherent memory</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>(Optional) Size of the memory range to invalidate. Pass VK_WHOLE_SIZE to invalidate the complete buffer range. </td></tr>
-    <tr><td class="paramname">offset</td><td>(Optional) Byte offset from beginning</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkResult of the invalidate call </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00128">128</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
-<div class="line"><span class="lineno">  130</span>    VkMappedMemoryRange mappedRange;</div>
-<div class="line"><span class="lineno">  131</span>    mappedRange.sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;</div>
-<div class="line"><span class="lineno">  132</span>    mappedRange.memory = <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>;</div>
-<div class="line"><span class="lineno">  133</span>    mappedRange.offset = offset;</div>
-<div class="line"><span class="lineno">  134</span>    mappedRange.size = size;</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">return</span> vkInvalidateMappedMemoryRanges(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), 1, &amp;mappedRange);</div>
-<div class="line"><span class="lineno">  136</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00082">82</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
+<div class="line"><span class="lineno">   84</span>    VkMappedMemoryRange mappedRange;</div>
+<div class="line"><span class="lineno">   85</span>    mappedRange.sType = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE;</div>
+<div class="line"><span class="lineno">   86</span>    mappedRange.memory = <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>;</div>
+<div class="line"><span class="lineno">   87</span>    mappedRange.offset = offset;</div>
+<div class="line"><span class="lineno">   88</span>    mappedRange.size = size;</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> vkInvalidateMappedMemoryRanges(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), 1, &amp;mappedRange);</div>
+<div class="line"><span class="lineno">   90</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -775,21 +722,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Invalidate a memory range of the buffer to make it visible to the host</p>
-<dl class="section note"><dt>Note</dt><dd>Only required for non-coherent memory</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>Specifies the region to invalidate: index * alignmentSize</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkResult of the invalidate call </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00182">182</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  183</span>{</div>
-<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#acce51f87e0be1217e7982ef29f98c865">Invalidate</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
-<div class="line"><span class="lineno">  185</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_acce51f87e0be1217e7982ef29f98c865"><div class="ttname"><a href="#acce51f87e0be1217e7982ef29f98c865">VRE::VRE_Buffer::Invalidate</a></div><div class="ttdeci">VkResult Invalidate(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00128">VRE_Buffer.cpp:128</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00107">107</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>{</div>
+<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#acce51f87e0be1217e7982ef29f98c865">Invalidate</a>(<a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
+<div class="line"><span class="lineno">  110</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_acce51f87e0be1217e7982ef29f98c865"><div class="ttname"><a href="#acce51f87e0be1217e7982ef29f98c865">VRE::VRE_Buffer::Invalidate</a></div><div class="ttdeci">VkResult Invalidate(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00082">VRE_Buffer.cpp:82</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -811,21 +749,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Map a memory range of this buffer. If successful, mapped points to the specified buffer range.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>(Optional) Size of the memory range to map. Pass VK_WHOLE_SIZE to map the complete buffer range. </td></tr>
-    <tr><td class="paramname">offset</td><td>(Optional) Byte offset from beginning</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>VkResult of the buffer mapping call </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00042">42</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
-<div class="line"><span class="lineno">   44</span>    assert(<a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a> &amp;&amp; <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a> &amp;&amp; <span class="stringliteral">&quot;Map function calles on buffer before create function.&quot;</span>);</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> vkMapMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>, offset, size, 0, &amp;<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>);</div>
-<div class="line"><span class="lineno">   46</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00040">40</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>    assert(<a class="code hl_variable" href="#a7d89a3d94a162c0d3b961a5452fc06ee">mBuffer</a> &amp;&amp; <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a> &amp;&amp; <span class="stringliteral">&quot;Map function calles on buffer before create function.&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> vkMapMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>, offset, size, 0, &amp;<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>);</div>
+<div class="line"><span class="lineno">   44</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -868,16 +797,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Unmap a mapped memory range</p>
-<dl class="section note"><dt>Note</dt><dd>Does not return a result as vkUnmapMemory can't fail </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00053">53</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>) {</div>
-<div class="line"><span class="lineno">   56</span>        vkUnmapMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>);</div>
-<div class="line"><span class="lineno">   57</span>        <a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00046">46</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>) {</div>
+<div class="line"><span class="lineno">   49</span>        vkUnmapMemory(<a class="code hl_variable" href="#a14409bd3c93fc72cba3ec194c6f2ebb8">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a7748356dfcd7a489a8279c7b7e243c28">mMemory</a>);</div>
+<div class="line"><span class="lineno">   50</span>        <a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   51</span>    }</div>
+<div class="line"><span class="lineno">   52</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -904,28 +831,19 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies the specified data to the mapped buffer. Default value writes whole buffer range</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>Pointer to the data to copy </td></tr>
-    <tr><td class="paramname">size</td><td>(Optional) Size of the data to copy. Pass VK_WHOLE_SIZE to flush the complete buffer range. </td></tr>
-    <tr><td class="paramname">offset</td><td>(Optional) Byte offset from beginning of mapped region </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00070">70</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    assert(<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a> &amp;&amp; <span class="stringliteral">&quot;Cannot copy to unmapped buffer.&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (size == VK_WHOLE_SIZE)</div>
-<div class="line"><span class="lineno">   75</span>        memcpy(<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>, data, <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>);</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordtype">char</span>* memOffset = (<span class="keywordtype">char</span>*)<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>;</div>
-<div class="line"><span class="lineno">   78</span>        memOffset += offset;</div>
-<div class="line"><span class="lineno">   79</span>        memcpy(memOffset, data, size);</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00054">54</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>    assert(<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a> &amp;&amp; <span class="stringliteral">&quot;Cannot copy to unmapped buffer.&quot;</span>);</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (size == VK_WHOLE_SIZE)</div>
+<div class="line"><span class="lineno">   59</span>        memcpy(<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>, data, <a class="code hl_variable" href="#a75fb4a6dafbd12624205e07e1e36bc15">mBufferSize</a>);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordtype">char</span>* memOffset = (<span class="keywordtype">char</span>*)<a class="code hl_variable" href="#aa4163675edb33ed14b52bc5eb1297db9">mMapped</a>;</div>
+<div class="line"><span class="lineno">   62</span>        memOffset += offset;</div>
+<div class="line"><span class="lineno">   63</span>        memcpy(memOffset, data, size);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -947,20 +865,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies "instanceSize" bytes of data to the mapped buffer at an offset of index * alignmentSize</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>Pointer to the data to copy </td></tr>
-    <tr><td class="paramname">index</td><td>Used in offset calculation </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00145">145</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>{</div>
-<div class="line"><span class="lineno">  147</span>    <a class="code hl_function" href="#ab3316823e14587f60b98ccdb0bf71c47">WriteToBuffer</a>(data, <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
-<div class="line"><span class="lineno">  148</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_ab3316823e14587f60b98ccdb0bf71c47"><div class="ttname"><a href="#ab3316823e14587f60b98ccdb0bf71c47">VRE::VRE_Buffer::WriteToBuffer</a></div><div class="ttdeci">void WriteToBuffer(void *data, VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00070">VRE_Buffer.cpp:70</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8cpp_source.html#l00092">92</a> of file <a class="el" href="_v_r_e___buffer_8cpp_source.html">VRE_Buffer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_function" href="#ab3316823e14587f60b98ccdb0bf71c47">WriteToBuffer</a>(data, <a class="code hl_variable" href="#a948eccabc336f4c1d143b5f485c3e611">mInstanceSize</a>, index * <a class="code hl_variable" href="#a4b5c644fd341dc15341f4b5993a08704">mAlignmentSize</a>);</div>
+<div class="line"><span class="lineno">   95</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_ab3316823e14587f60b98ccdb0bf71c47"><div class="ttname"><a href="#ab3316823e14587f60b98ccdb0bf71c47">VRE::VRE_Buffer::WriteToBuffer</a></div><div class="ttdeci">void WriteToBuffer(void *data, VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00054">VRE_Buffer.cpp:54</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -985,7 +895,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00049">49</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00055">55</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +919,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00043">43</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00049">49</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +943,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00046">46</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00052">52</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1057,7 +967,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00041">41</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00047">47</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +991,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00047">47</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00053">53</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1105,7 +1015,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00048">48</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00054">54</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1129,7 +1039,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00042">42</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00048">48</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1153,7 +1063,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00044">44</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00050">50</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1177,7 +1087,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00051">51</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00057">57</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1201,7 +1111,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00050">50</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___buffer_8h_source.html#l00056">56</a> of file <a class="el" href="_v_r_e___buffer_8h_source.html">VRE_Buffer.h</a>.</p>
 
 </div>
 </div>

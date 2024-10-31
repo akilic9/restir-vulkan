@@ -1,0 +1,281 @@
+\doxysection{VRE\+::VRE\+\_\+\+Game\+Obj\+Render\+System Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system}{}\label{class_v_r_e_1_1_v_r_e___game_obj_render_system}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Game\+Obj\+Render\+System.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Game\+Obj\+Render\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___game_obj_render_system__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a}{VRE\+\_\+\+Game\+Obj\+Render\+System}} (\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}shared\+Context)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Game\+Obj\+Render\+System}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a06513acdae048010610f9b2a3a90122c}{VRE\+\_\+\+Game\+Obj\+Render\+System}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_af8046450e36b7c0ce6caf6ee7455c522}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f}{Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}{Create\+Pipeline\+Layouts}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}{Create\+Pipelines}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline}{VRE\+\_\+\+Pipeline}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}{m\+Pipeline}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout}{VRE\+\_\+\+Descriptor\+Set\+Layout}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{m\+Desc\+Set\+Layout}}
+\item 
+Vk\+Pipeline\+Layout \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{m\+Pipeline\+Layout}}
+\item 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{m\+Shared\+Context}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source_l00015}{15}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!VRE\_GameObjRenderSystem@{VRE\_GameObjRenderSystem}}
+\index{VRE\_GameObjRenderSystem@{VRE\_GameObjRenderSystem}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{VRE\_GameObjRenderSystem()}{VRE\_GameObjRenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a} 
+VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}}]{shared\+Context}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}(sharedContext)\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!````~VRE\_GameObjRenderSystem@{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjRenderSystem}}
+\index{````~VRE\_GameObjRenderSystem@{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjRenderSystem}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjRenderSystem()}{\string~VRE\_GameObjRenderSystem()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709} 
+VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Game\+Obj\+Render\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ vkDestroyPipelineLayout(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a06513acdae048010610f9b2a3a90122c}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!VRE\_GameObjRenderSystem@{VRE\_GameObjRenderSystem}}
+\index{VRE\_GameObjRenderSystem@{VRE\_GameObjRenderSystem}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{VRE\_GameObjRenderSystem()}{VRE\_GameObjRenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a06513acdae048010610f9b2a3a90122c} 
+VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!CreatePipelineLayouts@{CreatePipelineLayouts}}
+\index{CreatePipelineLayouts@{CreatePipelineLayouts}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{CreatePipelineLayouts()}{CreatePipelineLayouts()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43} 
+void VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+Create\+Pipeline\+Layouts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ VkPushConstantRange\ pushConstantRange\{\ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,\ 0,\ \textcolor{keyword}{sizeof}(GameObjectBufferData)\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{mDescSetLayout}}\ =\ VRE\_DescriptorSetLayout::Builder(*\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ .AddBinding(0,\ VK\_DESCRIPTOR\_TYPE\_UNIFORM\_BUFFER,\ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT)}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ .AddBinding(1,\ VK\_DESCRIPTOR\_TYPE\_COMBINED\_IMAGE\_SAMPLER,\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ .Build();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::vector<VkDescriptorSetLayout>\ descSetLayouts\{\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9223d5f3e2c7cdc26d367788eae61d35}{mGlobalDescSetLayout}}-\/>GetDescriptorSetLayout(),}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{mDescSetLayout}}-\/>GetDescriptorSetLayout()\};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ VkPipelineLayoutCreateInfo\ pipelineLayoutInfo\{\};}
+\DoxyCodeLine{00061\ \ \ \ \ pipelineLayoutInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_LAYOUT\_CREATE\_INFO;}
+\DoxyCodeLine{00062\ \ \ \ \ pipelineLayoutInfo.setLayoutCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(descSetLayouts.size());}
+\DoxyCodeLine{00063\ \ \ \ \ pipelineLayoutInfo.pSetLayouts\ =\ descSetLayouts.data();}
+\DoxyCodeLine{00064\ \ \ \ \ pipelineLayoutInfo.pushConstantRangeCount\ =\ 1;}
+\DoxyCodeLine{00065\ \ \ \ \ pipelineLayoutInfo.pPushConstantRanges\ =\ \&pushConstantRange;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreatePipelineLayout(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&pipelineLayoutInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}})\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ pipeline\ layout!"{}});}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!CreatePipelines@{CreatePipelines}}
+\index{CreatePipelines@{CreatePipelines}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{CreatePipelines()}{CreatePipelines()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018} 
+void VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+Create\+Pipelines (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}}\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ create\ pipeline\ before\ pipeline\ layout!"{}});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ PipelineConfigInfo\ pipelineConfig\{\};}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{VRE\_Pipeline::GetDefaultPipelineConfigInfo}}(pipelineConfig);}
+\DoxyCodeLine{00077\ \ \ \ \ pipelineConfig.mRenderPass\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a03e51cee505d388b8719ed8e30e71380}{GetSwapChainRenderPass}}();}
+\DoxyCodeLine{00078\ \ \ \ \ pipelineConfig.mPipelineLayout\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}};}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}{mPipeline}}\ =\ std::make\_unique<VRE\_Pipeline>(*\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}},\ pipelineConfig,\ \textcolor{stringliteral}{"{}Shaders/test\_shader.vert.spv"{}},\ \textcolor{stringliteral}{"{}Shaders/test\_shader.frag.spv"{}});}
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!Init@{Init}}
+\index{Init@{Init}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3} 
+void VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}{CreatePipelineLayouts}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}{CreatePipelines}}();}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_af8046450e36b7c0ce6caf6ee7455c522}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_af8046450e36b7c0ce6caf6ee7455c522} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \& VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\+\_\+\+Game\+Obj\+Render\+System}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!Render@{Render}}
+\index{Render@{Render}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f} 
+void VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_af2c329742fab12aab35c4ba07dc32836}{mObjectDescPools}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()]-\/>ResetPool();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}{mPipeline}}-\/>Bind(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}());}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ vkCmdBindDescriptorSets(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}(),\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}},\ 0,\ 1,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_ac79bc862b90fa2d01e4e9ed8461d988a}{mSceneDescriptorSets}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()],\ 0,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ e\ :\ *\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_af0060db495093da1f7718d6753b33b64}{mGameObjMap}})\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!e.second.mModel)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ e.second.mModel-\/>Bind(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}());}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bufferInfo\ =\ e.second.GetBufferInfo();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ writer\ =\ VRE\_DescriptorWriter(*\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{mDescSetLayout}},\ *\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_af2c329742fab12aab35c4ba07dc32836}{mObjectDescPools}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()]);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ writer.WriteBuffer(0,\ \&bufferInfo);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ e.second.mModel-\/>Render(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}},\ writer);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!mDescSetLayout@{mDescSetLayout}}
+\index{mDescSetLayout@{mDescSetLayout}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mDescSetLayout}{mDescSetLayout}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout}{VRE\+\_\+\+Descriptor\+Set\+Layout}}$>$ VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::m\+Desc\+Set\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source_l00032}{32}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!mPipeline@{mPipeline}}
+\index{mPipeline@{mPipeline}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mPipeline}{mPipeline}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline}{VRE\+\_\+\+Pipeline}}$>$ VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::m\+Pipeline\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source_l00031}{31}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!mPipelineLayout@{mPipelineLayout}}
+\index{mPipelineLayout@{mPipelineLayout}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mPipelineLayout}{mPipelineLayout}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931} 
+Vk\+Pipeline\+Layout VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::m\+Pipeline\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source_l00033}{33}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}\index{VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}!mSharedContext@{mSharedContext}}
+\index{mSharedContext@{mSharedContext}!VRE::VRE\_GameObjRenderSystem@{VRE::VRE\_GameObjRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mSharedContext}{mSharedContext}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52} 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}}\texorpdfstring{$\ast$}{*} VRE\+::\+VRE\+\_\+\+Game\+Obj\+Render\+System\+::m\+Shared\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source_l00034}{34}} of file \mbox{\hyperlink{_v_r_e___game_obj_render_system_8h_source}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___game_obj_render_system_8h}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp}{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}}\end{DoxyCompactItemize}

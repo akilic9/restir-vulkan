@@ -1,0 +1,40 @@
+\doxysection{VRE\+\_\+\+Model\+Properties.\+cpp}
+\hypertarget{_v_r_e___model_properties_8cpp_source}{}\label{_v_r_e___model_properties_8cpp_source}\index{ReSTIRVulkan/VRE\_ModelProperties.cpp@{ReSTIRVulkan/VRE\_ModelProperties.cpp}}
+\mbox{\hyperlink{_v_r_e___model_properties_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00005}00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___model_properties_8h}{VRE\_ModelProperties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00008}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}{00008}}\ std::vector<VkVertexInputBindingDescription>\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}{VRE::Vertex::GetBindingDesc}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00010}00010\ \ \ \ \ std::vector<VkVertexInputBindingDescription>\ bindingDescriptions(1);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00011}00011\ \ \ \ \ bindingDescriptions[0].binding\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00012}00012\ \ \ \ \ bindingDescriptions[0].stride\ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00013}00013\ \ \ \ \ bindingDescriptions[0].inputRate\ =\ VK\_VERTEX\_INPUT\_RATE\_VERTEX;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{return}\ bindingDescriptions;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00017}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}{00017}}\ std::vector<VkVertexInputAttributeDescription>\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}{VRE::Vertex::GetAttributeDesc}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00019}00019\ \ \ \ \ std::vector<VkVertexInputAttributeDescription>\ attributeDescriptions\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00021}00021\ \ \ \ \ attributeDescriptions.push\_back(\{\ 0,\ 0,\ VK\_FORMAT\_R32G32B32\_SFLOAT,\ offsetof(\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}},\ mPosition)\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00022}00022\ \ \ \ \ attributeDescriptions.push\_back(\{\ 1,\ 0,\ VK\_FORMAT\_R32G32B32A32\_SFLOAT,\ offsetof(\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}},\ mColor)\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00023}00023\ \ \ \ \ attributeDescriptions.push\_back(\{\ 2,\ 0,\ VK\_FORMAT\_R32G32B32\_SFLOAT,\ offsetof(\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}},\ mNormal)\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00024}00024\ \ \ \ \ attributeDescriptions.push\_back(\{\ 3,\ 0,\ VK\_FORMAT\_R32G32\_SFLOAT,\ offsetof(\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}},\ mTexCoord0)\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//attributeDescriptions.push\_back(\{\ 4,\ 0,\ VK\_FORMAT\_R32G32\_SFLOAT,\ offsetof(Vertex,\ mTexCoord1)\ \});}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ attributeDescriptions;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00030}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa}{00030}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa}{VRE::Vertex::operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00031}00031\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ mPosition\ ==\ other.\mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{mPosition}}\ \&\&\ mColor\ ==\ other.\mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{mColor}}\ \&\&}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ mNormal\ ==\ other.\mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{mNormal}}\ \&\&\ mTexCoord0\ ==\ other.\mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{mTexCoord0}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8cpp_source_l00034}00034\ \}}
+
+\end{DoxyCode}

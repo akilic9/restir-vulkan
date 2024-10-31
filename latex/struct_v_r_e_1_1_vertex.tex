@@ -1,0 +1,162 @@
+\doxysection{VRE\+::Vertex Struct Reference}
+\hypertarget{struct_v_r_e_1_1_vertex}{}\label{struct_v_r_e_1_1_vertex}\index{VRE::Vertex@{VRE::Vertex}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Model\+Properties.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::Vertex\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{struct_v_r_e_1_1_vertex__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa}{operator==}} (const \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ Vk\+Vertex\+Input\+Binding\+Description $>$ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}{Get\+Binding\+Desc}} ()
+\item 
+static std\+::vector$<$ Vk\+Vertex\+Input\+Attribute\+Description $>$ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}{Get\+Attribute\+Desc}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{m\+Position}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{m\+Color}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{m\+Normal}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{m\+Tex\+Coord0}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8h_source_l00019}{19}} of file \mbox{\hyperlink{_v_r_e___model_properties_8h_source}{VRE\+\_\+\+Model\+Properties.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}\index{VRE::Vertex@{VRE::Vertex}!GetAttributeDesc@{GetAttributeDesc}}
+\index{GetAttributeDesc@{GetAttributeDesc}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{GetAttributeDesc()}{GetAttributeDesc()}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee} 
+std\+::vector$<$ Vk\+Vertex\+Input\+Attribute\+Description $>$ VRE\+::\+Vertex\+::\+Get\+Attribute\+Desc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source}{VRE\+\_\+\+Model\+Properties.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<VkVertexInputAttributeDescription>\ attributeDescriptions\{\};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ attributeDescriptions.push\_back(\{\ 0,\ 0,\ VK\_FORMAT\_R32G32B32\_SFLOAT,\ offsetof(Vertex,\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{mPosition}})\ \});}
+\DoxyCodeLine{00022\ \ \ \ \ attributeDescriptions.push\_back(\{\ 1,\ 0,\ VK\_FORMAT\_R32G32B32A32\_SFLOAT,\ offsetof(Vertex,\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{mColor}})\ \});}
+\DoxyCodeLine{00023\ \ \ \ \ attributeDescriptions.push\_back(\{\ 2,\ 0,\ VK\_FORMAT\_R32G32B32\_SFLOAT,\ offsetof(Vertex,\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{mNormal}})\ \});}
+\DoxyCodeLine{00024\ \ \ \ \ attributeDescriptions.push\_back(\{\ 3,\ 0,\ VK\_FORMAT\_R32G32\_SFLOAT,\ offsetof(Vertex,\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{mTexCoord0}})\ \});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//attributeDescriptions.push\_back(\{\ 4,\ 0,\ VK\_FORMAT\_R32G32\_SFLOAT,\ offsetof(Vertex,\ mTexCoord1)\ \});}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ attributeDescriptions;}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}\index{VRE::Vertex@{VRE::Vertex}!GetBindingDesc@{GetBindingDesc}}
+\index{GetBindingDesc@{GetBindingDesc}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{GetBindingDesc()}{GetBindingDesc()}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80} 
+std\+::vector$<$ Vk\+Vertex\+Input\+Binding\+Description $>$ VRE\+::\+Vertex\+::\+Get\+Binding\+Desc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source}{VRE\+\_\+\+Model\+Properties.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ std::vector<VkVertexInputBindingDescription>\ bindingDescriptions(1);}
+\DoxyCodeLine{00011\ \ \ \ \ bindingDescriptions[0].binding\ =\ 0;}
+\DoxyCodeLine{00012\ \ \ \ \ bindingDescriptions[0].stride\ =\ \textcolor{keyword}{sizeof}(Vertex);}
+\DoxyCodeLine{00013\ \ \ \ \ bindingDescriptions[0].inputRate\ =\ VK\_VERTEX\_INPUT\_RATE\_VERTEX;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{return}\ bindingDescriptions;}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa}\index{VRE::Vertex@{VRE::Vertex}!operator==@{operator==}}
+\index{operator==@{operator==}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa} 
+bool VRE\+::\+Vertex\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_v_r_e___model_properties_8cpp_source}{VRE\+\_\+\+Model\+Properties.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{mPosition}}\ ==\ other.mPosition\ \&\&\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{mColor}}\ ==\ other.mColor\ \&\&}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{mNormal}}\ ==\ other.mNormal\ \&\&\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{mTexCoord0}}\ ==\ other.mTexCoord0;}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}\index{VRE::Vertex@{VRE::Vertex}!mColor@{mColor}}
+\index{mColor@{mColor}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{mColor}{mColor}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb} 
+glm\+::vec3 VRE\+::\+Vertex\+::m\+Color}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8h_source_l00021}{21}} of file \mbox{\hyperlink{_v_r_e___model_properties_8h_source}{VRE\+\_\+\+Model\+Properties.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}\index{VRE::Vertex@{VRE::Vertex}!mNormal@{mNormal}}
+\index{mNormal@{mNormal}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{mNormal}{mNormal}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1} 
+glm\+::vec3 VRE\+::\+Vertex\+::m\+Normal}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8h_source_l00022}{22}} of file \mbox{\hyperlink{_v_r_e___model_properties_8h_source}{VRE\+\_\+\+Model\+Properties.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}\index{VRE::Vertex@{VRE::Vertex}!mPosition@{mPosition}}
+\index{mPosition@{mPosition}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{mPosition}{mPosition}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e} 
+glm\+::vec3 VRE\+::\+Vertex\+::m\+Position}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8h_source_l00020}{20}} of file \mbox{\hyperlink{_v_r_e___model_properties_8h_source}{VRE\+\_\+\+Model\+Properties.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}\index{VRE::Vertex@{VRE::Vertex}!mTexCoord0@{mTexCoord0}}
+\index{mTexCoord0@{mTexCoord0}!VRE::Vertex@{VRE::Vertex}}
+\doxysubsubsection{\texorpdfstring{mTexCoord0}{mTexCoord0}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973} 
+glm\+::vec2 VRE\+::\+Vertex\+::m\+Tex\+Coord0}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___model_properties_8h_source_l00023}{23}} of file \mbox{\hyperlink{_v_r_e___model_properties_8h_source}{VRE\+\_\+\+Model\+Properties.\+h}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___model_properties_8h}{VRE\+\_\+\+Model\+Properties.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___model_properties_8cpp}{VRE\+\_\+\+Model\+Properties.\+cpp}}\end{DoxyCompactItemize}

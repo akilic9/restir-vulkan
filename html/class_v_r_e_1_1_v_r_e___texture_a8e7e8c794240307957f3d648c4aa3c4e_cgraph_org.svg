@@ -40,10 +40,10 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="class_v_r_e_1_1_v_r_e___texture.html#af944fb8db6736aafe7443f91f6e6a1b1" target="_top" xlink:title=" ">
+<g id="a_Node000006"><a xlink:href="class_v_r_e_1_1_v_r_e___texture.html#afdef9716ac82d0e6ad87e16657dc43f7" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="302.38,-132 165.62,-132 165.62,-100 302.38,-100 302.38,-132"/>
 <text text-anchor="start" x="173.62" y="-118.5" font-family="Helvetica,sans-Serif" font-size="10.00">VRE::VRE_Texture::Create</text>
-<text text-anchor="middle" x="234" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">TextureImageView</text>
+<text text-anchor="middle" x="234" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">ImageView</text>
 </a>
 </g>
 </g>
@@ -78,10 +78,10 @@
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="class_v_r_e_1_1_v_r_e___texture.html#a2aed540f6daa7f2e92b8fa4ac20da333" target="_top" xlink:title=" ">
+<g id="a_Node000008"><a xlink:href="class_v_r_e_1_1_v_r_e___texture.html#a305bad16983d15b197c1bdd57417df36" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="303.5,-32 164.5,-32 164.5,0 303.5,0 303.5,-32"/>
 <text text-anchor="start" x="172.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">VRE::VRE_Texture::Update</text>
-<text text-anchor="middle" x="234" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">Descriptor</text>
+<text text-anchor="middle" x="234" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">DescriptorInfo</text>
 </a>
 </g>
 </g>

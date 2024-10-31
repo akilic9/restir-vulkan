@@ -1,0 +1,55 @@
+\doxysection{VRE\+\_\+\+Window.\+cpp}
+\hypertarget{_v_r_e___window_8cpp_source}{}\label{_v_r_e___window_8cpp_source}\index{ReSTIRVulkan/VRE\_Window.cpp@{ReSTIRVulkan/VRE\_Window.cpp}}
+\mbox{\hyperlink{_v_r_e___window_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___window_8h}{VRE\_Window.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00010}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5c3f0acabec538ddeffda17aea56ae50}{00010}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5c3f0acabec538ddeffda17aea56ae50}{VRE::VRE\_Window::VRE\_Window}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ std::string\ name)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00011}00011\ \ \ \ \ :\ mWidth(width)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00012}00012\ \ \ \ \ ,\ mHeight(height)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00013}00013\ \ \ \ \ ,\ mWindowName(name)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00014}00014\ \ \ \ \ ,\ mWindow(nullptr)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a59c10677141b7e2b9093ad9482b4fe68}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00019}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5411a4bde19176bdf4beb75a978d684c}{00019}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5411a4bde19176bdf4beb75a978d684c}{VRE::VRE\_Window::\string~VRE\_Window}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00021}00021\ \ \ \ \ glfwDestroyWindow(mWindow);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00022}00022\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00025}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af00df384f7d8c54bb8577519bb6eaf7e}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af00df384f7d8c54bb8577519bb6eaf7e}{VRE::VRE\_Window::CreateWindowSurface}}(VkInstance\ instance,\ VkSurfaceKHR*\ surface)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (glfwCreateWindowSurface(instance,\ mWindow,\ \textcolor{keyword}{nullptr},\ surface)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cannot\ create\ window\ surface!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00031}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a59c10677141b7e2b9093ad9482b4fe68}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a59c10677141b7e2b9093ad9482b4fe68}{VRE::VRE\_Window::Init}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00033}00033\ \ \ \ \ glfwInit();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00034}00034\ \ \ \ \ glfwWindowHint(GLFW\_CLIENT\_API,\ GLFW\_NO\_API);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00035}00035\ \ \ \ \ glfwWindowHint(GLFW\_RESIZABLE,\ GLFW\_TRUE);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00037}00037\ \ \ \ \ mWindow\ =\ glfwCreateWindow(mWidth,\ mHeight,\ mWindowName.c\_str(),\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00039}00039\ \ \ \ \ glfwSetWindowUserPointer(mWindow,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00040}00040\ \ \ \ \ glfwSetFramebufferSizeCallback(mWindow,\ FrameBufferResizedCallback);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00043}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a4d59f7043b0b3ef3095bae155f2a97e2}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a4d59f7043b0b3ef3095bae155f2a97e2}{VRE::VRE\_Window::FrameBufferResizedCallback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{auto}\ win\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{VRE\_Window}}*\textcolor{keyword}{>}(glfwGetWindowUserPointer(window));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00046}00046\ \ \ \ \ win-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a6b713e381b33f14328c69e7795d4d521}{mFrameBufferResized}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00047}00047\ \ \ \ \ win-\/>mWidth\ =\ width;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00048}00048\ \ \ \ \ win-\/>mHeight\ =\ height;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8cpp_source_l00049}00049\ \}}
+
+\end{DoxyCode}

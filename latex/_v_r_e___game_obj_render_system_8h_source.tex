@@ -1,0 +1,42 @@
+\doxysection{VRE\+\_\+\+Game\+Obj\+Render\+System.\+h}
+\hypertarget{_v_r_e___game_obj_render_system_8h_source}{}\label{_v_r_e___game_obj_render_system_8h_source}\index{ReSTIRVulkan/VRE\_GameObjRenderSystem.h@{ReSTIRVulkan/VRE\_GameObjRenderSystem.h}}
+\mbox{\hyperlink{_v_r_e___game_obj_render_system_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00007}00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___device_8h}{VRE\_Device.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___game_object_8h}{VRE\_GameObject.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___pipeline_8h}{VRE\_Pipeline.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___shared_context_8h}{VRE\_SharedContext.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00015}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\_GameObjRenderSystem}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a}{VRE\_GameObjRenderSystem}}(\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ sharedContext);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709}{\string~VRE\_GameObjRenderSystem}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00021}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a06513acdae048010610f9b2a3a90122c}{00021}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a06513acdae048010610f9b2a3a90122c}{VRE\_GameObjRenderSystem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\_GameObjRenderSystem}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00022}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_af8046450e36b7c0ce6caf6ee7455c522}{00022}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\_GameObjRenderSystem}}\&\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_af8046450e36b7c0ce6caf6ee7455c522}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system}{VRE\_GameObjRenderSystem}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}{CreatePipelineLayouts}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}{CreatePipelines}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00031}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}{00031}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<VRE\_Pipeline>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ae8677d883c8cb779e75d4d3d29a05598}{mPipeline}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00032}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{00032}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<VRE\_DescriptorSetLayout>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a288424edc249b4322d3bce738931a0b8}{mDescSetLayout}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00033}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{00033}}\ \ \ \ \ \ \ \ \ VkPipelineLayout\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a4d541f44a46621a468d8540de87bd931}{mPipelineLayout}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00034}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{00034}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_afcd83516303e552b6a1032ef06fc6e52}{mSharedContext}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00035}00035\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8h_source_l00036}00036\ \}}
+
+\end{DoxyCode}

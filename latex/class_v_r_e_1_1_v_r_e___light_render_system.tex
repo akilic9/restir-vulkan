@@ -1,0 +1,291 @@
+\doxysection{VRE\+::VRE\+\_\+\+Light\+Render\+System Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___light_render_system}{}\label{class_v_r_e_1_1_v_r_e___light_render_system}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Light\+Render\+System.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Light\+Render\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___light_render_system__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608}{VRE\+\_\+\+Light\+Render\+System}} (\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}scene\+Context)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Light\+Render\+System}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_aa43259761949f726f85b7210ae3ae385}{VRE\+\_\+\+Light\+Render\+System}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ab6d81155312ab7c3e4a2b6cde3fd4e30}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77}{Update}} (\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}} \&ubo, float dt)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4}{Render}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}{Create\+Pipeline\+Layout}} (Vk\+Descriptor\+Set\+Layout desc\+Set\+Layout)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}{Create\+Pipeline}} (Vk\+Render\+Pass render\+Pass)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline}{VRE\+\_\+\+Pipeline}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}{m\+Pipeline}}
+\item 
+Vk\+Pipeline\+Layout \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{m\+Pipeline\+Layout}}
+\item 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{m\+Scene\+Context}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8h_source_l00013}{13}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8h_source}{VRE\+\_\+\+Light\+Render\+System.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!VRE\_LightRenderSystem@{VRE\_LightRenderSystem}}
+\index{VRE\_LightRenderSystem@{VRE\_LightRenderSystem}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{VRE\_LightRenderSystem()}{VRE\_LightRenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608} 
+VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+VRE\+\_\+\+Light\+Render\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}}]{scene\+Context}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}(sceneContext)\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!````~VRE\_LightRenderSystem@{\texorpdfstring{$\sim$}{\string~}VRE\_LightRenderSystem}}
+\index{````~VRE\_LightRenderSystem@{\texorpdfstring{$\sim$}{\string~}VRE\_LightRenderSystem}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_LightRenderSystem()}{\string~VRE\_LightRenderSystem()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792} 
+VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Light\+Render\+System (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ vkDestroyPipelineLayout(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_aa43259761949f726f85b7210ae3ae385}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!VRE\_LightRenderSystem@{VRE\_LightRenderSystem}}
+\index{VRE\_LightRenderSystem@{VRE\_LightRenderSystem}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{VRE\_LightRenderSystem()}{VRE\_LightRenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_aa43259761949f726f85b7210ae3ae385} 
+VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+VRE\+\_\+\+Light\+Render\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!CreatePipeline@{CreatePipeline}}
+\index{CreatePipeline@{CreatePipeline}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{CreatePipeline()}{CreatePipeline()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389} 
+void VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+Create\+Pipeline (\begin{DoxyParamCaption}\item[{Vk\+Render\+Pass}]{render\+Pass}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}}\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ create\ pipeline\ before\ pipeline\ layout!"{}});}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ PipelineConfigInfo\ pipelineConfig\{\};}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{VRE\_Pipeline::GetDefaultPipelineConfigInfo}}(pipelineConfig);}
+\DoxyCodeLine{00100\ \ \ \ \ pipelineConfig.mAttributeDescriptions.clear();}
+\DoxyCodeLine{00101\ \ \ \ \ pipelineConfig.mBindingDescriptions.clear();}
+\DoxyCodeLine{00102\ \ \ \ \ pipelineConfig.mRenderPass\ =\ renderPass;}
+\DoxyCodeLine{00103\ \ \ \ \ pipelineConfig.mPipelineLayout\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}};}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}{mPipeline}}\ =\ std::make\_unique<VRE\_Pipeline>(*\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}},\ pipelineConfig,\ \textcolor{stringliteral}{"{}Shaders/point\_light.vert.spv"{}},\ \textcolor{stringliteral}{"{}Shaders/point\_light.frag.spv"{}});}
+\DoxyCodeLine{00105\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!CreatePipelineLayout@{CreatePipelineLayout}}
+\index{CreatePipelineLayout@{CreatePipelineLayout}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{CreatePipelineLayout()}{CreatePipelineLayout()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939} 
+void VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+Create\+Pipeline\+Layout (\begin{DoxyParamCaption}\item[{Vk\+Descriptor\+Set\+Layout}]{desc\+Set\+Layout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ VkPushConstantRange\ pushConstantRange\{VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,\ 0,\ \textcolor{keyword}{sizeof}(PointLightPC)\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<VkDescriptorSetLayout>\ descSetLayouts\{\ descSetLayout\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ VkPipelineLayoutCreateInfo\ pipelineLayoutInfo\{\};}
+\DoxyCodeLine{00084\ \ \ \ \ pipelineLayoutInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_LAYOUT\_CREATE\_INFO;}
+\DoxyCodeLine{00085\ \ \ \ \ pipelineLayoutInfo.setLayoutCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(descSetLayouts.size());}
+\DoxyCodeLine{00086\ \ \ \ \ pipelineLayoutInfo.pSetLayouts\ =\ descSetLayouts.data();}
+\DoxyCodeLine{00087\ \ \ \ \ pipelineLayoutInfo.pushConstantRangeCount\ =\ 1;}
+\DoxyCodeLine{00088\ \ \ \ \ pipelineLayoutInfo.pPushConstantRanges\ =\ \&pushConstantRange;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreatePipelineLayout(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&pipelineLayoutInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}})\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ pipeline\ layout!"{}});}
+\DoxyCodeLine{00092\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!Init@{Init}}
+\index{Init@{Init}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8} 
+void VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}{CreatePipelineLayout}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9223d5f3e2c7cdc26d367788eae61d35}{mGlobalDescSetLayout}}-\/>GetDescriptorSetLayout());}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}{CreatePipeline}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a03e51cee505d388b8719ed8e30e71380}{GetSwapChainRenderPass}}());}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_ab6d81155312ab7c3e4a2b6cde3fd4e30}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_ab6d81155312ab7c3e4a2b6cde3fd4e30} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \& VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system}{VRE\+\_\+\+Light\+Render\+System}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!Render@{Render}}
+\index{Render@{Render}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4} 
+void VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}{mPipeline}}-\/>Bind(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}());}
+\DoxyCodeLine{00057\ \ \ \ \ VkDescriptorSet*\ descSet\ =\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_ac79bc862b90fa2d01e4e9ed8461d988a}{mSceneDescriptorSets}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()];}
+\DoxyCodeLine{00058\ \ \ \ \ vkCmdBindDescriptorSets(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}(),\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}},\ 0,\ 1,\ descSet,\ 0,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ light\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a4278ef594d63f3492e7498717d83e405}{mPointLights}})\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ PointLightPC\ pc;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ pc.mPosition\ =\ light.mPosition;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ pc.mColor\ =\ glm::vec4(light.mColor,\ light.mLightIntensity);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ pc.mRadius\ =\ light.mScale;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ vkCmdPushConstants(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}(),}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}{mPipelineLayout}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{sizeof}(PointLightPC),}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&pc);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ vkCmdDraw(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_aa8f6ce9f06f991899f6f9f41c7cabfbf}{GetCurrentCommandBuffer}}(),\ 6,\ 1,\ 0,\ 0);}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!Update@{Update}}
+\index{Update@{Update}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77} 
+void VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}} \&}]{ubo}{, }\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8cpp_source}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{auto}\ rotateLight\ =\ glm::rotate(glm::mat4(1.f),\ 0.5f\ *\ dt,\ \{\ 0.f,\ -\/1.f,\ 0.f\ \});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//Rotating\ lights\ by\ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ light\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}{mSceneContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a4278ef594d63f3492e7498717d83e405}{mPointLights}})\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ assert(index\ <\ \mbox{\hyperlink{_v_r_e___shared_context_8h_a737b417f16ea225cf15e8d4c23df53dc}{MAX\_LIGHTS}}\ \&\&\ \textcolor{stringliteral}{"{}Point\ lights\ exceed\ maximum\ number\ specified\ in\ SharedContext.h!"{}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ light.mPosition\ =\ rotateLight\ *\ light.mPosition;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ ubo.mPointLights[index].mPosition\ =\ light.mPosition;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ ubo.mPointLights[index].mColor\ =\ glm::vec4(light.mColor,\ light.mLightIntensity);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ ubo.mActiveLightCount\ =\ index;}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!mPipeline@{mPipeline}}
+\index{mPipeline@{mPipeline}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mPipeline}{mPipeline}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a9280982e97d3cc59b922b8b067f1dcc4} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline}{VRE\+\_\+\+Pipeline}}$>$ VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::m\+Pipeline\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8h_source_l00030}{30}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8h_source}{VRE\+\_\+\+Light\+Render\+System.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!mPipelineLayout@{mPipelineLayout}}
+\index{mPipelineLayout@{mPipelineLayout}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mPipelineLayout}{mPipelineLayout}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a931b354d084f2baa2b2196692bf24b77} 
+Vk\+Pipeline\+Layout VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::m\+Pipeline\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8h_source_l00031}{31}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8h_source}{VRE\+\_\+\+Light\+Render\+System.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8}\index{VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}!mSceneContext@{mSceneContext}}
+\index{mSceneContext@{mSceneContext}!VRE::VRE\_LightRenderSystem@{VRE::VRE\_LightRenderSystem}}
+\doxysubsubsection{\texorpdfstring{mSceneContext}{mSceneContext}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___light_render_system_a733ea1b5ca0c3ac9026cf30da407ace8} 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}}\texorpdfstring{$\ast$}{*} VRE\+::\+VRE\+\_\+\+Light\+Render\+System\+::m\+Scene\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___light_render_system_8h_source_l00032}{32}} of file \mbox{\hyperlink{_v_r_e___light_render_system_8h_source}{VRE\+\_\+\+Light\+Render\+System.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___light_render_system_8h}{VRE\+\_\+\+Light\+Render\+System.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___light_render_system_8cpp}{VRE\+\_\+\+Light\+Render\+System.\+cpp}}\end{DoxyCompactItemize}

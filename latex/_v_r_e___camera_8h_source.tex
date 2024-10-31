@@ -1,0 +1,44 @@
+\doxysection{VRE\+\_\+\+Camera.\+h}
+\hypertarget{_v_r_e___camera_8h_source}{}\label{_v_r_e___camera_8h_source}\index{ReSTIRVulkan/VRE\_Camera.h@{ReSTIRVulkan/VRE\_Camera.h}}
+\mbox{\hyperlink{_v_r_e___camera_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ \ \ \ \ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00005}00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00006}00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00008}\mbox{\hyperlink{_v_r_e___camera_8h_a816ab7d5c2ce1f0a01216042837beb93}{00008}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_RADIANS}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00009}\mbox{\hyperlink{_v_r_e___camera_8h_aa53e0967978ad7a8792f6961156ec968}{00009}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_DEPTH\_ZERO\_TO\_ONE}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <glm.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <gtc/constants.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00014}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera}{00014}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera}{VRE\_Camera}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_aa5abbea997f949e93552aed9793cb75b}{SetOrthographicProjection}}(\textcolor{keywordtype}{float}\ top,\ \textcolor{keywordtype}{float}\ bottom,\ \textcolor{keywordtype}{float}\ left,\ \textcolor{keywordtype}{float}\ right,\ \textcolor{keywordtype}{float}\ near,\ \textcolor{keywordtype}{float}\ far);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_aae679d155fc628b29a3a57754b06d1ee}{SetPerspectiveProjection}}(\textcolor{keywordtype}{float}\ fovY,\ \textcolor{keywordtype}{float}\ aspectRatio,\ \textcolor{keywordtype}{float}\ near,\ \textcolor{keywordtype}{float}\ far);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a830da7eb5db03e6b113dd4eee138b7f6}{SetViewDirection}}(glm::vec3\ position,\ glm::vec3\ direction,\ glm::vec3\ up\ =\ glm::vec3(0.f,\ 1.f,\ 0.f));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a9c0d06ea3b53ffa2ca135f53ccfddf6b}{SetViewTarget}}(glm::vec3\ position,\ glm::vec3\ target,\ glm::vec3\ up\ =\ glm::vec3(0.f,\ 1.f,\ 0.f));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a3ce0bfe578cf47e6c6084c30e563c5b5}{SetViewXYZ}}(glm::vec3\ position,\ glm::vec3\ rotation);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00024}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a8c3daef9e3608a8fbeb4cc58f36c101e}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a8c3daef9e3608a8fbeb4cc58f36c101e}{GetProjection}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a0e917bb1d9f2a2799ba3846ad7e39787}{mProjectionMatrix}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00025}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a8e5cfae851154bee0a5d4a9bfb9444be}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a8e5cfae851154bee0a5d4a9bfb9444be}{GetViewMat}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a5a12f313aa295ba0f0e3426e002b3b1d}{mViewMatrix}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00026}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a5b25da52f02d5a27a6b0514318fd13cc}{00026}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a5b25da52f02d5a27a6b0514318fd13cc}{GetInvViewMat}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a187c87bf88a82944c3793d122ad076b9}{mInvViewMatrix}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00028}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a0b4c1872de3523415d43411fddfe96e1}{00028}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a0b4c1872de3523415d43411fddfe96e1}{GetRotation}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a4a45bad8af72d1105d3e54000508653f}{mRotation}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00029}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a60ab4af9eb093f8502079efdb7adbca6}{00029}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a60ab4af9eb093f8502079efdb7adbca6}{GetPosition}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a60783734568d45bd7c06724f5d135589}{mPosition}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00032}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a60783734568d45bd7c06724f5d135589}{00032}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a60783734568d45bd7c06724f5d135589}{mPosition}}\{\ 0.f,\ 0.f,\ -\/5.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00033}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a4a45bad8af72d1105d3e54000508653f}{00033}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a4a45bad8af72d1105d3e54000508653f}{mRotation}}\{\ 0.f,\ 0.f,\ glm::pi<float>()\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00034}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a0e917bb1d9f2a2799ba3846ad7e39787}{00034}}\ \ \ \ \ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a0e917bb1d9f2a2799ba3846ad7e39787}{mProjectionMatrix}}\{\ 1.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00035}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a5a12f313aa295ba0f0e3426e002b3b1d}{00035}}\ \ \ \ \ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a5a12f313aa295ba0f0e3426e002b3b1d}{mViewMatrix}}\{\ 1.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00036}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a187c87bf88a82944c3793d122ad076b9}{00036}}\ \ \ \ \ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera_a187c87bf88a82944c3793d122ad076b9}{mInvViewMatrix}}\{\ 1.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00037}00037\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___camera_8h_source_l00038}00038\ \}}
+
+\end{DoxyCode}

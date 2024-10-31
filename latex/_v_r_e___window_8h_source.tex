@@ -1,0 +1,50 @@
+\doxysection{VRE\+\_\+\+Window.\+h}
+\hypertarget{_v_r_e___window_8h_source}{}\label{_v_r_e___window_8h_source}\index{ReSTIRVulkan/VRE\_Window.h@{ReSTIRVulkan/VRE\_Window.h}}
+\mbox{\hyperlink{_v_r_e___window_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00007}00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00009}\mbox{\hyperlink{_v_r_e___window_8h_ab91f325a54d3e35fe831a86d6382c2a9}{00009}}\ \textcolor{preprocessor}{\#define\ GLFW\_INCLUDE\_VULKAN}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <glfw3.h>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00013}00013\ \textcolor{comment}{//Window\ wrapper\ class.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00015}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{VRE\_Window}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5c3f0acabec538ddeffda17aea56ae50}{VRE\_Window}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ std::string\ name);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a5411a4bde19176bdf4beb75a978d684c}{\string~VRE\_Window}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00021}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af6588bd39621a2e949527a6dfc1aa4a0}{00021}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af6588bd39621a2e949527a6dfc1aa4a0}{VRE\_Window}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{VRE\_Window}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00022}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_aadab0aefa1f99f4a3bfbc6703aed1cbc}{00022}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{VRE\_Window}}\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_aadab0aefa1f99f4a3bfbc6703aed1cbc}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window}{VRE\_Window}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00024}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_ab9bc1a19a125692d16355118b433e4b2}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_ab9bc1a19a125692d16355118b433e4b2}{ShouldClose}}()\ \{\ \textcolor{keywordflow}{return}\ glfwWindowShouldClose(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a37fe9d6e851fa1fa27d8630b94da3fca}{mWindow}});\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af00df384f7d8c54bb8577519bb6eaf7e}{CreateWindowSurface}}(VkInstance\ instance,\ VkSurfaceKHR*\ surface);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00028}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a929eefc6adcc7d130436195a2880f2bf}{00028}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ VkExtent2D\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a929eefc6adcc7d130436195a2880f2bf}{GetExtent}}()\ \{\ \textcolor{keywordflow}{return}\ \{\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af2e1c02e99595535b0d0b6fb44ce3cd5}{mWidth}}),\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_ad245660ee6da7ae1483988661c1cb179}{mHeight}})\ \};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00029}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a55c22dab6ab7caf7e0a74e4cd308d724}{00029}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a55c22dab6ab7caf7e0a74e4cd308d724}{HasWindowResized}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a6b713e381b33f14328c69e7795d4d521}{mFrameBufferResized}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00030}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a486a0235207f0a8f68d49aa4206208ea}{00030}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a486a0235207f0a8f68d49aa4206208ea}{ResetWindowResizedFlag}}()\ \{\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a6b713e381b33f14328c69e7795d4d521}{mFrameBufferResized}}\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00031}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a1a50af6daf9e7071ceffb28bb8f9b9fd}{00031}}\ \ \ \ \ \ \ \ \ GLFWwindow*\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a1a50af6daf9e7071ceffb28bb8f9b9fd}{GetGLFWwindow}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a37fe9d6e851fa1fa27d8630b94da3fca}{mWindow}};\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a59c10677141b7e2b9093ad9482b4fe68}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a4d59f7043b0b3ef3095bae155f2a97e2}{FrameBufferResizedCallback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00037}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af2e1c02e99595535b0d0b6fb44ce3cd5}{00037}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_af2e1c02e99595535b0d0b6fb44ce3cd5}{mWidth}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00038}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_ad245660ee6da7ae1483988661c1cb179}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_ad245660ee6da7ae1483988661c1cb179}{mHeight}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00039}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a6b713e381b33f14328c69e7795d4d521}{00039}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a6b713e381b33f14328c69e7795d4d521}{mFrameBufferResized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00040}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a003c61d29379f45434e5b6dfe54d1c04}{00040}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a003c61d29379f45434e5b6dfe54d1c04}{mWindowName}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00042}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a37fe9d6e851fa1fa27d8630b94da3fca}{00042}}\ \ \ \ \ \ \ \ \ GLFWwindow*\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___window_a37fe9d6e851fa1fa27d8630b94da3fca}{mWindow}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00043}00043\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___window_8h_source_l00044}00044\ \}}
+
+\end{DoxyCode}

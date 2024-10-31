@@ -1,3 +1,9 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
 #include "VRE_SwapChain.h"
 #include <array>
 #include <cstdlib>
@@ -159,8 +165,8 @@ namespace VRE {
         }
         else {
             createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
-            createInfo.queueFamilyIndexCount = 0;      // Optional
-            createInfo.pQueueFamilyIndices = nullptr;  // Optional
+            createInfo.queueFamilyIndexCount = 0;
+            createInfo.pQueueFamilyIndices = nullptr;
         }
     
         createInfo.preTransform = swapChainSupport.mCapabilities.currentTransform;
@@ -173,11 +179,7 @@ namespace VRE {
     
         if (vkCreateSwapchainKHR(mDevice.GetVkDevice(), &createInfo, nullptr, &mSwapChain) != VK_SUCCESS)
           throw std::runtime_error("Failed to create swap chain!");
-    
-        // We only specified a minimum number of images in the swap chain, so the implementation is
-        // allowed to create a swap chain with more. That's why we'll first query the final number of
-        // images with vkGetSwapchainImagesKHR, then resize the container and finally call it again to
-        // retrieve the handles.
+
         vkGetSwapchainImagesKHR(mDevice.GetVkDevice(), mSwapChain, &imageCount, nullptr);
         mSwapChainImages.resize(imageCount);
         vkGetSwapchainImagesKHR(mDevice.GetVkDevice(), mSwapChain, &imageCount, mSwapChainImages.data());

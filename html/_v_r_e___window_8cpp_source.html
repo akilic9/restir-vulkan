@@ -99,67 +99,73 @@ $(function(){initNavTree('_v_r_e___window_8cpp_source.html',''); initResizable(t
   <div class="headertitle"><div class="title">VRE_Window.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_v_r_e___window_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___window_8h.html">VRE_Window.h</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="foldopen" id="foldopen00004" data-start="{" data-end="}">
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">    4</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">VRE::VRE_Window::VRE_Window</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, std::string name)</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    : mWidth(width)</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    , mHeight(height)</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    , mWindowName(name)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    , mWindow(nullptr)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">Init</a>();</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
-</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">   13</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">VRE::VRE_Window::~VRE_Window</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    glfwDestroyWindow(mWindow);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    glfwTerminate();</div>
+<a href="_v_r_e___window_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">*  Resources:</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&amp;list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&amp;index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___window_8h.html">VRE_Window.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">   10</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">VRE::VRE_Window::VRE_Window</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, std::string name)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    : mWidth(width)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    , mHeight(height)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    , mWindowName(name)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    , mWindow(nullptr)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">Init</a>();</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">VRE::VRE_Window::CreateWindowSurface</a>(VkInstance instance, VkSurfaceKHR* surface)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">   19</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">VRE::VRE_Window::~VRE_Window</a>()</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (glfwCreateWindowSurface(instance, mWindow, <span class="keyword">nullptr</span>, surface) != VK_SUCCESS)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Cannot create window surface!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    glfwDestroyWindow(mWindow);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    glfwTerminate();</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">   25</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">VRE::VRE_Window::Init</a>()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">   25</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">VRE::VRE_Window::CreateWindowSurface</a>(VkInstance instance, VkSurfaceKHR* surface)</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    glfwInit();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    mWindow = glfwCreateWindow(mWidth, mHeight, mWindowName.c_str(), <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    glfwSetWindowUserPointer(mWindow, <span class="keyword">this</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    glfwSetFramebufferSizeCallback(mWindow, FrameBufferResizedCallback);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (glfwCreateWindowSurface(instance, mWindow, <span class="keyword">nullptr</span>, surface) != VK_SUCCESS)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Cannot create window surface!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">VRE::VRE_Window::Init</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    glfwInit();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">VRE::VRE_Window::FrameBufferResizedCallback</a>(GLFWwindow* window, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> win = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_class" href="class_v_r_e_1_1_v_r_e___window.html">VRE_Window</a>*<span class="keyword">&gt;</span>(glfwGetWindowUserPointer(window));</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    win-&gt;<a class="code hl_variable" href="class_v_r_e_1_1_v_r_e___window.html#a6b713e381b33f14328c69e7795d4d521">mFrameBufferResized</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    win-&gt;mWidth = width;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    win-&gt;mHeight = height;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    mWindow = glfwCreateWindow(mWidth, mHeight, mWindowName.c_str(), <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    glfwSetWindowUserPointer(mWindow, <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    glfwSetFramebufferSizeCallback(mWindow, FrameBufferResizedCallback);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">VRE::VRE_Window::FrameBufferResizedCallback</a>(GLFWwindow* window, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">auto</span> win = <span class="keyword">reinterpret_cast&lt;</span><a class="code hl_class" href="class_v_r_e_1_1_v_r_e___window.html">VRE_Window</a>*<span class="keyword">&gt;</span>(glfwGetWindowUserPointer(window));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    win-&gt;<a class="code hl_variable" href="class_v_r_e_1_1_v_r_e___window.html#a6b713e381b33f14328c69e7795d4d521">mFrameBufferResized</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    win-&gt;mWidth = width;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    win-&gt;mHeight = height;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 </div>
 <div class="ttc" id="a_v_r_e___window_8h_html"><div class="ttname"><a href="_v_r_e___window_8h.html">VRE_Window.h</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html">VRE::VRE_Window</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___window_8h_source.html#l00009">VRE_Window.h:10</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a4d59f7043b0b3ef3095bae155f2a97e2"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">VRE::VRE_Window::FrameBufferResizedCallback</a></div><div class="ttdeci">static void FrameBufferResizedCallback(GLFWwindow *window, int width, int height)</div><div class="ttdef"><b>Definition</b> <a href="#l00037">VRE_Window.cpp:37</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a5411a4bde19176bdf4beb75a978d684c"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">VRE::VRE_Window::~VRE_Window</a></div><div class="ttdeci">~VRE_Window()</div><div class="ttdef"><b>Definition</b> <a href="#l00013">VRE_Window.cpp:13</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a59c10677141b7e2b9093ad9482b4fe68"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">VRE::VRE_Window::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition</b> <a href="#l00025">VRE_Window.cpp:25</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a5c3f0acabec538ddeffda17aea56ae50"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">VRE::VRE_Window::VRE_Window</a></div><div class="ttdeci">VRE_Window(int width, int height, std::string name)</div><div class="ttdef"><b>Definition</b> <a href="#l00004">VRE_Window.cpp:4</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a6b713e381b33f14328c69e7795d4d521"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a6b713e381b33f14328c69e7795d4d521">VRE::VRE_Window::mFrameBufferResized</a></div><div class="ttdeci">bool mFrameBufferResized</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___window_8h_source.html#l00033">VRE_Window.h:33</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_af00df384f7d8c54bb8577519bb6eaf7e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">VRE::VRE_Window::CreateWindowSurface</a></div><div class="ttdeci">void CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface)</div><div class="ttdef"><b>Definition</b> <a href="#l00019">VRE_Window.cpp:19</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html">VRE::VRE_Window</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___window_8h_source.html#l00015">VRE_Window.h:16</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a4d59f7043b0b3ef3095bae155f2a97e2"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a4d59f7043b0b3ef3095bae155f2a97e2">VRE::VRE_Window::FrameBufferResizedCallback</a></div><div class="ttdeci">static void FrameBufferResizedCallback(GLFWwindow *window, int width, int height)</div><div class="ttdef"><b>Definition</b> <a href="#l00043">VRE_Window.cpp:43</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a5411a4bde19176bdf4beb75a978d684c"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a5411a4bde19176bdf4beb75a978d684c">VRE::VRE_Window::~VRE_Window</a></div><div class="ttdeci">~VRE_Window()</div><div class="ttdef"><b>Definition</b> <a href="#l00019">VRE_Window.cpp:19</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a59c10677141b7e2b9093ad9482b4fe68"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a59c10677141b7e2b9093ad9482b4fe68">VRE::VRE_Window::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition</b> <a href="#l00031">VRE_Window.cpp:31</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a5c3f0acabec538ddeffda17aea56ae50"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a5c3f0acabec538ddeffda17aea56ae50">VRE::VRE_Window::VRE_Window</a></div><div class="ttdeci">VRE_Window(int width, int height, std::string name)</div><div class="ttdef"><b>Definition</b> <a href="#l00010">VRE_Window.cpp:10</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_a6b713e381b33f14328c69e7795d4d521"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#a6b713e381b33f14328c69e7795d4d521">VRE::VRE_Window::mFrameBufferResized</a></div><div class="ttdeci">bool mFrameBufferResized</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___window_8h_source.html#l00039">VRE_Window.h:39</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___window_html_af00df384f7d8c54bb8577519bb6eaf7e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___window.html#af00df384f7d8c54bb8577519bb6eaf7e">VRE::VRE_Window::CreateWindowSurface</a></div><div class="ttdeci">void CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface)</div><div class="ttdef"><b>Definition</b> <a href="#l00025">VRE_Window.cpp:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

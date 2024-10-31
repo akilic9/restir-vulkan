@@ -1,3 +1,8 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*/
 #define TINYGLTF_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 #define STBI_MSC_SECURE_CRT
@@ -92,110 +97,97 @@ void VRE::VRE_glTFModel::LoadNode(glTFNode* parent, const tinygltf::Node& inputN
     glTFNode* node = new glTFNode{};
     node->mParent = parent;
 
-    // Node with children
     if (inputNode.children.size() > 0)
         for (size_t i = 0; i < inputNode.children.size(); i++)
             LoadNode(node, model.nodes[inputNode.children[i]], model, data);
 
-    // If the node contains mesh data, we load vertices and indices from the buffers
-    // In glTF this is done via accessors and buffer views
     if (inputNode.mesh > -1) {
         const tinygltf::Mesh mesh = model.meshes[inputNode.mesh];
 
-        // Iterate through all primitives of this node's mesh
         for (size_t i = 0; i < mesh.primitives.size(); i++) {
             const tinygltf::Primitive& inputPrimitive = mesh.primitives[i];
             uint32_t firstIndex = static_cast<uint32_t>(mIndexCount);
             uint32_t vertexStart = static_cast<uint32_t>(mVertexCount);
             uint32_t indexCount = 0;
 
-            // Vertices
-            {
-                const float* positionBuffer = nullptr;
-                const float* normalsBuffer = nullptr;
-                const float* texCoordsBuffer = nullptr;
-                const float* coloursBuffer = nullptr;
-                size_t vertexCount = 0;
+            const float* positionBuffer = nullptr;
+            const float* normalsBuffer = nullptr;
+            const float* texCoordsBuffer = nullptr;
+            const float* coloursBuffer = nullptr;
+            size_t vertexCount = 0;
 
-                // Get buffer data for vertex positions
-                if (inputPrimitive.attributes.find("POSITION") != inputPrimitive.attributes.end()) {
-                    const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("POSITION")->second];
-                    const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
-                    positionBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
-                    vertexCount = accessor.count;
-                }
-
-                // Get buffer data for vertex normals
-                if (inputPrimitive.attributes.find("NORMAL") != inputPrimitive.attributes.end()) {
-                    const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("NORMAL")->second];
-                    const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
-                    normalsBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
-                }
-
-                // Get buffer data for vertex texture coordinates
-                // glTF supports multiple sets, we only load the first one
-                if (inputPrimitive.attributes.find("TEXCOORD_0") != inputPrimitive.attributes.end()) {
-                    const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("TEXCOORD_0")->second];
-                    const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
-                    texCoordsBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
-                }
-
-                if (inputPrimitive.attributes.find("COLOR_0") != inputPrimitive.attributes.end()) {
-                    const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("COLOR_0")->second];
-                    const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
-                    coloursBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
-                }
-
-                // Append data to model's vertex buffer
-                for (size_t v = 0; v < vertexCount; v++) {
-                    Vertex vert{};
-                    vert.mPosition = glm::vec4(glm::make_vec3(&positionBuffer[v * 3]), 1.0f);
-                    vert.mNormal = glm::normalize(glm::vec3(normalsBuffer ? glm::make_vec3(&normalsBuffer[v * 3]) : glm::vec3(0.0f)));
-                    vert.mTexCoord0 = texCoordsBuffer ? glm::make_vec2(&texCoordsBuffer[v * 2]) : glm::vec3(0.0f);
-                    vert.mColor = coloursBuffer ? glm::make_vec3(&coloursBuffer[v * 3]) : glm::vec3(1.0f);
-                    data.mVertices.push_back(vert);
-                    mVertexCount++;
-                }
+            if (inputPrimitive.attributes.find("POSITION") != inputPrimitive.attributes.end()) {
+                const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("POSITION")->second];
+                const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
+                positionBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
+                vertexCount = accessor.count;
             }
-            // Indices
-            {
-                const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.indices];
-                const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
-                const tinygltf::Buffer& buffer = model.buffers[bufferView.buffer];
 
-                indexCount += static_cast<uint32_t>(accessor.count);
-
-                // glTF supports different component types of indices
-                switch (accessor.componentType) {
-                case TINYGLTF_PARAMETER_TYPE_UNSIGNED_INT: {
-                    const uint32_t* buf = reinterpret_cast<const uint32_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
-                    for (size_t index = 0; index < accessor.count; index++) {
-                        data.mIndices.push_back(buf[index] + vertexStart);
-                        mIndexCount++;
-                    }
-                    break;
-                }
-                case TINYGLTF_PARAMETER_TYPE_UNSIGNED_SHORT: {
-                    const uint16_t* buf = reinterpret_cast<const uint16_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
-                    for (size_t index = 0; index < accessor.count; index++) {
-                        data.mIndices.push_back(buf[index] + vertexStart);
-                        mIndexCount++;
-                    }
-                    break;
-                }
-                case TINYGLTF_PARAMETER_TYPE_UNSIGNED_BYTE: {
-                    const uint8_t* buf = reinterpret_cast<const uint8_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
-                    for (size_t index = 0; index < accessor.count; index++) {
-                        data.mIndices.push_back(buf[index] + vertexStart);
-                        mIndexCount++;
-                    }
-                    break;
-                }
-                default:
-                    std::cerr << "Index component type " << accessor.componentType << " not supported!" << std::endl;
-                    return;
-                }
+            if (inputPrimitive.attributes.find("NORMAL") != inputPrimitive.attributes.end()) {
+                const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("NORMAL")->second];
+                const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
+                normalsBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
             }
+
+            if (inputPrimitive.attributes.find("TEXCOORD_0") != inputPrimitive.attributes.end()) {
+                const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("TEXCOORD_0")->second];
+                const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
+                texCoordsBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
+            }
+
+            if (inputPrimitive.attributes.find("COLOR_0") != inputPrimitive.attributes.end()) {
+                const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.attributes.find("COLOR_0")->second];
+                const tinygltf::BufferView& view = model.bufferViews[accessor.bufferView];
+                coloursBuffer = reinterpret_cast<const float*>(&(model.buffers[view.buffer].data[accessor.byteOffset + view.byteOffset]));
+            }
+
+            for (size_t v = 0; v < vertexCount; v++) {
+                Vertex vert{};
+                vert.mPosition = glm::vec4(glm::make_vec3(&positionBuffer[v * 3]), 1.0f);
+                vert.mNormal = glm::normalize(glm::vec3(normalsBuffer ? glm::make_vec3(&normalsBuffer[v * 3]) : glm::vec3(0.0f)));
+                vert.mTexCoord0 = texCoordsBuffer ? glm::make_vec2(&texCoordsBuffer[v * 2]) : glm::vec3(0.0f);
+                vert.mColor = coloursBuffer ? glm::make_vec3(&coloursBuffer[v * 3]) : glm::vec3(1.0f);
+                data.mVertices.push_back(vert);
+                mVertexCount++;
+            }
+
+            const tinygltf::Accessor& accessor = model.accessors[inputPrimitive.indices];
+            const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
+            const tinygltf::Buffer& buffer = model.buffers[bufferView.buffer];
+
+            indexCount += static_cast<uint32_t>(accessor.count);
+
+            // glTF supports different component types of indices
+            switch (accessor.componentType) {
+            case TINYGLTF_PARAMETER_TYPE_UNSIGNED_INT: {
+                const uint32_t* buf = reinterpret_cast<const uint32_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
+                for (size_t index = 0; index < accessor.count; index++) {
+                    data.mIndices.push_back(buf[index] + vertexStart);
+                    mIndexCount++;
+                }
+                break;
+            }
+            case TINYGLTF_PARAMETER_TYPE_UNSIGNED_SHORT: {
+                const uint16_t* buf = reinterpret_cast<const uint16_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
+                for (size_t index = 0; index < accessor.count; index++) {
+                    data.mIndices.push_back(buf[index] + vertexStart);
+                    mIndexCount++;
+                }
+                break;
+            }
+            case TINYGLTF_PARAMETER_TYPE_UNSIGNED_BYTE: {
+                const uint8_t* buf = reinterpret_cast<const uint8_t*>(&buffer.data[accessor.byteOffset + bufferView.byteOffset]);
+                for (size_t index = 0; index < accessor.count; index++) {
+                    data.mIndices.push_back(buf[index] + vertexStart);
+                    mIndexCount++;
+                }
+                break;
+            }
+            default:
+                std::cerr << "Index component type " << accessor.componentType << " not supported!" << std::endl;
+                return;
+            }
+
             glTFPrimitive primitive{};
             primitive.mFirstIndex = firstIndex;
             primitive.mIndexCount = indexCount;

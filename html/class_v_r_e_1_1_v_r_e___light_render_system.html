@@ -126,8 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9a33fa60bb23e7c648e53df10ad896a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9077d5dee2e9615aa8c31aef44261d77" id="r_a9077d5dee2e9615aa8c31aef44261d77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9077d5dee2e9615aa8c31aef44261d77">Update</a> (<a class="el" href="struct_v_r_e_1_1_u_b_o.html">UBO</a> &amp;ubo, float dt)</td></tr>
 <tr class="separator:a9077d5dee2e9615aa8c31aef44261d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e7f9be186ea8866215c097a2da3166c" id="r_a3e7f9be186ea8866215c097a2da3166c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e7f9be186ea8866215c097a2da3166c">RenderLights</a> ()</td></tr>
-<tr class="separator:a3e7f9be186ea8866215c097a2da3166c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c87fa8eb742387a716e180e5968ece4" id="r_a2c87fa8eb742387a716e180e5968ece4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c87fa8eb742387a716e180e5968ece4">Render</a> ()</td></tr>
+<tr class="separator:a2c87fa8eb742387a716e180e5968ece4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -147,7 +147,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00007">7</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00013">13</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a35e02ad7728a8a432500c3e335802608" name="a35e02ad7728a8a432500c3e335802608"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35e02ad7728a8a432500c3e335802608">&#9670;&#160;</a></span>VRE_LightRenderSystem() <span class="overload">[1/2]</span></h2>
@@ -164,9 +164,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00015">15</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>    : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>(sceneContext) {}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a733ea1b5ca0c3ac9026cf30da407ace8"><div class="ttname"><a href="#a733ea1b5ca0c3ac9026cf30da407ace8">VRE::VRE_LightRenderSystem::mSceneContext</a></div><div class="ttdeci">VRE_SharedContext * mSceneContext</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00026">VRE_LightRenderSystem.h:26</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00021">21</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>    : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>(sceneContext) {}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a733ea1b5ca0c3ac9026cf30da407ace8"><div class="ttname"><a href="#a733ea1b5ca0c3ac9026cf30da407ace8">VRE::VRE_LightRenderSystem::mSceneContext</a></div><div class="ttdeci">VRE_SharedContext * mSceneContext</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00032">VRE_LightRenderSystem.h:32</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -185,13 +185,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00018">18</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
-<div class="line"><span class="lineno">   20</span>    vkDestroyPipelineLayout(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00044">VRE_Device.h:44</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a931b354d084f2baa2b2196692bf24b77"><div class="ttname"><a href="#a931b354d084f2baa2b2196692bf24b77">VRE::VRE_LightRenderSystem::mPipelineLayout</a></div><div class="ttdeci">VkPipelineLayout mPipelineLayout</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00025">VRE_LightRenderSystem.h:25</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a9d078e4da98a171140871ed16fd61063"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">VRE::VRE_SharedContext::mDevice</a></div><div class="ttdeci">VRE_Device * mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00014">VRE_SharedContext.h:14</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00024">24</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>    vkDestroyPipelineLayout(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00049">VRE_Device.h:49</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a931b354d084f2baa2b2196692bf24b77"><div class="ttname"><a href="#a931b354d084f2baa2b2196692bf24b77">VRE::VRE_LightRenderSystem::mPipelineLayout</a></div><div class="ttdeci">VkPipelineLayout mPipelineLayout</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00031">VRE_LightRenderSystem.h:31</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a9d078e4da98a171140871ed16fd61063"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">VRE::VRE_SharedContext::mDevice</a></div><div class="ttdeci">VRE_Device * mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00018">VRE_SharedContext.h:18</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -244,20 +244,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00087">87</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    assert(<a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a> != <span class="keyword">nullptr</span> &amp;&amp; <span class="stringliteral">&quot;Cannot create pipeline before pipeline layout!&quot;</span>);</div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>    PipelineConfigInfo pipelineConfig{};</div>
-<div class="line"><span class="lineno">   92</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___pipeline.html#aa30fd0bae585ba67fc296d6f1dc2234b">VRE_Pipeline::GetDefaultPipelineConfigInfo</a>(pipelineConfig);</div>
-<div class="line"><span class="lineno">   93</span>    pipelineConfig.mAttributeDescriptions.clear();</div>
-<div class="line"><span class="lineno">   94</span>    pipelineConfig.mBindingDescriptions.clear();</div>
-<div class="line"><span class="lineno">   95</span>    pipelineConfig.mRenderPass = renderPass;</div>
-<div class="line"><span class="lineno">   96</span>    pipelineConfig.mPipelineLayout = <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>;</div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="#a9280982e97d3cc59b922b8b067f1dcc4">mPipeline</a> = std::make_unique&lt;VRE_Pipeline&gt;(*<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>, pipelineConfig, <span class="stringliteral">&quot;Shaders/point_light.vert.spv&quot;</span>, <span class="stringliteral">&quot;Shaders/point_light.frag.spv&quot;</span>);</div>
-<div class="line"><span class="lineno">   98</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a9280982e97d3cc59b922b8b067f1dcc4"><div class="ttname"><a href="#a9280982e97d3cc59b922b8b067f1dcc4">VRE::VRE_LightRenderSystem::mPipeline</a></div><div class="ttdeci">std::unique_ptr&lt; VRE_Pipeline &gt; mPipeline</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00024">VRE_LightRenderSystem.h:24</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___pipeline_html_aa30fd0bae585ba67fc296d6f1dc2234b"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___pipeline.html#aa30fd0bae585ba67fc296d6f1dc2234b">VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo</a></div><div class="ttdeci">static void GetDefaultPipelineConfigInfo(PipelineConfigInfo &amp;configInfo)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___pipeline_8cpp_source.html#l00111">VRE_Pipeline.cpp:111</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00094">94</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    assert(<a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a> != <span class="keyword">nullptr</span> &amp;&amp; <span class="stringliteral">&quot;Cannot create pipeline before pipeline layout!&quot;</span>);</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>    PipelineConfigInfo pipelineConfig{};</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___pipeline.html#aa30fd0bae585ba67fc296d6f1dc2234b">VRE_Pipeline::GetDefaultPipelineConfigInfo</a>(pipelineConfig);</div>
+<div class="line"><span class="lineno">  100</span>    pipelineConfig.mAttributeDescriptions.clear();</div>
+<div class="line"><span class="lineno">  101</span>    pipelineConfig.mBindingDescriptions.clear();</div>
+<div class="line"><span class="lineno">  102</span>    pipelineConfig.mRenderPass = renderPass;</div>
+<div class="line"><span class="lineno">  103</span>    pipelineConfig.mPipelineLayout = <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>;</div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="#a9280982e97d3cc59b922b8b067f1dcc4">mPipeline</a> = std::make_unique&lt;VRE_Pipeline&gt;(*<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>, pipelineConfig, <span class="stringliteral">&quot;Shaders/point_light.vert.spv&quot;</span>, <span class="stringliteral">&quot;Shaders/point_light.frag.spv&quot;</span>);</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a9280982e97d3cc59b922b8b067f1dcc4"><div class="ttname"><a href="#a9280982e97d3cc59b922b8b067f1dcc4">VRE::VRE_LightRenderSystem::mPipeline</a></div><div class="ttdeci">std::unique_ptr&lt; VRE_Pipeline &gt; mPipeline</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8h_source.html#l00030">VRE_LightRenderSystem.h:30</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___pipeline_html_aa30fd0bae585ba67fc296d6f1dc2234b"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___pipeline.html#aa30fd0bae585ba67fc296d6f1dc2234b">VRE::VRE_Pipeline::GetDefaultPipelineConfigInfo</a></div><div class="ttdeci">static void GetDefaultPipelineConfigInfo(PipelineConfigInfo &amp;configInfo)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___pipeline_8cpp_source.html#l00117">VRE_Pipeline.cpp:117</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -289,22 +289,22 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00070">70</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, <span class="keyword">sizeof</span>(PointLightPC) };</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    std::vector&lt;VkDescriptorSetLayout&gt; descSetLayouts{ descSetLayout };</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>    VkPipelineLayoutCreateInfo pipelineLayoutInfo{};</div>
-<div class="line"><span class="lineno">   77</span>    pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;</div>
-<div class="line"><span class="lineno">   78</span>    pipelineLayoutInfo.setLayoutCount = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(descSetLayouts.size());</div>
-<div class="line"><span class="lineno">   79</span>    pipelineLayoutInfo.pSetLayouts = descSetLayouts.data();</div>
-<div class="line"><span class="lineno">   80</span>    pipelineLayoutInfo.pushConstantRangeCount = 1;</div>
-<div class="line"><span class="lineno">   81</span>    pipelineLayoutInfo.pPushConstantRanges = &amp;pushConstantRange;</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00077">77</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    VkPushConstantRange pushConstantRange{VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, <span class="keyword">sizeof</span>(PointLightPC) };</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    std::vector&lt;VkDescriptorSetLayout&gt; descSetLayouts{ descSetLayout };</div>
 <div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span> (vkCreatePipelineLayout(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;pipelineLayoutInfo, <span class="keyword">nullptr</span>, &amp;<a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>) != VK_SUCCESS)</div>
-<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create pipeline layout!&quot;</span>);</div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<div class="line"><span class="lineno">   83</span>    VkPipelineLayoutCreateInfo pipelineLayoutInfo{};</div>
+<div class="line"><span class="lineno">   84</span>    pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;</div>
+<div class="line"><span class="lineno">   85</span>    pipelineLayoutInfo.setLayoutCount = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(descSetLayouts.size());</div>
+<div class="line"><span class="lineno">   86</span>    pipelineLayoutInfo.pSetLayouts = descSetLayouts.data();</div>
+<div class="line"><span class="lineno">   87</span>    pipelineLayoutInfo.pushConstantRangeCount = 1;</div>
+<div class="line"><span class="lineno">   88</span>    pipelineLayoutInfo.pPushConstantRanges = &amp;pushConstantRange;</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (vkCreatePipelineLayout(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9d078e4da98a171140871ed16fd61063">mDevice</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;pipelineLayoutInfo, <span class="keyword">nullptr</span>, &amp;<a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>) != VK_SUCCESS)</div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create pipeline layout!&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,16 +323,16 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00023">23</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_function" href="#a3490beb0ae0f9b33fe59818cc6936939">CreatePipelineLayout</a>(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9223d5f3e2c7cdc26d367788eae61d35">mGlobalDescSetLayout</a>-&gt;GetDescriptorSetLayout());</div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_function" href="#ae96858898b38fa089a44c0ce835a2389">CreatePipeline</a>(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#a03e51cee505d388b8719ed8e30e71380">GetSwapChainRenderPass</a>());</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a3490beb0ae0f9b33fe59818cc6936939"><div class="ttname"><a href="#a3490beb0ae0f9b33fe59818cc6936939">VRE::VRE_LightRenderSystem::CreatePipelineLayout</a></div><div class="ttdeci">void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8cpp_source.html#l00070">VRE_LightRenderSystem.cpp:70</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_ae96858898b38fa089a44c0ce835a2389"><div class="ttname"><a href="#ae96858898b38fa089a44c0ce835a2389">VRE::VRE_LightRenderSystem::CreatePipeline</a></div><div class="ttdeci">void CreatePipeline(VkRenderPass renderPass)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8cpp_source.html#l00087">VRE_LightRenderSystem.cpp:87</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_a03e51cee505d388b8719ed8e30e71380"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#a03e51cee505d388b8719ed8e30e71380">VRE::VRE_Renderer::GetSwapChainRenderPass</a></div><div class="ttdeci">VkRenderPass GetSwapChainRenderPass() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00027">VRE_Renderer.h:27</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a57fa770148e474a912b0b37845ddf285"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">VRE::VRE_SharedContext::mRenderer</a></div><div class="ttdeci">VRE_Renderer * mRenderer</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00015">VRE_SharedContext.h:15</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a9223d5f3e2c7cdc26d367788eae61d35"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9223d5f3e2c7cdc26d367788eae61d35">VRE::VRE_SharedContext::mGlobalDescSetLayout</a></div><div class="ttdeci">std::shared_ptr&lt; VRE_DescriptorSetLayout &gt; mGlobalDescSetLayout</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00016">VRE_SharedContext.h:16</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00029">29</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_function" href="#a3490beb0ae0f9b33fe59818cc6936939">CreatePipelineLayout</a>(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9223d5f3e2c7cdc26d367788eae61d35">mGlobalDescSetLayout</a>-&gt;GetDescriptorSetLayout());</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_function" href="#ae96858898b38fa089a44c0ce835a2389">CreatePipeline</a>(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#a03e51cee505d388b8719ed8e30e71380">GetSwapChainRenderPass</a>());</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_a3490beb0ae0f9b33fe59818cc6936939"><div class="ttname"><a href="#a3490beb0ae0f9b33fe59818cc6936939">VRE::VRE_LightRenderSystem::CreatePipelineLayout</a></div><div class="ttdeci">void CreatePipelineLayout(VkDescriptorSetLayout descSetLayout)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8cpp_source.html#l00077">VRE_LightRenderSystem.cpp:77</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___light_render_system_html_ae96858898b38fa089a44c0ce835a2389"><div class="ttname"><a href="#ae96858898b38fa089a44c0ce835a2389">VRE::VRE_LightRenderSystem::CreatePipeline</a></div><div class="ttdeci">void CreatePipeline(VkRenderPass renderPass)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___light_render_system_8cpp_source.html#l00094">VRE_LightRenderSystem.cpp:94</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_a03e51cee505d388b8719ed8e30e71380"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#a03e51cee505d388b8719ed8e30e71380">VRE::VRE_Renderer::GetSwapChainRenderPass</a></div><div class="ttdeci">VkRenderPass GetSwapChainRenderPass() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00033">VRE_Renderer.h:33</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a57fa770148e474a912b0b37845ddf285"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">VRE::VRE_SharedContext::mRenderer</a></div><div class="ttdeci">VRE_Renderer * mRenderer</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00019">VRE_SharedContext.h:19</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a9223d5f3e2c7cdc26d367788eae61d35"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a9223d5f3e2c7cdc26d367788eae61d35">VRE::VRE_SharedContext::mGlobalDescSetLayout</a></div><div class="ttdeci">std::shared_ptr&lt; VRE_DescriptorSetLayout &gt; mGlobalDescSetLayout</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00020">VRE_SharedContext.h:20</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -361,14 +361,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a3e7f9be186ea8866215c097a2da3166c" name="a3e7f9be186ea8866215c097a2da3166c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e7f9be186ea8866215c097a2da3166c">&#9670;&#160;</a></span>RenderLights()</h2>
+<a id="a2c87fa8eb742387a716e180e5968ece4" name="a2c87fa8eb742387a716e180e5968ece4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c87fa8eb742387a716e180e5968ece4">&#9670;&#160;</a></span>Render()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VRE::VRE_LightRenderSystem::RenderLights </td>
+          <td class="memname">void VRE::VRE_LightRenderSystem::Render </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -376,32 +376,32 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00047">47</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="#a9280982e97d3cc59b922b8b067f1dcc4">mPipeline</a>-&gt;Bind(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>());</div>
-<div class="line"><span class="lineno">   50</span>    VkDescriptorSet* descSet = &amp;<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#ac79bc862b90fa2d01e4e9ed8461d988a">mSceneDescriptorSets</a>[<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#a7d3f610759402a62e33f5ebb62eacf7d">GetFrameIndex</a>()];</div>
-<div class="line"><span class="lineno">   51</span>    vkCmdBindDescriptorSets(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(), VK_PIPELINE_BIND_POINT_GRAPHICS, <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>, 0, 1, descSet, 0, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; light : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">mPointLights</a>) {</div>
-<div class="line"><span class="lineno">   54</span>        PointLightPC pc;</div>
-<div class="line"><span class="lineno">   55</span>        pc.mPosition = light.mPosition;</div>
-<div class="line"><span class="lineno">   56</span>        pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);</div>
-<div class="line"><span class="lineno">   57</span>        pc.mRadius = light.mScale;</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>        vkCmdPushConstants(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(),</div>
-<div class="line"><span class="lineno">   60</span>                           <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>,</div>
-<div class="line"><span class="lineno">   61</span>                           VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,</div>
-<div class="line"><span class="lineno">   62</span>                           0,</div>
-<div class="line"><span class="lineno">   63</span>                           <span class="keyword">sizeof</span>(PointLightPC),</div>
-<div class="line"><span class="lineno">   64</span>                           &amp;pc);</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00054">54</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#a9280982e97d3cc59b922b8b067f1dcc4">mPipeline</a>-&gt;Bind(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>());</div>
+<div class="line"><span class="lineno">   57</span>    VkDescriptorSet* descSet = &amp;<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#ac79bc862b90fa2d01e4e9ed8461d988a">mSceneDescriptorSets</a>[<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#a7d3f610759402a62e33f5ebb62eacf7d">GetFrameIndex</a>()];</div>
+<div class="line"><span class="lineno">   58</span>    vkCmdBindDescriptorSets(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(), VK_PIPELINE_BIND_POINT_GRAPHICS, <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>, 0, 1, descSet, 0, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; light : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">mPointLights</a>) {</div>
+<div class="line"><span class="lineno">   61</span>        PointLightPC pc;</div>
+<div class="line"><span class="lineno">   62</span>        pc.mPosition = light.mPosition;</div>
+<div class="line"><span class="lineno">   63</span>        pc.mColor = glm::vec4(light.mColor, light.mLightIntensity);</div>
+<div class="line"><span class="lineno">   64</span>        pc.mRadius = light.mScale;</div>
 <div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>        vkCmdDraw(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(), 6, 1, 0, 0);</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_a7d3f610759402a62e33f5ebb62eacf7d"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#a7d3f610759402a62e33f5ebb62eacf7d">VRE::VRE_Renderer::GetFrameIndex</a></div><div class="ttdeci">int GetFrameIndex() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00036">VRE_Renderer.h:36</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_aa8f6ce9f06f991899f6f9f41c7cabfbf"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">VRE::VRE_Renderer::GetCurrentCommandBuffer</a></div><div class="ttdeci">VkCommandBuffer GetCurrentCommandBuffer() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00031">VRE_Renderer.h:31</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a4278ef594d63f3492e7498717d83e405"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">VRE::VRE_SharedContext::mPointLights</a></div><div class="ttdeci">std::vector&lt; VRE_PointLight &gt; mPointLights</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00019">VRE_SharedContext.h:19</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_ac79bc862b90fa2d01e4e9ed8461d988a"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#ac79bc862b90fa2d01e4e9ed8461d988a">VRE::VRE_SharedContext::mSceneDescriptorSets</a></div><div class="ttdeci">std::vector&lt; VkDescriptorSet &gt; mSceneDescriptorSets</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00018">VRE_SharedContext.h:18</a></div></div>
+<div class="line"><span class="lineno">   66</span>        vkCmdPushConstants(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(),</div>
+<div class="line"><span class="lineno">   67</span>                           <a class="code hl_variable" href="#a931b354d084f2baa2b2196692bf24b77">mPipelineLayout</a>,</div>
+<div class="line"><span class="lineno">   68</span>                           VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,</div>
+<div class="line"><span class="lineno">   69</span>                           0,</div>
+<div class="line"><span class="lineno">   70</span>                           <span class="keyword">sizeof</span>(PointLightPC),</div>
+<div class="line"><span class="lineno">   71</span>                           &amp;pc);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        vkCmdDraw(<a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a57fa770148e474a912b0b37845ddf285">mRenderer</a>-&gt;<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">GetCurrentCommandBuffer</a>(), 6, 1, 0, 0);</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_a7d3f610759402a62e33f5ebb62eacf7d"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#a7d3f610759402a62e33f5ebb62eacf7d">VRE::VRE_Renderer::GetFrameIndex</a></div><div class="ttdeci">int GetFrameIndex() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00042">VRE_Renderer.h:42</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___renderer_html_aa8f6ce9f06f991899f6f9f41c7cabfbf"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___renderer.html#aa8f6ce9f06f991899f6f9f41c7cabfbf">VRE::VRE_Renderer::GetCurrentCommandBuffer</a></div><div class="ttdeci">VkCommandBuffer GetCurrentCommandBuffer() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___renderer_8h_source.html#l00037">VRE_Renderer.h:37</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_a4278ef594d63f3492e7498717d83e405"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">VRE::VRE_SharedContext::mPointLights</a></div><div class="ttdeci">std::vector&lt; VRE_PointLight &gt; mPointLights</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00023">VRE_SharedContext.h:23</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_v_r_e___shared_context_html_ac79bc862b90fa2d01e4e9ed8461d988a"><div class="ttname"><a href="struct_v_r_e_1_1_v_r_e___shared_context.html#ac79bc862b90fa2d01e4e9ed8461d988a">VRE::VRE_SharedContext::mSceneDescriptorSets</a></div><div class="ttdeci">std::vector&lt; VkDescriptorSet &gt; mSceneDescriptorSets</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00022">VRE_SharedContext.h:22</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -424,24 +424,25 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00029">29</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordtype">int</span> index = 0;</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keyword">auto</span> rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; light : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">mPointLights</a>) {</div>
-<div class="line"><span class="lineno">   35</span>        assert(index &lt; <a class="code hl_define" href="_v_r_e___shared_context_8h.html#a737b417f16ea225cf15e8d4c23df53dc">MAX_LIGHTS</a> &amp;&amp; <span class="stringliteral">&quot;Point lights exceed maximum number specified in SharedContext.h!&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>        light.mPosition = rotateLight * light.mPosition;</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>        ubo.mPointLights[index].mPosition = light.mPosition;</div>
-<div class="line"><span class="lineno">   40</span>        ubo.mPointLights[index].mColor = glm::vec4(light.mColor, light.mLightIntensity);</div>
-<div class="line"><span class="lineno">   41</span>        ++index;</div>
-<div class="line"><span class="lineno">   42</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8cpp_source.html#l00035">35</a> of file <a class="el" href="_v_r_e___light_render_system_8cpp_source.html">VRE_LightRenderSystem.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keyword">auto</span> rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });</div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">//Rotating lights by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.</span></div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">//Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&amp;list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&amp;index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; light : <a class="code hl_variable" href="#a733ea1b5ca0c3ac9026cf30da407ace8">mSceneContext</a>-&gt;<a class="code hl_variable" href="struct_v_r_e_1_1_v_r_e___shared_context.html#a4278ef594d63f3492e7498717d83e405">mPointLights</a>) {</div>
+<div class="line"><span class="lineno">   42</span>        assert(index &lt; <a class="code hl_define" href="_v_r_e___shared_context_8h.html#a737b417f16ea225cf15e8d4c23df53dc">MAX_LIGHTS</a> &amp;&amp; <span class="stringliteral">&quot;Point lights exceed maximum number specified in SharedContext.h!&quot;</span>);</div>
 <div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    ubo.mActiveLightCount = index;</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="a_v_r_e___shared_context_8h_html_a737b417f16ea225cf15e8d4c23df53dc"><div class="ttname"><a href="_v_r_e___shared_context_8h.html#a737b417f16ea225cf15e8d4c23df53dc">MAX_LIGHTS</a></div><div class="ttdeci">#define MAX_LIGHTS</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00010">VRE_SharedContext.h:10</a></div></div>
+<div class="line"><span class="lineno">   44</span>        light.mPosition = rotateLight * light.mPosition;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        ubo.mPointLights[index].mPosition = light.mPosition;</div>
+<div class="line"><span class="lineno">   47</span>        ubo.mPointLights[index].mColor = glm::vec4(light.mColor, light.mLightIntensity);</div>
+<div class="line"><span class="lineno">   48</span>        ++index;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>    ubo.mActiveLightCount = index;</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+<div class="ttc" id="a_v_r_e___shared_context_8h_html_a737b417f16ea225cf15e8d4c23df53dc"><div class="ttname"><a href="_v_r_e___shared_context_8h.html#a737b417f16ea225cf15e8d4c23df53dc">MAX_LIGHTS</a></div><div class="ttdeci">#define MAX_LIGHTS</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___shared_context_8h_source.html#l00014">VRE_SharedContext.h:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -466,7 +467,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00024">24</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00030">30</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +491,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00025">25</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00031">31</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
 
 </div>
 </div>
@@ -514,7 +515,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00026">26</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___light_render_system_8h_source.html#l00032">32</a> of file <a class="el" href="_v_r_e___light_render_system_8h_source.html">VRE_LightRenderSystem.h</a>.</p>
 
 </div>
 </div>

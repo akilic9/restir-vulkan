@@ -1,0 +1,206 @@
+\doxysection{VRE\+\_\+\+App.\+cpp}
+\hypertarget{_v_r_e___app_8cpp_source}{}\label{_v_r_e___app_8cpp_source}\index{ReSTIRVulkan/VRE\_App.cpp@{ReSTIRVulkan/VRE\_App.cpp}}
+\mbox{\hyperlink{_v_r_e___app_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___app_8h}{VRE\_App.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___buffer_8h}{VRE\_Buffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00012}\mbox{\hyperlink{_v_r_e___app_8cpp_a816ab7d5c2ce1f0a01216042837beb93}{00012}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_RADIANS}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00013}\mbox{\hyperlink{_v_r_e___app_8cpp_aa53e0967978ad7a8792f6961156ec968}{00013}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_DEPTH\_ZERO\_TO\_ONE}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <glm.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <gtc/constants.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00017}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a5f309f133e800e5aca3179dcbeb2a448}{00017}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a5f309f133e800e5aca3179dcbeb2a448}{VRE::VRE\_App::VRE\_App}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00018}00018\ \ \ \ \ :\ mRenderer(mWindow,\ mDevice)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00019}00019\ \ \ \ \ ,\ mPLRenderSystem(\&mSceneContext)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00020}00020\ \ \ \ \ ,\ mGameObjectManager(\&mSceneContext)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00021}00021\ \ \ \ \ ,\ mGameObjRenderSystem(\&mSceneContext)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_af62e4af77c0b48f5bd8928f25ca7bce9}{mSceneContext}}.\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}\ =\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a24b168d92daa2b3fb88d995226358330}{mDevice}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_af62e4af77c0b48f5bd8928f25ca7bce9}{mSceneContext}}.\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}\ =\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a1bf3ac9cb35a2b6e5940931de83f5493}{mRenderer}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_ae127f70c24bc2cfeb57fa90fb163b557}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00028}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a21a373a2ba2b41c44f692455a8cbe7ec}{00028}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a21a373a2ba2b41c44f692455a8cbe7ec}{VRE::VRE\_App::\string~VRE\_App}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00030}00030\ \textcolor{comment}{//\ TODO:\ This\ function\ can\ be\ simplified.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00031}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a44a4aea947fa3243b85e6ce323a5fc16}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a44a4aea947fa3243b85e6ce323a5fc16}{VRE::VRE\_App::Run}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{auto}\ totalFrames\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ frameCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{auto}\ startTime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{while}\ (!mWindow.ShouldClose())\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ glfwPollEvents();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ currentTime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ deltaTime\ =\ std::chrono::duration<float,\ std::chrono::seconds::period>(currentTime\ -\/\ startTime).count();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ 1.0f\ /\ deltaTime\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ totalFrames\ +=\ (1.0f\ /\ deltaTime);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ frameCount++;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ startTime\ =\ currentTime;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ aspRatio\ =\ mRenderer.GetAspectRatio();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ mCamera.SetPerspectiveProjection(glm::radians(50.f),\ aspRatio,\ 0.1f,\ 1000.f);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Can\ probably\ optimize\ this\ using\ GLFW\ callback\ function.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ mInputListener.Move(mWindow.GetGLFWwindow(),\ deltaTime,\ mCamera);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ commandBuffer\ =\ mRenderer.BeginDraw())\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ frameIndex\ =\ mRenderer.GetFrameIndex();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}\ ubo;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ Update(deltaTime,\ ubo);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ Render(ubo);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ mRenderer.EndDraw();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00065}00065\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Avg.\ frame\ rate\ for\ run:\ "{}}\ <<\ totalFrames\ /\ frameCount\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00066}00066\ \ \ \ \ vkDeviceWaitIdle(mDevice.GetVkDevice());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00069}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_ae127f70c24bc2cfeb57fa90fb163b557}{00069}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_ae127f70c24bc2cfeb57fa90fb163b557}{VRE::VRE\_App::Init}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00070}00070\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//Create\ descriptor\ pool\ for\ global\ data.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00072}00072\ \ \ \ \ mDescriptorPool\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder}{VRE\_DescriptorPool::Builder}}(mDevice)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a1cef6583b5fa934410be226c1471bcc0}{SetMaxSets}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}})}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a0dd8df8b0c0eccf5137addb4ede41136}{AddPoolSize}}(VK\_DESCRIPTOR\_TYPE\_UNIFORM\_BUFFER,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}})}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a95e644dcedccbc892e1f8bd1fcf3706b}{Build}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00077}00077\ \ \ \ \ mSceneContext.mObjectDescPools.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{auto}\ objPoolBuilder\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder}{VRE\_DescriptorPool::Builder}}(mDevice)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a1cef6583b5fa934410be226c1471bcc0}{SetMaxSets}}(1000)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a0dd8df8b0c0eccf5137addb4ede41136}{AddPoolSize}}(VK\_DESCRIPTOR\_TYPE\_COMBINED\_IMAGE\_SAMPLER,\ 1000)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a0dd8df8b0c0eccf5137addb4ede41136}{AddPoolSize}}(VK\_DESCRIPTOR\_TYPE\_UNIFORM\_BUFFER,\ 1000)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_pool_1_1_builder_a3ca8263cc05f8745916f7b8842a3f6d4}{SetPoolFlags}}(VK\_DESCRIPTOR\_POOL\_CREATE\_FREE\_DESCRIPTOR\_SET\_BIT);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ mSceneContext.mObjectDescPools.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ mSceneContext.mObjectDescPools[i]\ =\ objPoolBuilder.Build();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ mSceneUBOs.push\_back(std::make\_unique<VRE\_Buffer>(mDevice,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}),\ 1,\ VK\_BUFFER\_USAGE\_UNIFORM\_BUFFER\_BIT,\ VK\_MEMORY\_PROPERTY\_HOST\_VISIBLE\_BIT));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ mSceneUBOs[i]-\/>Map();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00093}00093\ \ \ \ \ mSceneContext.mGlobalDescSetLayout\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}{VRE\_DescriptorSetLayout::Builder}}(mDevice)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe}{AddBinding}}(0,\ VK\_DESCRIPTOR\_TYPE\_UNIFORM\_BUFFER,\ VK\_SHADER\_STAGE\_ALL\_GRAPHICS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_acf404e08a52e7cddf3f10e6b126d8f0e}{Build}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bufferInfo\ =\ mSceneUBOs[i]-\/>DescriptorInfo();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ mSceneContext.mSceneDescriptorSets.push\_back(VkDescriptorSet());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\_DescriptorWriter}}(*mSceneContext.mGlobalDescSetLayout,\ *mDescriptorPool)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer_a99d4a37512a0e259687703f68c2eab76}{WriteBuffer}}(0,\ \&bufferInfo)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer_a55cab3920a8f2dfbcbba0f3710cd373e}{Build}}(mSceneContext.mSceneDescriptorSets[i]);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00106}00106\ \ \ \ \ LoadObjects();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00107}00107\ \ \ \ \ mSceneContext.mGameObjMap\ =\ \&mGameObjectManager.GetGameObjectsMap();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00108}00108\ \ \ \ \ mPLRenderSystem.Init();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00109}00109\ \ \ \ \ mGameObjectManager.Init();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00110}00110\ \ \ \ \ mGameObjRenderSystem.Init();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00111}00111\ \ \ \ \ mCamera\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___camera}{VRE\_Camera}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00112}00112\ \ \ \ \ mInputListener\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___input_listener}{VRE\_InputListener}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00115}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a293c657d73be8b50ecc3ee6bd2d45063}{00115}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a293c657d73be8b50ecc3ee6bd2d45063}{VRE::VRE\_App::Update}}(\textcolor{keywordtype}{float}\ dt,\ \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}\&\ ubo)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00116}00116\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00117}00117\ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a807734aa571224a015225a44c68ec2e8}{mProjectionMat}}\ =\ mCamera.GetProjection();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00118}00118\ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a78cada315623d4345524c09d259de2d4}{mViewMat}}\ =\ mCamera.GetViewMat();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00119}00119\ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a0c11437a033c9d1c1907689307ee673f}{mInvViewMat}}\ =\ mCamera.GetInvViewMat();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00120}00120\ \ \ \ \ mPLRenderSystem.Update(ubo,\ dt);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00122}00122\ \ \ \ \ mSceneUBOs[mRenderer.GetFrameIndex()]-\/>WriteToBuffer(\&ubo);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00123}00123\ \ \ \ \ mSceneUBOs[mRenderer.GetFrameIndex()]-\/>Flush();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00125}00125\ \ \ \ \ mGameObjectManager.Update(dt);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00128}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a9a4d0ce64526e91f2a28ec10a82692d0}{00128}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a9a4d0ce64526e91f2a28ec10a82692d0}{VRE::VRE\_App::Render}}(\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}\&\ ubo)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00130}00130\ \ \ \ \ mRenderer.BeginSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00131}00131\ \ \ \ \ mPLRenderSystem.Render();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00132}00132\ \ \ \ \ mGameObjRenderSystem.Render();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00133}00133\ \ \ \ \ mRenderer.EndSwapChainRenderPass(mRenderer.GetCurrentCommandBuffer());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00136}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a303e0cc9921450cc7ca531c7bb78b319}{00136}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___app_a303e0cc9921450cc7ca531c7bb78b319}{VRE::VRE\_App::LoadObjects}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00137}00137\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00141}00141\ \ \ \ \ std::shared\_ptr<VRE\_glTFModel>\ model\ =\ std::make\_shared<VRE\_glTFModel>(mDevice,\ \textcolor{stringliteral}{"{}Resources/Models/Duck/"{}},\ \textcolor{stringliteral}{"{}Duck"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00142}00142\ \ \ \ \ model-\/>LoadModel();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00143}00143\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object}{VRE::VRE\_GameObject}}\&\ obj\ =\ mGameObjectManager.CreateGameObject();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00144}00144\ \ \ \ \ obj.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_a5ab1a83c344e0bc73b8b9b52d7f91509}{mModel}}\ =\ model;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00145}00145\ \ \ \ \ obj.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ad78573bced48f96cced7fcdd74446276}{mTransform}}.\mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}\ =\ \{\ 0.f,\ -\/1.5f,\ 0.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00146}00146\ \ \ \ \ obj.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ad78573bced48f96cced7fcdd74446276}{mTransform}}.\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}\ =\ \{\ 0.f,\ glm::pi<float>(),\ 0.f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00147}00147\ \ \ \ \ obj.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ad78573bced48f96cced7fcdd74446276}{mTransform}}.\mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}\ =\ \{\ 0.01f,\ 0.01f,\ 0.01f\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//std::shared\_ptr<VRE\_glTFModel>\ model\ =\ std::make\_shared<VRE\_glTFModel>(mDevice,\ "{}Resources/Models/ToyCar/"{},\ "{}ToyCar"{});}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{comment}{//model-\/>LoadModel();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00154}00154\ \ \ \ \ \textcolor{comment}{//VRE::VRE\_GameObject\&\ obj\ =\ mGameObjectManager.CreateGameObject();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{comment}{//obj.mModel\ =\ model;}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mTranslation\ =\ \{\ 0.f,\ 0.f,\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mRotation\ =\ \{\ glm::half\_pi<float>(),\ glm::pi<float>(),\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mScale\ =\ \{\ 0.004f,\ 0.004f,\ 0.004f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{comment}{//std::shared\_ptr<VRE\_glTFModel>\ model\ =\ std::make\_shared<VRE\_glTFModel>(mDevice,\ "{}Resources/Models/FlightHelmet/"{},\ "{}FlightHelmet"{});}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//model-\/>LoadModel();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//VRE::VRE\_GameObject\&\ obj\ =\ mGameObjectManager.CreateGameObject();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//obj.mModel\ =\ model;}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mTranslation\ =\ \{\ 0.f,\ -\/.75f,\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mRotation\ =\ \{\ 0.f,\ glm::pi<float>(),\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mScale\ =\ \{\ 3.0f,\ 3.0f,\ 3.0f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//std::shared\_ptr<VRE\_glTFModel>\ model\ =\ std::make\_shared<VRE\_glTFModel>(mDevice,\ "{}Resources/Models/SciFiHelmet/"{},\ "{}SciFiHelmet"{});}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//model-\/>LoadModel();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//VRE::VRE\_GameObject\&\ obj\ =\ mGameObjectManager.CreateGameObject();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//obj.mModel\ =\ model;}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mTranslation\ =\ \{\ 0.f,\ -\/.5f,\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mRotation\ =\ \{\ 0.f,\ glm::pi<float>(),\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mScale\ =\ \{\ 1.0f,\ 1.0f,\ 1.0f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00185}00185\ \ \ \ \ \textcolor{comment}{//std::shared\_ptr<VRE\_glTFModel>\ model\ =\ std::make\_shared<VRE\_glTFModel>(mDevice,\ "{}Resources/Models/AntiqueCamera/"{},\ "{}AntiqueCamera"{});}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//model-\/>LoadModel();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{comment}{//VRE::VRE\_GameObject\&\ obj\ =\ mGameObjectManager.CreateGameObject();}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//obj.mModel\ =\ model;}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mTranslation\ =\ \{\ 0.f,\ -\/1.5f,\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mRotation\ =\ \{\ 0.f,\ glm::pi<float>(),\ 0.f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//obj.mTransform.mScale\ =\ \{\ 0.25f,\ 0.25f,\ 0.25f\ \};}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//Rotating\ colorful\ lights\ by\ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{comment}{//Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00198}00198\ \ \ \ \ std::vector<glm::vec3>\ coloredLights\{\{1.f,\ .1f,\ .1f\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{.1f,\ .1f,\ 1.f\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{.1f,\ 1.f,\ .1f\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1.f,\ 1.f,\ .1f\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{.1f,\ 1.f,\ 1.f\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{1.f,\ 1.f,\ 1.f\}\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ coloredLights.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ pointLight\ =\ \mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___point_light_a48a43f249f26a55748d2f356e3da1e9f}{VRE\_PointLight::CreatePointLight}}(1.0f);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ pointLight.mColor\ =\ coloredLights[i];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ rotateLight\ =\ glm::rotate(glm::mat4(1.f),\ (i\ *\ glm::two\_pi<float>())\ /\ coloredLights.size(),\ \{\ 0.f,\ 1.f,\ 0.f\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ pointLight.mPosition\ =\ rotateLight\ *\ glm::vec4(-\/1.f,\ 1.f,\ -\/1.f,\ 1.f);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ mSceneContext.mPointLights.push\_back(std::move(pointLight));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___app_8cpp_source_l00212}00212\ \}}
+
+\end{DoxyCode}

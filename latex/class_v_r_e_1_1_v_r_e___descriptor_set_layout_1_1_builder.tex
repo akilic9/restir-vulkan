@@ -1,0 +1,135 @@
+\doxysection{VRE\+::VRE\+\_\+\+Descriptor\+Set\+Layout\+::Builder Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}{}\label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Descriptor.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Descriptor\+Set\+Layout\+::Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a27e10dba4344eec818f66adab797e23d}{Builder}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&device)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}{Builder}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe}{Add\+Binding}} (uint32\+\_\+t binding, Vk\+Descriptor\+Type descriptor\+Type, Vk\+Shader\+Stage\+Flags stage\+Flags, uint32\+\_\+t count=1)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout}{VRE\+\_\+\+Descriptor\+Set\+Layout}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_acf404e08a52e7cddf3f10e6b126d8f0e}{Build}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_af73e59ef4d2ce5610aa4bbe5d9dc1d15}{m\+Device}}
+\item 
+std\+::unordered\+\_\+map$<$ uint32\+\_\+t, Vk\+Descriptor\+Set\+Layout\+Binding $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b}{m\+Bindings}} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00017}{17}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a27e10dba4344eec818f66adab797e23d}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}!Builder@{Builder}}
+\index{Builder@{Builder}!VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+\doxysubsubsection{\texorpdfstring{Builder()}{Builder()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a27e10dba4344eec818f66adab797e23d} 
+VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder\+::\+Builder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00019}{19}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_af73e59ef4d2ce5610aa4bbe5d9dc1d15}{mDevice}}(device)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}!AddBinding@{AddBinding}}
+\index{AddBinding@{AddBinding}!VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+\doxysubsubsection{\texorpdfstring{AddBinding()}{AddBinding()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}{VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder}} \& VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder\+::\+Add\+Binding (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{binding}{, }\item[{Vk\+Descriptor\+Type}]{descriptor\+Type}{, }\item[{Vk\+Shader\+Stage\+Flags}]{stage\+Flags}{, }\item[{uint32\+\_\+t}]{count}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b}{mBindings}}.count(binding)\ ==\ 0\ \&\&\ \textcolor{stringliteral}{"{}Binding\ already\ in\ use."{}});}
+\DoxyCodeLine{00017\ \ \ \ \ VkDescriptorSetLayoutBinding\ layoutBinding\{\};}
+\DoxyCodeLine{00018\ \ \ \ \ layoutBinding.binding\ =\ binding;}
+\DoxyCodeLine{00019\ \ \ \ \ layoutBinding.descriptorType\ =\ descriptorType;}
+\DoxyCodeLine{00020\ \ \ \ \ layoutBinding.descriptorCount\ =\ count;}
+\DoxyCodeLine{00021\ \ \ \ \ layoutBinding.stageFlags\ =\ stageFlags;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b}{mBindings}}[binding]\ =\ layoutBinding;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_acf404e08a52e7cddf3f10e6b126d8f0e}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}!Build@{Build}}
+\index{Build@{Build}!VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+\doxysubsubsection{\texorpdfstring{Build()}{Build()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_acf404e08a52e7cddf3f10e6b126d8f0e} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout}{VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout}} $>$ VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder\+::\+Build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_v_r_e___descriptor_8cpp_source}{VRE\+\_\+\+Descriptor.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<VRE\_DescriptorSetLayout>(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_af73e59ef4d2ce5610aa4bbe5d9dc1d15}{mDevice}},\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b}{mBindings}});}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}!mBindings@{mBindings}}
+\index{mBindings@{mBindings}!VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+\doxysubsubsection{\texorpdfstring{mBindings}{mBindings}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_afa68798a5e87cdf58fed10c39e9af16b} 
+std\+::unordered\+\_\+map$<$uint32\+\_\+t, Vk\+Descriptor\+Set\+Layout\+Binding$>$ VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder\+::m\+Bindings \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00026}{26}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_af73e59ef4d2ce5610aa4bbe5d9dc1d15}\index{VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}!mDevice@{mDevice}}
+\index{mDevice@{mDevice}!VRE::VRE\_DescriptorSetLayout::Builder@{VRE::VRE\_DescriptorSetLayout::Builder}}
+\doxysubsubsection{\texorpdfstring{mDevice}{mDevice}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_af73e59ef4d2ce5610aa4bbe5d9dc1d15} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}}\& VRE\+::\+VRE\+\_\+\+Descriptor\+Set\+Layout\+::\+Builder\+::m\+Device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___descriptor_8h_source_l00025}{25}} of file \mbox{\hyperlink{_v_r_e___descriptor_8h_source}{VRE\+\_\+\+Descriptor.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___descriptor_8h}{VRE\+\_\+\+Descriptor.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___descriptor_8cpp}{VRE\+\_\+\+Descriptor.\+cpp}}\end{DoxyCompactItemize}

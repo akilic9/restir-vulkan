@@ -149,7 +149,7 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00039">39</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00045">45</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3a1609113426bd12fea71e7b64b64343" name="a3a1609113426bd12fea71e7b64b64343"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a1609113426bd12fea71e7b64b64343">&#9670;&#160;</a></span>VRE_DescriptorPool() <span class="overload">[1/2]</span></h2>
@@ -180,22 +180,22 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00065">65</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>    : <a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>(device)</div>
-<div class="line"><span class="lineno">   67</span>{</div>
-<div class="line"><span class="lineno">   68</span>    VkDescriptorPoolCreateInfo descriptorPoolInfo{};</div>
-<div class="line"><span class="lineno">   69</span>    descriptorPoolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;</div>
-<div class="line"><span class="lineno">   70</span>    descriptorPoolInfo.poolSizeCount = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(poolSizes.size());</div>
-<div class="line"><span class="lineno">   71</span>    descriptorPoolInfo.pPoolSizes = poolSizes.data();</div>
-<div class="line"><span class="lineno">   72</span>    descriptorPoolInfo.maxSets = maxSets;</div>
-<div class="line"><span class="lineno">   73</span>    descriptorPoolInfo.flags = poolFlags;</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (vkCreateDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;descriptorPoolInfo, <span class="keyword">nullptr</span>, &amp;<a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>) != VK_SUCCESS)</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create descriptor pool.&quot;</span>);</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___descriptor_pool_html_a2d209468106844514b49900781dcc5ce"><div class="ttname"><a href="#a2d209468106844514b49900781dcc5ce">VRE::VRE_DescriptorPool::mDevice</a></div><div class="ttdeci">VRE_Device &amp; mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___descriptor_8h_source.html#l00069">VRE_Descriptor.h:69</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___descriptor_pool_html_aed66d345104dcb81c4e4f47ff16fed28"><div class="ttname"><a href="#aed66d345104dcb81c4e4f47ff16fed28">VRE::VRE_DescriptorPool::mDescriptorPool</a></div><div class="ttdeci">VkDescriptorPool mDescriptorPool</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___descriptor_8h_source.html#l00070">VRE_Descriptor.h:70</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00044">VRE_Device.h:44</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00071">71</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>    : <a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>(device)</div>
+<div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>    VkDescriptorPoolCreateInfo descriptorPoolInfo{};</div>
+<div class="line"><span class="lineno">   75</span>    descriptorPoolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;</div>
+<div class="line"><span class="lineno">   76</span>    descriptorPoolInfo.poolSizeCount = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(poolSizes.size());</div>
+<div class="line"><span class="lineno">   77</span>    descriptorPoolInfo.pPoolSizes = poolSizes.data();</div>
+<div class="line"><span class="lineno">   78</span>    descriptorPoolInfo.maxSets = maxSets;</div>
+<div class="line"><span class="lineno">   79</span>    descriptorPoolInfo.flags = poolFlags;</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span> (vkCreateDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;descriptorPoolInfo, <span class="keyword">nullptr</span>, &amp;<a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>) != VK_SUCCESS)</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create descriptor pool.&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___descriptor_pool_html_a2d209468106844514b49900781dcc5ce"><div class="ttname"><a href="#a2d209468106844514b49900781dcc5ce">VRE::VRE_DescriptorPool::mDevice</a></div><div class="ttdeci">VRE_Device &amp; mDevice</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___descriptor_8h_source.html#l00075">VRE_Descriptor.h:75</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___descriptor_pool_html_aed66d345104dcb81c4e4f47ff16fed28"><div class="ttname"><a href="#aed66d345104dcb81c4e4f47ff16fed28">VRE::VRE_DescriptorPool::mDescriptorPool</a></div><div class="ttdeci">VkDescriptorPool mDescriptorPool</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___descriptor_8h_source.html#l00076">VRE_Descriptor.h:76</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html_a3b6e89f878e54464b3a03c1e4e84c52e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">VRE::VRE_Device::GetVkDevice</a></div><div class="ttdeci">VkDevice GetVkDevice()</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00049">VRE_Device.h:49</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -219,10 +219,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00079">79</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
-<div class="line"><span class="lineno">   81</span>    vkDestroyDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, <span class="keyword">nullptr</span>);</div>
-<div class="line"><span class="lineno">   82</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00085">85</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    vkDestroyDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   88</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -271,20 +271,20 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00089">89</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>{</div>
-<div class="line"><span class="lineno">   91</span>    VkDescriptorSetAllocateInfo allocInfo{};</div>
-<div class="line"><span class="lineno">   92</span>    allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;</div>
-<div class="line"><span class="lineno">   93</span>    allocInfo.descriptorPool = <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>;</div>
-<div class="line"><span class="lineno">   94</span>    allocInfo.pSetLayouts = &amp;descriptorSetLayout;</div>
-<div class="line"><span class="lineno">   95</span>    allocInfo.descriptorSetCount = 1;</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <span class="comment">// TODO: Might want to create a &quot;DescriptorPoolManager&quot; class that handles this case, and builds a new pool whenever an old pool fills up.</span></div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (vkAllocateDescriptorSets(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;allocInfo, &amp;descriptor) != VK_SUCCESS)</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  102</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00095">95</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>{</div>
+<div class="line"><span class="lineno">   97</span>    VkDescriptorSetAllocateInfo allocInfo{};</div>
+<div class="line"><span class="lineno">   98</span>    allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;</div>
+<div class="line"><span class="lineno">   99</span>    allocInfo.descriptorPool = <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>;</div>
+<div class="line"><span class="lineno">  100</span>    allocInfo.pSetLayouts = &amp;descriptorSetLayout;</div>
+<div class="line"><span class="lineno">  101</span>    allocInfo.descriptorSetCount = 1;</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>    <span class="comment">// TODO: Might want to create a &quot;DescriptorPoolManager&quot; class that handles this case, and builds a new pool whenever an old pool fills up.</span></div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (vkAllocateDescriptorSets(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), &amp;allocInfo, &amp;descriptor) != VK_SUCCESS)</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  108</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -303,10 +303,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00104">104</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
-<div class="line"><span class="lineno">  106</span>    vkFreeDescriptorSets(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(descriptors.size()), descriptors.data());</div>
-<div class="line"><span class="lineno">  107</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00110">110</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    vkFreeDescriptorSets(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(descriptors.size()), descriptors.data());</div>
+<div class="line"><span class="lineno">  113</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -350,10 +350,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00109">109</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    vkResetDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, 0);</div>
-<div class="line"><span class="lineno">  112</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8cpp_source.html#l00115">115</a> of file <a class="el" href="_v_r_e___descriptor_8cpp_source.html">VRE_Descriptor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>{</div>
+<div class="line"><span class="lineno">  117</span>    vkResetDescriptorPool(<a class="code hl_variable" href="#a2d209468106844514b49900781dcc5ce">mDevice</a>.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___device.html#a3b6e89f878e54464b3a03c1e4e84c52e">GetVkDevice</a>(), <a class="code hl_variable" href="#aed66d345104dcb81c4e4f47ff16fed28">mDescriptorPool</a>, 0);</div>
+<div class="line"><span class="lineno">  118</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -378,7 +378,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00072">72</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00078">78</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
 
 </div>
 </div>
@@ -403,7 +403,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00070">70</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00076">76</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
 
 </div>
 </div>
@@ -427,7 +427,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00069">69</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_v_r_e___descriptor_8h_source.html#l00075">75</a> of file <a class="el" href="_v_r_e___descriptor_8h_source.html">VRE_Descriptor.h</a>.</p>
 
 </div>
 </div>

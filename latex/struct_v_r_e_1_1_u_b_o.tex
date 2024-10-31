@@ -1,0 +1,111 @@
+\doxysection{VRE\+::UBO Struct Reference}
+\hypertarget{struct_v_r_e_1_1_u_b_o}{}\label{struct_v_r_e_1_1_u_b_o}\index{VRE::UBO@{VRE::UBO}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Shared\+Context.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::UBO\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{struct_v_r_e_1_1_u_b_o__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::mat4 \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a807734aa571224a015225a44c68ec2e8}{m\+Projection\+Mat}} = 1.f
+\item 
+glm\+::mat4 \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a78cada315623d4345524c09d259de2d4}{m\+View\+Mat}} = 1.f
+\item 
+glm\+::mat4 \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a0c11437a033c9d1c1907689307ee673f}{m\+Inv\+View\+Mat}} = 1.f
+\item 
+glm\+::vec4 \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_aaa59a20a5a8c6df447f7f9093d8d5e75}{m\+Ambient\+Light\+Color}} \{ 1.f, 1.f, 1.f, 0.\+02f \}
+\item 
+\mbox{\hyperlink{struct_v_r_e_1_1_point_light_info}{Point\+Light\+Info}} \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a5232325bd9f84761b55600659c946aed}{m\+Point\+Lights}} \mbox{[}\mbox{\hyperlink{_v_r_e___shared_context_8h_a737b417f16ea225cf15e8d4c23df53dc}{MAX\+\_\+\+LIGHTS}}\mbox{]}
+\item 
+int \mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a68f51d13dfa29c5ff8dd5ac77ec4974f}{m\+Active\+Light\+Count}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00032}{32}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_v_r_e_1_1_u_b_o_a68f51d13dfa29c5ff8dd5ac77ec4974f}\index{VRE::UBO@{VRE::UBO}!mActiveLightCount@{mActiveLightCount}}
+\index{mActiveLightCount@{mActiveLightCount}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mActiveLightCount}{mActiveLightCount}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_a68f51d13dfa29c5ff8dd5ac77ec4974f} 
+int VRE\+::\+UBO\+::m\+Active\+Light\+Count}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00038}{38}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_u_b_o_aaa59a20a5a8c6df447f7f9093d8d5e75}\index{VRE::UBO@{VRE::UBO}!mAmbientLightColor@{mAmbientLightColor}}
+\index{mAmbientLightColor@{mAmbientLightColor}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mAmbientLightColor}{mAmbientLightColor}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_aaa59a20a5a8c6df447f7f9093d8d5e75} 
+glm\+::vec4 VRE\+::\+UBO\+::m\+Ambient\+Light\+Color \{ 1.f, 1.f, 1.f, 0.\+02f \}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00036}{36}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{\ 1.f,\ 1.f,\ 1.f,\ 0.02f\ \};\ \textcolor{comment}{//\ r,\ g,\ b,\ intensity}}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_u_b_o_a0c11437a033c9d1c1907689307ee673f}\index{VRE::UBO@{VRE::UBO}!mInvViewMat@{mInvViewMat}}
+\index{mInvViewMat@{mInvViewMat}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mInvViewMat}{mInvViewMat}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_a0c11437a033c9d1c1907689307ee673f} 
+glm\+::mat4 VRE\+::\+UBO\+::m\+Inv\+View\+Mat = 1.f}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00035}{35}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_u_b_o_a5232325bd9f84761b55600659c946aed}\index{VRE::UBO@{VRE::UBO}!mPointLights@{mPointLights}}
+\index{mPointLights@{mPointLights}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mPointLights}{mPointLights}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_a5232325bd9f84761b55600659c946aed} 
+\mbox{\hyperlink{struct_v_r_e_1_1_point_light_info}{Point\+Light\+Info}} VRE\+::\+UBO\+::m\+Point\+Lights\mbox{[}\mbox{\hyperlink{_v_r_e___shared_context_8h_a737b417f16ea225cf15e8d4c23df53dc}{MAX\+\_\+\+LIGHTS}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00037}{37}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_u_b_o_a807734aa571224a015225a44c68ec2e8}\index{VRE::UBO@{VRE::UBO}!mProjectionMat@{mProjectionMat}}
+\index{mProjectionMat@{mProjectionMat}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mProjectionMat}{mProjectionMat}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_a807734aa571224a015225a44c68ec2e8} 
+glm\+::mat4 VRE\+::\+UBO\+::m\+Projection\+Mat = 1.f}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00033}{33}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+\Hypertarget{struct_v_r_e_1_1_u_b_o_a78cada315623d4345524c09d259de2d4}\index{VRE::UBO@{VRE::UBO}!mViewMat@{mViewMat}}
+\index{mViewMat@{mViewMat}!VRE::UBO@{VRE::UBO}}
+\doxysubsubsection{\texorpdfstring{mViewMat}{mViewMat}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_u_b_o_a78cada315623d4345524c09d259de2d4} 
+glm\+::mat4 VRE\+::\+UBO\+::m\+View\+Mat = 1.f}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___shared_context_8h_source_l00034}{34}} of file \mbox{\hyperlink{_v_r_e___shared_context_8h_source}{VRE\+\_\+\+Shared\+Context.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___shared_context_8h}{VRE\+\_\+\+Shared\+Context.\+h}}\end{DoxyCompactItemize}

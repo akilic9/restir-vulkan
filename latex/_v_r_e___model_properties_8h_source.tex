@@ -1,0 +1,62 @@
+\doxysection{VRE\+\_\+\+Model\+Properties.\+h}
+\hypertarget{_v_r_e___model_properties_8h_source}{}\label{_v_r_e___model_properties_8h_source}\index{ReSTIRVulkan/VRE\_ModelProperties.h@{ReSTIRVulkan/VRE\_ModelProperties.h}}
+\mbox{\hyperlink{_v_r_e___model_properties_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00005}00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00006}00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}vulkan/vulkan.h"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___texture_8h}{VRE\_Texture.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___buffer_8h}{VRE\_Buffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00013}\mbox{\hyperlink{_v_r_e___model_properties_8h_a816ab7d5c2ce1f0a01216042837beb93}{00013}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_RADIANS}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00014}\mbox{\hyperlink{_v_r_e___model_properties_8h_aa53e0967978ad7a8792f6961156ec968}{00014}}\ \textcolor{preprocessor}{\#define\ GLM\_FORCE\_DEPTH\_ZERO\_TO\_ONE}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <glm.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <gtc/quaternion.hpp>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00018}00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00019}\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{00019}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00020}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{00020}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_ad18d03afe8d05152d85679ed5269180e}{mPosition}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00021}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{00021}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a72d51d7a86e94517ab01418d55424fbb}{mColor}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00022}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{00022}}\ \ \ \ \ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_adca7ff9a08a0b0356a543ff4cde2b5d1}{mNormal}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00023}\mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{00023}}\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a3c9d5ea7ce5608c12cb0eb55a2ee1973}{mTexCoord0}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<VkVertexInputBindingDescription>\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_a728c4116a202c00fdeae9494f9bf5f80}{GetBindingDesc}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<VkVertexInputAttributeDescription>\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_aa02a08c6e6f16997ee7d1ba41362e7ee}{GetAttributeDesc}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex_afb6ae507f6b644ec28d1716413f225aa}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00028}00028\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00030}\mbox{\hyperlink{struct_v_r_e_1_1_model_data}{00030}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1_model_data}{ModelData}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00031}\mbox{\hyperlink{struct_v_r_e_1_1_model_data_a92cc8189092fea36d6a1c74d39ff8450}{00031}}\ \ \ \ \ \ \ \ \ std::vector<Vertex>\ \mbox{\hyperlink{struct_v_r_e_1_1_model_data_a92cc8189092fea36d6a1c74d39ff8450}{mVertices}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00032}\mbox{\hyperlink{struct_v_r_e_1_1_model_data_aab3ffb46ae09211e9e22d265e9d15808}{00032}}\ \ \ \ \ \ \ \ \ std::vector<uint32\_t>\ \mbox{\hyperlink{struct_v_r_e_1_1_model_data_aab3ffb46ae09211e9e22d265e9d15808}{mIndices}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00033}00033\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00035}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material}{00035}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material}{glTFMaterial}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00036}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material_af8ef66f73c899226876cd80e38cf16e2}{00036}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material_af8ef66f73c899226876cd80e38cf16e2}{mBaseColorFactor}}\ =\ glm::vec4(1.0f);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00037}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material_a9b51aa131202e00a68f5ed6990c6eb6e}{00037}}\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material_a9b51aa131202e00a68f5ed6990c6eb6e}{mBaseColorTextureIndex}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00038}00038\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00040}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive}{00040}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive}{glTFPrimitive}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00041}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_acbf277aa8a04eda8a7c0422360348ccc}{00041}}\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_acbf277aa8a04eda8a7c0422360348ccc}{mFirstIndex}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00042}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_ae7f9c64def53c4dd290815c187a267d6}{00042}}\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_ae7f9c64def53c4dd290815c187a267d6}{mIndexCount}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00043}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_adde03abe56cb7c547ecb0f641a81b5a2}{00043}}\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_primitive_adde03abe56cb7c547ecb0f641a81b5a2}{mMaterialIndex}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00044}00044\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00046}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_mesh}{00046}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_mesh}{glTFMesh}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00047}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_mesh_a59c3d30e049bc3e44bdd1c090d0fa881}{00047}}\ \ \ \ \ \ \ \ \ std::vector<glTFPrimitive>\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_mesh_a59c3d30e049bc3e44bdd1c090d0fa881}{mPrimitives}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00048}00048\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00050}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{00050}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{glTFNode}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00051}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a4e05cede34f2c70ca25a4ecb314a7307}{00051}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{glTFNode}}*\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a4e05cede34f2c70ca25a4ecb314a7307}{mParent}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00052}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a314f3f55d3853ce0031d37fdd6df50e0}{00052}}\ \ \ \ \ \ \ \ \ std::vector<glTFNode*>\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a314f3f55d3853ce0031d37fdd6df50e0}{mChildren}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00053}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a06bcabb34c5abb0a16bd82a04ce6e6f9}{00053}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_mesh}{glTFMesh}}\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a06bcabb34c5abb0a16bd82a04ce6e6f9}{mMesh}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00054}\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_afdba78123ab6d194d4240895af8c24cb}{00054}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_afdba78123ab6d194d4240895af8c24cb}{\string~glTFNode}}()\ \{\ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ child\ :\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node_a314f3f55d3853ce0031d37fdd6df50e0}{mChildren}})\ \textcolor{keyword}{delete}\ child;\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00055}00055\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___model_properties_8h_source_l00056}00056\ \}}
+
+\end{DoxyCode}

@@ -1,3 +1,9 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
 #include "VRE_LightRenderSystem.h"
 #include <stdexcept>
 #include <cassert>
@@ -30,7 +36,8 @@ void VRE::VRE_LightRenderSystem::Update(UBO &ubo, float dt)
 {
     int index = 0;
     auto rotateLight = glm::rotate(glm::mat4(1.f), 0.5f * dt, { 0.f, -1.f, 0.f });
-
+    //Rotating lights by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.
+    //Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
     for (auto& light : mSceneContext->mPointLights) {
         assert(index < MAX_LIGHTS && "Point lights exceed maximum number specified in SharedContext.h!");
 

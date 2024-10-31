@@ -1,0 +1,404 @@
+\doxysection{VRE\+\_\+\+Swap\+Chain.\+cpp}
+\hypertarget{_v_r_e___swap_chain_8cpp_source}{}\label{_v_r_e___swap_chain_8cpp_source}\index{ReSTIRVulkan/VRE\_SwapChain.cpp@{ReSTIRVulkan/VRE\_SwapChain.cpp}}
+\mbox{\hyperlink{_v_r_e___swap_chain_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___swap_chain_8h}{VRE\_SwapChain.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00017}00017\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00018}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98f5feecb92d7482d48520ded7535422}{00018}}\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98f5feecb92d7482d48520ded7535422}{VRE\_SwapChain::VRE\_SwapChain}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\_Device}}\ \&deviceRef,\ VkExtent2D\ extent)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ :\ mDevice\{deviceRef\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ ,\ mWindowExtent\{extent\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a85e5751ccea9c4fda55d6b589f053507}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00024}00024\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00025}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a9a13e5148de0b2742f8a86706a1c7add}{00025}}\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98f5feecb92d7482d48520ded7535422}{VRE\_SwapChain::VRE\_SwapChain}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\_Device}}\&\ deviceRef,\ VkExtent2D\ extent,\ std::shared\_ptr<VRE\_SwapChain>\ previous)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ :\ mDevice\{deviceRef\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ ,\ mWindowExtent\{extent\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ ,\ mOldSwapChain\{previous\}\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a85e5751ccea9c4fda55d6b589f053507}{Init}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a430b602aa187cfd95bafdd3865c25fc3}{mOldSwapChain}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00033}00033\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00034}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aff531d7589310b9dcc7bea81e251b941}{00034}}\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aff531d7589310b9dcc7bea81e251b941}{VRE\_SwapChain::\string~VRE\_SwapChain}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ imageView\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a54a72740c67cc84a1af05b60467d9173}{mSwapChainImageViews}})}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroyImageView(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ imageView,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a54a72740c67cc84a1af05b60467d9173}{mSwapChainImageViews}}.clear();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00040}00040\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroySwapchainKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroyImageView(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_af1e828afef954b61c9d753469ccebcd0}{mDepthImageViews}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroyImage(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ vkFreeMemory(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a3d56ae979489949392035985d77735a2}{mDepthImageMemorys}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ framebuffer\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a07375866d066eb7fc71e8cd39bdaca49}{mSwapChainFramebuffers}})}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroyFramebuffer(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ framebuffer,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ vkDestroyRenderPass(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_abd6969182e1469d064b46b4dc901b46d}{mRenderPass}},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00056}00056\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cleanup\ synchronization\ objects}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroySemaphore(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a39a288a9c1ad72b447df72dd7eb3b263}{mRenderFinishedSemaphores}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroySemaphore(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa2e5fa39e998c21273217a3191fcabe3}{mImageAvailableSemaphores}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ vkDestroyFence(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[i],\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00065}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a85e5751ccea9c4fda55d6b589f053507}{00065}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a85e5751ccea9c4fda55d6b589f053507}{VRE\_SwapChain::Init}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0cd1b296481d4ed4be59efe3d163292f}{CreateSwapChain}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa8aaebb654bddc81c80b6034188a81c6}{CreateImageViews}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a8bfd8e3d73ce6bcd5fa91e8ce18db684}{CreateRenderPass}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ada998dbadfac34d4f27c8747aee65e39}{CreateDepthResources}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_adde42a1963050d3ad906423b5d95291b}{CreateFramebuffers}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6633857196b70b1a837d3548f05fc2fe}{CreateSyncObjects}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00075}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a564901ab8578ba5e860d49f12a005c18}{00075}}\ \ \ \ \ VkResult\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a564901ab8578ba5e860d49f12a005c18}{VRE\_SwapChain::AcquireNextImage}}(uint32\_t\ *imageIndex)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ vkWaitForFences(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ 1,\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}],\ VK\_TRUE,\ std::numeric\_limits<uint64\_t>::max());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ VkResult\ result\ =\ vkAcquireNextImageKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}},\ std::numeric\_limits<uint64\_t>::max(),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa2e5fa39e998c21273217a3191fcabe3}{mImageAvailableSemaphores}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}],\ \ \textcolor{comment}{//\ must\ be\ a\ not\ signaled\ semaphore}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VK\_NULL\_HANDLE,\ imageIndex);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00085}00085\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00086}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a163aee18129c549c868b0eb1d5503c0d}{00086}}\ \ \ \ \ VkResult\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a163aee18129c549c868b0eb1d5503c0d}{VRE\_SwapChain::SubmitCommandBuffers}}(\textcolor{keyword}{const}\ VkCommandBuffer\ *buffers,\ uint32\_t\ *imageIndex)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab1e252d4a91d545669845ca7325acc27}{mImagesInFlight}}[*imageIndex]\ !=\ VK\_NULL\_HANDLE)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ vkWaitForFences(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ 1,\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab1e252d4a91d545669845ca7325acc27}{mImagesInFlight}}[*imageIndex],\ VK\_TRUE,\ UINT64\_MAX);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00090}00090\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab1e252d4a91d545669845ca7325acc27}{mImagesInFlight}}[*imageIndex]\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00092}00092\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ VkSubmitInfo\ submitInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ submitInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_SUBMIT\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00095}00095\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ VkSemaphore\ waitSemaphores[]\ =\ \{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa2e5fa39e998c21273217a3191fcabe3}{mImageAvailableSemaphores}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}]\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ VkPipelineStageFlags\ waitStages[]\ =\ \{VK\_PIPELINE\_STAGE\_COLOR\_ATTACHMENT\_OUTPUT\_BIT\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ submitInfo.waitSemaphoreCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ submitInfo.pWaitSemaphores\ =\ waitSemaphores;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ submitInfo.pWaitDstStageMask\ =\ waitStages;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ submitInfo.commandBufferCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ submitInfo.pCommandBuffers\ =\ buffers;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ VkSemaphore\ signalSemaphores[]\ =\ \{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a39a288a9c1ad72b447df72dd7eb3b263}{mRenderFinishedSemaphores}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}]\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ submitInfo.signalSemaphoreCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ submitInfo.pSignalSemaphores\ =\ signalSemaphores;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00108}00108\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ vkResetFences(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ 1,\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}]);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00110}00110\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkQueueSubmit(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_adba3699602deee3de853d0dc7420dd47}{GraphicsQueue}}(),\ 1,\ \&submitInfo,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}])\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ submit\ draw\ command\ buffer!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00113}00113\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ VkPresentInfoKHR\ presentInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ presentInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PRESENT\_INFO\_KHR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ presentInfo.waitSemaphoreCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ presentInfo.pWaitSemaphores\ =\ signalSemaphores;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00119}00119\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ VkSwapchainKHR\ swapChains[]\ =\ \{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}}\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ presentInfo.swapchainCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ presentInfo.pSwapchains\ =\ swapChains;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00123}00123\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ presentInfo.pImageIndices\ =\ imageIndex;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00125}00125\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ vkQueuePresentKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a0052048be873e934886da93e942c3a22}{PresentQueue}}(),\ \&presentInfo);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00127}00127\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}\ =\ (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a98ab4424fa2dc633925324f615cff05a}{mCurrentFrame}}\ +\ 1)\ \%\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00129}00129\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00132}00132\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00133}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0cd1b296481d4ed4be59efe3d163292f}{00133}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0cd1b296481d4ed4be59efe3d163292f}{VRE\_SwapChain::CreateSwapChain}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details}{SwapChainSupportDetails}}\ swapChainSupport\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_aaaf7ec5ac218bf43766fb3a61cc60965}{GetSwapChainSupport}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00135}00135\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ VkSurfaceFormatKHR\ surfaceFormat\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a575538bcc18de6bcb5278af1a27e50d2}{ChooseSwapSurfaceFormat}}(swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a1504f1652b2365fc4221c2a39a64c435}{mFormats}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ VkPresentModeKHR\ presentMode\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6ad223607b459d6fa64c3ed2498797bf}{ChooseSwapPresentMode}}(swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a4803c86fa8f4b93500596605b6e49bd0}{mPresentModes}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ VkExtent2D\ extent\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a04cf5db3442eeef1af26ef00be8d9885}{ChooseSwapExtent}}(swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00139}00139\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ uint32\_t\ imageCount\ =\ swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}}.minImageCount\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00141}00141\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}}.maxImageCount\ >\ 0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ imageCount\ >\ swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}}.maxImageCount)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ imageCount\ =\ swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}}.maxImageCount;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00146}00146\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ VkSwapchainCreateInfoKHR\ createInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_SWAPCHAIN\_CREATE\_INFO\_KHR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ createInfo.surface\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a5f4c0b082d6998ad49fc5616e8c3d48b}{Surface}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00150}00150\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ createInfo.minImageCount\ =\ imageCount;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ createInfo.imageFormat\ =\ surfaceFormat.format;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ createInfo.imageColorSpace\ =\ surfaceFormat.colorSpace;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ createInfo.imageExtent\ =\ extent;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ createInfo.imageArrayLayers\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ createInfo.imageUsage\ =\ VK\_IMAGE\_USAGE\_COLOR\_ATTACHMENT\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00157}00157\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_queue_family_indices}{QueueFamilyIndices}}\ indices\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a69f90869ef38058b3880e3f87ae07ade}{FindPhysicalQueueFamilies}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ uint32\_t\ queueFamilyIndices[]\ =\ \{indices.\mbox{\hyperlink{struct_v_r_e_1_1_queue_family_indices_ad87082d29a9adcfd6180c02f00f406fc}{mGraphicsFamily}},\ indices.\mbox{\hyperlink{struct_v_r_e_1_1_queue_family_indices_af9e7458593deb17e0289b785acc5a2d8}{mPresentFamily}}\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00160}00160\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (indices.\mbox{\hyperlink{struct_v_r_e_1_1_queue_family_indices_ad87082d29a9adcfd6180c02f00f406fc}{mGraphicsFamily}}\ !=\ indices.\mbox{\hyperlink{struct_v_r_e_1_1_queue_family_indices_af9e7458593deb17e0289b785acc5a2d8}{mPresentFamily}})\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.imageSharingMode\ =\ VK\_SHARING\_MODE\_CONCURRENT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.queueFamilyIndexCount\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.pQueueFamilyIndices\ =\ queueFamilyIndices;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.imageSharingMode\ =\ VK\_SHARING\_MODE\_EXCLUSIVE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.queueFamilyIndexCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.pQueueFamilyIndices\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00171}00171\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ createInfo.preTransform\ =\ swapChainSupport.\mbox{\hyperlink{struct_v_r_e_1_1_swap_chain_support_details_a57e80fe2f2c08e94f82911dbf1f9dab8}{mCapabilities}}.currentTransform;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ createInfo.compositeAlpha\ =\ VK\_COMPOSITE\_ALPHA\_OPAQUE\_BIT\_KHR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00174}00174\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ createInfo.presentMode\ =\ presentMode;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ createInfo.clipped\ =\ VK\_TRUE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00177}00177\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ createInfo.oldSwapchain\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a430b602aa187cfd95bafdd3865c25fc3}{mOldSwapChain}}\ ==\ \textcolor{keyword}{nullptr}\ ?\ VK\_NULL\_HANDLE\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a430b602aa187cfd95bafdd3865c25fc3}{mOldSwapChain}}-\/>mSwapChain;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00179}00179\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateSwapchainKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&createInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}})\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ swap\ chain!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ vkGetSwapchainImagesKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}},\ \&imageCount,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6f639dc7faa539527d2e718b69fd8795}{mSwapChainImages}}.resize(imageCount);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ vkGetSwapchainImagesKHR(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a1616689a745f3272c008b3d11ed60618}{mSwapChain}},\ \&imageCount,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6f639dc7faa539527d2e718b69fd8795}{mSwapChainImages}}.data());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00186}00186\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a9646a06769ebb8e68cbacd5a8c0f153d}{mSwapChainImageFormat}}\ =\ surfaceFormat.format;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_afc3cc9deae793cd063a7ab0cbe563b11}{mSwapChainExtent}}\ =\ extent;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00189}00189\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00190}00190\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00191}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa8aaebb654bddc81c80b6034188a81c6}{00191}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa8aaebb654bddc81c80b6034188a81c6}{VRE\_SwapChain::CreateImageViews}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00192}00192\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a54a72740c67cc84a1af05b60467d9173}{mSwapChainImageViews}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6f639dc7faa539527d2e718b69fd8795}{mSwapChainImages}}.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00194}00194\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6f639dc7faa539527d2e718b69fd8795}{mSwapChainImages}}.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ VkImageViewCreateInfo\ viewInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_IMAGE\_VIEW\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.image\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6f639dc7faa539527d2e718b69fd8795}{mSwapChainImages}}[i];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.viewType\ =\ VK\_IMAGE\_VIEW\_TYPE\_2D;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.format\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a9646a06769ebb8e68cbacd5a8c0f153d}{mSwapChainImageFormat}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.aspectMask\ =\ VK\_IMAGE\_ASPECT\_COLOR\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.baseMipLevel\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.levelCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.baseArrayLayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.layerCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00206}00206\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateImageView(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&viewInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a54a72740c67cc84a1af05b60467d9173}{mSwapChainImageViews}}[i])\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ texture\ image\ view!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00210}00210\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00211}00211\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00212}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a8bfd8e3d73ce6bcd5fa91e8ce18db684}{00212}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a8bfd8e3d73ce6bcd5fa91e8ce18db684}{VRE\_SwapChain::CreateRenderPass}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00213}00213\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ VkAttachmentDescription\ depthAttachment\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ depthAttachment.format\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a4eb9ee8a5485a62ffa0bdd4f1494ea79}{FindDepthFormat}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ depthAttachment.samples\ =\ VK\_SAMPLE\_COUNT\_1\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ depthAttachment.loadOp\ =\ VK\_ATTACHMENT\_LOAD\_OP\_CLEAR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ depthAttachment.storeOp\ =\ VK\_ATTACHMENT\_STORE\_OP\_DONT\_CARE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ depthAttachment.stencilLoadOp\ =\ VK\_ATTACHMENT\_LOAD\_OP\_DONT\_CARE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ depthAttachment.stencilStoreOp\ =\ VK\_ATTACHMENT\_STORE\_OP\_DONT\_CARE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ depthAttachment.initialLayout\ =\ VK\_IMAGE\_LAYOUT\_UNDEFINED;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ depthAttachment.finalLayout\ =\ VK\_IMAGE\_LAYOUT\_DEPTH\_STENCIL\_ATTACHMENT\_OPTIMAL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00223}00223\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ VkAttachmentReference\ depthAttachmentRef\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ depthAttachmentRef.attachment\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ depthAttachmentRef.layout\ =\ VK\_IMAGE\_LAYOUT\_DEPTH\_STENCIL\_ATTACHMENT\_OPTIMAL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00227}00227\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ VkAttachmentDescription\ colorAttachment\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ colorAttachment.format\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_af35795133f50bcf3d79f55e2cc202cd6}{GetSwapChainImageFormat}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ colorAttachment.samples\ =\ VK\_SAMPLE\_COUNT\_1\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ colorAttachment.loadOp\ =\ VK\_ATTACHMENT\_LOAD\_OP\_CLEAR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ colorAttachment.storeOp\ =\ VK\_ATTACHMENT\_STORE\_OP\_STORE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ colorAttachment.stencilStoreOp\ =\ VK\_ATTACHMENT\_STORE\_OP\_DONT\_CARE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ colorAttachment.stencilLoadOp\ =\ VK\_ATTACHMENT\_LOAD\_OP\_DONT\_CARE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ colorAttachment.initialLayout\ =\ VK\_IMAGE\_LAYOUT\_UNDEFINED;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ colorAttachment.finalLayout\ =\ VK\_IMAGE\_LAYOUT\_PRESENT\_SRC\_KHR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00237}00237\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ VkAttachmentReference\ colorAttachmentRef\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ colorAttachmentRef.attachment\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ colorAttachmentRef.layout\ =\ VK\_IMAGE\_LAYOUT\_COLOR\_ATTACHMENT\_OPTIMAL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00241}00241\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ VkSubpassDescription\ subpass\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ subpass.pipelineBindPoint\ =\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ subpass.colorAttachmentCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ subpass.pColorAttachments\ =\ \&colorAttachmentRef;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ subpass.pDepthStencilAttachment\ =\ \&depthAttachmentRef;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00247}00247\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ VkSubpassDependency\ dependency\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ dependency.srcSubpass\ =\ VK\_SUBPASS\_EXTERNAL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ dependency.srcAccessMask\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ dependency.srcStageMask\ =\ VK\_PIPELINE\_STAGE\_COLOR\_ATTACHMENT\_OUTPUT\_BIT\ |\ VK\_PIPELINE\_STAGE\_EARLY\_FRAGMENT\_TESTS\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ dependency.dstSubpass\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ dependency.dstStageMask\ =\ VK\_PIPELINE\_STAGE\_COLOR\_ATTACHMENT\_OUTPUT\_BIT\ |\ VK\_PIPELINE\_STAGE\_EARLY\_FRAGMENT\_TESTS\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ dependency.dstAccessMask\ =\ VK\_ACCESS\_COLOR\_ATTACHMENT\_WRITE\_BIT\ |\ VK\_ACCESS\_DEPTH\_STENCIL\_ATTACHMENT\_WRITE\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00255}00255\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ std::array<VkAttachmentDescription,\ 2>\ attachments\ =\ \{colorAttachment,\ depthAttachment\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ VkRenderPassCreateInfo\ renderPassInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ renderPassInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_RENDER\_PASS\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ renderPassInfo.attachmentCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(attachments.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ renderPassInfo.pAttachments\ =\ attachments.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ renderPassInfo.subpassCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ renderPassInfo.pSubpasses\ =\ \&subpass;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ renderPassInfo.dependencyCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ renderPassInfo.pDependencies\ =\ \&dependency;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00265}00265\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateRenderPass(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&renderPassInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_abd6969182e1469d064b46b4dc901b46d}{mRenderPass}})\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ render\ pass!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00269}00269\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00270}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_adde42a1963050d3ad906423b5d95291b}{00270}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_adde42a1963050d3ad906423b5d95291b}{VRE\_SwapChain::CreateFramebuffers}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00271}00271\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a07375866d066eb7fc71e8cd39bdaca49}{mSwapChainFramebuffers}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<VkImageView,\ 2>\ attachments\ =\ \{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a54a72740c67cc84a1af05b60467d9173}{mSwapChainImageViews}}[i],\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_af1e828afef954b61c9d753469ccebcd0}{mDepthImageViews}}[i]\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00275}00275\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ VkExtent2D\ swapChainExtent\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a323d9f1e3959053b88f7af19744b578c}{GetSwapChainExtent}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ VkFramebufferCreateInfo\ framebufferInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_FRAMEBUFFER\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.renderPass\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_abd6969182e1469d064b46b4dc901b46d}{mRenderPass}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.attachmentCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(attachments.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.pAttachments\ =\ attachments.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.width\ =\ swapChainExtent.width;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.height\ =\ swapChainExtent.height;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ framebufferInfo.layers\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00285}00285\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateFramebuffer(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&framebufferInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a07375866d066eb7fc71e8cd39bdaca49}{mSwapChainFramebuffers}}[i])\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ framebuffer!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00289}00289\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00290}00290\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00291}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ada998dbadfac34d4f27c8747aee65e39}{00291}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ada998dbadfac34d4f27c8747aee65e39}{VRE\_SwapChain::CreateDepthResources}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00292}00292\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ VkFormat\ depthFormat\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a4eb9ee8a5485a62ffa0bdd4f1494ea79}{FindDepthFormat}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a337aaf0decf50e9a6427968ac649e10f}{mSwapChainDepthFormat}}\ =\ depthFormat;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ VkExtent2D\ swapChainExtent\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a323d9f1e3959053b88f7af19744b578c}{GetSwapChainExtent}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00296}00296\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a3d56ae979489949392035985d77735a2}{mDepthImageMemorys}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_af1e828afef954b61c9d753469ccebcd0}{mDepthImageViews}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00300}00300\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ VkImageCreateInfo\ imageInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_IMAGE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.imageType\ =\ VK\_IMAGE\_TYPE\_2D;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.extent.width\ =\ swapChainExtent.width;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.extent.height\ =\ swapChainExtent.height;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.extent.depth\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.mipLevels\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.arrayLayers\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.format\ =\ depthFormat;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.tiling\ =\ VK\_IMAGE\_TILING\_OPTIMAL;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.initialLayout\ =\ VK\_IMAGE\_LAYOUT\_UNDEFINED;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.usage\ =\ VK\_IMAGE\_USAGE\_DEPTH\_STENCIL\_ATTACHMENT\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.samples\ =\ VK\_SAMPLE\_COUNT\_1\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.sharingMode\ =\ VK\_SHARING\_MODE\_EXCLUSIVE;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ imageInfo.flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00317}00317\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_adc5b3ee0fceffe8a4ec5b5ed9f87baf2}{CreateImageWithInfo}}(imageInfo,\ VK\_MEMORY\_PROPERTY\_DEVICE\_LOCAL\_BIT,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}[i],\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a3d56ae979489949392035985d77735a2}{mDepthImageMemorys}}[i]);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00319}00319\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ VkImageViewCreateInfo\ viewInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_IMAGE\_VIEW\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.image\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab2832ae946fe13fb85a796c444e18761}{mDepthImages}}[i];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.viewType\ =\ VK\_IMAGE\_VIEW\_TYPE\_2D;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.format\ =\ depthFormat;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.aspectMask\ =\ VK\_IMAGE\_ASPECT\_DEPTH\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.baseMipLevel\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.levelCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.baseArrayLayer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ viewInfo.subresourceRange.layerCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00330}00330\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateImageView(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&viewInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_af1e828afef954b61c9d753469ccebcd0}{mDepthImageViews}}[i])\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ texture\ image\ view!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00334}00334\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00335}00335\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00336}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6633857196b70b1a837d3548f05fc2fe}{00336}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6633857196b70b1a837d3548f05fc2fe}{VRE\_SwapChain::CreateSyncObjects}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00337}00337\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa2e5fa39e998c21273217a3191fcabe3}{mImageAvailableSemaphores}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a39a288a9c1ad72b447df72dd7eb3b263}{mRenderFinishedSemaphores}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_ab1e252d4a91d545669845ca7325acc27}{mImagesInFlight}}.resize(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a0d7125e8f2743c4ebff9b1e217d0a531}{GetImageCount}}(),\ VK\_NULL\_HANDLE);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00342}00342\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ VkSemaphoreCreateInfo\ semaphoreInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ semaphoreInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_SEMAPHORE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00345}00345\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ VkFenceCreateInfo\ fenceInfo\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ fenceInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_FENCE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ fenceInfo.flags\ =\ VK\_FENCE\_CREATE\_SIGNALED\_BIT;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00349}00349\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{MAX\_FRAMES\_IN\_FLIGHT}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateSemaphore(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&semaphoreInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aa2e5fa39e998c21273217a3191fcabe3}{mImageAvailableSemaphores}}[i])\ !=\ VK\_SUCCESS}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ vkCreateSemaphore(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&semaphoreInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a39a288a9c1ad72b447df72dd7eb3b263}{mRenderFinishedSemaphores}}[i])\ !=\ VK\_SUCCESS}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ vkCreateFence(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a3b6e89f878e54464b3a03c1e4e84c52e}{GetVkDevice}}(),\ \&fenceInfo,\ \textcolor{keyword}{nullptr},\ \&\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aface8c333f5f7f700b2d68ff1c9faea0}{mInFlightFences}}[i])\ !=\ VK\_SUCCESS)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ synchronization\ objects\ for\ a\ frame!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00357}00357\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00358}00358\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00359}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a575538bcc18de6bcb5278af1a27e50d2}{00359}}\ \ \ \ \ VkSurfaceFormatKHR\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a575538bcc18de6bcb5278af1a27e50d2}{VRE\_SwapChain::ChooseSwapSurfaceFormat}}(\textcolor{keyword}{const}\ std::vector<VkSurfaceFormatKHR>\ \&availableFormats)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00360}00360\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&availableFormat\ :\ availableFormats)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (availableFormat.format\ ==\ VK\_FORMAT\_B8G8R8A8\_SRGB\ \&\&\ availableFormat.colorSpace\ ==\ VK\_COLOR\_SPACE\_SRGB\_NONLINEAR\_KHR)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ availableFormat;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00364}00364\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ availableFormats[0];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00366}00366\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00367}00367\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00368}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6ad223607b459d6fa64c3ed2498797bf}{00368}}\ \ \ \ \ VkPresentModeKHR\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a6ad223607b459d6fa64c3ed2498797bf}{VRE\_SwapChain::ChooseSwapPresentMode}}(\textcolor{keyword}{const}\ std::vector<VkPresentModeKHR>\ \&availablePresentModes)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00369}00369\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&availablePresentMode\ :\ availablePresentModes)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (availablePresentMode\ ==\ VK\_PRESENT\_MODE\_MAILBOX\_KHR)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Present\ mode:\ Mailbox"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ availablePresentMode;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00375}00375\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Present\ mode:\ V-\/Sync"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ VK\_PRESENT\_MODE\_FIFO\_KHR;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00378}00378\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00379}00379\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00380}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a04cf5db3442eeef1af26ef00be8d9885}{00380}}\ \ \ \ \ VkExtent2D\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a04cf5db3442eeef1af26ef00be8d9885}{VRE\_SwapChain::ChooseSwapExtent}}(\textcolor{keyword}{const}\ VkSurfaceCapabilitiesKHR\ \&capabilities)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00381}00381\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (capabilities.currentExtent.width\ !=\ std::numeric\_limits<uint32\_t>::max())}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ capabilities.currentExtent;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ VkExtent2D\ actualExtent\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a745e506bba056a26b6a502f6dae4ab9f}{mWindowExtent}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ actualExtent.width\ =\ std::max(capabilities.minImageExtent.width,\ std::min(capabilities.maxImageExtent.width,\ actualExtent.width));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ actualExtent.height\ =\ std::max(capabilities.minImageExtent.height,\ std::min(capabilities.maxImageExtent.height,\ actualExtent.height));}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00388}00388\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ actualExtent;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00391}00391\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00392}00392\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00393}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a4eb9ee8a5485a62ffa0bdd4f1494ea79}{00393}}\ \ \ \ \ VkFormat\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a4eb9ee8a5485a62ffa0bdd4f1494ea79}{VRE\_SwapChain::FindDepthFormat}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00394}00394\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_a7c74606ea4aed68bc6cdd2cd39a7c957}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_aaf3ae6a0100c9dca6974824bc3c607db}{FindSupportedFormat}}(\{VK\_FORMAT\_D32\_SFLOAT,\ VK\_FORMAT\_D32\_SFLOAT\_S8\_UINT,\ VK\_FORMAT\_D24\_UNORM\_S8\_UINT\},}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VK\_IMAGE\_TILING\_OPTIMAL,\ VK\_FORMAT\_FEATURE\_DEPTH\_STENCIL\_ATTACHMENT\_BIT);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00397}00397\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___swap_chain_8cpp_source_l00398}00398\ \}}
+
+\end{DoxyCode}

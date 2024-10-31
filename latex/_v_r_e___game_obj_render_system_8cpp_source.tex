@@ -1,0 +1,86 @@
+\doxysection{VRE\+\_\+\+Game\+Obj\+Render\+System.\+cpp}
+\hypertarget{_v_r_e___game_obj_render_system_8cpp_source}{}\label{_v_r_e___game_obj_render_system_8cpp_source}\index{ReSTIRVulkan/VRE\_GameObjRenderSystem.cpp@{ReSTIRVulkan/VRE\_GameObjRenderSystem.cpp}}
+\mbox{\hyperlink{_v_r_e___game_obj_render_system_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___game_obj_render_system_8h}{VRE\_GameObjRenderSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00010}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a}{00010}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_aadd082ed93566a05682c856711ca904a}{VRE::VRE\_GameObjRenderSystem::VRE\_GameObjRenderSystem}}(\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ sharedContext)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00011}00011\ \ \ \ \ :\ mSharedContext(sharedContext)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00013}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709}{00013}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_ac1304ab35a63562e1b0fce547ae1f709}{VRE::VRE\_GameObjRenderSystem::\string~VRE\_GameObjRenderSystem}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00015}00015\ \ \ \ \ vkDestroyPipelineLayout(mSharedContext-\/>mDevice-\/>GetVkDevice(),\ mPipelineLayout,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00018}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a9f5a1bc182e0b1bf105c250dfbe33ce3}{VRE::VRE\_GameObjRenderSystem::Init}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00020}00020\ \ \ \ \ CreatePipelineLayouts();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00021}00021\ \ \ \ \ CreatePipelines();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00026}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a1a2f30519b542abd3619d0920454cf3f}{VRE::VRE\_GameObjRenderSystem::Render}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00028}00028\ \ \ \ \ mSharedContext-\/>mObjectDescPools[mSharedContext-\/>mRenderer-\/>GetFrameIndex()]-\/>ResetPool();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00030}00030\ \ \ \ \ mPipeline-\/>Bind(mSharedContext-\/>mRenderer-\/>GetCurrentCommandBuffer());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00032}00032\ \ \ \ \ vkCmdBindDescriptorSets(mSharedContext-\/>mRenderer-\/>GetCurrentCommandBuffer(),\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ mPipelineLayout,\ 0,\ 1,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&mSharedContext-\/>mSceneDescriptorSets[mSharedContext-\/>mRenderer-\/>GetFrameIndex()],\ 0,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ e\ :\ *mSharedContext-\/>mGameObjMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!e.second.mModel)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ e.second.mModel-\/>Bind(mSharedContext-\/>mRenderer-\/>GetCurrentCommandBuffer());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bufferInfo\ =\ e.second.GetBufferInfo();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ writer\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\_DescriptorWriter}}(*mDescSetLayout,\ *mSharedContext-\/>mObjectDescPools[mSharedContext-\/>mRenderer-\/>GetFrameIndex()]);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ writer.WriteBuffer(0,\ \&bufferInfo);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ e.second.mModel-\/>Render(mSharedContext-\/>mRenderer-\/>GetCurrentCommandBuffer(),\ mPipelineLayout,\ writer);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00048}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_a8ce79d8516ab85fad8e4a74be4e47d43}{VRE::VRE\_GameObjRenderSystem::CreatePipelineLayouts}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00050}00050\ \ \ \ \ VkPushConstantRange\ pushConstantRange\{\ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_v_r_e_1_1_game_object_buffer_data}{GameObjectBufferData}})\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00052}00052\ \ \ \ \ mDescSetLayout\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder}{VRE\_DescriptorSetLayout::Builder}}(*mSharedContext-\/>mDevice)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe}{AddBinding}}(0,\ VK\_DESCRIPTOR\_TYPE\_UNIFORM\_BUFFER,\ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_a30b7ba2e3dd8f6a786f516714387c2fe}{AddBinding}}(1,\ VK\_DESCRIPTOR\_TYPE\_COMBINED\_IMAGE\_SAMPLER,\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_set_layout_1_1_builder_acf404e08a52e7cddf3f10e6b126d8f0e}{Build}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00057}00057\ \ \ \ \ std::vector<VkDescriptorSetLayout>\ descSetLayouts\{\ mSharedContext-\/>mGlobalDescSetLayout-\/>GetDescriptorSetLayout(),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mDescSetLayout-\/>GetDescriptorSetLayout()\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00060}00060\ \ \ \ \ VkPipelineLayoutCreateInfo\ pipelineLayoutInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00061}00061\ \ \ \ \ pipelineLayoutInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_LAYOUT\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00062}00062\ \ \ \ \ pipelineLayoutInfo.setLayoutCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(descSetLayouts.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00063}00063\ \ \ \ \ pipelineLayoutInfo.pSetLayouts\ =\ descSetLayouts.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00064}00064\ \ \ \ \ pipelineLayoutInfo.pushConstantRangeCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00065}00065\ \ \ \ \ pipelineLayoutInfo.pPushConstantRanges\ =\ \&pushConstantRange;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreatePipelineLayout(mSharedContext-\/>mDevice-\/>GetVkDevice(),\ \&pipelineLayoutInfo,\ \textcolor{keyword}{nullptr},\ \&mPipelineLayout)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ pipeline\ layout!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00071}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_obj_render_system_acba5786cd85e1f4c39f96891d9e37018}{VRE::VRE\_GameObjRenderSystem::CreatePipelines}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00073}00073\ \ \ \ \ assert(mPipelineLayout\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ create\ pipeline\ before\ pipeline\ layout!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info}{PipelineConfigInfo}}\ pipelineConfig\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{VRE\_Pipeline::GetDefaultPipelineConfigInfo}}(pipelineConfig);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00077}00077\ \ \ \ \ pipelineConfig.mRenderPass\ =\ mSharedContext-\/>mRenderer-\/>GetSwapChainRenderPass();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00078}00078\ \ \ \ \ pipelineConfig.mPipelineLayout\ =\ mPipelineLayout;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00079}00079\ \ \ \ \ mPipeline\ =\ std::make\_unique<VRE\_Pipeline>(*mSharedContext-\/>mDevice,\ pipelineConfig,\ \textcolor{stringliteral}{"{}Shaders/test\_shader.vert.spv"{}},\ \textcolor{stringliteral}{"{}Shaders/test\_shader.frag.spv"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___game_obj_render_system_8cpp_source_l00080}00080\ \}}
+
+\end{DoxyCode}

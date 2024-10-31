@@ -1,0 +1,111 @@
+\doxysection{VRE\+\_\+\+Light\+Render\+System.\+cpp}
+\hypertarget{_v_r_e___light_render_system_8cpp_source}{}\label{_v_r_e___light_render_system_8cpp_source}\index{ReSTIRVulkan/VRE\_LightRenderSystem.cpp@{ReSTIRVulkan/VRE\_LightRenderSystem.cpp}}
+\mbox{\hyperlink{_v_r_e___light_render_system_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00005}00005\ \textcolor{comment}{*\ \ \ Overvoorde,\ A.\ (2017).\ Khronos\ Vulkan\ Tutorial.\ [online]\ Vulkan.org.\ Available\ at:\ https://docs.vulkan.org/tutorial/latest/00\_Introduction.html\ (Accessed\ 07\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00006}00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___light_render_system_8h}{VRE\_LightRenderSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}gtc/matrix\_transform.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00014}\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c}{00014}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c}{PointLightPC}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00015}\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a62695b09fd70d5ff0b3376270de4bcb0}{00015}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a62695b09fd70d5ff0b3376270de4bcb0}{mPosition}}\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00016}\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_aa582a66127e6b577acdbacfa2ea80352}{00016}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_aa582a66127e6b577acdbacfa2ea80352}{mColor}}\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00017}\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a539f7985b50b5975a7d1b7ec7501de34}{00017}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a539f7985b50b5975a7d1b7ec7501de34}{mRadius}}\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00018}00018\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00021}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608}{00021}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a35e02ad7728a8a432500c3e335802608}{VRE::VRE\_LightRenderSystem::VRE\_LightRenderSystem}}(\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\_SharedContext}}*\ sceneContext)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00022}00022\ \ \ \ \ :\ mSceneContext(sceneContext)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00024}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792}{00024}}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ad3e5637f36d8988947e6cca7c1f8d792}{VRE::VRE\_LightRenderSystem::\string~VRE\_LightRenderSystem}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00026}00026\ \ \ \ \ vkDestroyPipelineLayout(mSceneContext-\/>mDevice-\/>GetVkDevice(),\ mPipelineLayout,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00029}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9a33fa60bb23e7c648e53df10ad896a8}{VRE::VRE\_LightRenderSystem::Init}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00030}00030\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00031}00031\ \ \ \ \ CreatePipelineLayout(mSceneContext-\/>mGlobalDescSetLayout-\/>GetDescriptorSetLayout());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00032}00032\ \ \ \ \ CreatePipeline(mSceneContext-\/>mRenderer-\/>GetSwapChainRenderPass());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00035}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a9077d5dee2e9615aa8c31aef44261d77}{VRE::VRE\_LightRenderSystem::Update}}(\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o}{UBO}}\ \&ubo,\ \textcolor{keywordtype}{float}\ dt)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{auto}\ rotateLight\ =\ glm::rotate(glm::mat4(1.f),\ 0.5f\ *\ dt,\ \{\ 0.f,\ -\/1.f,\ 0.f\ \});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//Rotating\ lights\ by\ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ light\ :\ mSceneContext-\/>mPointLights)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ assert(index\ <\ \mbox{\hyperlink{_v_r_e___shared_context_8h_a737b417f16ea225cf15e8d4c23df53dc}{MAX\_LIGHTS}}\ \&\&\ \textcolor{stringliteral}{"{}Point\ lights\ exceed\ maximum\ number\ specified\ in\ SharedContext.h!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ light.mPosition\ =\ rotateLight\ *\ light.mPosition;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a5232325bd9f84761b55600659c946aed}{mPointLights}}[index].\mbox{\hyperlink{struct_v_r_e_1_1_point_light_info_ad3915ef93cf3abbd541ac2d871d9c4a1}{mPosition}}\ =\ light.mPosition;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a5232325bd9f84761b55600659c946aed}{mPointLights}}[index].\mbox{\hyperlink{struct_v_r_e_1_1_point_light_info_aa6fbd281513a728fee15dae2e3484686}{mColor}}\ =\ glm::vec4(light.mColor,\ light.mLightIntensity);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00051}00051\ \ \ \ \ ubo.\mbox{\hyperlink{struct_v_r_e_1_1_u_b_o_a68f51d13dfa29c5ff8dd5ac77ec4974f}{mActiveLightCount}}\ =\ index;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00054}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4}{00054}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a2c87fa8eb742387a716e180e5968ece4}{VRE::VRE\_LightRenderSystem::Render}}()}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00056}00056\ \ \ \ \ mPipeline-\/>Bind(mSceneContext-\/>mRenderer-\/>GetCurrentCommandBuffer());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00057}00057\ \ \ \ \ VkDescriptorSet*\ descSet\ =\ \&mSceneContext-\/>mSceneDescriptorSets[mSceneContext-\/>mRenderer-\/>GetFrameIndex()];}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00058}00058\ \ \ \ \ vkCmdBindDescriptorSets(mSceneContext-\/>mRenderer-\/>GetCurrentCommandBuffer(),\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ mPipelineLayout,\ 0,\ 1,\ descSet,\ 0,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ light\ :\ mSceneContext-\/>mPointLights)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c}{PointLightPC}}\ pc;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ pc.\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a62695b09fd70d5ff0b3376270de4bcb0}{mPosition}}\ =\ light.mPosition;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ pc.\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_aa582a66127e6b577acdbacfa2ea80352}{mColor}}\ =\ glm::vec4(light.mColor,\ light.mLightIntensity);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ pc.\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c_a539f7985b50b5975a7d1b7ec7501de34}{mRadius}}\ =\ light.mScale;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ vkCmdPushConstants(mSceneContext-\/>mRenderer-\/>GetCurrentCommandBuffer(),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mPipelineLayout,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c}{PointLightPC}}),}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&pc);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ vkCmdDraw(mSceneContext-\/>mRenderer-\/>GetCurrentCommandBuffer(),\ 6,\ 1,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00077}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}{00077}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_a3490beb0ae0f9b33fe59818cc6936939}{VRE::VRE\_LightRenderSystem::CreatePipelineLayout}}(VkDescriptorSetLayout\ descSetLayout)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00079}00079\ \ \ \ \ VkPushConstantRange\ pushConstantRange\{VK\_SHADER\_STAGE\_VERTEX\_BIT\ |\ VK\_SHADER\_STAGE\_FRAGMENT\_BIT,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_v_r_e_1_1_point_light_p_c}{PointLightPC}})\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00081}00081\ \ \ \ \ std::vector<VkDescriptorSetLayout>\ descSetLayouts\{\ descSetLayout\ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00083}00083\ \ \ \ \ VkPipelineLayoutCreateInfo\ pipelineLayoutInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00084}00084\ \ \ \ \ pipelineLayoutInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_PIPELINE\_LAYOUT\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00085}00085\ \ \ \ \ pipelineLayoutInfo.setLayoutCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(descSetLayouts.size());}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00086}00086\ \ \ \ \ pipelineLayoutInfo.pSetLayouts\ =\ descSetLayouts.data();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00087}00087\ \ \ \ \ pipelineLayoutInfo.pushConstantRangeCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00088}00088\ \ \ \ \ pipelineLayoutInfo.pPushConstantRanges\ =\ \&pushConstantRange;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreatePipelineLayout(mSceneContext-\/>mDevice-\/>GetVkDevice(),\ \&pipelineLayoutInfo,\ \textcolor{keyword}{nullptr},\ \&mPipelineLayout)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ create\ pipeline\ layout!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00094}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}{00094}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___light_render_system_ae96858898b38fa089a44c0ce835a2389}{VRE::VRE\_LightRenderSystem::CreatePipeline}}(VkRenderPass\ renderPass)}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00096}00096\ \ \ \ \ assert(mPipelineLayout\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ create\ pipeline\ before\ pipeline\ layout!"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_pipeline_config_info}{PipelineConfigInfo}}\ pipelineConfig\{\};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00099}00099\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___pipeline_aa30fd0bae585ba67fc296d6f1dc2234b}{VRE\_Pipeline::GetDefaultPipelineConfigInfo}}(pipelineConfig);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00100}00100\ \ \ \ \ pipelineConfig.mAttributeDescriptions.clear();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00101}00101\ \ \ \ \ pipelineConfig.mBindingDescriptions.clear();}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00102}00102\ \ \ \ \ pipelineConfig.mRenderPass\ =\ renderPass;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00103}00103\ \ \ \ \ pipelineConfig.mPipelineLayout\ =\ mPipelineLayout;}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00104}00104\ \ \ \ \ mPipeline\ =\ std::make\_unique<VRE\_Pipeline>(*mSceneContext-\/>mDevice,\ pipelineConfig,\ \textcolor{stringliteral}{"{}Shaders/point\_light.vert.spv"{}},\ \textcolor{stringliteral}{"{}Shaders/point\_light.frag.spv"{}});}
+\DoxyCodeLine{\Hypertarget{_v_r_e___light_render_system_8cpp_source_l00105}00105\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,22 @@
+\doxysection{VRE\+\_\+\+Utilities.\+h}
+\hypertarget{_v_r_e___utilities_8h_source}{}\label{_v_r_e___utilities_8h_source}\index{ReSTIRVulkan/VRE\_Utilities.h@{ReSTIRVulkan/VRE\_Utilities.h}}
+\mbox{\hyperlink{_v_r_e___utilities_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Hash\ implementation\ by:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00004}00004\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00005}00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Stack\ Overflow.\ (2010).\ How\ do\ I\ combine\ hash\ values\ in\ C++0x?\ [online]\ Available\ at:\ https://stackoverflow.com/questions/2590677/how-\/do-\/i-\/combine-\/hash-\/values-\/in-\/c0x/57595105\#57595105.}}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Rest>}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00012}\mbox{\hyperlink{namespace_v_r_e_acca1816c6c85fcffdf06359cf137943a}{00012}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_v_r_e_acca1816c6c85fcffdf06359cf137943a}{hashCombine}}(std::size\_t\&\ seed,\ \textcolor{keyword}{const}\ T\&\ v,\ \textcolor{keyword}{const}\ Rest\&...\ rest)\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00013}00013\ \ \ \ \ \ \ \ \ seed\ \string^=\ std::hash<T>\{\}(v)+0x9e3779b9\ +\ (seed\ <<\ 6)\ +\ (seed\ >>\ 2);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{namespace_v_r_e_acca1816c6c85fcffdf06359cf137943a}{hashCombine}}(seed,\ rest),\ ...);}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00015}00015\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e___utilities_8h_source_l00016}00016\ \}}
+
+\end{DoxyCode}

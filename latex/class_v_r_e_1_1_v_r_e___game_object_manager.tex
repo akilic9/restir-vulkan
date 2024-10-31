@@ -1,0 +1,288 @@
+\doxysection{VRE\+::VRE\+\_\+\+Game\+Object\+Manager Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager}{}\label{class_v_r_e_1_1_v_r_e___game_object_manager}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Game\+Object\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+\+Game\+Object\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e___game_object_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_af7164cc625602e237214f191767d803b}{VRE\+\_\+\+Game\+Object\+Manager}} (\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}shared\+Context)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a8354b09e8551cc468e3138ee62d420dc}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Game\+Object\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a81a4ca5a18857f470bfd8c005713e224}{VRE\+\_\+\+Game\+Object\+Manager}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ad52c42952ed53e8a2354195818a17797}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a5d548de92b863c4967fa2e237a0b1b38}{VRE\+\_\+\+Game\+Object\+Manager}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&\&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a4112ba5bf5fca5df351395e3a362221d}{operator=}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&\&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object}{VRE\+\_\+\+Game\+Object}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a2e2611b8cc5c066b4f6109deb7ba15fa}{Create\+Game\+Object}} ()
+\item 
+Vk\+Descriptor\+Buffer\+Info \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ac6264ca87207da68f076fa336da86df9}{Get\+Buffer\+Info\+For\+Game\+Object}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_a2800f0649021ba69a6052a5d436bbb50}{VRE\+\_\+\+Game\+Object\+::\+Game\+Object\+ID}} g\+Object\+ID) const
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a6981546d7c23416f2e18ef19c470997c}{Init}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a3fca39debcadbe4d7bdb87acfa6b0496}{Update}} (float delta\+Time)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ab74ed4a6587ed5ffb78a36e6b27520d6}{VRE\+\_\+\+Game\+Object\+::\+Game\+Objects\+Map}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ad5a882be32b0a615123a0f6a83f6a31c}{Get\+Game\+Objects\+Map}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_a2800f0649021ba69a6052a5d436bbb50}{VRE\+\_\+\+Game\+Object\+::\+Game\+Object\+ID}} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ae5e77419606bbce9b9e2e96448f27950}{m\+Last\+ID}} = 0
+\item 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{m\+Shared\+Context}}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ab74ed4a6587ed5ffb78a36e6b27520d6}{VRE\+\_\+\+Game\+Object\+::\+Game\+Objects\+Map}} \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}{m\+Game\+Objects\+Map}} \{\}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} $>$ $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{m\+Ubo\+Buffers}} \{ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\+\_\+\+Swap\+Chain\+::\+MAX\+\_\+\+FRAMES\+\_\+\+IN\+\_\+\+FLIGHT}} \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00012}{12}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_af7164cc625602e237214f191767d803b}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!VRE\_GameObjectManager@{VRE\_GameObjectManager}}
+\index{VRE\_GameObjectManager@{VRE\_GameObjectManager}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{VRE\_GameObjectManager()}{VRE\_GameObjectManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_af7164cc625602e237214f191767d803b} 
+VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+VRE\+\_\+\+Game\+Object\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}} \texorpdfstring{$\ast$}{*}}]{shared\+Context}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}(sharedContext)\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a8354b09e8551cc468e3138ee62d420dc}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!````~VRE\_GameObjectManager@{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjectManager}}
+\index{````~VRE\_GameObjectManager@{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjectManager}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_GameObjectManager()}{\string~VRE\_GameObjectManager()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a8354b09e8551cc468e3138ee62d420dc} 
+VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+\+Game\+Object\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a81a4ca5a18857f470bfd8c005713e224}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!VRE\_GameObjectManager@{VRE\_GameObjectManager}}
+\index{VRE\_GameObjectManager@{VRE\_GameObjectManager}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{VRE\_GameObjectManager()}{VRE\_GameObjectManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a81a4ca5a18857f470bfd8c005713e224} 
+VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+VRE\+\_\+\+Game\+Object\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a5d548de92b863c4967fa2e237a0b1b38}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!VRE\_GameObjectManager@{VRE\_GameObjectManager}}
+\index{VRE\_GameObjectManager@{VRE\_GameObjectManager}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{VRE\_GameObjectManager()}{VRE\_GameObjectManager()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a5d548de92b863c4967fa2e237a0b1b38} 
+VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+VRE\+\_\+\+Game\+Object\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a2e2611b8cc5c066b4f6109deb7ba15fa}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!CreateGameObject@{CreateGameObject}}
+\index{CreateGameObject@{CreateGameObject}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{CreateGameObject()}{CreateGameObject()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a2e2611b8cc5c066b4f6109deb7ba15fa} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object}{VRE\+::\+VRE\+\_\+\+Game\+Object}} \& VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+Create\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ae5e77419606bbce9b9e2e96448f27950}{mLastID}}\ <\ \mbox{\hyperlink{namespace_v_r_e_aa9d1755788ca2e9061d788834a0ea1f2}{VRE::MAX\_OBJECT\_COUNT}}\ \&\&\ \textcolor{stringliteral}{"{}Max\ game\ object\ count\ exceeded!"{}});}
+\DoxyCodeLine{00020\ \ \ \ \ VRE\_GameObject\ \textcolor{keywordtype}{object}\ =\ VRE\_GameObject\{\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_ae5e77419606bbce9b9e2e96448f27950}{mLastID}}++,\ *\textcolor{keyword}{this}\ \};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keywordtype}{id}\ =\ \textcolor{keywordtype}{object}.GetID();}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}{mGameObjectsMap}}.emplace(\textcolor{keywordtype}{id},\ std::move(\textcolor{keywordtype}{object}));}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}{mGameObjectsMap}}.at(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e___game_object_manager_a2e2611b8cc5c066b4f6109deb7ba15fa_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_ac6264ca87207da68f076fa336da86df9}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!GetBufferInfoForGameObject@{GetBufferInfoForGameObject}}
+\index{GetBufferInfoForGameObject@{GetBufferInfoForGameObject}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{GetBufferInfoForGameObject()}{GetBufferInfoForGameObject()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_ac6264ca87207da68f076fa336da86df9} 
+Vk\+Descriptor\+Buffer\+Info VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+Get\+Buffer\+Info\+For\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_a2800f0649021ba69a6052a5d436bbb50}{VRE\+\_\+\+Game\+Object\+::\+Game\+Object\+ID}}}]{g\+Object\+ID}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()]-\/>DescriptorInfoForIndex(gObjectID);}
+\DoxyCodeLine{00029\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_ad5a882be32b0a615123a0f6a83f6a31c}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!GetGameObjectsMap@{GetGameObjectsMap}}
+\index{GetGameObjectsMap@{GetGameObjectsMap}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{GetGameObjectsMap()}{GetGameObjectsMap()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_ad5a882be32b0a615123a0f6a83f6a31c} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ab74ed4a6587ed5ffb78a36e6b27520d6}{VRE\+\_\+\+Game\+Object\+::\+Game\+Objects\+Map}} \& VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+Get\+Game\+Objects\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00029}{29}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}{mGameObjectsMap}};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a6981546d7c23416f2e18ef19c470997c}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!Init@{Init}}
+\index{Init@{Init}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a6981546d7c23416f2e18ef19c470997c} 
+void VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ alignment\ =\ std::lcm(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a976546accd290cd1b72294ff65923de0}{mProperties}}.limits.nonCoherentAtomSize,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_a976546accd290cd1b72294ff65923de0}{mProperties}}.limits.minUniformBufferOffsetAlignment);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}.size();\ i++)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}[i]\ =\ std::make\_unique<VRE\_Buffer>(*\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a9d078e4da98a171140871ed16fd61063}{mDevice}},\ \textcolor{keyword}{sizeof}(GameObjectBufferData),\ \mbox{\hyperlink{namespace_v_r_e_aa9d1755788ca2e9061d788834a0ea1f2}{VRE::MAX\_OBJECT\_COUNT}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ VK\_BUFFER\_USAGE\_UNIFORM\_BUFFER\_BIT,\ VK\_MEMORY\_PROPERTY\_HOST\_VISIBLE\_BIT,\ alignment);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}[i]-\/>Map();}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_ad52c42952ed53e8a2354195818a17797}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_ad52c42952ed53e8a2354195818a17797} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \& VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a4112ba5bf5fca5df351395e3a362221d}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a4112ba5bf5fca5df351395e3a362221d} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \& VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager}{VRE\+\_\+\+Game\+Object\+Manager}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a3fca39debcadbe4d7bdb87acfa6b0496}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!Update@{Update}}
+\index{Update@{Update}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a3fca39debcadbe4d7bdb87acfa6b0496} 
+void VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8cpp_source}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ e\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}{mGameObjectsMap}})\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ obj\ =\ e.second;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ GameObjectBufferData\ data\{\};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ data.mModelMatrix\ =\ obj.mTransform.Mat4();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ data.mNormalMatrix\ =\ obj.mTransform.NormalMatrix();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()]-\/>WriteToIndex(\&data,\ e.first);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}{mUboBuffers}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}{mSharedContext}}-\/>\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context_a57fa770148e474a912b0b37845ddf285}{mRenderer}}-\/>\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___renderer_a7d3f610759402a62e33f5ebb62eacf7d}{GetFrameIndex}}()]-\/>Flush();}
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!mGameObjectsMap@{mGameObjectsMap}}
+\index{mGameObjectsMap@{mGameObjectsMap}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{mGameObjectsMap}{mGameObjectsMap}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_afef05c8d00cdd67e48e730e612ba6d27} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_ab74ed4a6587ed5ffb78a36e6b27520d6}{VRE\+\_\+\+Game\+Object\+::\+Game\+Objects\+Map}} VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::m\+Game\+Objects\+Map \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00034}{34}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{\};}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_ae5e77419606bbce9b9e2e96448f27950}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!mLastID@{mLastID}}
+\index{mLastID@{mLastID}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{mLastID}{mLastID}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_ae5e77419606bbce9b9e2e96448f27950} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___game_object_a2800f0649021ba69a6052a5d436bbb50}{VRE\+\_\+\+Game\+Object\+::\+Game\+Object\+ID}} VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::m\+Last\+ID = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00032}{32}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!mSharedContext@{mSharedContext}}
+\index{mSharedContext@{mSharedContext}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{mSharedContext}{mSharedContext}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a7714f68cf5e883580d9e3f4d16e5c028} 
+\mbox{\hyperlink{struct_v_r_e_1_1_v_r_e___shared_context}{VRE\+\_\+\+Shared\+Context}}\texorpdfstring{$\ast$}{*} VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::m\+Shared\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00033}{33}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550}\index{VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}!mUboBuffers@{mUboBuffers}}
+\index{mUboBuffers@{mUboBuffers}!VRE::VRE\_GameObjectManager@{VRE::VRE\_GameObjectManager}}
+\doxysubsubsection{\texorpdfstring{mUboBuffers}{mUboBuffers}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e___game_object_manager_a902c26b9f32ac5a2d9a2d9bb8bc85550} 
+std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}}$>$ $>$ VRE\+::\+VRE\+\_\+\+Game\+Object\+Manager\+::m\+Ubo\+Buffers \{ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\+\_\+\+Swap\+Chain\+::\+MAX\+\_\+\+FRAMES\+\_\+\+IN\+\_\+\+FLIGHT}} \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source_l00035}{35}} of file \mbox{\hyperlink{_v_r_e___game_object_manager_8h_source}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___swap_chain_aac4854d96641bf4eb7b62c5b18cde384}{VRE\_SwapChain::MAX\_FRAMES\_IN\_FLIGHT}}\ \};}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___game_object_manager_8h}{VRE\+\_\+\+Game\+Object\+Manager.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___game_object_manager_8cpp}{VRE\+\_\+\+Game\+Object\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,3 +1,9 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
 #pragma once
 
 #include "VRE_Window.h"
@@ -34,7 +40,6 @@ namespace VRE {
         VRE_Device(VRE_Window &window);
         ~VRE_Device();
         
-        // Not copyable or movable
         VRE_Device(const VRE_Device &) = delete;
         VRE_Device& operator=(const VRE_Device &) = delete;
         VRE_Device(VRE_Device &&) = delete;
@@ -52,7 +57,6 @@ namespace VRE {
         QueueFamilyIndices FindPhysicalQueueFamilies() { return FindQueueFamilies(mPhysicalDevice); }
         VkFormat FindSupportedFormat(const std::vector<VkFormat> &candidates, VkImageTiling tiling, VkFormatFeatureFlags features);
         
-        // Buffer Helper Functions
         void CreateBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer &buffer, VkDeviceMemory &bufferMemory);
         VkCommandBuffer BeginSingleTimeCommands();
         void EndSingleTimeCommands(VkCommandBuffer commandBuffer);
@@ -71,7 +75,6 @@ namespace VRE {
         void CreateLogicalDevice();
         void CreateCommandPool();
     
-        // Helper functions
         bool IsDeviceSuitable(VkPhysicalDevice device);
         std::vector<const char *> GetRequiredExtensions();
         bool CheckValidationLayerSupport();

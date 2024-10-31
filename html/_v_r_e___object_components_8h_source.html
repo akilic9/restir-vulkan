@@ -99,92 +99,94 @@ $(function(){initNavTree('_v_r_e___object_components_8h_source.html',''); initRe
   <div class="headertitle"><div class="title">VRE_ObjectComponents.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_v_r_e___object_components_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;glm.hpp&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_v_r_e.html">VRE</a> {</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">    5</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">MAX_OBJECT_COUNT</a> = 1000;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html">    7</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_v_r_e_1_1_transform.html">Transform</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">    8</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>{ 0.f };</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">    9</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>{ 1.f };</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">   10</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>{ 0.f };</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// Matrix corresponds to Translate * Ry * Rx * Rz * Scale</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="comment">// Rotations correspond to Tait-bryan angles of Y(1), X(2), Z(3)</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// Wikipedia Contributors (2024). Euler angles. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix.</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">   15</a></span>        glm::mat4 <a class="code hl_function" href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">Mat4</a>() {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c3 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s3 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c2 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s2 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c1 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s1 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">return</span> glm::mat4{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c1 * c3 + s1 * s2 * s3),</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c2 * s3),</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c1 * s2 * s3 - c3 * s1),</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    0.0f,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                },</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c3 * s1 * s2 - c1 * s3),</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c2 * c3),</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c1 * c3 * s2 + s1 * s3),</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    0.0f,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                },</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (c2 * s1),</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (-s2),</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (c1 * c2),</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    0.0f,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                },</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                {<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.x, <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.y, <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.z, 1.0f} };</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<a href="_v_r_e___object_components_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//Transform code by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&amp;list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&amp;index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;glm.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_v_r_e.html">VRE</a> {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">    7</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">MAX_OBJECT_COUNT</a> = 1000;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html">    9</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_v_r_e_1_1_transform.html">Transform</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">   10</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>{ 0.f };</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">   11</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>{ 1.f };</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">   12</a></span>        glm::vec3 <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>{ 0.f };</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="comment">// Matrix corresponds to Translate * Ry * Rx * Rz * Scale</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">// Rotations correspond to Tait-bryan angles of Y(1), X(2), Z(3)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// Wikipedia Contributors (2024). Euler angles. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix.</span></div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">   17</a></span>        glm::mat4 <a class="code hl_function" href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">Mat4</a>() {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c3 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s3 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c2 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s2 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c1 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s1 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordflow">return</span> glm::mat4{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c1 * c3 + s1 * s2 * s3),</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c2 * s3),</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.x * (c1 * s2 * s3 - c3 * s1),</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                    0.0f,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                },</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c3 * s1 * s2 - c1 * s3),</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c2 * c3),</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.y * (c1 * c3 * s2 + s1 * s3),</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                    0.0f,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                },</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (c2 * s1),</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (-s2),</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                    <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>.z * (c1 * c2),</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                    0.0f,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                },</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                {<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.x, <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.y, <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">mTranslation</a>.z, 1.0f} };</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">   44</a></span>        glm::mat3 <a class="code hl_function" href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">NormalMatrix</a>() {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c3 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s3 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c2 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s2 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c1 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s1 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keyword">const</span> glm::vec3 inverseScale = 1.0f / <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">   46</a></span>        glm::mat3 <a class="code hl_function" href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">NormalMatrix</a>() {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c3 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s3 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.z);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c2 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s2 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.x);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> c1 = glm::cos(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> s1 = glm::sin(<a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">mRotation</a>.y);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> glm::mat3{</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    inverseScale.x * (c1 * c3 + s1 * s2 * s3),</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                    inverseScale.x * (c2 * s3),</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    inverseScale.x * (c1 * s2 * s3 - c3 * s1),</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                },</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    inverseScale.y * (c3 * s1 * s2 - c1 * s3),</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    inverseScale.y * (c2 * c3),</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    inverseScale.y * (c1 * c3 * s2 + s1 * s3),</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                },</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                    inverseScale.z * (c2 * s1),</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                    inverseScale.z * (-s2),</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    inverseScale.z * (c1 * c2),</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                } };</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">const</span> glm::vec3 inverseScale = 1.0f / <a class="code hl_variable" href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">mScale</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">return</span> glm::mat3{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                    inverseScale.x * (c1 * c3 + s1 * s2 * s3),</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    inverseScale.x * (c2 * s3),</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    inverseScale.x * (c1 * s2 * s3 - c3 * s1),</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                },</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    inverseScale.y * (c3 * s1 * s2 - c1 * s3),</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    inverseScale.y * (c2 * c3),</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    inverseScale.y * (c1 * c3 * s2 + s1 * s3),</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                },</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    inverseScale.z * (c2 * s1),</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    inverseScale.z * (-s2),</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    inverseScale.z * (c1 * c2),</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                } };</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    };</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
-<div class="ttc" id="anamespace_v_r_e_html"><div class="ttname"><a href="namespace_v_r_e.html">VRE</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___app_8h_source.html#l00017">VRE_App.h:17</a></div></div>
-<div class="ttc" id="anamespace_v_r_e_html_aa9d1755788ca2e9061d788834a0ea1f2"><div class="ttname"><a href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">VRE::MAX_OBJECT_COUNT</a></div><div class="ttdeci">static const int MAX_OBJECT_COUNT</div><div class="ttdef"><b>Definition</b> <a href="#l00005">VRE_ObjectComponents.h:5</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html">VRE::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="#l00007">VRE_ObjectComponents.h:7</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a022875007bba0475f0254c02a37d47d3"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">VRE::Transform::mRotation</a></div><div class="ttdeci">glm::vec3 mRotation</div><div class="ttdef"><b>Definition</b> <a href="#l00010">VRE_ObjectComponents.h:10</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a44f723e5b89d177f6d0542be7c9c1658"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">VRE::Transform::mScale</a></div><div class="ttdeci">glm::vec3 mScale</div><div class="ttdef"><b>Definition</b> <a href="#l00009">VRE_ObjectComponents.h:9</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a561d7872072e38f278227a66aa9343c3"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">VRE::Transform::NormalMatrix</a></div><div class="ttdeci">glm::mat3 NormalMatrix()</div><div class="ttdef"><b>Definition</b> <a href="#l00044">VRE_ObjectComponents.h:44</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a8c0364f7ed23cfc5af75e41c04e401cc"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">VRE::Transform::mTranslation</a></div><div class="ttdeci">glm::vec3 mTranslation</div><div class="ttdef"><b>Definition</b> <a href="#l00008">VRE_ObjectComponents.h:8</a></div></div>
-<div class="ttc" id="astruct_v_r_e_1_1_transform_html_ae1b0897211068cf091aeb5deb3ed2b15"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">VRE::Transform::Mat4</a></div><div class="ttdeci">glm::mat4 Mat4()</div><div class="ttdef"><b>Definition</b> <a href="#l00015">VRE_ObjectComponents.h:15</a></div></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="ttc" id="anamespace_v_r_e_html"><div class="ttname"><a href="namespace_v_r_e.html">VRE</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___app_8h_source.html#l00025">VRE_App.h:25</a></div></div>
+<div class="ttc" id="anamespace_v_r_e_html_aa9d1755788ca2e9061d788834a0ea1f2"><div class="ttname"><a href="namespace_v_r_e.html#aa9d1755788ca2e9061d788834a0ea1f2">VRE::MAX_OBJECT_COUNT</a></div><div class="ttdeci">static const int MAX_OBJECT_COUNT</div><div class="ttdef"><b>Definition</b> <a href="#l00007">VRE_ObjectComponents.h:7</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html">VRE::Transform</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">VRE_ObjectComponents.h:9</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a022875007bba0475f0254c02a37d47d3"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a022875007bba0475f0254c02a37d47d3">VRE::Transform::mRotation</a></div><div class="ttdeci">glm::vec3 mRotation</div><div class="ttdef"><b>Definition</b> <a href="#l00012">VRE_ObjectComponents.h:12</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a44f723e5b89d177f6d0542be7c9c1658"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a44f723e5b89d177f6d0542be7c9c1658">VRE::Transform::mScale</a></div><div class="ttdeci">glm::vec3 mScale</div><div class="ttdef"><b>Definition</b> <a href="#l00011">VRE_ObjectComponents.h:11</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a561d7872072e38f278227a66aa9343c3"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a561d7872072e38f278227a66aa9343c3">VRE::Transform::NormalMatrix</a></div><div class="ttdeci">glm::mat3 NormalMatrix()</div><div class="ttdef"><b>Definition</b> <a href="#l00046">VRE_ObjectComponents.h:46</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html_a8c0364f7ed23cfc5af75e41c04e401cc"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#a8c0364f7ed23cfc5af75e41c04e401cc">VRE::Transform::mTranslation</a></div><div class="ttdeci">glm::vec3 mTranslation</div><div class="ttdef"><b>Definition</b> <a href="#l00010">VRE_ObjectComponents.h:10</a></div></div>
+<div class="ttc" id="astruct_v_r_e_1_1_transform_html_ae1b0897211068cf091aeb5deb3ed2b15"><div class="ttname"><a href="struct_v_r_e_1_1_transform.html#ae1b0897211068cf091aeb5deb3ed2b15">VRE::Transform::Mat4</a></div><div class="ttdeci">glm::mat4 Mat4()</div><div class="ttdef"><b>Definition</b> <a href="#l00017">VRE_ObjectComponents.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

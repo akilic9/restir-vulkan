@@ -86,7 +86,7 @@ var sectionId = 'dynsection-0';
 <text text-anchor="start" x="14" y="-102.5" font-family="Helvetica,sans-Serif" font-size="10.00">void Update(UBO &amp;ubo,</text>
 <text text-anchor="start" x="14" y="-90.5" font-family="Helvetica,sans-Serif" font-size="10.00"> float dt)</text>
 <text text-anchor="start" x="4" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="14" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">void RenderLights()</text>
+<text text-anchor="start" x="14" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">void Render()</text>
 <text text-anchor="start" x="5.5" y="-58.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
 <text text-anchor="start" x="14" y="-58.5" font-family="Helvetica,sans-Serif" font-size="10.00">void CreatePipelineLayout</text>
 <text text-anchor="start" x="14" y="-46.5" font-family="Helvetica,sans-Serif" font-size="10.00">(VkDescriptorSetLayout</text>

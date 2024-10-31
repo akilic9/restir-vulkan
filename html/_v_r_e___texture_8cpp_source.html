@@ -99,280 +99,287 @@ $(function(){initNavTree('_v_r_e___texture_8cpp_source.html',''); initResizable(
   <div class="headertitle"><div class="title">VRE_Texture.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_v_r_e___texture_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___texture_8h.html">VRE_Texture.h</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___buffer_8h.html">VRE_Buffer.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;stb_image.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">    8</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">VRE::VRE_Texture::VRE_Texture</a>(<a class="code hl_class" href="class_v_r_e_1_1_v_r_e___device.html">VRE_Device</a>&amp; device, <span class="keyword">const</span> std::string&amp; filePath)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    : mDevice(device)</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    , mTextureImage(nullptr)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    , mTextureImageMemory(nullptr)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    , mTextureImageView(nullptr)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    , mTextureSampler(nullptr)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    , mMipLevels(0)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">CreateImage</a>(filePath);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#af944fb8db6736aafe7443f91f6e6a1b1">CreateTextureImageView</a>();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">CreateTextureSampler</a>();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a2aed540f6daa7f2e92b8fa4ac20da333">UpdateDescriptor</a>();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+<a href="_v_r_e___texture_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">*  Resources:</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&amp;list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&amp;index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*   lukasino 1214 (2022). Textures - Vulkan / Game Engine tutorial[0]. [online] YouTube. Available at: https://www.youtube.com/watch?v=_AitmLEnP28 and https://github.com/lukasino1214/Game-Engine-Tutorial (Accessed 10 Aug. 2024).</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___texture_8h.html">VRE_Texture.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_v_r_e___buffer_8h.html">VRE_Buffer.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;stb_image.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">   15</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">VRE::VRE_Texture::VRE_Texture</a>(<a class="code hl_class" href="class_v_r_e_1_1_v_r_e___device.html">VRE_Device</a>&amp; device, <span class="keyword">const</span> std::string&amp; filePath)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    : mDevice(device)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    , mTextureImage(nullptr)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    , mTextureImageMemory(nullptr)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    , mImageView(nullptr)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    , mTextureSampler(nullptr)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    , mMipLevels(0)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">CreateImage</a>(filePath);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afdef9716ac82d0e6ad87e16657dc43f7">CreateImageView</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">CreateTextureSampler</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a305bad16983d15b197c1bdd57417df36">UpdateDescriptorInfo</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">   22</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">VRE::VRE_Texture::~VRE_Texture</a>()</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    vkDestroySampler(mDevice.GetVkDevice(), mTextureSampler, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    vkDestroyImageView(mDevice.GetVkDevice(), mTextureImageView, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    vkDestroyImage(mDevice.GetVkDevice(), mTextureImage, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    vkFreeMemory(mDevice.GetVkDevice(), mTextureImageMemory, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">   29</a></span><a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">VRE::VRE_Texture::~VRE_Texture</a>()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    vkDestroySampler(mDevice.GetVkDevice(), mTextureSampler, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    vkDestroyImageView(mDevice.GetVkDevice(), mImageView, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    vkDestroyImage(mDevice.GetVkDevice(), mTextureImage, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    vkFreeMemory(mDevice.GetVkDevice(), mTextureImageMemory, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">   30</a></span>std::unique_ptr&lt;VRE::VRE_Texture&gt; <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">VRE::VRE_Texture::CreateTexture</a>(<a class="code hl_class" href="class_v_r_e_1_1_v_r_e___device.html">VRE_Device</a>&amp; device, <span class="keyword">const</span> std::string &amp;filePath)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> std::make_unique&lt;VRE_Texture&gt;(device, filePath);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">   37</a></span>std::unique_ptr&lt;VRE::VRE_Texture&gt; <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">VRE::VRE_Texture::CreateTexture</a>(<a class="code hl_class" href="class_v_r_e_1_1_v_r_e___device.html">VRE_Device</a>&amp; device, <span class="keyword">const</span> std::string &amp;filePath)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> std::make_unique&lt;VRE_Texture&gt;(device, filePath);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">VRE::VRE_Texture::CreateImage</a>(<span class="keyword">const</span> std::string &amp;filePath)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> width, height, channels;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    stbi_uc* pixels = stbi_load(filePath.c_str(), &amp;width, &amp;height, &amp;channels, STBI_rgb_alpha);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (!pixels)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture image!&quot;</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_class" href="class_v_r_e_1_1_v_r_e___buffer.html">VRE_Buffer</a> stagingBuffer(mDevice, 4, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width * height),</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                             VK_BUFFER_USAGE_TRANSFER_SRC_BIT,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                             VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#a1fcc1a81e90c3fb8a143ae4366b1f7d8">Map</a>();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#ab3316823e14587f60b98ccdb0bf71c47">WriteToBuffer</a>(pixels);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    stbi_image_free(pixels);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    mMipLevels = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(std::floor(std::log2(std::max(width, height)))) + 1;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    VkImageCreateInfo imageInfo{};</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    imageInfo.imageType = VK_IMAGE_TYPE_2D;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    imageInfo.extent.width = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    imageInfo.extent.height = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(height);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    imageInfo.extent.depth = 1;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    imageInfo.mipLevels = mMipLevels;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    imageInfo.arrayLayers = 1;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    imageInfo.format = VK_FORMAT_R8G8B8A8_SRGB;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    imageInfo.flags = 0; <span class="comment">// Optional</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    mDevice.CreateImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, mTextureImage, mTextureImageMemory);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    TransitionImageLayout(mTextureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    mDevice.CopyBufferToImage(stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#a0b4e8cbd307ba5cb1efde5e350b15f34">GetBuffer</a>(), mTextureImage, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width), <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(height), 1);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    GenerateMipmaps(mTextureImage, VK_FORMAT_R8G8B8A8_SRGB, width, height);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
-</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">VRE::VRE_Texture::CreateImage</a>(<span class="keyword">const</span> std::string &amp;filePath)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">int</span> width, height, channels;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    stbi_uc* pixels = stbi_load(filePath.c_str(), &amp;width, &amp;height, &amp;channels, STBI_rgb_alpha);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (!pixels)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to load texture image!&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="class_v_r_e_1_1_v_r_e___buffer.html">VRE_Buffer</a> stagingBuffer(mDevice, 4, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width * height),</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                             VK_BUFFER_USAGE_TRANSFER_SRC_BIT,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                             VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#a1fcc1a81e90c3fb8a143ae4366b1f7d8">Map</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#ab3316823e14587f60b98ccdb0bf71c47">WriteToBuffer</a>(pixels);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    stbi_image_free(pixels);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    mMipLevels = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(std::floor(std::log2(std::max(width, height)))) + 1;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    VkImageCreateInfo imageCreateInfo{};</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    imageCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    imageCreateInfo.imageType = VK_IMAGE_TYPE_2D;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    imageCreateInfo.extent.width = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    imageCreateInfo.extent.height = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(height);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    imageCreateInfo.extent.depth = 1;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    imageCreateInfo.mipLevels = mMipLevels;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    imageCreateInfo.arrayLayers = 1;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    imageCreateInfo.format = VK_FORMAT_R8G8B8A8_SRGB;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    imageCreateInfo.usage = VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    imageCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    imageCreateInfo.samples = VK_SAMPLE_COUNT_1_BIT;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    imageCreateInfo.flags = 0;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">VRE::VRE_Texture::GenerateMipmaps</a>(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    VkFormatProperties formatProperties;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    vkGetPhysicalDeviceFormatProperties(mDevice.GetPhysicalDevice(), imageFormat, &amp;formatProperties);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (!(formatProperties.optimalTilingFeatures &amp; VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT))</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;texture image format does not support linear blitting!&quot;</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    VkCommandBuffer commandBuffer = mDevice.BeginSingleTimeCommands();</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    VkImageMemoryBarrier barrier{};</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    barrier.image = image;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    barrier.subresourceRange.baseArrayLayer = 0;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    barrier.subresourceRange.layerCount = 1;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    barrier.subresourceRange.levelCount = 1;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    int32_t mipWidth = texWidth;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    int32_t mipHeight = texHeight;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">for</span> (uint32_t i = 1; i &lt; mMipLevels; i++) {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        barrier.subresourceRange.baseMipLevel = i - 1;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        barrier.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    mDevice.CreateImageWithInfo(imageCreateInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, mTextureImage, mTextureImageMemory);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    TransitionImageLayout(mTextureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    mDevice.CopyBufferToImage(stagingBuffer.<a class="code hl_function" href="class_v_r_e_1_1_v_r_e___buffer.html#a0b4e8cbd307ba5cb1efde5e350b15f34">GetBuffer</a>(), mTextureImage, <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(width), <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(height), 1);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    GenerateMipmaps(mTextureImage, VK_FORMAT_R8G8B8A8_SRGB, width, height);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">   83</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">VRE::VRE_Texture::GenerateMipmaps</a>(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    VkFormatProperties formatProperties;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    vkGetPhysicalDeviceFormatProperties(mDevice.GetPhysicalDevice(), imageFormat, &amp;formatProperties);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">if</span> (!(formatProperties.optimalTilingFeatures &amp; VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT))</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;texture image format does not support linear blitting!&quot;</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    VkCommandBuffer commandBuffer = mDevice.BeginSingleTimeCommands();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    VkImageMemoryBarrier barrier{};</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    barrier.image = image;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    barrier.subresourceRange.baseArrayLayer = 0;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    barrier.subresourceRange.layerCount = 1;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    barrier.subresourceRange.levelCount = 1;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    int32_t mipWidth = texWidth;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    int32_t mipHeight = texHeight;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        VkImageBlit blit{};</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        blit.srcOffsets[0] = { 0, 0, 0 };</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        blit.srcOffsets[1] = { mipWidth, mipHeight, 1 };</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        blit.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        blit.srcSubresource.mipLevel = i - 1;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        blit.srcSubresource.baseArrayLayer = 0;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        blit.srcSubresource.layerCount = 1;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        blit.dstOffsets[0] = { 0, 0, 0 };</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        blit.dstOffsets[1] = { mipWidth &gt; 1 ? mipWidth / 2 : 1, mipHeight &gt; 1 ? mipHeight / 2 : 1, 1 };</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        blit.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        blit.dstSubresource.mipLevel = i;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        blit.dstSubresource.baseArrayLayer = 0;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        blit.dstSubresource.layerCount = 1;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        vkCmdBlitImage(commandBuffer, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &amp;blit, VK_FILTER_LINEAR);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">for</span> (uint32_t i = 1; i &lt; mMipLevels; i++) {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        barrier.subresourceRange.baseMipLevel = i - 1;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        barrier.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        VkImageBlit blit{};</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        blit.srcOffsets[0] = { 0, 0, 0 };</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        blit.srcOffsets[1] = { mipWidth, mipHeight, 1 };</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        blit.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        blit.srcSubresource.mipLevel = i - 1;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        blit.srcSubresource.baseArrayLayer = 0;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        blit.srcSubresource.layerCount = 1;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        blit.dstOffsets[0] = { 0, 0, 0 };</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        blit.dstOffsets[1] = { mipWidth &gt; 1 ? mipWidth / 2 : 1, mipHeight &gt; 1 ? mipHeight / 2 : 1, 1 };</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        blit.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        blit.dstSubresource.mipLevel = i;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        blit.dstSubresource.baseArrayLayer = 0;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        blit.dstSubresource.layerCount = 1;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        vkCmdBlitImage(commandBuffer, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &amp;blit, VK_FILTER_LINEAR);</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">if</span> (mipWidth &gt; 1) mipWidth /= 2;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (mipHeight &gt; 1) mipHeight /= 2;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    barrier.subresourceRange.baseMipLevel = mMipLevels - 1;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    mDevice.EndSingleTimeCommands(commandBuffer);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">if</span> (mipWidth &gt; 1) mipWidth /= 2;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">if</span> (mipHeight &gt; 1) mipHeight /= 2;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    barrier.subresourceRange.baseMipLevel = mMipLevels - 1;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    vkCmdPipelineBarrier(commandBuffer, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    mDevice.EndSingleTimeCommands(commandBuffer);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
 </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">  147</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">VRE::VRE_Texture::TransitionImageLayout</a>(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    VkCommandBuffer commandBuffer = mDevice.BeginSingleTimeCommands();</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    VkImageMemoryBarrier barrier{};</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    barrier.oldLayout = oldLayout;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    barrier.newLayout = newLayout;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    barrier.image = image;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    barrier.subresourceRange.baseMipLevel = 0;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    barrier.subresourceRange.levelCount = mMipLevels;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    barrier.subresourceRange.baseArrayLayer = 0;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    barrier.subresourceRange.layerCount = 1;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">  154</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">VRE::VRE_Texture::TransitionImageLayout</a>(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout)</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>{</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    VkCommandBuffer commandBuffer = mDevice.BeginSingleTimeCommands();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    VkImageMemoryBarrier barrier{};</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    barrier.oldLayout = oldLayout;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    barrier.newLayout = newLayout;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    barrier.srcAccessMask = 0;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    barrier.dstAccessMask = 0;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    VkPipelineStageFlags sourceStage;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    VkPipelineStageFlags destinationStage;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">if</span> (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED &amp;&amp; newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        barrier.srcAccessMask = 0;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    barrier.image = image;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    barrier.subresourceRange.baseMipLevel = 0;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    barrier.subresourceRange.levelCount = mMipLevels;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    barrier.subresourceRange.baseArrayLayer = 0;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    barrier.subresourceRange.layerCount = 1;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    barrier.srcAccessMask = 0;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    barrier.dstAccessMask = 0;</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    }</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL &amp;&amp; newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    VkPipelineStageFlags sourceStage;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    VkPipelineStageFlags destinationStage;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">if</span> (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED &amp;&amp; newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        barrier.srcAccessMask = 0;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unsupported layout transition!&quot;</span>);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    vkCmdPipelineBarrier(commandBuffer, sourceStage, destinationStage, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    mDevice.EndSingleTimeCommands(commandBuffer);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>}</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL &amp;&amp; newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Unsupported layout transition!&quot;</span>);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    vkCmdPipelineBarrier(commandBuffer, sourceStage, destinationStage, 0, 0, <span class="keyword">nullptr</span>, 0, <span class="keyword">nullptr</span>, 1, &amp;barrier);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    mDevice.EndSingleTimeCommands(commandBuffer);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
 </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="foldopen" id="foldopen00194" data-start="{" data-end="}">
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#af944fb8db6736aafe7443f91f6e6a1b1">  194</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#af944fb8db6736aafe7443f91f6e6a1b1">VRE::VRE_Texture::CreateTextureImageView</a>()</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>{</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    VkImageViewCreateInfo viewInfo{};</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    viewInfo.image = mTextureImage;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    viewInfo.format = VK_FORMAT_R8G8B8A8_SRGB;</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    viewInfo.subresourceRange.baseMipLevel = 0;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    viewInfo.subresourceRange.levelCount = mMipLevels;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    viewInfo.subresourceRange.baseArrayLayer = 0;</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    viewInfo.subresourceRange.layerCount = 1;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">if</span> (vkCreateImageView(mDevice.GetVkDevice(), &amp;viewInfo, <span class="keyword">nullptr</span>, &amp;mTextureImageView) != VK_SUCCESS)</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create texture image view!&quot;</span>);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="foldopen" id="foldopen00201" data-start="{" data-end="}">
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#afdef9716ac82d0e6ad87e16657dc43f7">  201</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#afdef9716ac82d0e6ad87e16657dc43f7">VRE::VRE_Texture::CreateImageView</a>()</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>{</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    VkImageViewCreateInfo viewCreateInfo{};</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    viewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    viewCreateInfo.image = mTextureImage;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    viewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    viewCreateInfo.format = VK_FORMAT_R8G8B8A8_SRGB;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    viewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    viewCreateInfo.subresourceRange.baseMipLevel = 0;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    viewCreateInfo.subresourceRange.levelCount = mMipLevels;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    viewCreateInfo.subresourceRange.baseArrayLayer = 0;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    viewCreateInfo.subresourceRange.layerCount = 1;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordflow">if</span> (vkCreateImageView(mDevice.GetVkDevice(), &amp;viewCreateInfo, <span class="keyword">nullptr</span>, &amp;mImageView) != VK_SUCCESS)</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create texture image view!&quot;</span>);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="foldopen" id="foldopen00211" data-start="{" data-end="}">
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">  211</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">VRE::VRE_Texture::CreateTextureSampler</a>()</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>{</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    VkSamplerCreateInfo samplerInfo{};</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    samplerInfo.magFilter = VK_FILTER_LINEAR;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    samplerInfo.minFilter = VK_FILTER_LINEAR;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    samplerInfo.anisotropyEnable = VK_TRUE;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    samplerInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    samplerInfo.unnormalizedCoordinates = VK_FALSE;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    samplerInfo.compareEnable = VK_FALSE;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    samplerInfo.minLod = 0.0f;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    samplerInfo.maxLod = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(mMipLevels);</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    samplerInfo.mipLodBias = 0.0f;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="keywordflow">if</span> (vkCreateSampler(mDevice.GetVkDevice(), &amp;samplerInfo, <span class="keyword">nullptr</span>, &amp;mTextureSampler) != VK_SUCCESS)</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create texture sampler!&quot;</span>);</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}</div>
-</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="foldopen" id="foldopen00235" data-start="{" data-end="}">
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a2aed540f6daa7f2e92b8fa4ac20da333">  235</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a2aed540f6daa7f2e92b8fa4ac20da333">VRE::VRE_Texture::UpdateDescriptor</a>()</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    mDescriptor.sampler = mTextureSampler;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    mDescriptor.imageView = mTextureImageView;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    mDescriptor.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="foldopen" id="foldopen00218" data-start="{" data-end="}">
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">  218</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">VRE::VRE_Texture::CreateTextureSampler</a>()</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>{</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    VkSamplerCreateInfo samplerCreateInfo{};</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    samplerCreateInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    samplerCreateInfo.magFilter = VK_FILTER_LINEAR;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    samplerCreateInfo.minFilter = VK_FILTER_LINEAR;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    samplerCreateInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    samplerCreateInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    samplerCreateInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    samplerCreateInfo.anisotropyEnable = VK_TRUE;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    samplerCreateInfo.maxAnisotropy = mDevice.mProperties.limits.maxSamplerAnisotropy;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    samplerCreateInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    samplerCreateInfo.unnormalizedCoordinates = VK_FALSE;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    samplerCreateInfo.compareEnable = VK_FALSE;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    samplerCreateInfo.compareOp = VK_COMPARE_OP_ALWAYS;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    samplerCreateInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    samplerCreateInfo.minLod = 0.0f;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    samplerCreateInfo.maxLod = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(mMipLevels);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    samplerCreateInfo.mipLodBias = 0.0f;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordflow">if</span> (vkCreateSampler(mDevice.GetVkDevice(), &amp;samplerCreateInfo, <span class="keyword">nullptr</span>, &amp;mTextureSampler) != VK_SUCCESS)</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create texture sampler!&quot;</span>);</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
+</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="foldopen" id="foldopen00242" data-start="{" data-end="}">
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="class_v_r_e_1_1_v_r_e___texture.html#a305bad16983d15b197c1bdd57417df36">  242</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_v_r_e_1_1_v_r_e___texture.html#a305bad16983d15b197c1bdd57417df36">VRE::VRE_Texture::UpdateDescriptorInfo</a>()</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>{</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    mDescriptor.sampler = mTextureSampler;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    mDescriptor.imageView = mImageView;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    mDescriptor.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>}</div>
 </div>
 <div class="ttc" id="a_v_r_e___buffer_8h_html"><div class="ttname"><a href="_v_r_e___buffer_8h.html">VRE_Buffer.h</a></div></div>
 <div class="ttc" id="a_v_r_e___texture_8h_html"><div class="ttname"><a href="_v_r_e___texture_8h.html">VRE_Texture.h</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html">VRE::VRE_Buffer</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00005">VRE_Buffer.h:6</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a0b4e8cbd307ba5cb1efde5e350b15f34"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#a0b4e8cbd307ba5cb1efde5e350b15f34">VRE::VRE_Buffer::GetBuffer</a></div><div class="ttdeci">VkBuffer GetBuffer() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00029">VRE_Buffer.h:29</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a1fcc1a81e90c3fb8a143ae4366b1f7d8"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#a1fcc1a81e90c3fb8a143ae4366b1f7d8">VRE::VRE_Buffer::Map</a></div><div class="ttdeci">VkResult Map(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00042">VRE_Buffer.cpp:42</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_ab3316823e14587f60b98ccdb0bf71c47"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#ab3316823e14587f60b98ccdb0bf71c47">VRE::VRE_Buffer::WriteToBuffer</a></div><div class="ttdeci">void WriteToBuffer(void *data, VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00070">VRE_Buffer.cpp:70</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html">VRE::VRE_Device</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00024">VRE_Device.h:25</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a00f3e3684a8ebaabd09fd65b93c50c7c"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">VRE::VRE_Texture::CreateTexture</a></div><div class="ttdeci">static std::unique_ptr&lt; VRE_Texture &gt; CreateTexture(VRE_Device &amp;device, const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00030">VRE_Texture.cpp:30</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a2aed540f6daa7f2e92b8fa4ac20da333"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a2aed540f6daa7f2e92b8fa4ac20da333">VRE::VRE_Texture::UpdateDescriptor</a></div><div class="ttdeci">void UpdateDescriptor()</div><div class="ttdef"><b>Definition</b> <a href="#l00235">VRE_Texture.cpp:235</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a3591cd7254daab3b7dae1c4f63773e83"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">VRE::VRE_Texture::~VRE_Texture</a></div><div class="ttdeci">~VRE_Texture()</div><div class="ttdef"><b>Definition</b> <a href="#l00022">VRE_Texture.cpp:22</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a591ab7746ed0180e0174aa1fd5079cb0"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">VRE::VRE_Texture::GenerateMipmaps</a></div><div class="ttdeci">void GenerateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight)</div><div class="ttdef"><b>Definition</b> <a href="#l00076">VRE_Texture.cpp:76</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a5e185e8a3a41a8e930539d078f071512"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">VRE::VRE_Texture::TransitionImageLayout</a></div><div class="ttdeci">void TransitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout)</div><div class="ttdef"><b>Definition</b> <a href="#l00147">VRE_Texture.cpp:147</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a691efb0fe4603628afd8ce48e57f65be"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">VRE::VRE_Texture::CreateTextureSampler</a></div><div class="ttdeci">void CreateTextureSampler()</div><div class="ttdef"><b>Definition</b> <a href="#l00211">VRE_Texture.cpp:211</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a8e7e8c794240307957f3d648c4aa3c4e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">VRE::VRE_Texture::VRE_Texture</a></div><div class="ttdeci">VRE_Texture(VRE_Device &amp;device, const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00008">VRE_Texture.cpp:8</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_af944fb8db6736aafe7443f91f6e6a1b1"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#af944fb8db6736aafe7443f91f6e6a1b1">VRE::VRE_Texture::CreateTextureImageView</a></div><div class="ttdeci">void CreateTextureImageView()</div><div class="ttdef"><b>Definition</b> <a href="#l00194">VRE_Texture.cpp:194</a></div></div>
-<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_afe83eb6ee357d4773293fb3c3c33a7e3"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">VRE::VRE_Texture::CreateImage</a></div><div class="ttdeci">void CreateImage(const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00035">VRE_Texture.cpp:35</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html">VRE::VRE_Buffer</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00011">VRE_Buffer.h:12</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a0b4e8cbd307ba5cb1efde5e350b15f34"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#a0b4e8cbd307ba5cb1efde5e350b15f34">VRE::VRE_Buffer::GetBuffer</a></div><div class="ttdeci">VkBuffer GetBuffer() const</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8h_source.html#l00035">VRE_Buffer.h:35</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_a1fcc1a81e90c3fb8a143ae4366b1f7d8"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#a1fcc1a81e90c3fb8a143ae4366b1f7d8">VRE::VRE_Buffer::Map</a></div><div class="ttdeci">VkResult Map(VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00040">VRE_Buffer.cpp:40</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___buffer_html_ab3316823e14587f60b98ccdb0bf71c47"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___buffer.html#ab3316823e14587f60b98ccdb0bf71c47">VRE::VRE_Buffer::WriteToBuffer</a></div><div class="ttdeci">void WriteToBuffer(void *data, VkDeviceSize size=VK_WHOLE_SIZE, VkDeviceSize offset=0)</div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___buffer_8cpp_source.html#l00054">VRE_Buffer.cpp:54</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___device_html"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___device.html">VRE::VRE_Device</a></div><div class="ttdef"><b>Definition</b> <a href="_v_r_e___device_8h_source.html#l00030">VRE_Device.h:31</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a00f3e3684a8ebaabd09fd65b93c50c7c"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a00f3e3684a8ebaabd09fd65b93c50c7c">VRE::VRE_Texture::CreateTexture</a></div><div class="ttdeci">static std::unique_ptr&lt; VRE_Texture &gt; CreateTexture(VRE_Device &amp;device, const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00037">VRE_Texture.cpp:37</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a305bad16983d15b197c1bdd57417df36"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a305bad16983d15b197c1bdd57417df36">VRE::VRE_Texture::UpdateDescriptorInfo</a></div><div class="ttdeci">void UpdateDescriptorInfo()</div><div class="ttdef"><b>Definition</b> <a href="#l00242">VRE_Texture.cpp:242</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a3591cd7254daab3b7dae1c4f63773e83"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a3591cd7254daab3b7dae1c4f63773e83">VRE::VRE_Texture::~VRE_Texture</a></div><div class="ttdeci">~VRE_Texture()</div><div class="ttdef"><b>Definition</b> <a href="#l00029">VRE_Texture.cpp:29</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a591ab7746ed0180e0174aa1fd5079cb0"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a591ab7746ed0180e0174aa1fd5079cb0">VRE::VRE_Texture::GenerateMipmaps</a></div><div class="ttdeci">void GenerateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight)</div><div class="ttdef"><b>Definition</b> <a href="#l00083">VRE_Texture.cpp:83</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a5e185e8a3a41a8e930539d078f071512"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a5e185e8a3a41a8e930539d078f071512">VRE::VRE_Texture::TransitionImageLayout</a></div><div class="ttdeci">void TransitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout)</div><div class="ttdef"><b>Definition</b> <a href="#l00154">VRE_Texture.cpp:154</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a691efb0fe4603628afd8ce48e57f65be"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a691efb0fe4603628afd8ce48e57f65be">VRE::VRE_Texture::CreateTextureSampler</a></div><div class="ttdeci">void CreateTextureSampler()</div><div class="ttdef"><b>Definition</b> <a href="#l00218">VRE_Texture.cpp:218</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_a8e7e8c794240307957f3d648c4aa3c4e"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#a8e7e8c794240307957f3d648c4aa3c4e">VRE::VRE_Texture::VRE_Texture</a></div><div class="ttdeci">VRE_Texture(VRE_Device &amp;device, const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00015">VRE_Texture.cpp:15</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_afdef9716ac82d0e6ad87e16657dc43f7"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#afdef9716ac82d0e6ad87e16657dc43f7">VRE::VRE_Texture::CreateImageView</a></div><div class="ttdeci">void CreateImageView()</div><div class="ttdef"><b>Definition</b> <a href="#l00201">VRE_Texture.cpp:201</a></div></div>
+<div class="ttc" id="aclass_v_r_e_1_1_v_r_e___texture_html_afe83eb6ee357d4773293fb3c3c33a7e3"><div class="ttname"><a href="class_v_r_e_1_1_v_r_e___texture.html#afe83eb6ee357d4773293fb3c3c33a7e3">VRE::VRE_Texture::CreateImage</a></div><div class="ttdeci">void CreateImage(const std::string &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="#l00042">VRE_Texture.cpp:42</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

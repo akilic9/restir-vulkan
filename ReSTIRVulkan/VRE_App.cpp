@@ -1,16 +1,4 @@
-/*
-*  Resources:
-*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
-*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
-*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
-*   Wikipedia Contributors (2020). Blinn–Phong reflection model. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model (Accessed 15 Aug. 2024).
-*   lukasino 1214 (2022). Textures - Vulkan / Game Engine tutorial[0]. [online] YouTube. Available at: https://www.youtube.com/watch?v=_AitmLEnP28 and https://github.com/lukasino1214/Game-Engine-Tutorial (Accessed 10 Aug. 2024).
-*   Blanco, V. (2020). Vulkan Guide. [online] Vulkan Guide. Available at: https://vkguide.dev/ (Accessed 07 July 2024).
-*   GitHub. (n.d.). tinyobjloader/tinyobjloader. [online] Available at: https://github.com/tinyobjloader/tinyobjloader (Accessed 10 Jul. 2024).
-*   GitHub. (2020). g-truc/glm. [online] Available at: https://github.com/g-truc/glm (Accessed 10 Jun. 2024).
-*   GitHub. (2021). nothings/stb. [online] Available at: https://github.com/nothings/stb (Accessed 1 Aug. 2024).
-*   GLFW. (n.d.). An OpenGL library. [online] Available at: https://www.glfw.org/ (Accessed 7 Jun. 2024).
-*/
+
 
 #include <imgui.h>
 
@@ -150,13 +138,13 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
-    //model->LoadModel();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 0.01f, 0.01f, 0.01f };
+    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
+    model->LoadModel();
+    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    obj.mModel = model;
+    obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
+    obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj.mTransform.mScale = { 0.01f, 0.01f, 0.01f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -194,17 +182,19 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
-    model->LoadModel();
-    VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    obj.mModel = model;
-    obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
-    obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    obj.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
+    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
+    //model->LoadModel();
+    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
+    //obj.mModel = model;
+    //obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
+    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    //obj.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Rotating colorful lights by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.
+    //Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
     std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
                                          {.1f, 1.f, .1f},

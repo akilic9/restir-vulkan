@@ -1,0 +1,178 @@
+\doxysection{VRE\+::Transform Struct Reference}
+\hypertarget{struct_v_r_e_1_1_transform}{}\label{struct_v_r_e_1_1_transform}\index{VRE::Transform@{VRE::Transform}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+\+Object\+Components.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::Transform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{struct_v_r_e_1_1_transform__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::mat4 \mbox{\hyperlink{struct_v_r_e_1_1_transform_ae1b0897211068cf091aeb5deb3ed2b15}{Mat4}} ()
+\item 
+glm\+::mat3 \mbox{\hyperlink{struct_v_r_e_1_1_transform_a561d7872072e38f278227a66aa9343c3}{Normal\+Matrix}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{m\+Translation}} \{ 0.f \}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{m\+Scale}} \{ 1.f \}
+\item 
+glm\+::vec3 \mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{m\+Rotation}} \{ 0.f \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00009}{9}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_v_r_e_1_1_transform_ae1b0897211068cf091aeb5deb3ed2b15}\index{VRE::Transform@{VRE::Transform}!Mat4@{Mat4}}
+\index{Mat4@{Mat4}!VRE::Transform@{VRE::Transform}}
+\doxysubsubsection{\texorpdfstring{Mat4()}{Mat4()}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_transform_ae1b0897211068cf091aeb5deb3ed2b15} 
+glm\+::mat4 VRE\+::\+Transform\+::\+Mat4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00017}{17}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c3\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s3\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c2\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s2\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c1\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s1\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mat4\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c1\ *\ c3\ +\ s1\ *\ s2\ *\ s3),}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c2\ *\ s3),}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.x\ *\ (c1\ *\ s2\ *\ s3\ -\/\ c3\ *\ s1),}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c3\ *\ s1\ *\ s2\ -\/\ c1\ *\ s3),}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c2\ *\ c3),}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.y\ *\ (c1\ *\ c3\ *\ s2\ +\ s1\ *\ s3),}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (c2\ *\ s1),}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (-\/s2),}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}}.z\ *\ (c1\ *\ c2),}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.x,\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.y,\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}{mTranslation}}.z,\ 1.0f\}\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_transform_a561d7872072e38f278227a66aa9343c3}\index{VRE::Transform@{VRE::Transform}!NormalMatrix@{NormalMatrix}}
+\index{NormalMatrix@{NormalMatrix}!VRE::Transform@{VRE::Transform}}
+\doxysubsubsection{\texorpdfstring{NormalMatrix()}{NormalMatrix()}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_transform_a561d7872072e38f278227a66aa9343c3} 
+glm\+::mat3 VRE\+::\+Transform\+::\+Normal\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00046}{46}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c3\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s3\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.z);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c2\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s2\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.x);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ c1\ =\ glm::cos(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ s1\ =\ glm::sin(\mbox{\hyperlink{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}{mRotation}}.y);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\ inverseScale\ =\ 1.0f\ /\ \mbox{\hyperlink{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}{mScale}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mat3\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c1\ *\ c3\ +\ s1\ *\ s2\ *\ s3),}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c2\ *\ s3),}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.x\ *\ (c1\ *\ s2\ *\ s3\ -\/\ c3\ *\ s1),}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c3\ *\ s1\ *\ s2\ -\/\ c1\ *\ s3),}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c2\ *\ c3),}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.y\ *\ (c1\ *\ c3\ *\ s2\ +\ s1\ *\ s3),}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (c2\ *\ s1),}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (-\/s2),}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inverseScale.z\ *\ (c1\ *\ c2),}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3}\index{VRE::Transform@{VRE::Transform}!mRotation@{mRotation}}
+\index{mRotation@{mRotation}!VRE::Transform@{VRE::Transform}}
+\doxysubsubsection{\texorpdfstring{mRotation}{mRotation}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_transform_a022875007bba0475f0254c02a37d47d3} 
+glm\+::vec3 VRE\+::\+Transform\+::m\+Rotation \{ 0.f \}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00012}{12}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{\ 0.f\ \};}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658}\index{VRE::Transform@{VRE::Transform}!mScale@{mScale}}
+\index{mScale@{mScale}!VRE::Transform@{VRE::Transform}}
+\doxysubsubsection{\texorpdfstring{mScale}{mScale}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_transform_a44f723e5b89d177f6d0542be7c9c1658} 
+glm\+::vec3 VRE\+::\+Transform\+::m\+Scale \{ 1.f \}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00011}{11}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{\ 1.f\ \};}
+
+\end{DoxyCode}
+\Hypertarget{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc}\index{VRE::Transform@{VRE::Transform}!mTranslation@{mTranslation}}
+\index{mTranslation@{mTranslation}!VRE::Transform@{VRE::Transform}}
+\doxysubsubsection{\texorpdfstring{mTranslation}{mTranslation}}
+{\footnotesize\ttfamily \label{struct_v_r_e_1_1_transform_a8c0364f7ed23cfc5af75e41c04e401cc} 
+glm\+::vec3 VRE\+::\+Transform\+::m\+Translation \{ 0.f \}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e___object_components_8h_source_l00010}{10}} of file \mbox{\hyperlink{_v_r_e___object_components_8h_source}{VRE\+\_\+\+Object\+Components.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{\ 0.f\ \};}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e___object_components_8h}{VRE\+\_\+\+Object\+Components.\+h}}\end{DoxyCompactItemize}

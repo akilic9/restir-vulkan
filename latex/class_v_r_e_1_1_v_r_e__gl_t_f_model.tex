@@ -1,0 +1,648 @@
+\doxysection{VRE\+::VRE\+\_\+gl\+TFModel Class Reference}
+\hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model}{}\label{class_v_r_e_1_1_v_r_e__gl_t_f_model}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+
+
+{\ttfamily \#include $<$VRE\+\_\+gl\+TFModel.\+h$>$}
+
+
+
+Collaboration diagram for VRE\+::VRE\+\_\+gl\+TFModel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_v_r_e_1_1_v_r_e__gl_t_f_model__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aec8f9787561dfb6577a9fa515d49a7cb}{VRE\+\_\+gl\+TFModel}} (\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&device, const std\+::string \&file\+Folder, const std\+::string \&file\+Name)
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a0f387922e62658a6feca31851a024fe9}{\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+gl\+TFModel}} ()
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a74a869ef5c6d9f661378cda9240bedfd}{VRE\+\_\+gl\+TFModel}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \&)=delete
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a4de0fa09aa777cb7560eeadb129f9ac1}{operator=}} (const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a38eb65f1987ba4c2ce1a7ed017f9670e}{Load\+Model}} ()
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab3b150493619e5477bb0d69b643fdaf6}{Bind}} (Vk\+Command\+Buffer command\+Buffer)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a537958ba90f5364456967352cf25e29c}{Render}} (Vk\+Command\+Buffer command\+Buffer, Vk\+Pipeline\+Layout \&pipeline\+Layout, \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\+\_\+\+Descriptor\+Writer}} \&writer)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be}{Render\+Node}} (Vk\+Command\+Buffer command\+Buffer, \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}} \texorpdfstring{$\ast$}{*}node, Vk\+Pipeline\+Layout \&pipeline\+Layout, \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\+\_\+\+Descriptor\+Writer}} \&writer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db}{Load\+Textures}} (tinygltf\+::\+Model \&model)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab03732bdb093393fa4498ee982f13761}{Load\+Materials}} (tinygltf\+::\+Model \&model)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6}{Load\+Node}} (\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}} \texorpdfstring{$\ast$}{*}parent, const tinygltf\+::\+Node \&node, const tinygltf\+::\+Model \&model, \mbox{\hyperlink{struct_v_r_e_1_1_model_data}{Model\+Data}} \&data)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9}{Create\+Vertex\+Buffers}} (const std\+::vector$<$ \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}} $>$ \&vertices)
+\item 
+void \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2}{Create\+Index\+Buffer}} (const std\+::vector$<$ uint32\+\_\+t $>$ \&indices)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \& \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{m\+Device}}
+\item 
+const std\+::string \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{m\+File\+Folder}}
+\item 
+const std\+::string \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}{m\+File\+Name}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___texture}{VRE\+\_\+\+Texture}} $>$ $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{m\+Textures}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{m\+Nodes}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material}{gl\+TFMaterial}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{m\+Materials}}
+\item 
+std\+::vector$<$ int32\+\_\+t $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{m\+Texture\+Indices}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{m\+Vertex\+Buffer}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}} $>$ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{m\+Index\+Buffer}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{m\+Vertex\+Count}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{m\+Index\+Count}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00017}{17}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_aec8f9787561dfb6577a9fa515d49a7cb}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!VRE\_glTFModel@{VRE\_glTFModel}}
+\index{VRE\_glTFModel@{VRE\_glTFModel}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{VRE\_glTFModel()}{VRE\_glTFModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_aec8f9787561dfb6577a9fa515d49a7cb} 
+VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+VRE\+\_\+gl\+TFModel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}} \&}]{device}{, }\item[{const std\+::string \&}]{file\+Folder}{, }\item[{const std\+::string \&}]{file\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}}(device)}
+\DoxyCodeLine{00016\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{mFileFolder}}(fileFolder)}
+\DoxyCodeLine{00017\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}{mFileName}}(fileName)}
+\DoxyCodeLine{00018\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}(0)}
+\DoxyCodeLine{00019\ \ \ \ \ ,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}}(0) }
+\DoxyCodeLine{00020\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a0f387922e62658a6feca31851a024fe9}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!````~VRE\_glTFModel@{\texorpdfstring{$\sim$}{\string~}VRE\_glTFModel}}
+\index{````~VRE\_glTFModel@{\texorpdfstring{$\sim$}{\string~}VRE\_glTFModel}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRE\_glTFModel()}{\string~VRE\_glTFModel()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a0f387922e62658a6feca31851a024fe9} 
+VRE\+::\+VRE\+\_\+gl\+TFModel\+::\texorpdfstring{$\sim$}{\string~}\+VRE\+\_\+gl\+TFModel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ node\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{mNodes}})\ \textcolor{keyword}{delete}\ node;}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a74a869ef5c6d9f661378cda9240bedfd}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!VRE\_glTFModel@{VRE\_glTFModel}}
+\index{VRE\_glTFModel@{VRE\_glTFModel}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{VRE\_glTFModel()}{VRE\_glTFModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a74a869ef5c6d9f661378cda9240bedfd} 
+VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+VRE\+\_\+gl\+TFModel (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab3b150493619e5477bb0d69b643fdaf6}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!Bind@{Bind}}
+\index{Bind@{Bind}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab3b150493619e5477bb0d69b643fdaf6} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Bind (\begin{DoxyParamCaption}\item[{Vk\+Command\+Buffer}]{command\+Buffer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ VkBuffer\ buffers[]\ =\ \{\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{mVertexBuffer}}-\/>GetBuffer()\ \};}
+\DoxyCodeLine{00208\ \ \ \ \ VkDeviceSize\ offsets[]\ =\ \{\ 0\ \};}
+\DoxyCodeLine{00209\ \ \ \ \ vkCmdBindVertexBuffers(commandBuffer,\ 0,\ 1,\ buffers,\ offsets);}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ vkCmdBindIndexBuffer(commandBuffer,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{mIndexBuffer}}-\/>GetBuffer(),\ 0,\ VK\_INDEX\_TYPE\_UINT32);}
+\DoxyCodeLine{00212\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!CreateIndexBuffer@{CreateIndexBuffer}}
+\index{CreateIndexBuffer@{CreateIndexBuffer}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{CreateIndexBuffer()}{CreateIndexBuffer()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Create\+Index\+Buffer (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint32\+\_\+t $>$ \&}]{indices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00262}{262}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00263\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(indices.size());}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ VkDeviceSize\ bufferSize\ =\ \textcolor{keyword}{sizeof}(indices[0])\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}};}
+\DoxyCodeLine{00267\ \ \ \ \ uint32\_t\ indexSize\ =\ \textcolor{keyword}{sizeof}(indices[0]);}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ VRE\_Buffer\ stagingBuffer(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}},\ indexSize,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}},\ VK\_BUFFER\_USAGE\_TRANSFER\_SRC\_BIT,}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ VK\_MEMORY\_PROPERTY\_HOST\_VISIBLE\_BIT\ |\ VK\_MEMORY\_PROPERTY\_HOST\_COHERENT\_BIT);}
+\DoxyCodeLine{00271\ \ \ \ \ stagingBuffer.Map();}
+\DoxyCodeLine{00272\ \ \ \ \ stagingBuffer.WriteToBuffer((\textcolor{keywordtype}{void}*)indices.data());}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{mIndexBuffer}}\ =\ std::make\_unique<VRE\_Buffer>(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}},\ indexSize,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}},}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ VK\_BUFFER\_USAGE\_INDEX\_BUFFER\_BIT\ |\ VK\_BUFFER\_USAGE\_TRANSFER\_DST\_BIT,}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ VK\_MEMORY\_PROPERTY\_DEVICE\_LOCAL\_BIT);}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_ad7937629307ef0c679fbb04e139b9580}{CopyBuffer}}(stagingBuffer.GetBuffer(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{mIndexBuffer}}-\/>GetBuffer(),\ bufferSize);}
+\DoxyCodeLine{00279\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!CreateVertexBuffers@{CreateVertexBuffers}}
+\index{CreateVertexBuffers@{CreateVertexBuffers}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{CreateVertexBuffers()}{CreateVertexBuffers()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Create\+Vertex\+Buffers (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_v_r_e_1_1_vertex}{Vertex}} $>$ \&}]{vertices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00241\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}}\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(vertices.size());}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ assert(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}}\ >=\ 3\ \&\&\ \textcolor{stringliteral}{"{}Vertex\ count\ must\ be\ at\ least\ 3!"{}});}
+\DoxyCodeLine{00245\ \ \ \ \ VkDeviceSize\ bufferSize\ =\ \textcolor{keyword}{sizeof}(vertices[0])\ *\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}};}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ uint32\_t\ vertexSize\ =\ \textcolor{keyword}{sizeof}(vertices[0]);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ VRE\_Buffer\ stagingBuffer(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}},\ vertexSize,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}},\ VK\_BUFFER\_USAGE\_TRANSFER\_SRC\_BIT,}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ VK\_MEMORY\_PROPERTY\_HOST\_VISIBLE\_BIT\ |\ VK\_MEMORY\_PROPERTY\_HOST\_COHERENT\_BIT);}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ stagingBuffer.Map();}
+\DoxyCodeLine{00253\ \ \ \ \ stagingBuffer.WriteToBuffer((\textcolor{keywordtype}{void}*)vertices.data());}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{mVertexBuffer}}\ =\ std::make\_unique<VRE\_Buffer>(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}},\ vertexSize,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}},}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ VK\_BUFFER\_USAGE\_VERTEX\_BUFFER\_BIT\ |\ VK\_BUFFER\_USAGE\_TRANSFER\_DST\_BIT,}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ VK\_MEMORY\_PROPERTY\_DEVICE\_LOCAL\_BIT);}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}}.\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device_ad7937629307ef0c679fbb04e139b9580}{CopyBuffer}}(stagingBuffer.GetBuffer(),\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{mVertexBuffer}}-\/>GetBuffer(),\ bufferSize);}
+\DoxyCodeLine{00260\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab03732bdb093393fa4498ee982f13761}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!LoadMaterials@{LoadMaterials}}
+\index{LoadMaterials@{LoadMaterials}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{LoadMaterials()}{LoadMaterials()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab03732bdb093393fa4498ee982f13761} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Load\+Materials (\begin{DoxyParamCaption}\item[{tinygltf\+::\+Model \&}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{mMaterials}}.resize(model.materials.size());}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ model.materials.size();\ i++)\ \{}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ tinygltf::Material\ inputMat\ =\ model.materials[i];}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputMat.values.find(\textcolor{stringliteral}{"{}baseColorFactor"{}})\ !=\ inputMat.values.end())\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{mMaterials}}[i].mBaseColorFactor\ =\ glm::make\_vec4(inputMat.values[\textcolor{stringliteral}{"{}baseColorFactor"{}}].ColorFactor().data());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputMat.values.find(\textcolor{stringliteral}{"{}baseColorTexture"{}})\ !=\ inputMat.values.end())\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{mMaterials}}[i].mBaseColorTextureIndex\ =\ inputMat.values[\textcolor{stringliteral}{"{}baseColorTexture"{}}].TextureIndex();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{mTextureIndices}}.resize(model.textures.size());}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ model.textures.size();\ i++)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{mTextureIndices}}[i]\ =\ model.textures[i].source;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a38eb65f1987ba4c2ce1a7ed017f9670e}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!LoadModel@{LoadModel}}
+\index{LoadModel@{LoadModel}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{LoadModel()}{LoadModel()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a38eb65f1987ba4c2ce1a7ed017f9670e} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Load\+Model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{auto}\ startTime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00030\ \ \ \ \ tinygltf::Model\ model;}
+\DoxyCodeLine{00031\ \ \ \ \ tinygltf::TinyGLTF\ gltfContext;}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ error,\ warning;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::string\ filePath\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{mFileFolder}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gltfContext.LoadASCIIFromFile(\&model,\ \&error,\ \&warning,\ filePath.append(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}{mFileName}}).append(\textcolor{stringliteral}{"{}.gltf"{}})))}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ load\ glTF\ file!"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db}{LoadTextures}}(model);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab03732bdb093393fa4498ee982f13761}{LoadMaterials}}(model);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Scene\&\ scene\ =\ model.scenes[0];}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ ModelData\ data\{\};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ scene.nodes.size();\ i++)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Node\ node\ =\ model.nodes[scene.nodes[i]];}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6}{LoadNode}}(\textcolor{keyword}{nullptr},\ node,\ model,\ data);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Model\ index\ count:\ "{}}\ <<\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}\ <<\ std::endl;}
+\DoxyCodeLine{00053\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Model\ vertex\ count:\ "{}}\ <<\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}}\ <<\ std::endl;}
+\DoxyCodeLine{00054\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Model\ texture\ count:\ "{}}\ <<\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{mTextures}}.size()\ <<\ std::endl;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9}{CreateVertexBuffers}}(data.mVertices);}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2}{CreateIndexBuffer}}(data.mIndices);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ currentTime\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ loadTime\ =\ std::chrono::duration<float,\ std::chrono::seconds::period>(currentTime\ -\/\ startTime).count();}
+\DoxyCodeLine{00061\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Model\ load\ time:\ "{}}\ <<\ loadTime\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!LoadNode@{LoadNode}}
+\index{LoadNode@{LoadNode}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{LoadNode()}{LoadNode()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Load\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{const tinygltf\+::\+Node \&}]{node}{, }\item[{const tinygltf\+::\+Model \&}]{model}{, }\item[{\mbox{\hyperlink{struct_v_r_e_1_1_model_data}{Model\+Data}} \&}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00096\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ glTFNode*\ node\ =\ \textcolor{keyword}{new}\ glTFNode\{\};}
+\DoxyCodeLine{00098\ \ \ \ \ node-\/>mParent\ =\ parent;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputNode.children.size()\ >\ 0)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ inputNode.children.size();\ i++)}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6}{LoadNode}}(node,\ model.nodes[inputNode.children[i]],\ model,\ data);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (inputNode.mesh\ >\ -\/1)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Mesh\ mesh\ =\ model.meshes[inputNode.mesh];}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ mesh.primitives.size();\ i++)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Primitive\&\ inputPrimitive\ =\ mesh.primitives[i];}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ firstIndex\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ vertexStart\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ indexCount\ =\ 0;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ positionBuffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ normalsBuffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ texCoordsBuffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ coloursBuffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ vertexCount\ =\ 0;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}POSITION"{}})\ !=\ inputPrimitive.attributes.end())\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Accessor\&\ accessor\ =\ model.accessors[inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}POSITION"{}})-\/>second];}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::BufferView\&\ view\ =\ model.bufferViews[accessor.bufferView];}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positionBuffer\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{float}*\textcolor{keyword}{>}(\&(model.buffers[view.buffer].data[accessor.byteOffset\ +\ view.byteOffset]));}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vertexCount\ =\ accessor.count;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}NORMAL"{}})\ !=\ inputPrimitive.attributes.end())\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Accessor\&\ accessor\ =\ model.accessors[inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}NORMAL"{}})-\/>second];}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::BufferView\&\ view\ =\ model.bufferViews[accessor.bufferView];}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normalsBuffer\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{float}*\textcolor{keyword}{>}(\&(model.buffers[view.buffer].data[accessor.byteOffset\ +\ view.byteOffset]));}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}TEXCOORD\_0"{}})\ !=\ inputPrimitive.attributes.end())\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Accessor\&\ accessor\ =\ model.accessors[inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}TEXCOORD\_0"{}})-\/>second];}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::BufferView\&\ view\ =\ model.bufferViews[accessor.bufferView];}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ texCoordsBuffer\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{float}*\textcolor{keyword}{>}(\&(model.buffers[view.buffer].data[accessor.byteOffset\ +\ view.byteOffset]));}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}COLOR\_0"{}})\ !=\ inputPrimitive.attributes.end())\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Accessor\&\ accessor\ =\ model.accessors[inputPrimitive.attributes.find(\textcolor{stringliteral}{"{}COLOR\_0"{}})-\/>second];}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::BufferView\&\ view\ =\ model.bufferViews[accessor.bufferView];}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coloursBuffer\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{float}*\textcolor{keyword}{>}(\&(model.buffers[view.buffer].data[accessor.byteOffset\ +\ view.byteOffset]));}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ v\ =\ 0;\ v\ <\ vertexCount;\ v++)\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vertex\ vert\{\};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vert.mPosition\ =\ glm::vec4(glm::make\_vec3(\&positionBuffer[v\ *\ 3]),\ 1.0f);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vert.mNormal\ =\ glm::normalize(glm::vec3(normalsBuffer\ ?\ glm::make\_vec3(\&normalsBuffer[v\ *\ 3])\ :\ glm::vec3(0.0f)));}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vert.mTexCoord0\ =\ texCoordsBuffer\ ?\ glm::make\_vec2(\&texCoordsBuffer[v\ *\ 2])\ :\ glm::vec3(0.0f);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vert.mColor\ =\ coloursBuffer\ ?\ glm::make\_vec3(\&coloursBuffer[v\ *\ 3])\ :\ glm::vec3(1.0f);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.mVertices.push\_back(vert);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}}++;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Accessor\&\ accessor\ =\ model.accessors[inputPrimitive.indices];}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::BufferView\&\ bufferView\ =\ model.bufferViews[accessor.bufferView];}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tinygltf::Buffer\&\ buffer\ =\ model.buffers[bufferView.buffer];}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ indexCount\ +=\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(accessor.count);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ glTF\ supports\ different\ component\ types\ of\ indices}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (accessor.componentType)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TINYGLTF\_PARAMETER\_TYPE\_UNSIGNED\_INT:\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t*\ buf\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint32\_t*\textcolor{keyword}{>}(\&buffer.data[accessor.byteOffset\ +\ bufferView.byteOffset]);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ index\ <\ accessor.count;\ index++)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.mIndices.push\_back(buf[index]\ +\ vertexStart);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}++;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TINYGLTF\_PARAMETER\_TYPE\_UNSIGNED\_SHORT:\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t*\ buf\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint16\_t*\textcolor{keyword}{>}(\&buffer.data[accessor.byteOffset\ +\ bufferView.byteOffset]);}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ index\ <\ accessor.count;\ index++)\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.mIndices.push\_back(buf[index]\ +\ vertexStart);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}++;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TINYGLTF\_PARAMETER\_TYPE\_UNSIGNED\_BYTE:\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t*\ buf\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }uint8\_t*\textcolor{keyword}{>}(\&buffer.data[accessor.byteOffset\ +\ bufferView.byteOffset]);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ index\ <\ accessor.count;\ index++)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data.mIndices.push\_back(buf[index]\ +\ vertexStart);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}}++;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Index\ component\ type\ "{}}\ <<\ accessor.componentType\ <<\ \textcolor{stringliteral}{"{}\ not\ supported!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ glTFPrimitive\ primitive\{\};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ primitive.mFirstIndex\ =\ firstIndex;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ primitive.mIndexCount\ =\ indexCount;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ primitive.mMaterialIndex\ =\ inputPrimitive.material;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>mMesh.mPrimitives.push\_back(primitive);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{if}\ (parent)}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ parent-\/>mChildren.push\_back(node);}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{mNodes}}.push\_back(node);}
+\DoxyCodeLine{00203\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!LoadTextures@{LoadTextures}}
+\index{LoadTextures@{LoadTextures}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{LoadTextures()}{LoadTextures()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Load\+Textures (\begin{DoxyParamCaption}\item[{tinygltf\+::\+Model \&}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ image\ :\ model.images)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::string\ filePath\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{mFileFolder}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ filePath.append(image.name).append(image.uri);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{mTextures}}.push\_back(std::move(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___texture_a00f3e3684a8ebaabd09fd65b93c50c7c}{VRE\_Texture::CreateTexture}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}},\ filePath)));}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a4de0fa09aa777cb7560eeadb129f9ac1}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!operator=@{operator=}}
+\index{operator=@{operator=}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a4de0fa09aa777cb7560eeadb129f9ac1} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \& VRE\+::\+VRE\+\_\+gl\+TFModel\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\+\_\+gl\+TFModel}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a537958ba90f5364456967352cf25e29c}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!Render@{Render}}
+\index{Render@{Render}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a537958ba90f5364456967352cf25e29c} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Render (\begin{DoxyParamCaption}\item[{Vk\+Command\+Buffer}]{command\+Buffer}{, }\item[{Vk\+Pipeline\+Layout \&}]{pipeline\+Layout}{, }\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\+\_\+\+Descriptor\+Writer}} \&}]{writer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00214}{214}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00215\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ node\ :\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{mNodes}})}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be}{RenderNode}}(commandBuffer,\ node,\ pipelineLayout,\ writer);}
+\DoxyCodeLine{00218\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!RenderNode@{RenderNode}}
+\index{RenderNode@{RenderNode}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{RenderNode()}{RenderNode()}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be} 
+void VRE\+::\+VRE\+\_\+gl\+TFModel\+::\+Render\+Node (\begin{DoxyParamCaption}\item[{Vk\+Command\+Buffer}]{command\+Buffer}{, }\item[{\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}} \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{Vk\+Pipeline\+Layout \&}]{pipeline\+Layout}{, }\item[{\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\+\_\+\+Descriptor\+Writer}} \&}]{writer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source_l00220}{220}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp_source}{VRE\+\_\+gl\+TFModel.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00221\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>mMesh.mPrimitives.size()\ >\ 0)\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (glTFPrimitive\&\ primitive\ :\ node-\/>mMesh.mPrimitives)\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (primitive.mIndexCount\ >\ 0)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ texture\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{mTextureIndices}}[\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{mMaterials}}[primitive.mMaterialIndex].mBaseColorTextureIndex];}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ imageInfo\ =\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{mTextures}}[texture]-\/>GetDescImageInfo();}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.WriteImage(1,\ \&imageInfo);}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VkDescriptorSet\ gameObjectDescriptorSet;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ writer.Build(gameObjectDescriptorSet);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vkCmdBindDescriptorSets(commandBuffer,\ VK\_PIPELINE\_BIND\_POINT\_GRAPHICS,\ pipelineLayout,\ 1,\ 1,\ \&gameObjectDescriptorSet,\ 0,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vkCmdDrawIndexed(commandBuffer,\ primitive.mIndexCount,\ 1,\ primitive.mFirstIndex,\ 0,\ 0);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ child\ :\ node-\/>mChildren)\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be}{RenderNode}}(commandBuffer,\ child,\ pipelineLayout,\ writer);}
+\DoxyCodeLine{00237\ \ \ \ \ \}}
+\DoxyCodeLine{00238\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mDevice@{mDevice}}
+\index{mDevice@{mDevice}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mDevice}{mDevice}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2} 
+\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\+\_\+\+Device}}\& VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00039}{39}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mFileFolder@{mFileFolder}}
+\index{mFileFolder@{mFileFolder}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mFileFolder}{mFileFolder}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42} 
+const std\+::string VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+File\+Folder\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00041}{41}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mFileName@{mFileName}}
+\index{mFileName@{mFileName}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mFileName}{mFileName}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad} 
+const std\+::string VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00042}{42}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mIndexBuffer@{mIndexBuffer}}
+\index{mIndexBuffer@{mIndexBuffer}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mIndexBuffer}{mIndexBuffer}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}}$>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Index\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00050}{50}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mIndexCount@{mIndexCount}}
+\index{mIndexCount@{mIndexCount}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mIndexCount}{mIndexCount}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512} 
+uint32\+\_\+t VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Index\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00053}{53}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mMaterials@{mMaterials}}
+\index{mMaterials@{mMaterials}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mMaterials}{mMaterials}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33} 
+std\+::vector$<$\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_material}{gl\+TFMaterial}}$>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Materials\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00046}{46}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mNodes@{mNodes}}
+\index{mNodes@{mNodes}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mNodes}{mNodes}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692} 
+std\+::vector$<$\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{gl\+TFNode}}\texorpdfstring{$\ast$}{*}$>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Nodes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00045}{45}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mTextureIndices@{mTextureIndices}}
+\index{mTextureIndices@{mTextureIndices}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mTextureIndices}{mTextureIndices}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd} 
+std\+::vector$<$int32\+\_\+t$>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Texture\+Indices\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00047}{47}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mTextures@{mTextures}}
+\index{mTextures@{mTextures}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mTextures}{mTextures}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___texture}{VRE\+\_\+\+Texture}}$>$ $>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00044}{44}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mVertexBuffer@{mVertexBuffer}}
+\index{mVertexBuffer@{mVertexBuffer}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mVertexBuffer}{mVertexBuffer}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d} 
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___buffer}{VRE\+\_\+\+Buffer}}$>$ VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Vertex\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00049}{49}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+\Hypertarget{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}\index{VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}!mVertexCount@{mVertexCount}}
+\index{mVertexCount@{mVertexCount}!VRE::VRE\_glTFModel@{VRE::VRE\_glTFModel}}
+\doxysubsubsection{\texorpdfstring{mVertexCount}{mVertexCount}}
+{\footnotesize\ttfamily \label{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1} 
+uint32\+\_\+t VRE\+::\+VRE\+\_\+gl\+TFModel\+::m\+Vertex\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source_l00052}{52}} of file \mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_source}{VRE\+\_\+gl\+TFModel.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e__gl_t_f_model_8h}{VRE\+\_\+gl\+TFModel.\+h}}\item 
+Re\+STIRVulkan/\mbox{\hyperlink{_v_r_e__gl_t_f_model_8cpp}{VRE\+\_\+gl\+TFModel.\+cpp}}\end{DoxyCompactItemize}

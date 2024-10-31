@@ -1,0 +1,61 @@
+\doxysection{VRE\+\_\+gl\+TFModel.\+h}
+\hypertarget{_v_r_e__gl_t_f_model_8h_source}{}\label{_v_r_e__gl_t_f_model_8h_source}\index{ReSTIRVulkan/VRE\_glTFModel.h@{ReSTIRVulkan/VRE\_glTFModel.h}}
+\mbox{\hyperlink{_v_r_e__gl_t_f_model_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00002}00002\ \textcolor{comment}{*\ \ Resources:}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00003}00003\ \textcolor{comment}{*\ \ \ Galea,\ B.\ (2020).\ Vulkan\ Game\ Engine\ Tutorial.\ [online]\ YouTube.\ Available\ at:\ https://www.youtube.com/watch?v=Y9U9IE0gVHA\&list=PL8327DO66nu9qYVKLDmdLW\_84-\/yE4auCR\&index=1\ and\ https://github.com/blurrypiano/littleVulkanEngine\ (Accessed\ 15\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00004}00004\ \textcolor{comment}{*\ \ \ Willems,\ S.\ (2023).\ Vulkan\ C++\ examples\ and\ demos.\ [online]\ GitHub.\ Available\ at:\ https://github.com/SaschaWillems/Vulkan\ (Accessed\ 12\ June\ 2024).}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00005}00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00006}00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___device_8h}{VRE\_Device.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___buffer_8h}{VRE\_Buffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___model_properties_8h}{VRE\_ModelProperties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___pipeline_8h}{VRE\_Pipeline.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_v_r_e___descriptor_8h}{VRE\_Descriptor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00013}\mbox{\hyperlink{_v_r_e__gl_t_f_model_8h_ab85d274e208f7c3760dee26d2ab13eb8}{00013}}\ \textcolor{preprocessor}{\#define\ TINYGLTF\_NO\_STB\_IMAGE\_WRITE}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}tiny\_gltf.h"{}}}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_v_r_e}{VRE}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00017}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{00017}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\_glTFModel}}\ \{}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aec8f9787561dfb6577a9fa515d49a7cb}{VRE\_glTFModel}}(\mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\_Device}}\&\ device,\ \textcolor{keyword}{const}\ std::string\&\ fileFolder,\ \textcolor{keyword}{const}\ std::string\&\ fileName);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a0f387922e62658a6feca31851a024fe9}{\string~VRE\_glTFModel}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00022}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a74a869ef5c6d9f661378cda9240bedfd}{00022}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a74a869ef5c6d9f661378cda9240bedfd}{VRE\_glTFModel}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\_glTFModel}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00023}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a4de0fa09aa777cb7560eeadb129f9ac1}{00023}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\_glTFModel}}\&\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a4de0fa09aa777cb7560eeadb129f9ac1}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model}{VRE\_glTFModel}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a38eb65f1987ba4c2ce1a7ed017f9670e}{LoadModel}}();}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab3b150493619e5477bb0d69b643fdaf6}{Bind}}(VkCommandBuffer\ commandBuffer);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a537958ba90f5364456967352cf25e29c}{Render}}(VkCommandBuffer\ commandBuffer,\ VkPipelineLayout\&\ pipelineLayout,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\_DescriptorWriter}}\&\ writer);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a8464afdcbe8e74ac48f287d98f2bc6be}{RenderNode}}(VkCommandBuffer\ commandBuffer,\ \mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{glTFNode}}*\ node,\ VkPipelineLayout\&\ pipelineLayout,\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___descriptor_writer}{VRE\_DescriptorWriter}}\&\ writer);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a964837d5bcb4149da1f59fd3677ef3db}{LoadTextures}}(tinygltf::Model\&\ model);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ab03732bdb093393fa4498ee982f13761}{LoadMaterials}}(tinygltf::Model\&\ model);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afbd219fd31bb17c530e6b660209d50c6}{LoadNode}}(\mbox{\hyperlink{struct_v_r_e_1_1gl_t_f_node}{glTFNode}}*\ parent,\ \textcolor{keyword}{const}\ tinygltf::Node\&\ node,\ \textcolor{keyword}{const}\ tinygltf::Model\&\ model,\ \mbox{\hyperlink{struct_v_r_e_1_1_model_data}{ModelData}}\&\ data);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a342de1f4eac09718e5402617b8fdb6b9}{CreateVertexBuffers}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_afd30f781b7128478ea245c9716d938a2}{CreateIndexBuffer}}(\textcolor{keyword}{const}\ std::vector<uint32\_t>\&\ indices);}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00039}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{00039}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e___device}{VRE\_Device}}\&\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aaf4d748b742241f768b37675155550e2}{mDevice}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00041}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{00041}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aff2232ca6c0cbc8fa0ec3df4e5915f42}{mFileFolder}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00042}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}{00042}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ae9307a514d38a6a9467a8ed332f56bad}{mFileName}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00044}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{00044}}\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<VRE\_Texture>>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_aedd8267527f9feabe2d76ee8bab9f4c3}{mTextures}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00045}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{00045}}\ \ \ \ \ \ \ \ \ std::vector<glTFNode*>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ade948416039401e590229f4e8a6f3692}{mNodes}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00046}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{00046}}\ \ \ \ \ \ \ \ \ std::vector<glTFMaterial>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_ad5a71467a6cce3e21b69d957562bbd33}{mMaterials}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00047}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{00047}}\ \ \ \ \ \ \ \ \ std::vector<int32\_t>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a47ce9c450498dcbb49f449ba55a7b4bd}{mTextureIndices}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00049}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{00049}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<VRE\_Buffer>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a19ac7a0ede4ebb1f204239ee21e6c08d}{mVertexBuffer}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00050}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{00050}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<VRE\_Buffer>\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_adb37c8d9b28365ddbc190740ccea44a8}{mIndexBuffer}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00052}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{00052}}\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a2f48f77a5a1295cd17a089c0110e54d1}{mVertexCount}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00053}\mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{00053}}\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_v_r_e_1_1_v_r_e__gl_t_f_model_a7aceb8f977205f81254460208f479512}{mIndexCount}};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00054}00054\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_v_r_e__gl_t_f_model_8h_source_l00055}00055\ \}}
+
+\end{DoxyCode}
