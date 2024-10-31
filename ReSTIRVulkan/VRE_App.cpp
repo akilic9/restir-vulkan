@@ -138,6 +138,9 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Duck glTF model by Sony Computer Entertainment Inc. (2016). Used under SCEA Shared Source License, Version 1.0.
+    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/Duck [Accessed 2 September 2024]
+
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
     model->LoadModel();
     VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
@@ -148,6 +151,9 @@ void VRE::VRE_App::LoadObjects()
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Toy Car glTF model by Guido Odendahl. Used under public domain CC0 license.
+    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/ToyCar [Accessed 2 September 2024]
 
     //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/ToyCar/", "ToyCar");
     //model->LoadModel();
@@ -160,6 +166,9 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Flight Helmet glTF model by Microsoft.Used under public domain.
+    //Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/FlightHelmet [Accessed 2 September 2024]
+
     //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
     //model->LoadModel();
     //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
@@ -171,6 +180,9 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Sci-Fi Helmet glTF model by Michel Pavlovich, converted to glTF by Norbert Nopper. Used under CC4.0 license.
+    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/SciFiHelmet and https://sketchfab.com/3d-models/mech-helmet-aa2169c338d646f680b4b39daf838bc2 [Accessed 2 September 2024]
+
     //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/SciFiHelmet/", "SciFiHelmet");
     //model->LoadModel();
     //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
@@ -181,6 +193,9 @@ void VRE::VRE_App::LoadObjects()
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Antique Camera glTF model by Maximilian Kamps.Used under CC0 public domain license.
+    // Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/AntiqueCamera [Accessed 2 September 2024]
 
     //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
     //model->LoadModel();
