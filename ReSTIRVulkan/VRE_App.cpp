@@ -110,6 +110,7 @@ void VRE::VRE_App::Init()
     mGameObjRenderSystem.Init();
     mCamera = VRE_Camera();
     mInputListener = VRE_InputListener();
+    mInputListener.Init(mWindow.GetGLFWwindow());
 }
 
 void VRE::VRE_App::Update(float dt, UBO& ubo)
@@ -145,7 +146,7 @@ void VRE::VRE_App::LoadObjects()
     model->LoadModel();
     VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
     obj.mModel = model;
-    obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
+    obj.mTransform.mTranslation = { 0.f, -1.5f, 5.f };
     obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
     obj.mTransform.mScale = { 0.01f, 0.01f, 0.01f };
 
@@ -155,13 +156,13 @@ void VRE::VRE_App::LoadObjects()
     //Toy Car glTF model by Guido Odendahl. Used under public domain CC0 license.
     // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/ToyCar [Accessed 2 September 2024]
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/ToyCar/", "ToyCar");
-    //model->LoadModel();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, 0.f, 0.f };
-    //obj.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 0.004f, 0.004f, 0.004f };
+    std::shared_ptr<VRE_glTFModel> model2 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/ToyCar/", "ToyCar");
+    model2->LoadModel();
+    VRE::VRE_GameObject& obj2 = mGameObjectManager.CreateGameObject();
+    obj2.mModel = model2;
+    obj2.mTransform.mTranslation = { 0.f, 0.f, -5.f };
+    obj2.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
+    obj2.mTransform.mScale = { 0.004f, 0.004f, 0.004f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -169,13 +170,13 @@ void VRE::VRE_App::LoadObjects()
     //Flight Helmet glTF model by Microsoft.Used under public domain.
     //Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/FlightHelmet [Accessed 2 September 2024]
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
-    //model->LoadModel();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -.75f, 0.f };
-    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
+    std::shared_ptr<VRE_glTFModel> model3 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
+    model3->LoadModel();
+    VRE::VRE_GameObject& obj3 = mGameObjectManager.CreateGameObject();
+    obj3.mModel = model3;
+    obj3.mTransform.mTranslation = { 5.f, -.75f, 0.f };
+    obj3.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj3.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,13 +184,13 @@ void VRE::VRE_App::LoadObjects()
     // Sci-Fi Helmet glTF model by Michel Pavlovich, converted to glTF by Norbert Nopper. Used under CC4.0 license.
     // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/SciFiHelmet and https://sketchfab.com/3d-models/mech-helmet-aa2169c338d646f680b4b39daf838bc2 [Accessed 2 September 2024]
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/SciFiHelmet/", "SciFiHelmet");
-    //model->LoadModel();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -.5f, 0.f };
-    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
+    std::shared_ptr<VRE_glTFModel> model4 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/SciFiHelmet/", "SciFiHelmet");
+    model4->LoadModel();
+    VRE::VRE_GameObject& obj4 = mGameObjectManager.CreateGameObject();
+    obj4.mModel = model4;
+    obj4.mTransform.mTranslation = { -5.f, -.5f, 0.f };
+    obj4.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj4.mTransform.mScale = { 1.0f, 1.0f, 1.0f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,13 +198,21 @@ void VRE::VRE_App::LoadObjects()
     // Antique Camera glTF model by Maximilian Kamps.Used under CC0 public domain license.
     // Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/AntiqueCamera [Accessed 2 September 2024]
 
-    //std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
-    //model->LoadModel();
-    //VRE::VRE_GameObject& obj = mGameObjectManager.CreateGameObject();
-    //obj.mModel = model;
-    //obj.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
-    //obj.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
+    std::shared_ptr<VRE_glTFModel> model5 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
+    model5->LoadModel();
+    VRE::VRE_GameObject& obj5 = mGameObjectManager.CreateGameObject();
+    obj5.mModel = model5;
+    obj5.mTransform.mTranslation = { 0.f, -6.5f, 0.f };
+    obj5.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj5.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
+
+    std::shared_ptr<VRE_glTFModel> model6 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
+    model6->LoadModel();
+    VRE::VRE_GameObject& obj6 = mGameObjectManager.CreateGameObject();
+    obj6.mModel = model6;
+    obj6.mTransform.mTranslation = { 0.f, 6.5f, 0.f };
+    obj6.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
+    obj6.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -221,7 +230,7 @@ void VRE::VRE_App::LoadObjects()
         auto pointLight = VRE_PointLight::CreatePointLight(1.0f);
         pointLight.mColor = coloredLights[i];
         auto rotateLight = glm::rotate(glm::mat4(1.f), (i * glm::two_pi<float>()) / coloredLights.size(), { 0.f, 1.f, 0.f });
-        pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -1.f, 1.f);
+        pointLight.mPosition = rotateLight * glm::vec4(-1.f, 1.f, -6.f, 1.f);
         mSceneContext.mPointLights.push_back(std::move(pointLight));
     }
 }

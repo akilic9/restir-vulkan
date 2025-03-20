@@ -7,6 +7,11 @@
 #include "VRE_InputListener.h"
 #include <iostream>
 
+void VRE::VRE_InputListener::Init(GLFWwindow* window)
+{
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
+
 // TODO: Expand this into a proper input system.
 void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& camera)
 {
@@ -23,13 +28,16 @@ void VRE::VRE_InputListener::Move(GLFWwindow* window, float dt, VRE_Camera& came
     double rotY = camera.GetRotation().x + (mouseY - middleY) * mMouseSensitivity;
 
     glm::vec3 rotation{ glm::radians(rotY), glm::radians(rotX), camera.GetRotation().z };
-    rotation.x = glm::clamp(rotation.x, -1.5f, 1.5f);
+    rotation.x = glm::clamp(rotation.x, -glm::half_pi<float>(), glm::half_pi<float>());
 
-    float yaw = camera.GetRotation().y;
-    float pitch = camera.GetRotation().x;
-    const glm::vec3 forwardDir{ sin(yaw), -sin(rotation.x), cos(yaw)};
-    const glm::vec3 rightDir{ -forwardDir.z, 0.f, forwardDir.x };
+    float yaw = rotation.y;
+    float pitch = rotation.x;
+
+    const glm::vec3 front{ sin(yaw) * cos(pitch), -sin(pitch),  cos(yaw) * cos(pitch) };
+
+    const glm::vec3 forwardDir = glm::normalize(front);
     const glm::vec3 upDir{ 0.f, 1.f, 0.f };
+    const glm::vec3 rightDir = glm::normalize(glm::cross(forwardDir, upDir));
 
     glm::vec3 moveDir{ 0.f };
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) moveDir += forwardDir;

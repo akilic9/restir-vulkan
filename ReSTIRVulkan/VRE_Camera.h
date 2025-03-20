@@ -29,7 +29,7 @@ namespace VRE {
         glm::vec3 GetPosition() const { return mPosition; }
 
     private:
-        glm::vec3 mPosition{ 0.f, 0.f, -5.f };
+        glm::vec3 mPosition{ 0.f, 0.f, 0.f };
         glm::vec3 mRotation{ 0.f, 0.f, glm::pi<float>() };
         glm::mat4 mProjectionMatrix{ 1.f };
         glm::mat4 mViewMatrix{ 1.f };

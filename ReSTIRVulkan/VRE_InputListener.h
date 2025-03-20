@@ -6,6 +6,7 @@ namespace VRE {
     class VRE_InputListener
     {
     public:
+        void Init(GLFWwindow* window);
         void Move(GLFWwindow* window, float dt, VRE_Camera &camera);
 
         float mMoveSpeed{ 3.f };

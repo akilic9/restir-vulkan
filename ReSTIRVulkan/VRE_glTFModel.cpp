@@ -65,7 +65,7 @@ void VRE::VRE_glTFModel::LoadTextures(tinygltf::Model& model)
 {
     for (auto& image : model.images) {
         std::string filePath = mFileFolder;
-        filePath.append(image.name).append(image.uri);
+        filePath.append(image.uri);
         mTextures.push_back(std::move(VRE_Texture::CreateTexture(mDevice, filePath)));
     }
 }
