@@ -1,5 +1,3 @@
-
-
 #include <imgui.h>
 
 #include "VRE_App.h"
@@ -69,7 +67,7 @@ void VRE::VRE_App::Run()
 
 void VRE::VRE_App::Init()
 {
-    //Create descriptor pool for global data.
+    // Create descriptor pool for global data.
     mDescriptorPool = VRE_DescriptorPool::Builder(mDevice)
                       .SetMaxSets(VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
                       .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VRE_SwapChain::MAX_FRAMES_IN_FLIGHT)
@@ -154,7 +152,7 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Toy Car glTF model by Guido Odendahl. Used under public domain CC0 license.
+    // Toy Car glTF model by Guido Odendahl. Used under public domain CC0 license.
     // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/ToyCar [Accessed 2 September 2024]
 
     //std::shared_ptr<VRE_glTFModel> model2 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/ToyCar/", "ToyCar");
@@ -168,8 +166,8 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Flight Helmet glTF model by Microsoft.Used under public domain.
-    //Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/FlightHelmet [Accessed 2 September 2024]
+    // Flight Helmet glTF model by Microsoft.Used under public domain.
+    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/FlightHelmet [Accessed 2 September 2024]
 
     //std::shared_ptr<VRE_glTFModel> model3 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/FlightHelmet/", "FlightHelmet");
     //model3->LoadModel();
@@ -197,7 +195,7 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Antique Camera glTF model by Maximilian Kamps.Used under CC0 public domain license.
-    // Available at : https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/AntiqueCamera [Accessed 2 September 2024]
+    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/AntiqueCamera [Accessed 2 September 2024]
 
     //std::shared_ptr<VRE_glTFModel> model5 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
     //model5->LoadModel();
@@ -218,8 +216,8 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Rotating colorful lights by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.
-    //Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+    // Rotating colorful lights by Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube.
+    // Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
     std::vector<glm::vec3> coloredLights{{1.f, .1f, .1f},
                                          {.1f, .1f, 1.f},
                                          {.1f, 1.f, .1f},
