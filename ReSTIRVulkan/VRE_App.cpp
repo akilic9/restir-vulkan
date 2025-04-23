@@ -138,8 +138,8 @@ void VRE::VRE_App::LoadObjects()
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Duck glTF model by Sony Computer Entertainment Inc. (2016). Used under SCEA Shared Source License, Version 1.0.
-    // Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/Duck [Accessed 2 September 2024]
+    //// Duck glTF model by Sony Computer Entertainment Inc. (2016). Used under SCEA Shared Source License, Version 1.0.
+    //// Available at: https://github.com/KhronosGroup/glTF-Sample-Models/tree/main/2.0/Duck [Accessed 2 September 2024]
 
     std::shared_ptr<VRE_glTFModel> model = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/Duck/", "Duck");
     model->LoadModel();
@@ -159,7 +159,7 @@ void VRE::VRE_App::LoadObjects()
     //model2->LoadModel();
     //VRE::VRE_GameObject& obj2 = mGameObjectManager.CreateGameObject();
     //obj2.mModel = model2;
-    //obj2.mTransform.mTranslation = { 0.f, 0.f, -5.f };
+    //obj2.mTransform.mTranslation = { 0.f, 0.f, 0.f };
     //obj2.mTransform.mRotation = { glm::half_pi<float>(), glm::pi<float>(), 0.f };
     //obj2.mTransform.mScale = { 0.004f, 0.004f, 0.004f };
 
@@ -173,7 +173,7 @@ void VRE::VRE_App::LoadObjects()
     //model3->LoadModel();
     //VRE::VRE_GameObject& obj3 = mGameObjectManager.CreateGameObject();
     //obj3.mModel = model3;
-    //obj3.mTransform.mTranslation = { 5.f, -.75f, 0.f };
+    //obj3.mTransform.mTranslation = { 0.f, 0.f, 0.f };
     //obj3.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
     //obj3.mTransform.mScale = { 3.0f, 3.0f, 3.0f };
 
@@ -201,17 +201,9 @@ void VRE::VRE_App::LoadObjects()
     //model5->LoadModel();
     //VRE::VRE_GameObject& obj5 = mGameObjectManager.CreateGameObject();
     //obj5.mModel = model5;
-    //obj5.mTransform.mTranslation = { 0.f, -6.5f, 0.f };
+    //obj5.mTransform.mTranslation = { 0.f, -1.5f, 0.f };
     //obj5.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
     //obj5.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
-
-    //std::shared_ptr<VRE_glTFModel> model6 = std::make_shared<VRE_glTFModel>(mDevice, "Resources/Models/AntiqueCamera/", "AntiqueCamera");
-    //model6->LoadModel();
-    //VRE::VRE_GameObject& obj6 = mGameObjectManager.CreateGameObject();
-    //obj6.mModel = model6;
-    //obj6.mTransform.mTranslation = { 0.f, 6.5f, 0.f };
-    //obj6.mTransform.mRotation = { 0.f, glm::pi<float>(), 0.f };
-    //obj6.mTransform.mScale = { 0.25f, 0.25f, 0.25f };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
