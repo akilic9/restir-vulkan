@@ -9,7 +9,7 @@ namespace VRE {
         void Init(GLFWwindow* window);
         void Move(GLFWwindow* window, float dt, VRE_Camera &camera);
 
-        float mMoveSpeed{ 3.f };
+        float mMoveSpeed{ 2.f };
         float mMouseSensitivity{ 0.1f };
     };
 }
