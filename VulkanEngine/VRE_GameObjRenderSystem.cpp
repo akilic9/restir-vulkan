@@ -1,0 +1,83 @@
+/*
+*  Resources:
+*   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
+*   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
+*   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
+*/
+#include "VRE_GameObjRenderSystem.h"
+#include <stdexcept>
+
+VRE::VRE_GameObjRenderSystem::VRE_GameObjRenderSystem(VRE_SharedContext* sharedContext)
+    : mSharedContext(sharedContext) {}
+
+VRE::VRE_GameObjRenderSystem::~VRE_GameObjRenderSystem()
+{
+    vkDestroyPipelineLayout(mSharedContext->mDevice->GetVkDevice(), mPipelineLayout, nullptr);
+}
+
+void VRE::VRE_GameObjRenderSystem::Init()
+{
+    CreatePipelineLayouts();
+    CreatePipelines();
+}
+
+void VRE::VRE_GameObjRenderSystem::Render()
+{
+    mSharedContext->mObjectDescPools[mSharedContext->mRenderer->GetFrameIndex()]->ResetPool();
+
+    mPipeline->Bind(mSharedContext->mRenderer->GetCurrentCommandBuffer());
+
+    vkCmdBindDescriptorSets(mSharedContext->mRenderer->GetCurrentCommandBuffer(), VK_PIPELINE_BIND_POINT_GRAPHICS, mPipelineLayout, 0, 1,
+                            &mSharedContext->mSceneDescriptorSets[mSharedContext->mRenderer->GetFrameIndex()], 0, nullptr);
+
+    for (std::pair<const unsigned, VRE_GameObject>& gameObject : *mSharedContext->mGameObjMap)
+    {
+        if (!gameObject.second.mModel)
+        {
+            continue;
+        }
+
+        gameObject.second.mModel->Bind(mSharedContext->mRenderer->GetCurrentCommandBuffer());
+
+        auto bufferInfo = gameObject.second.GetBufferInfo();
+        auto writer = VRE_DescriptorWriter(*mDescSetLayout, *mSharedContext->mObjectDescPools[mSharedContext->mRenderer->GetFrameIndex()]);
+        writer.WriteBuffer(0, &bufferInfo);
+        gameObject.second.mModel->Render(mSharedContext->mRenderer->GetCurrentCommandBuffer(), mPipelineLayout, writer);
+    }
+}
+
+void VRE::VRE_GameObjRenderSystem::CreatePipelineLayouts()
+{
+    VkPushConstantRange pushConstantRange{ VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(GameObjectBufferData) };
+
+    mDescSetLayout = VRE_DescriptorSetLayout::Builder(*mSharedContext->mDevice)
+                     .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT)
+                     .AddBinding(1, VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, VK_SHADER_STAGE_FRAGMENT_BIT)
+                     .Build();
+
+    std::vector<VkDescriptorSetLayout> descSetLayouts{mSharedContext->mGlobalDescSetLayout->GetDescriptorSetLayout(),
+                                                      mDescSetLayout->GetDescriptorSetLayout()};
+
+    VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
+    pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+    pipelineLayoutInfo.setLayoutCount = static_cast<uint32_t>(descSetLayouts.size());
+    pipelineLayoutInfo.pSetLayouts = descSetLayouts.data();
+    pipelineLayoutInfo.pushConstantRangeCount = 1;
+    pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
+
+    if (vkCreatePipelineLayout(mSharedContext->mDevice->GetVkDevice(), &pipelineLayoutInfo, nullptr, &mPipelineLayout) != VK_SUCCESS)
+    {
+        throw std::runtime_error("Failed to create pipeline layout!");
+    }
+}
+
+void VRE::VRE_GameObjRenderSystem::CreatePipelines()
+{
+    assert(mPipelineLayout != nullptr && "Cannot create pipeline before pipeline layout!");
+
+    PipelineConfigInfo pipelineConfig{};
+    VRE_Pipeline::GetDefaultPipelineConfigInfo(pipelineConfig);
+    pipelineConfig.mRenderPass = mSharedContext->mRenderer->GetSwapChainRenderPass();
+    pipelineConfig.mPipelineLayout = mPipelineLayout;
+    mPipeline = std::make_unique<VRE_Pipeline>(*mSharedContext->mDevice, pipelineConfig, "Shaders/test_shader.vert.spv", "Shaders/test_shader.frag.spv");
+}
