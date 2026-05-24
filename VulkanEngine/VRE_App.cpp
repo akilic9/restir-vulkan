@@ -29,9 +29,6 @@ VRE::VRE_App::~VRE_App() {}
 // TODO: This function can be simplified.
 void VRE::VRE_App::Run()
 {
-    float totalFrames = 0.f;
-    int frameCount = 0;
-
     std::chrono::time_point<std::chrono::steady_clock> startTime = std::chrono::high_resolution_clock::now();
 
     while (!mWindow.ShouldClose())
@@ -40,9 +37,6 @@ void VRE::VRE_App::Run()
 
         const std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::high_resolution_clock::now();
         const float deltaTime = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
-        //std::cout << 1.0f / deltaTime << std::endl;
-        totalFrames += (1.0f / deltaTime);
-        frameCount++;
         startTime = currentTime;
 
         float aspectRatio = mRenderer.GetAspectRatio();
@@ -63,7 +57,6 @@ void VRE::VRE_App::Run()
         }
     }
 
-    std::cout << "Avg. frame rate for run: " << totalFrames / frameCount << std::endl;
     vkDeviceWaitIdle(mDevice.GetVkDevice());
 }
 

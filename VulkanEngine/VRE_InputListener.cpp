@@ -9,7 +9,7 @@
 
 void VRE::VRE_InputListener::Init(GLFWwindow* window)
 {
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
 // TODO: Expand this into a proper input system.
