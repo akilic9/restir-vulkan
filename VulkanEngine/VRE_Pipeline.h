@@ -11,7 +11,6 @@
 
 namespace VRE
 {
-
     struct PipelineConfigInfo
     {
         PipelineConfigInfo() = default;

@@ -3,7 +3,7 @@
 *   Galea, B. (2020). Vulkan Game Engine Tutorial. [online] YouTube. Available at: https://www.youtube.com/watch?v=Y9U9IE0gVHA&list=PL8327DO66nu9qYVKLDmdLW_84-yE4auCR&index=1 and https://github.com/blurrypiano/littleVulkanEngine (Accessed 15 June 2024).
 *   Willems, S. (2023). Vulkan C++ examples and demos. [online] GitHub. Available at: https://github.com/SaschaWillems/Vulkan (Accessed 12 June 2024).
 *   Overvoorde, A. (2017). Khronos Vulkan Tutorial. [online] Vulkan.org. Available at: https://docs.vulkan.org/tutorial/latest/00_Introduction.html (Accessed 07 June 2024).
-*   Wikipedia Contributors (2020). Blinn–Phong reflection model. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model (Accessed 15 Aug. 2024).
+*   Wikipedia Contributors (2020). Blinn-Phong reflection model. [online] Wikipedia. Available at: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model (Accessed 15 Aug. 2024).
 *   OpenGL Game Engine Template - Camera class, INM376 Computer Graphics module, City St Georges University of London.
 */
 #version 460
@@ -15,12 +15,14 @@ layout (location = 3) in vec2 inTexCoord;
 
 layout (location = 0) out vec4 outColor;
 
-struct PointLightInfo {
+struct PointLightInfo
+{
     vec4 position;  // w is just for alignment.
     vec4 color;     // w is intensity.
 };
 
-layout(set = 0, binding = 0) uniform UBO {
+layout(set = 0, binding = 0) uniform UBO
+{
     mat4 projectionMat;
     mat4 viewMat;
     mat4 invViewMat;
@@ -31,7 +33,8 @@ layout(set = 0, binding = 0) uniform UBO {
 
 layout(set = 1, binding = 1) uniform sampler2D texSampler;
 
-void main() {
+void main()
+{
     vec3 diffuse = ubo.ambientLightColor.xyz * ubo.ambientLightColor.w; //Apply the intensity scale to the ambient.
     vec3 surfaceNormal = normalize(inNormalWorld);
     vec3 specularLight = vec3(0.0);
@@ -39,7 +42,8 @@ void main() {
     vec3 cameraPosWorld = ubo.invViewMat[3].xyz;
     vec3 viewDir = normalize(cameraPosWorld - inPosWorld);
 
-    for (int i = 0; i < ubo.activeLightCount; i++){
+    for (int i = 0; i < ubo.activeLightCount; i++)
+    {
         PointLightInfo light = ubo.pointLights[i];
         vec3 lightDir = light.position.xyz - inPosWorld;
         float attenuation = 1.0 / dot(lightDir, lightDir); //Inverse distance to light squared.

@@ -14,7 +14,6 @@
 
 namespace VRE
 {
-
     class VRE_SwapChain
     {
     public:

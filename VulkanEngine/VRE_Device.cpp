@@ -33,10 +33,8 @@ namespace VRE
         {
             return func(instance, pCreateInfo, pAllocator, pDebugMessenger);
         }
-        else
-        {
-            return VK_ERROR_EXTENSION_NOT_PRESENT;
-        }
+
+        return VK_ERROR_EXTENSION_NOT_PRESENT;
     }
     
     void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks *pAllocator)
@@ -105,7 +103,7 @@ namespace VRE
             createInfo.ppEnabledLayerNames = mValidationLayers.data();
             
             PopulateDebugMessengerCreateInfo(debugCreateInfo);
-            createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT *)&debugCreateInfo;
+            createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*)&debugCreateInfo;
         } 
         else
         {
@@ -307,7 +305,7 @@ namespace VRE
     std::vector<const char *> VRE_Device::GetRequiredExtensions()
     {
         uint32_t glfwExtensionCount = 0;
-        const char **glfwExtensions;
+        const char** glfwExtensions;
         glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
     
         std::vector<const char *> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);

@@ -7,12 +7,14 @@
 layout (location = 0) in vec2 fragOffset;
 layout (location = 0) out vec4 outColor;
 
-struct PointLightInfo {
+struct PointLightInfo
+{
     vec4 position;  // w is just for alignment.
     vec4 color;     // w is intensity.
 };
 
-layout(set = 0, binding = 0) uniform UBO {
+layout(set = 0, binding = 0) uniform UBO
+{
     mat4 projectionMat;
     mat4 viewMat;
     mat4 invViewMat;
@@ -21,13 +23,15 @@ layout(set = 0, binding = 0) uniform UBO {
     int activeLightCount;
 } ubo;
 
-layout(push_constant) uniform Push {
+layout(push_constant) uniform Push
+{
     vec4 position;
     vec4 color;
     float radius;
 } push;
 
-void main() {
+void main()
+{
     float distance = sqrt(dot(fragOffset, fragOffset));
 
     if (distance >= 1.0)

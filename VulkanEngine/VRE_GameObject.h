@@ -13,7 +13,6 @@
 
 namespace VRE
 {
-
     struct GameObjectBufferData
     {
         glm::mat4 mModelMatrix{ 1.f };

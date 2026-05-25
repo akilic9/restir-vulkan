@@ -11,7 +11,6 @@
 
 namespace VRE
 {
-
     #define MAX_LIGHTS 10
 
     struct VRE_SharedContext
