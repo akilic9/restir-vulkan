@@ -137,8 +137,8 @@ namespace VRE
         {
             if (IsDeviceSuitable(device))
             {
-              mPhysicalDevice = device;
-              break;
+                mPhysicalDevice = device;
+                break;
             }
         }
     
